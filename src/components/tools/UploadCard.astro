@@ -1,0 +1,39 @@
+<section class="pt-20">
+  <div class="max-w-7xl mx-auto px-8 md:px-12 lg:px-24">
+    <div class="bg-base-50 rounded-2xl p-6 shadow-sm ring-1 ring-base-200">
+      <div class="flex items-center gap-2 text-base font-semibold text-black">
+        <svg class="size-5 text-base-600" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M4 20h16" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M12 4v12" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M8 8l4-4 4 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>选择媒体文件</span>
+      </div>
+
+      <div class="mt-6">
+        <div class="rounded-xl bg-white ring-1 ring-base-200 p-4">
+          <div class="rounded-xl border-2 border-dashed border-base-200 py-16 flex items-center justify-center text-center">
+            <div class="space-y-3">
+              <svg class="mx-auto size-8 text-accent-600" viewBox="0 0 24 24" fill="currentColor">
+                <g transform="translate(0,4)">
+                  <path d="M12 3l4 4h-3v5h-2V7H8l4-4Z"/>
+                </g>
+                <path d="M4 16h2v3h12v-3h2v3a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-3Z"/>
+              </svg>
+              <div class="text-base font-medium text-base-800">拖拽文件到这里</div>
+              <div class="text-xs text-base-500">最多 3 个文件，每个 1GB</div>
+              <div class="pt-2">
+                <a id="upload-trigger" href="#" class="inline-flex items-center justify-center transition-all duration-200 ring-1 focus:ring-2 ring-accent-700 focus:outline-none text-base-50 bg-accent-600 hover:bg-accent-700 focus:ring-base-500/50 h-10 px-5 text-sm font-medium rounded-md">选择文件</a>
+                <input id="upload-input" type="file" accept=".xls,.xlsx,.csv" multiple class="hidden" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto px-8 md:px-12 lg:px-24 mt-6">
+    <div id="upload-output" class="bg-base-50 rounded-xl p-4 ring-1 ring-base-200 text-xs text-base-700 whitespace-pre-wrap"></div>
+  </div>
+  <script is:inline type="module">import '/src/scripts/xlsx-upload.ts'</script>
+</section>

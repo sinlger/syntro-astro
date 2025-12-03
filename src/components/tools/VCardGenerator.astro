@@ -1,0 +1,42 @@
+<section class="pt-20">
+  <div class="px-8 mx-auto md:px-12 lg:px-24 max-w-7xl">
+    <div class="text-center max-w-2xl mx-auto lg:text-balance">
+      <p class="text-sm leading-normal font-bold uppercase text-accent-600">vCard</p>
+      <h2 class="text-xl leading-tight tracking-tight sm:text-2xl md:text-3xl capitalize lg:text-4xl mt-4 font-medium text-base-900 lg:text-balance">创建联系人名片</h2>
+      <p class="text-base leading-normal mt-4 text-base-500 font-medium">填写信息并生成可下载的 .vcf 名片文件。</p>
+    </div>
+
+    <form id="vcard-form" class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="flex flex-col">
+        <label class="text-sm font-semibold text-base-700">名</label>
+        <input name="firstName" type="text" placeholder="如：Jie" class="mt-2 px-3 py-2 rounded-md ring-1 ring-base-200 focus:outline-none focus:ring-2 focus:ring-accent-500" />
+      </div>
+      <div class="flex flex-col">
+        <label class="text-sm font-semibold text-base-700">姓</label>
+        <input name="lastName" type="text" placeholder="如：Zhang" class="mt-2 px-3 py-2 rounded-md ring-1 ring-base-200 focus:outline-none focus:ring-2 focus:ring-accent-500" />
+      </div>
+      <div class="flex flex-col md:col-span-2">
+        <label class="text-sm font-semibold text-base-700">公司</label>
+        <input name="organization" type="text" placeholder="公司名称" class="mt-2 px-3 py-2 rounded-md ring-1 ring-base-200 focus:outline-none focus:ring-2 focus:ring-accent-500" />
+      </div>
+      <div class="flex flex-col">
+        <label class="text-sm font-semibold text-base-700">邮箱</label>
+        <input name="email" type="email" placeholder="name@example.com" class="mt-2 px-3 py-2 rounded-md ring-1 ring-base-200 focus:outline-none focus:ring-2 focus:ring-accent-500" />
+      </div>
+      <div class="flex flex-col">
+        <label class="text-sm font-semibold text-base-700">电话</label>
+        <input name="phone" type="tel" placeholder="+86 13800000000" class="mt-2 px-3 py-2 rounded-md ring-1 ring-base-200 focus:outline-none focus:ring-2 focus:ring-accent-500" />
+      </div>
+      <div class="md:col-span-2 flex items-center gap-4">
+        <button type="submit" class="flex items-center justify-center transition-all duration-200 ring-1 focus:ring-2 ring-accent-700 focus:outline-none text-base-50 bg-accent-600 hover:bg-accent-700 focus:ring-base-500/50 h-10 px-5 text-sm font-medium rounded-md">生成并下载</button>
+        <button type="button" id="vcard-download" class="hidden"></button>
+      </div>
+      <div class="md:col-span-2">
+        <label class="text-sm font-semibold text-base-700">预览</label>
+        <textarea id="vcard-output" rows="10" readonly class="mt-2 w-full px-3 py-2 rounded-md ring-1 ring-base-200 bg-base-50 text-sm text-base-700"></textarea>
+      </div>
+    </form>
+  </div>
+
+  <script is:inline type="module">import '/src/scripts/vcard-client.ts'</script>
+</section>
