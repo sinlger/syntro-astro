@@ -1,0 +1,82 @@
+<div class="w-full  py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- FAQ Section Header -->
+        <div class="text-center mb-12">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-base-900">
+                常见问题 (FAQ)
+            </h2>
+            <p class="mt-4 text-xl text-base-600">
+                快速解答您对数据安全、转换兼容性等方面的疑问。
+            </p>
+        </div>
+
+        <!-- FAQ Grid Container -->
+        <div class="space-y-10">
+            
+            <!-- 问答 1: 数据安全 -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-4 bg-accent-50 rounded-2xl p-6 ring-1 ring-base-200">
+                <div class="lg:sticky lg:top-0">
+                    <h3 class="text-lg font-bold text-accent-700">
+                        1. 数据安全与隐私保障：文件会不会被服务器存储或泄露？
+                    </h3>
+                </div>
+                <div>
+                    <p class="text-base text-base-700 leading-relaxed">
+                        绝对不会。本工具最核心的承诺是<strong>“100% 离线转换”</strong>。您的 Excel/CSV 文件从上传到 VCF 文件生成完毕，数据始终停留在您的<strong>浏览器内存中</strong>处理，不会经过任何外部服务器。从技术上保障了您的通讯录信息绝对隐私和安全。
+                    </p>
+                </div>
+            </div>
+
+            <!-- 问答 2: 乱码问题 -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-4 bg-accent-50 rounded-2xl p-6 ring-1 ring-base-200">
+                <div class="lg:sticky lg:top-0">
+                    <h3 class="text-lg font-bold text-accent-700">
+                        2. 导入后中文乱码：为什么我的联系人姓名显示为乱码？
+                    </h3>
+                </div>
+                <div>
+                    <p class="text-base text-base-700 leading-relaxed">
+                        本工具生成的 VCF 文件严格采用<strong>UTF-8 编码</strong>，这是国际通用标准。乱码通常是由于<strong>接收方系统或应用程序</strong>（如某些旧版 Android 或 Outlook）默认编码设置引起。
+                    </p>
+                    <p class="mt-3 text-sm text-base-600">
+                        <strong>💡 建议：</strong> 导入到 <strong>Apple iCloud</strong> 或 <strong>Google Contacts</strong> 等现代云服务，它们能自动识别 UTF-8 编码，确保中文显示正确。
+                    </p>
+                </div>
+            </div>
+            
+            <!-- 问答 3: 字段映射与丢失 -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-4 bg-accent-50 rounded-2xl p-6 ring-1 ring-base-200">
+                <div class="lg:sticky lg:top-0">
+                    <h3 class="text-lg font-bold text-accent-700">
+                        3. 联系人记录丢失：为什么我转换的记录数和导入成功的数量不一致？
+                    </h3>
+                </div>
+                <div>
+                    <p class="text-base text-base-700 leading-relaxed">
+                        VCF 卡片需要满足最小导入条件。如果您的表格记录缺少<strong>全名/显示名称 (<code>FN</code>)</strong> 或 <strong>手机号码 (<code>TEL;CELL</code>)</strong>，该记录将被视为无效而跳过。
+                    </p>
+                    <p class="mt-3 text-sm text-base-600">
+                        <strong>✅ 解决方法：</strong> 请返回转换器的<strong>步骤 2（字段映射）</strong>，确保您的源文件中这两列数据是完整且正确映射的。
+                    </p>
+                </div>
+            </div>
+
+            <!-- 问答 4: 兼容性 -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-4 bg-accent-50 rounded-2xl p-6 ring-1 ring-base-200">
+                <div class="lg:sticky lg:top-0">
+                    <h3 class="text-lg font-bold text-accent-700">
+                        4. VCF 版本选择：哪个版本兼容性最好？
+                    </h3>
+                </div>
+                <div>
+                    <p class="text-base text-base-700 leading-relaxed">
+                        我们默认使用 <strong>vCard 3.0 版本</strong>进行生成。这是目前行业内兼容性最广泛的版本，能够被 Apple iOS、Google Android、主流邮箱服务等绝大多数现代平台和系统正确识别和导入。
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

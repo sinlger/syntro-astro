@@ -1,0 +1,49 @@
+---
+const groups = [
+  {
+    title: "销售和市场营销人员",
+    icon: "💼",
+    desc:
+      "参加展会或从 CRM 导出客户列表，需要将 Excel/CSV 客户信息快速导入手机通讯录，便于电话、短信和即时通讯联系。核心痛点：效率与移动性，一键批量导入。",
+  },
+  {
+    title: "行政和人力资源",
+    icon: "🗂️",
+    desc:
+      "维护员工通讯录并批量分发，需将最新员工 Excel 转为 VCF，确保公司内部通讯录统一且准确。核心痛点：批量管理与格式准确性。",
+  },
+  {
+    title: "技术爱好者/手机用户迁移者",
+    icon: "📱",
+    desc:
+      "从旧设备或第三方工具导出的 CSV 迁移到 iOS/Android，新系统仅支持 VCF。核心痛点：格式兼容与乱码修复。",
+  },
+  {
+    title: "会议/活动组织者",
+    icon: "📅",
+    desc:
+      "大型会议或活动前，需将所有嘉宾联系方式快速添加到团队手机以便高效联络。核心痛点：时效性，立即完成转换与导入。",
+  },
+];
+---
+
+<section class="py-16">
+  <div class="px-8 mx-auto md:px-12 lg:px-24 max-w-7xl">
+    <div class="text-center mb-10">
+      <h2 class="text-xl leading-tight tracking-tight sm:text-2xl md:text-3xl lg:text-4xl font-medium text-base-900">谁在使用 Excel/CSV 转 VCF (vCard) 工具？</h2>
+    </div>
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        groups.map((g) => (
+          <div class="bg-accent-50 rounded-2xl p-8 shadow-sm ring-1 ring-base-200">
+            <div class="mx-auto size-12 rounded-full bg-base-700/20 text-base-700 flex items-center justify-center">
+              <span class="text-2xl">{g.icon}</span>
+            </div>
+            <div class="mt-5 text-base-900 font-semibold text-lg text-center">{g.title}</div>
+            <p class="mt-3 text-sm text-base-500 text-center">{g.desc}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

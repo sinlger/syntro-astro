@@ -5,19 +5,19 @@
 @theme {
   --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Noto Sans", "Liberation Sans", sans-serif;
   --color-black: #121212;
-  /* Accent  */
-  --color-accent-25: #f5fbff;
-  --color-accent-50: #ebf7ff;
-  --color-accent-100: #d2edff;
-  --color-accent-200: #afdfff;
-  --color-accent-300: #78ceff;
-  --color-accent-400: #38b1ff;
-  --color-accent-500: #0b8aff;
-  --color-accent-600: #0065ff;
-  --color-accent-700: #004cff;
-  --color-accent-800: #003dd4;
-  --color-accent-900: #02379e;
-  --color-accent-950: #072364;
+  /* Accent: Pale Yellow (Amber-like) */
+  --color-accent-25: #fffdf4;
+  --color-accent-50: #fffbeb;
+  --color-accent-100: #fef3c7;
+  --color-accent-200: #fde68a;
+  --color-accent-300: #fcd34d;
+  --color-accent-400: #fbbf24;
+  --color-accent-500: #f59e0b;
+  --color-accent-600: #d97706;
+  --color-accent-700: #b45309;
+  --color-accent-800: #92400e;
+  --color-accent-900: #78350f;
+  --color-accent-950: #451a03;
   /* Base */
   --color-base-25: #fafafa;
   --color-base-50: #f9fafb;
