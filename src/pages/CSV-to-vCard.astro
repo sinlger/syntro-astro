@@ -1,0 +1,16 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CsvToVCardUpload from "../components/react/CsvToVCardUpload";
+---
+
+<BaseLayout>
+  <section class="pt-20">
+    <div class="max-w-5xl mx-auto px-8 md:px-12 lg:px-24 ">
+      <div class="text-center max-w-2xl mx-auto lg:text-balance">
+        <h1 class="text-xl leading-tight tracking-tight sm:text-2xl md:text-3xl capitalize lg:text-4xl mt-4 font-medium text-base-900 lg:text-balance">CSV 转 vCard</h1>
+        <p class="text-base leading-normal mt-4 text-base-500 font-medium">上传 CSV 文件，自动生成可导入通讯录的 .vcf 名片。</p>
+      </div>
+      <CsvToVCardUpload client:load />
+    </div>
+  </section>
+</BaseLayout>
