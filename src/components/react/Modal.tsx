@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 type ModalProps = {
   open: boolean
@@ -10,6 +10,27 @@ type ModalProps = {
 }
 
 export default function Modal({ open, title, onClose, children, headerExtra, footer }: ModalProps) {
+  useEffect(() => {
+    if (!open) return
+    const html = document.documentElement
+    const body = document.body
+    const prevHtmlOverflow = html.style.overflow
+    const prevBodyOverflow = body.style.overflow
+    html.style.overflow = 'hidden'
+    body.style.overflow = 'hidden'
+    return () => {
+      html.style.overflow = prevHtmlOverflow
+      body.style.overflow = prevBodyOverflow
+    }
+  }, [open])
+  useEffect(() => {
+    if (!open) return
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose()
+    }
+    document.addEventListener('keydown', handler)
+    return () => document.removeEventListener('keydown', handler)
+  }, [open, onClose])
   if (!open) return null
   return (
     <div className="fixed inset-0 z-50">

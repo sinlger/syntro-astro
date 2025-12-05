@@ -5,12 +5,219 @@ import CsvToVCardUpload from "../components/react/CsvToVCardUpload";
 
 <BaseLayout>
   <section class="pt-20">
-    <div class="max-w-5xl mx-auto px-8 md:px-12 lg:px-24 ">
+    <div class="max-w-5xl mx-auto px-8 md:px-12 lg:px-24">
       <div class="text-center max-w-2xl mx-auto lg:text-balance">
-        <h1 class="text-xl leading-tight tracking-tight sm:text-2xl md:text-3xl capitalize lg:text-4xl mt-4 font-medium text-base-900 lg:text-balance">CSV 转 vCard</h1>
-        <p class="text-base leading-normal mt-4 text-base-500 font-medium">上传 CSV 文件，自动生成可导入通讯录的 .vcf 名片。</p>
+        <h1
+          class="text-xl leading-tight tracking-tight sm:text-2xl md:text-3xl capitalize lg:text-4xl mt-4 font-medium text-base-900 lg:text-balance"
+        >
+          CSV 转 vCard
+        </h1>
+        <p class="text-base leading-normal mt-4 text-base-500 font-medium">
+          上传 CSV 文件，自动生成可导入通讯录的 .vcf 名片。
+        </p>
       </div>
+
       <CsvToVCardUpload client:load />
+      <!-- 安全提示横幅（主题色） -->
+      <div class="mb-6 p-4 bg-accent-50 rounded-xl mt-10 ring-1 ring-base-200">
+        <div class="flex items-center gap-3">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 text-accent-600 flex-shrink-0"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M5 9V7a5 5 0 0110 0v2h2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2h2zm8-2v2H7V7a3 3 0 016 0z"
+              clip-rule="evenodd"></path>
+          </svg>
+          <p class="text-sm font-medium text-accent-700">
+            <span class="mr-1">✅</span>
+            <strong>数据安全保障：</strong>
+            本次转换<strong>完全在您的浏览器本地完成</strong
+            >，数据不经过服务器，无风险、零泄露。
+          </p>
+        </div>
+      </div>
+      <section class="space-y-6">
+        <h2 class="text-3xl font-bold text-base-900 mb-6">核心特点</h2>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- 特点 1: 完全本地转换 (安全性) -->
+          <div class="p-6 text-accent-600 rounded-xl ring-1 ring-base-200 transition-shadow hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),_0_4px_6px_-2px_rgba(0,0,0,0.05)]">
+            <div class="flex items-start space-x-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-8 w-8 text-accent-600 mt-1"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5 9V7a5 5 0 0110 0v2h2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2h2zm8-2v2H7V7a3 3 0 016 0z"
+                  clip-rule="evenodd"></path>
+              </svg>
+              <div>
+                <h3 class="text-xl font-semibold text-base-900 mb-1">
+                  完全本地转换
+                </h3>
+                <p class="text-base-600 text-sm">
+                  您的数据**不经过任何服务器**，所有操作都在浏览器本地完成，确保**零泄露、高隐私**。
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 特点 2: 智能字段匹配 (效率) -->
+          <div class="p-6 text-accent-600 rounded-xl ring-1 ring-base-200 transition-shadow hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),_0_4px_6px_-2px_rgba(0,0,0,0.05)]">
+            <div class="flex items-start space-x-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-8 w-8 text-accent-600 mt-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9.75 17L9 20l-1 1h8l-1-1v-3m2-6h-4M9 11l3 3m-3-3v8"
+                ></path>
+              </svg>
+              <div>
+                <h3 class="text-xl font-semibold text-base-900 mb-1">
+                  智能字段匹配
+                </h3>
+                <p class="text-base-600 text-sm">
+                  系统自动识别列头，如“姓名”、“手机”等，并智能匹配到 VCF
+                  字段，省去大量手动配置时间。
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 特点 3: 高标准兼容性 (格式支持) -->
+          <div class="p-6 text-accent-600 rounded-xl ring-1 ring-base-200 transition-shadow hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),_0_4px_6px_-2px_rgba(0,0,0,0.05)]">
+            <div class="flex items-start space-x-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-8 w-8 text-accent-600 mt-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                ></path>
+              </svg>
+              <div>
+                <h3 class="text-xl font-semibold text-base-900 mb-1">
+                  多格式兼容
+                </h3>
+                <p class="text-base-600 text-sm">
+                  支持 CSV、Excel (XLSX/XLS) 格式输入，输出 VCF 4.0/3.0
+                  版本，兼容主流通讯录应用。
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 特点 4: 极速批量处理 (效率) -->
+          <div class="p-6 text-accent-600 rounded-xl ring-1 ring-base-200 transition-shadow hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),_0_4px_6px_-2px_rgba(0,0,0,0.05)]">
+            <div class="flex items-start space-x-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-8 w-8 text-accent-600 mt-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+              <div>
+                <h3 class="text-xl font-semibold text-base-900 mb-1">
+                  极速批量处理
+                </h3>
+                <p class="text-base-600 text-sm">
+                  利用浏览器的高速运算能力，即使是包含数千条记录的大文件也能在几秒内完成转换。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. 使用方法区域 - 步骤指南 (列表结构) -->
+      <section class="space-y-6 pt-6 text-accent-900">
+        <h2 class="text-3xl font-bold text-base-900 mb-6">使用方法</h2>
+
+        <!-- 使用方法列表容器 - 匹配图片中的结构 -->
+        <div
+          class=" p-6 rounded-xl shadow-lg border border-base-200 divide-y divide-base-100"
+        >
+          <!-- 步骤 1: 上传文件 -->
+          <div class="flex items-start py-4">
+            <div class="mr-4 flex-shrink-0 bg-accent-700 text-white w-8 h-8 flex items-center justify-center font-bold rounded-full">1</div>
+            <div>
+              <h4 class="text-lg font-semibold text-base-900">上传文件</h4>
+              <p class="text-base-600 text-sm mt-1">
+                拖拽或通过按钮选择您的 CSV 或 Excel 文件。
+              </p>
+            </div>
+          </div>
+
+          <!-- 步骤 2: 字段映射 -->
+          <div class="flex items-start py-4">
+            <div class="mr-4 flex-shrink-0 bg-accent-700 text-white w-8 h-8 flex items-center justify-center font-bold rounded-full">2</div>
+            <div>
+              <h4 class="text-lg font-semibold text-base-900">字段映射调整</h4>
+              <p class="text-base-600 text-sm mt-1">
+                系统将进行智能匹配。请确保将正确的列映射为**“全名”**和**“手机号码”**。
+              </p>
+            </div>
+          </div>
+
+          <!-- 步骤 3: 转换处理 -->
+          <div class="flex items-start py-4">
+            <div class="mr-4 flex-shrink-0 bg-accent-700 text-white w-8 h-8 flex items-center justify-center font-bold rounded-full">3</div>
+            <div>
+              <h4 class="text-lg font-semibold text-base-900">转换处理</h4>
+              <p class="text-base-600 text-sm mt-1">
+                点击“开始转换”，数据将实时在您的本地设备上被处理。
+              </p>
+            </div>
+          </div>
+
+          <!-- 步骤 4: 下载 VCF -->
+          <div class="flex items-start py-4">
+            <div class="mr-4 flex-shrink-0 bg-accent-700 text-white w-8 h-8 flex items-center justify-center font-bold rounded-full">4</div>
+            <div>
+              <h4 class="text-lg font-semibold text-base-900">下载 VCF 文件</h4>
+              <p class="text-base-600 text-sm mt-1">
+                获取生成的 .vcf 文件，即可导入到任何主流通讯录应用中。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call to Action -->
+      <div class="text-center pt-8">
+        <button
+          class="px-10 py-3 bg-green-600 text-white font-extrabold rounded-full text-lg shadow-xl hover:bg-green-700 transform hover:scale-105 transition duration-300"
+        >
+          立即开始安全转换
+        </button>
+      </div>
     </div>
   </section>
 </BaseLayout>
