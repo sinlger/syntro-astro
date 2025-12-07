@@ -23,6 +23,7 @@
     "@types/react-dom": "^19.2.3",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
+    "vcard-creator": "^0.7.2",
     "vcf": "^2.1.2",
     "xlsx": "^0.18.5"
   }
