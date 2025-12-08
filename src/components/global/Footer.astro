@@ -1,6 +1,7 @@
 ---
 import OptimizedImage from "../../layouts/utilities/OptimizedImage.astro";
-
+const { lang, t } = Astro.props;
+console.log(lang, t);
 const sections = [
   {
     title: "Features",

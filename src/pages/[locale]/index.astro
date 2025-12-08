@@ -28,6 +28,7 @@ export function getStaticPaths() {
 
 // 3. 从路由参数中获取语言代码 (现在它不会是 undefined 了)
 const locale = Astro.params.locale;
+console.log(locale);
 const effectiveLocale = locale;
 
 // 4. 初始化 i18next 实例
@@ -45,7 +46,8 @@ const canonicalPath = "/";
 ---
 
 <BaseLayout
-  lang={htmlLang}
+  htmlLang={htmlLang}
+  lang={locale}
   t={t}
   pageTitle={pageTitle}
   pageDescription={pageDescription}

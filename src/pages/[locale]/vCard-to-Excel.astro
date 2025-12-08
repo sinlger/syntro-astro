@@ -28,26 +28,40 @@ const effectiveLocale = locale
 // 4. 初始化 i18next 实例
 const i18nInstance = initI18n(effectiveLocale);
 const t = i18nInstance.t.bind(i18nInstance);
+// 1. 定义 HTML lang 属性（BCP 47 标准）
+const htmlLang = locale === "zh" ? "zh-Hans" : "en";
+
+// 2. 翻译 SEO 元数据
+const pageTitle = t("pages.vcardExcel.seo.title");
+const pageDescription = t("pages.vcardExcel.seo.description");
+
+// 3. 定义语言无关的规范路径 (例如：首页是 '/'，关于页面是 '/about')
+const canonicalPath = "/";
 ---
 
-<BaseLayout>
+<BaseLayout
+  htmlLang={htmlLang}
+  lang={locale}
+  t={t}
+  pageTitle={pageTitle}
+  pageDescription={pageDescription}
+  canonicalPath={canonicalPath}
+>
   <section class="pt-20">
     <div class="max-w-5xl mx-auto px-8 md:px-12 lg:px-24">
       <div class="text-center max-w-2xl mx-auto lg:text-balance">
         <h1
           class="text-xl leading-tight tracking-tight sm:text-2xl md:text-3xl capitalize lg:text-4xl mt-4 font-medium text-base-900 lg:text-balance"
         >
-          vCard 转 Excel
+          {t('pages.vcardExcel.title')}
         </h1>
-        <p class="text-base leading-normal mt-4 text-base-500 font-medium">
-          上传 .vcf 名片文件，导出为 Excel (.xlsx)。
-        </p>
+        <p class="text-base leading-normal mt-4 text-base-500 font-medium">{t('pages.vcardExcel.subtitle')}</p>
       </div>
 
       <VCardToCsv accept=".vcf,text/vcard" client:load />
       <!-- 1. 核心特点区域 - 强调双向功能 -->
       <section class="space-y-6 mt-12">
-        <h2 class="text-3xl font-bold text-gray-800 mb-6">核心特点</h2>
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">{t('pages.vcardExcel.featuresTitle')}</h2>
 
         <div class="grid md:grid-cols-2 gap-6">
           <!-- 特点 1: 完全本地转换 (安全性) -->
@@ -67,12 +81,8 @@ const t = i18nInstance.t.bind(i18nInstance);
                   clip-rule="evenodd"></path>
               </svg>
               <div>
-                <h3 class="text-xl font-semibold text-gray-800 mb-1">
-                  完全本地转换
-                </h3>
-                <p class="text-gray-600 text-sm">
-                  您的数据**不经过任何服务器**，所有操作都在浏览器本地完成，确保**零泄露、高隐私**。
-                </p>
+                <h3 class="text-xl font-semibold text-gray-800 mb-1">{t('pages.vcardExcel.features.0.title')}</h3>
+                <p class="text-gray-600 text-sm" set:html={t('pages.vcardExcel.features.0.desc')}></p>
               </div>
             </div>
           </div>
@@ -96,14 +106,8 @@ const t = i18nInstance.t.bind(i18nInstance);
                 ></path>
               </svg>
               <div>
-                <h3 class="text-xl font-semibold text-gray-800 mb-1">
-                  VCF 复杂结构解析
-                </h3>
-                <p class="text-gray-600 text-sm">
-                  支持 VCard 3.0/4.0，能将 VCF
-                  内嵌的多个电话、邮箱、地址和**备注信息**等复杂字段完整、扁平化地导出到
-                  Excel/CSV。
-                </p>
+                <h3 class="text-xl font-semibold text-gray-800 mb-1">{t('pages.vcardExcel.features.1.title')}</h3>
+                <p class="text-gray-600 text-sm" set:html={t('pages.vcardExcel.features.1.desc')}></p>
               </div>
             </div>
           </div>
@@ -128,13 +132,8 @@ const t = i18nInstance.t.bind(i18nInstance);
                 ></path>
               </svg>
               <div>
-                <h3 class="text-xl font-semibold text-gray-800 mb-1">
-                  双向全格式兼容
-                </h3>
-                <p class="text-gray-600 text-sm">
-                  同时支持 **Excel/CSV 转 VCF** 和 **VCF 转
-                  Excel/CSV**，为您提供一站式的数据导入和导出解决方案。
-                </p>
+                <h3 class="text-xl font-semibold text-gray-800 mb-1">{t('pages.vcardExcel.features.2.title')}</h3>
+                <p class="text-gray-600 text-sm" set:html={t('pages.vcardExcel.features.2.desc')}></p>
               </div>
             </div>
           </div>
@@ -158,13 +157,8 @@ const t = i18nInstance.t.bind(i18nInstance);
                   d="M13 10V3L4 14h7v7l9-11h-7z"></path>
               </svg>
               <div>
-                <h3 class="text-xl font-semibold text-gray-800 mb-1">
-                  极速批量处理
-                </h3>
-                <p class="text-gray-600 text-sm">
-                  利用浏览器的高速运算能力，无论是生成 VCF 还是解析
-                  VCF，大文件都能在几秒内完成转换。
-                </p>
+                <h3 class="text-xl font-semibold text-gray-800 mb-1">{t('pages.vcardExcel.features.3.title')}</h3>
+                <p class="text-gray-600 text-sm">{t('pages.vcardExcel.features.3.desc')}</p>
               </div>
             </div>
           </div>
@@ -172,14 +166,12 @@ const t = i18nInstance.t.bind(i18nInstance);
       </section>
       <!-- 2. 使用方法区域 - 步骤指南 (区分两个方向) -->
       <section class="space-y-8 pt-6">
-        <h2 class="text-3xl font-bold text-gray-800 mb-6">使用方法</h2>
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">{t('pages.vcardExcel.howTitle')}</h2>
 
         <!-- VCF 转 Excel/CSV 流程 (新功能) -->
         <div class="p-6 rounded-xl shadow-lg ring-1 ring-base-200 step-container">
-          <h3 class="text-2xl font-bold mb-4">VCard (VCF) 转 Excel/CSV</h3>
-          <p class="text-gray-700 mb-4">
-            将通讯录备份文件转换为可编辑的表格格式。
-          </p>
+          <h3 class="text-2xl font-bold mb-4">{t('pages.vcardExcel.howBlock.title')}</h3>
+          <p class="text-gray-700 mb-4">{t('pages.vcardExcel.howBlock.desc')}</p>
 
           <div class="grid md:grid-cols-3 gap-4 divide-x divide-gray-300">
             <!-- 步骤 1: 选择格式 -->
@@ -189,12 +181,8 @@ const t = i18nInstance.t.bind(i18nInstance);
               >
                 1
               </div>
-              <h4 class="text-lg font-semibold text-gray-800 text-center">
-                选择目标格式
-              </h4>
-              <p class="text-gray-600 text-sm mt-1 text-center">
-                选择您希望导出的表格格式：**CSV** 或 **Excel (.xlsx)**。
-              </p>
+              <h4 class="text-lg font-semibold text-gray-800 text-center">{t('pages.vcardExcel.howBlock.steps.0.title')}</h4>
+              <p class="text-gray-600 text-sm mt-1 text-center" set:html={t('pages.vcardExcel.howBlock.steps.0.desc')}></p>
             </div>
 
             <!-- 步骤 2: 上传文件 -->
@@ -204,12 +192,8 @@ const t = i18nInstance.t.bind(i18nInstance);
               >
                 2
               </div>
-              <h4 class="text-lg font-semibold text-gray-800 text-center">
-                上传 VCF 文件
-              </h4>
-              <p class="text-gray-600 text-sm mt-1 text-center">
-                拖拽或选择您的 VCard 文件（支持单个或多个 VCF 文件）。
-              </p>
+              <h4 class="text-lg font-semibold text-gray-800 text-center">{t('pages.vcardExcel.howBlock.steps.1.title')}</h4>
+              <p class="text-gray-600 text-sm mt-1 text-center">{t('pages.vcardExcel.howBlock.steps.1.desc')}</p>
             </div>
 
             <!-- 步骤 3: 立即下载 -->
@@ -219,12 +203,8 @@ const t = i18nInstance.t.bind(i18nInstance);
               >
                 3
               </div>
-              <h4 class="text-lg font-semibold text-gray-800 text-center">
-                点击下载
-              </h4>
-              <p class="text-gray-600 text-sm mt-1 text-center">
-                转换在本地完成后，点击下载按钮获取生成的表格文件。
-              </p>
+              <h4 class="text-lg font-semibold text-gray-800 text-center">{t('pages.vcardExcel.howBlock.steps.2.title')}</h4>
+              <p class="text-gray-600 text-sm mt-1 text-center">{t('pages.vcardExcel.howBlock.steps.2.desc')}</p>
             </div>
           </div>
         </div>
@@ -232,7 +212,7 @@ const t = i18nInstance.t.bind(i18nInstance);
 
       <!-- 3. SEO 增强：常见问题 (FAQ) 区域 - 重新生成并扩展 Excel/VCF 转换内容 -->
       <section class="space-y-6 pt-6">
-        <h2 class="text-3xl font-bold text-gray-800 mb-6">常见问题 (FAQ)</h2>
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">{t('pages.vcardExcel.faqTitle')}</h2>
 
         <!-- FAQ Container -->
         <div

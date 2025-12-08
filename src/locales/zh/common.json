@@ -89,4 +89,81 @@
       }
     ]
   }
+  ,
+  "nav": {
+    "brand": "Syntro",
+    "csvToVCard": "CSV 转 VCard",
+    "excelToVCard": "Excel 转 VCard",
+    "vcardToExcel": "VCard 转 Excel",
+    "faq": "常见问题"
+  },
+  "pages": {
+    "csv": {
+      "seo": { "title": "CSV 转 vCard", "description": "上传 CSV 文件，自动生成可导入通讯录的 .vcf 名片。" },
+      "title": "CSV 转 vCard",
+      "subtitle": "上传 CSV 文件，自动生成可导入通讯录的 .vcf 名片。",
+      "securityBanner": "✅ <strong>数据安全保障：</strong> 本次转换<strong>完全在您的浏览器本地完成</strong>，数据不经过服务器，无风险、零泄露。",
+      "featuresTitle": "核心特点",
+      "features": [
+        { "title": "完全本地转换", "desc": "您的数据<strong>不经过任何服务器</strong>，所有操作都在浏览器本地完成，确保<strong>零泄露、高隐私</strong>。" },
+        { "title": "智能字段匹配", "desc": "系统自动识别列头，如“姓名”、“手机”等，并智能匹配到 VCF 字段，省去大量手动配置时间。" },
+        { "title": "多格式兼容", "desc": "支持 CSV、Excel (XLSX/XLS) 格式输入，输出 VCF 4.0/3.0 版本，兼容主流通讯录应用。" },
+        { "title": "极速批量处理", "desc": "利用浏览器的高速运算能力，即使是包含数千条记录的大文件也能在几秒内完成转换。" }
+      ],
+      "howTitle": "使用方法",
+      "howSteps": [
+        { "title": "上传文件", "desc": "拖拽或通过按钮选择您的 CSV 或 Excel 文件。" },
+        { "title": "字段映射调整", "desc": "系统将进行智能匹配。请确保将正确的列映射为<strong>全名</strong>和<strong>手机号码</strong>。" },
+        { "title": "转换处理", "desc": "点击“开始转换”，数据将实时在您的本地设备上被处理。" },
+        { "title": "下载 VCF 文件", "desc": "获取生成的 .vcf 文件，即可导入到任何主流通讯录应用中。" }
+      ],
+      "faqTitle": "常见问题 (FAQ)",
+      "faq": [
+        { "q": "什么是 VCF/VCard 文件？它和通讯录有什么关系？", "a": "VCF（Virtual Contact File），通常称为 VCard，是一种用于存储个人或企业通讯录信息（如姓名、电话、邮箱、地址等）的标准文件格式。它是<strong>批量导入通讯录</strong>到智能手机（iOS/Android）和主流邮件客户端的最常用格式。使用我们的工具，您可以轻松实现 <strong>CSV 转 VCard (VCF)</strong> 文件的需求。" },
+        { "q": "你们如何保障我的数据安全？数据会被上传到服务器吗？", "a": "我们非常重视您的数据隐私。本工具采用<strong>完全本地转换</strong>技术，即您的 CSV 或 Excel 文件从始至终都保留在您的浏览器中，<strong>不会上传到任何外部服务器</strong>。这意味着您的隐私数据是绝对安全的，实现了<strong>零泄露、无风险</strong>的转换过程。" }
+      ]
+    },
+    "excel": {
+      "seo": { "title": "Excel 转 vCard", "description": "上传 Excel 文件，自动生成可导入通讯录的 .vcf 名片。" },
+      "title": "Excel 转 vCard",
+      "subtitle": "上传 Excel 文件，自动生成可导入通讯录的 .vcf 名片。",
+      "securityBanner": "✅ <strong>数据安全保障：</strong> 本次转换<strong>完全在您的浏览器本地完成</strong>，数据不经过服务器，无风险、零泄露。",
+      "featuresTitle": "核心特点",
+      "features": [
+        { "title": "完全本地转换", "desc": "您的数据<strong>不经过任何服务器</strong>，所有操作都在浏览器本地完成，确保<strong>零泄露、高隐私</strong>。" },
+        { "title": "智能字段匹配", "desc": "系统自动识别列头，如“姓名”、“手机”等，并智能匹配到 VCF 字段，省去大量手动配置时间。" },
+        { "title": "多格式兼容", "desc": "支持 CSV、Excel (XLSX/XLS) 格式输入，输出 VCF 4.0/3.0 版本，兼容主流通讯录应用。" },
+        { "title": "极速批量处理", "desc": "利用浏览器的高速运算能力，即使是包含数千条记录的大文件也能在几秒内完成转换。" }
+      ],
+      "howTitle": "使用方法",
+      "faqTitle": "常见问题 (FAQ)",
+      "faq": [
+        { "q": "什么是 VCF/VCard 文件？它和通讯录有什么关系？", "a": "VCF（Virtual Contact File），通常称为 VCard，是用于存储通讯录信息的标准格式。它是将联系人<strong>批量导入通讯录</strong>到手机（iOS/Android）或邮件客户端的最常用格式。我们的工具支持高效的 <strong>CSV/Excel 转 VCard (VCF)</strong> 转换。" },
+        { "q": "除了 CSV，是否支持 Excel (XLSX) 文件转换为 VCF 格式？", "a": "是的，我们的工具不仅支持标准的 <strong>CSV 转 VCF</strong> 转换，也完全兼容 Excel 文件（包括 <code>.xlsx</code> 和旧版 <code>.xls</code> 格式）。转换逻辑会自动识别 Excel 文件中的工作表数据，并引导您完成字段映射，实现 <strong>Excel 转 VCF</strong> 的批量导入。" }
+      ]
+    },
+    "vcardExcel": {
+      "seo": { "title": "vCard 转 Excel", "description": "上传 .vcf 名片文件，导出为 Excel (.xlsx)。" },
+      "title": "vCard 转 Excel",
+      "subtitle": "上传 .vcf 名片文件，导出为 Excel (.xlsx)。",
+      "featuresTitle": "核心特点",
+      "features": [
+        { "title": "完全本地转换", "desc": "您的数据<strong>不经过任何服务器</strong>，所有操作都在浏览器本地完成，确保<strong>零泄露、高隐私</strong>。" },
+        { "title": "VCF 复杂结构解析", "desc": "支持 VCard 3.0/4.0，能将 VCF 内嵌的多个电话、邮箱、地址和<strong>备注信息</strong>等复杂字段完整、扁平化地导出到 Excel/CSV。" },
+        { "title": "双向全格式兼容", "desc": "同时支持 <strong>Excel/CSV 转 VCF</strong> 和 <strong>VCF 转 Excel/CSV</strong>，为您提供一站式的数据导入和导出解决方案。" },
+        { "title": "极速批量处理", "desc": "利用浏览器的高速运算能力，无论是生成 VCF 还是解析 VCF，大文件都能在几秒内完成转换。" }
+      ],
+      "howTitle": "使用方法",
+      "howBlock": {
+        "title": "VCard (VCF) 转 Excel/CSV",
+        "desc": "将通讯录备份文件转换为可编辑的表格格式。",
+        "steps": [
+          { "title": "选择目标格式", "desc": "选择您希望导出的表格格式：<strong>CSV</strong> 或 <strong>Excel (.xlsx)</strong>。" },
+          { "title": "上传 VCF 文件", "desc": "拖拽或选择您的 VCard 文件（支持单个或多个 VCF 文件）。" },
+          { "title": "点击下载", "desc": "转换在本地完成后，点击下载按钮获取生成的表格文件。" }
+        ]
+      },
+      "faqTitle": "常见问题 (FAQ)"
+    }
+  }
 }

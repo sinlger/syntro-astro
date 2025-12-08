@@ -11,11 +11,12 @@ interface Props {
   // 核心 SEO Props: 用于传递给 BaseHead
   pageTitle: string;
   pageDescription: string;
+  htmlLang: string;
   canonicalPath: string; // 当前页面的语言无关路径，用于生成 Canonical URL
 }
 
 // 2. 解构 Props
-const { lang, t, pageTitle, pageDescription, canonicalPath } = Astro.props;
+const { lang, t, pageTitle, pageDescription,htmlLang,canonicalPath } = Astro.props;
 
 // 3. 定义页面的 title（如果 BaseHead 接受它）
 // 如果 t 存在，则尝试翻译页面标题键 (假设父页面会传入 key)
@@ -23,8 +24,6 @@ const { lang, t, pageTitle, pageDescription, canonicalPath } = Astro.props;
 const siteUrl = "https://excel2vcf.com";
 const canonicalUrl = siteUrl + canonicalPath;
 
-// 4. 定义 HTML lang 属性的值（使用接收到的 lang）
-const htmlLang = lang || "en";
 // 4. 定义 Hreflangs 数据 (这是多语言 SEO 的核心，需要手动构造)
 // 假设您的语言是 'zh' 和 'en'
 const hreflangsData = [
@@ -56,6 +55,7 @@ const hreflangsData = [
   </head>
   <body class="bg-accent-25 flex flex-col min-h-svh">
     <Navigation lang={lang} t={t} />
+    
     <main class="grow"><slot /></main>
     <Footer lang={lang} t={t} />
   </body>

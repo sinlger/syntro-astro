@@ -28,8 +28,19 @@ const effectiveLocale = locale
 // 4. 初始化 i18next 实例
 const i18nInstance = initI18n(effectiveLocale);
 const t = i18nInstance.t.bind(i18nInstance);
+const htmlLang = locale === "zh" ? "zh-Hans" : "en";
+const pageTitle = t("pages.csv.faqTitle");
+const pageDescription = t("pages.csv.faqTitle");
+const canonicalPath = "/faq";
 ---
 
-<BaseLayout>
+<BaseLayout
+  htmlLang={htmlLang}
+  lang={locale}
+  t={t}
+  pageTitle={pageTitle}
+  pageDescription={pageDescription}
+  canonicalPath={canonicalPath}
+>
   <FaqLayout />
 </BaseLayout>

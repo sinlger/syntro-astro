@@ -1,5 +1,32 @@
 ---
 import OptimizedImage from "../../layouts/utilities/OptimizedImage.astro";
+const menuItems = [
+  { key: "nav.csvToVCard", path: "/CSV-to-vCard" },
+  { key: "nav.excelToVCard", path: "/Excel-to-vCard" },
+  { key: "nav.vcardToExcel", path: "/vCard-to-Excel" },
+  { key: "nav.faq", path: "/#FAQ", isHash: true }, // 锚点链接
+];
+// 1. 定义接收的 Props
+interface Props {
+  t: (key: string, options?: any) => string;
+  lang: string; // 当前语言代码 (e.g., 'zh')
+}
+const { lang: currentLocale, t } = Astro.props; // 使用解构并重命名 lang 为 currentLocale
+console.log(currentLocale, t);
+// 2. 路径生成函数 (核心逻辑)
+const getLocalizedUrl = (path, locale, isHash) => {
+  if (isHash) {
+    // 对于锚点链接 (/faq), 只需将前缀加到 URL 的根路径上
+    // 例: /zh/#FAQ
+    return `/${locale}/${path.replace("/", "")}`;
+  }
+
+  // 对于常规页面链接
+  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+
+  // 网站的根路径 (/) 总是重定向，但这里我们构造带前缀的 URL
+  return `/${locale}${normalizedPath}`;
+};
 ---
 
 <header
@@ -46,29 +73,18 @@ import OptimizedImage from "../../layouts/utilities/OptimizedImage.astro";
         :class="{'h-auto': open, 'h-0': !open}"
         id="main-navigation"
         class="flex-col items-center flex-grow gap-4 lg:gap-8 flex overflow-hidden lg:pb-0 lg:flex lg:justify-end lg:h-auto lg:flex-row">
-      
-        <a
-          href="/CSV-to-vCard"
-          class="text-sm text-black transition duration-300 hover:text-blue-600  lg:ml-auto">
-          CSV 转 VCard
-        </a>
-        <a
-          href="/Excel-to-vCard"
-          class="text-sm text-black transition duration-300 hover:text-blue-600 relative">
-          Excel 转 VCard
-        </a>
-
-        <a
-          href="/vCard-to-Excel"
-          class="text-sm text-black transition duration-300 hover:text-blue-600 relative">
-          VCard 转 Excel
-        </a>
-
-        <a
-          href="/#FAQ"
-          class="text-sm text-black transition duration-300 hover:text-blue-600 relative">
-          常见问题
-        </a>
+      {menuItems.map((item, index) => {
+            const url = getLocalizedUrl(item.path, currentLocale, item.isHash);
+            const text = t(item.key);
+            
+            return (
+                <a
+                  href={url}
+                  class={`text-sm text-black transition duration-300 hover:text-blue-600 ${index === 0 ? 'lg:ml-auto' : 'relative'}`}>
+                  {text}
+                </a>
+            );
+        })}
 
         <div class="inline-flex items-center gap-2 list-none py-px lg:ml-auto">
           <!-- <a

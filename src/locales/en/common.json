@@ -1,5 +1,12 @@
 {
-  "hero":{
-    "title":"Hello"
+  "hero": {
+    "title": "Hello"
+  },
+  "nav": {
+    "brand": "Syntro",
+    "csvToVCard": "CSV to VCard",
+    "excelToVCard": "Excel to VCard",
+    "vcardToExcel": "VCard to Excel",
+    "faq": "FAQ"
   }
 }
