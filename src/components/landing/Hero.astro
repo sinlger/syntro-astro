@@ -1,9 +1,14 @@
+---
+// 1. 导入正确的模块和函数
+import { t, changeLanguage } from "i18next";
+
+---
 <div class="w-full">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
         <div class="text-center bg-accent-50 rounded-2xl p-10 ring-1 ring-base-200">
             <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-base-900 mb-6">
                 <span class="block">Excel/CSV to VCF</span>
-                <span class="block text-accent-700 mt-2">一键批量通讯录转换</span>
+                <span class="block text-accent-700 mt-2">{t("hero.title")}</span>
             </h1>
             <p class="mt-3 max-w-2xl mx-auto text-xl sm:mt-5 sm:text-2xl text-base-600">
                 告别手动输入。安全、快速、精准地将数千条联系人记录，转换成兼容 iOS/Android 的 VCF 文件。

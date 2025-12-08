@@ -1,6 +1,33 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import CsvToVCardUpload from "../components/react/CsvToVCardUpload";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CsvToVCardUpload from "../../components/react/CsvToVCardUpload";
+import { initI18n } from '../../i18n.js';
+// --- 【核心修正】: 添加 getStaticPaths 函数 ---
+export function getStaticPaths() {
+  // 1. 定义我们支持的所有语言代码
+  const locales = ['zh', 'en']; 
+  
+  // 2. 为每个语言代码创建一个路径对象
+  // Astro 将使用这里的 params.locale 值来渲染页面
+  return locales.map((locale) => {
+    return {
+      params: {
+        locale: locale, // 将 locale 赋值给动态参数 [locale]
+      },
+      // 可以在这里传递额外的 props，例如翻译实例
+      // props: { /* ... */ } 
+    };
+  });
+}
+// ----------------------------------------------------
+
+// 3. 从路由参数中获取语言代码 (现在它不会是 undefined 了)
+const locale = Astro.params.locale; 
+const effectiveLocale = locale
+
+// 4. 初始化 i18next 实例
+const i18nInstance = initI18n(effectiveLocale);
+const t = i18nInstance.t.bind(i18nInstance);
 ---
 
 <BaseLayout>
@@ -10,14 +37,14 @@ import CsvToVCardUpload from "../components/react/CsvToVCardUpload";
         <h1
           class="text-xl leading-tight tracking-tight sm:text-2xl md:text-3xl capitalize lg:text-4xl mt-4 font-medium text-base-900 lg:text-balance"
         >
-          CSV 转 vCard
+          Excel 转 vCard
         </h1>
         <p class="text-base leading-normal mt-4 text-base-500 font-medium">
-          上传 CSV 文件，自动生成可导入通讯录的 .vcf 名片。
+          上传 Excel 文件，自动生成可导入通讯录的 .vcf 名片。
         </p>
       </div>
 
-      <CsvToVCardUpload accept=".csv" client:load />
+      <CsvToVCardUpload accept=".xlsx,.xls" client:load />
       <!-- 安全提示横幅（主题色） -->
       <div class="mb-6 p-4 bg-accent-50 rounded-xl mt-10 ring-1 ring-base-200">
         <div class="flex items-center gap-3">
@@ -237,7 +264,8 @@ import CsvToVCardUpload from "../components/react/CsvToVCardUpload";
           </div>
         </div>
       </section>
-      <!-- 3. SEO 增强：常见问题 (FAQ) 区域 -->
+
+      <!-- 3. SEO 增强：常见问题 (FAQ) 区域 - 重新生成并扩展 Excel 内容 -->
       <section class="space-y-6 pt-6">
         <h2 class="text-3xl font-bold text-gray-800 mb-6">常见问题 (FAQ)</h2>
 
@@ -266,17 +294,17 @@ import CsvToVCardUpload from "../components/react/CsvToVCardUpload";
             </summary>
             <p class="text-gray-600 text-sm mt-2 ml-4">
               VCF（Virtual Contact File），通常称为
-              VCard，是一种用于存储个人或企业通讯录信息（如姓名、电话、邮箱、地址等）的标准文件格式。它是<strong>批量导入通讯录</strong>到智能手机（iOS/Android）和主流邮件客户端的最常用格式。使用我们的工具，您可以轻松实现
-              <strong>CSV 转 VCard (VCF)</strong> 文件的需求。
+              VCard，是用于存储通讯录信息的标准格式。它是将联系人<strong>批量导入通讯录</strong>到手机（iOS/Android）或邮件客户端的最常用格式。我们的工具支持高效的
+              <strong>CSV/Excel 转 VCard (VCF)</strong> 转换。
             </p>
           </details>
 
-          <!-- FAQ 2: 数据安全 (关键词: 本地转换, 数据安全, 零泄露) -->
+          <!-- FAQ 2: Excel 多列数据映射 (关键词: Excel 转 VCF 多字段, 家庭电话, 手机号码) -->
           <details class="py-3 group">
             <summary
               class="flex justify-between items-center cursor-pointer list-none font-semibold text-gray-800 hover:text-blue-600 transition"
             >
-              你们如何保障我的数据安全？数据会被上传到服务器吗？
+              我的 Excel 中有“手机”、“家庭电话”等多列数据，如何分别映射到 VCF？
               <span class="transform transition group-open:rotate-180">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -291,18 +319,20 @@ import CsvToVCardUpload from "../components/react/CsvToVCardUpload";
               </span>
             </summary>
             <p class="text-gray-600 text-sm mt-2 ml-4">
-              我们非常重视您的数据隐私。本工具采用<strong>完全本地转换</strong>技术，即您的
-              CSV 或 Excel
-              文件从始至终都保留在您的浏览器中，<strong>不会上传到任何外部服务器</strong>。这意味着您的隐私数据是绝对安全的，实现了<strong>零泄露、无风险</strong>的转换过程。
+              在 <strong>Excel 转 VCF</strong> 的过程中，我们的映射界面允许您将不同的 Excel
+              列分别指定为 VCard 中的不同属性（如 `TEL;TYPE=CELL`
+              手机号码、`TEL;TYPE=HOME` 家庭电话、`EMAIL`
+              邮箱等）。您只需在第二步<strong>字段映射</strong>中，为每一列选择对应的 VCard
+              标签即可，实现精细化数据导入。
             </p>
           </details>
 
-          <!-- FAQ 3: 格式兼容性 (关键词: Excel 转 VCF) -->
+          <!-- FAQ 3: 数据安全 (关键词: 本地转换, 数据安全, Excel 隐私) -->
           <details class="py-3 group">
             <summary
               class="flex justify-between items-center cursor-pointer list-none font-semibold text-gray-800 hover:text-blue-600 transition"
             >
-              除了 CSV，是否支持 Excel (XLSX) 文件转换为 VCF 格式？
+              使用 Excel 文件进行转换，我的联系人数据安全有保障吗？
               <span class="transform transition group-open:rotate-180">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -317,19 +347,18 @@ import CsvToVCardUpload from "../components/react/CsvToVCardUpload";
               </span>
             </summary>
             <p class="text-gray-600 text-sm mt-2 ml-4">
-              是的，我们的工具不仅支持标准的 <strong>CSV 转 VCF</strong> 转换，也完全兼容
-              Excel 文件（包括 `.xlsx` 和旧版 `.xls` 格式）。转换逻辑会自动识别
-              Excel 文件中的工作表数据，并引导您完成字段映射，实现 <strong>Excel 转
-              VCF</strong> 的批量导入。
+              请放心，无论是 **Excel 转 VCF** 还是 CSV
+              转换，我们都采用**完全本地处理**技术。您的原始 Excel
+              文件或任何联系人数据都不会离开您的浏览器环境，**绝不会上传到我们的服务器**。这确保了您的数据隐私达到最高安全级别。
             </p>
           </details>
 
-          <!-- FAQ 4: VCF 版本 (关键词: VCF 4.0, VCF 3.0) -->
+          <!-- FAQ 4: 字符编码 (关键词: Excel 转 VCF 中文乱码, 特殊字符) -->
           <details class="py-3 group">
             <summary
               class="flex justify-between items-center cursor-pointer list-none font-semibold text-gray-800 hover:text-blue-600 transition"
             >
-              VCF 4.0 和 3.0 版本有什么区别？我应该选择哪一个？
+              Excel 表格中的中文或特殊字符转换后会出现乱码吗？
               <span class="transform transition group-open:rotate-180">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -344,10 +373,38 @@ import CsvToVCardUpload from "../components/react/CsvToVCardUpload";
               </span>
             </summary>
             <p class="text-gray-600 text-sm mt-2 ml-4">
-              VCF 4.0 是最新的 VCard
-              标准，支持更多的字段和更复杂的数据结构（如多个社交账号、高清照片）。VCF
-              3.0 是更广泛兼容的旧标准。如果您不确定，建议您默认选择 <strong>VCF 4.0</strong>
-              版本以获得最佳效果；如果导入失败，再尝试切换到 3.0 版本。
+              不会。我们的工具在处理 <strong>Excel 转 VCF</strong> 时，会自动处理 UTF-8
+              编码，确保中文、日文、特殊符号等字符能够被正确识别并写入 VCF
+              文件。同时，我们生成的 VCF 文件会采用标准的 UTF-8
+              编码，这是目前所有主流手机和应用程序推荐的格式，可以有效避免<strong>中文乱码</strong>问题。
+            </p>
+          </details>
+
+          <!-- FAQ 5: Excel 版本支持 (关键词: XLSX 转 VCF, XLS 兼容性) -->
+          <details class="py-3 group">
+            <summary
+              class="flex justify-between items-center cursor-pointer list-none font-semibold text-gray-800 hover:text-blue-600 transition"
+            >
+              我的 Excel 文件是旧版 (XLS)，是否也能进行转换？
+              <span class="transform transition group-open:rotate-180">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  ><path
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"></path></svg
+                >
+              </span>
+            </summary>
+            <p class="text-gray-600 text-sm mt-2 ml-4">
+              本工具提供了强大的兼容性。它不仅支持最新的 <strong>XLSX 转
+              VCF</strong>，同时也完全支持旧版 Excel
+              文件（`.xls`）。无论您使用哪个版本的
+              Excel，只需确保联系人数据位于第一个工作表，即可顺利完成 <strong>Excel 转
+              VCard</strong> 的过程。
             </p>
           </details>
         </div>

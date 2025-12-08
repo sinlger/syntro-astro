@@ -2,17 +2,61 @@
 import BaseHead from "../components/BaseHead.astro";
 import Navigation from "../components/global/Navigation.astro";
 import Footer from "../components/global/Footer.astro";
+// 1. 定义接收的 Props
+interface Props {
+  // 必须接收当前的语言代码 (e.g., "zh-Hans", "en")
+  lang: string;
+  // 可选接收 t 翻译函数，用于布局中的文本，例如页脚版权信息
+  t?: (key: string, options?: any) => string;
+  // 核心 SEO Props: 用于传递给 BaseHead
+  pageTitle: string;
+  pageDescription: string;
+  canonicalPath: string; // 当前页面的语言无关路径，用于生成 Canonical URL
+}
+
+// 2. 解构 Props
+const { lang, t, pageTitle, pageDescription, canonicalPath } = Astro.props;
+
+// 3. 定义页面的 title（如果 BaseHead 接受它）
+// 如果 t 存在，则尝试翻译页面标题键 (假设父页面会传入 key)
+// 3. 定义全局 SEO 变量 (用于 BaseHead)
+const siteUrl = "https://excel2vcf.com";
+const canonicalUrl = siteUrl + canonicalPath;
+
+// 4. 定义 HTML lang 属性的值（使用接收到的 lang）
+const htmlLang = lang || "en";
+// 4. 定义 Hreflangs 数据 (这是多语言 SEO 的核心，需要手动构造)
+// 假设您的语言是 'zh' 和 'en'
+const hreflangsData = [
+  // 当前语言
+  { locale: lang, url: canonicalUrl },
+  // 另一种语言
+  {
+    locale: lang === "zh" ? "en" : "zh",
+    // 需要计算出另一语言的 URL
+    url: `${siteUrl}/${lang === "zh" ? "en" : "zh"}${canonicalPath}`,
+  },
+  // x-default (指向网站根目录，或者默认语言的根目录)
+  { locale: "x-default", url: siteUrl },
+];
 ---
 
 <html
-  lang="en"
-  class="scroll-smooth selection:bg-accent-500 selection:text-white no-touchevents hydrated">
+  lang={htmlLang}
+  class="scroll-smooth selection:bg-accent-500 selection:text-white no-touchevents hydrated"
+>
   <head>
-    <BaseHead />
+    <BaseHead
+      title={pageTitle}
+      description={pageDescription}
+      canonicalUrl={canonicalUrl}
+      hreflangs={hreflangsData}
+      siteUrl={siteUrl}
+    />
   </head>
   <body class="bg-accent-25 flex flex-col min-h-svh">
-    <Navigation />
+    <Navigation lang={lang} t={t} />
     <main class="grow"><slot /></main>
-    <Footer />
+    <Footer lang={lang} t={t} />
   </body>
 </html>

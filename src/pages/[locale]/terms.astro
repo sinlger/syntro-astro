@@ -1,0 +1,34 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Terms from "../../components/infopages/Terms.astro";
+import { initI18n } from '../../i18n.js';
+// --- 【核心修正】: 添加 getStaticPaths 函数 ---
+export function getStaticPaths() {
+  // 1. 定义我们支持的所有语言代码
+  const locales = ['zh', 'en']; 
+  
+  // 2. 为每个语言代码创建一个路径对象
+  // Astro 将使用这里的 params.locale 值来渲染页面
+  return locales.map((locale) => {
+    return {
+      params: {
+        locale: locale, // 将 locale 赋值给动态参数 [locale]
+      },
+      // 可以在这里传递额外的 props，例如翻译实例
+      // props: { /* ... */ } 
+    };
+  });
+}
+// ----------------------------------------------------
+
+// 3. 从路由参数中获取语言代码 (现在它不会是 undefined 了)
+const locale = Astro.params.locale; 
+const effectiveLocale = locale
+
+// 4. 初始化 i18next 实例
+const i18nInstance = initI18n(effectiveLocale);
+const t = i18nInstance.t.bind(i18nInstance);
+---
+<BaseLayout>
+  <Terms />
+</BaseLayout>
