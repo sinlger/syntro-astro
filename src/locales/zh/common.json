@@ -1,5 +1,92 @@
 {
-  "hero":{
-    "title":"你好"
+  "hero": {
+    "title": "一键批量通讯录转换",
+    "description": "告别手动输入。安全、快速、精准地将数千条联系人记录，转换成兼容 iOS/Android 的 VCF 文件。",
+    "cta": "立即开始转换（全程本地处理）",
+    "badge": "100% 离线转换 · 数据永不离开设备"
+  },
+  "uploadDropzone": {
+    "drag": "拖拽视频文件或点击选择",
+    "support": "支持 XLS、CSV、XLSX 等格式",
+    "button": "选择文件"
+  },
+  "supportedFormats": {
+    "title": "支持的通讯录表格文件类型",
+    "subtitle": "本工具支持广泛的表格格式，确保您可以轻松地将您的联系人数据批量导入。所有转换过程均在本地完成，隐私安全有保障。",
+    "items": [
+      {
+        "name": "Excel 工作簿 (.xlsx)",
+        "desc": "兼容 Microsoft Excel 2007 及以上版本生成的标准文件。支持读取表格中所有工作表的第一张表格，完美处理中文数据和大量联系人记录。"
+      },
+      {
+        "name": "旧版 Excel (.xls)",
+        "desc": "全面兼容早期版本的 Excel 文件格式 (.xls)。确保您无需进行额外的格式转换，即可直接上传和处理历史数据或从旧系统导出的文件。"
+      },
+      {
+        "name": "逗号分隔值文件 (.csv)",
+        "desc": "最通用的数据交换格式。本工具能智能识别不同的分隔符（如逗号、制表符等）和编码（UTF-8, GBK），有效避免数据导入后的乱码问题。"
+      }
+    ]
+  },
+  "faq": {
+    "title": "常见问题 (FAQ)",
+    "subtitle": "快速解答您对数据安全、转换兼容性等方面的疑问。",
+    "items": [
+      {
+        "q": "数据安全与隐私保障：文件会不会被服务器存储或泄露？",
+        "a": "绝对不会。本工具最核心的承诺是<strong>“100% 离线转换”</strong>。您的 Excel/CSV 文件从上传到 VCF 文件生成完毕，数据始终停留在您的<strong>浏览器内存中</strong>处理，不会经过任何外部服务器。从技术上保障了您的通讯录信息绝对隐私和安全。"
+      },
+      {
+        "q": "导入后中文乱码：为什么我的联系人姓名显示为乱码？",
+        "a": "本工具生成的 VCF 文件严格采用<strong>UTF-8 编码</strong>，这是国际通用标准。乱码通常是由于<strong>接收方系统或应用程序</strong>（如某些旧版 Android 或 Outlook）默认编码设置引起。<br/><strong>💡 建议：</strong> 导入到 <strong>Apple iCloud</strong> 或 <strong>Google Contacts</strong> 等现代云服务，它们能自动识别 UTF-8 编码，确保中文显示正确。"
+      },
+      {
+        "q": "联系人记录丢失：为什么我转换的记录数和导入成功的数量不一致？",
+        "a": "VCF 卡片需要满足最小导入条件。如果您的表格记录缺少<strong>全名/显示名称 (FN)</strong> 或 <strong>手机号码 (TEL;CELL)</strong>，该记录将被视为无效而跳过。<br/><strong>✅ 解决方法：</strong> 请返回转换器的<strong>步骤 2（字段映射）</strong>，确保您的源文件中这两列数据是完整且正确映射的。"
+      },
+      {
+        "q": "VCF 版本选择：哪个版本兼容性最好？",
+        "a": "我们默认使用 <strong>vCard 3.0 版本</strong>进行生成。这是目前行业内兼容性最广泛的版本，能够被 Apple iOS、Google Android、主流邮箱服务等绝大多数现代平台和系统正确识别和导入。"
+      }
+    ]
+  },
+  "howItWorks": {
+    "title": "极速三步，批量导入您的通讯录",
+    "subtitle": "告别手动输入！我们的 VCF 转换器让您在 3 个简单、安全、快速的步骤内，完成 Excel/CSV 联系人数据的批量导入。",
+    "steps": [
+      {
+        "title": "安全上传表格文件",
+        "desc": "<p>💡 操作：点击上传或直接拖拽您的 Excel/CSV 文件。</p><p>我们支持 <strong>.xlsx</strong>、<strong>.xls</strong>、<strong>.csv</strong> 等主流格式。请放心，您的文件将全程在浏览器本地处理——不上传、不存储、不查看任何敏感联系人数据，隐私安全有保障。</p>"
+      },
+      {
+        "title": "精准映射表格列与 VCF 字段",
+        "desc": "<p>💡 操作：将您的列名（如“姓名”、“手机”）与 VCF 标准字段（<strong>FN</strong>、<strong>TEL</strong>）一一对应。</p><div class=\"font-semibold mt-2\">本步骤的关键在于：</div><ul class=\"list-disc pl-5 space-y-1\"><li><strong>必填校验：</strong>确保映射了全名和手机号码这两个核心字段。</li><li><strong>数据预览：</strong>实时查看前几条数据样本，确认映射准确性，避免转换错误。</li></ul>"
+      },
+      {
+        "title": "一键下载并导入 VCF",
+        "desc": "<p>💡 操作：点击“开始转换”，然后下载生成的 VCF 文件。</p><p>转换完成后，您将得到一个标准的 <strong>VCF 3.0</strong> 文件（UTF-8 编码）。您可以：</p><ul class=\"list-disc pl-5 space-y-1\"><li><strong>PC 端：</strong>将 VCF 发送到电脑，通过 iCloud 或 Google Contacts 批量导入。</li><li><strong>手机端：</strong>直接在 iOS 或 Android 设备上一键导入，高效完成通讯录更新。</li></ul>"
+      }
+    ]
+  },
+  "whoUse": {
+    "title": "谁在使用 Excel/CSV 转 VCF (vCard) 工具？",
+    "groups": [
+      {
+        "title": "销售和市场营销人员",
+        "desc": "参加展会或从 CRM 导出客户列表，需要将 Excel/CSV 客户信息快速导入手机通讯录，便于电话、短信和即时通讯联系。核心痛点：效率与移动性，一键批量导入。"
+      },
+      {
+        "title": "行政和人力资源",
+        "desc": "维护员工通讯录并批量分发，需将最新员工 Excel 转为 VCF，确保公司内部通讯录统一且准确。核心痛点：批量管理与格式准确性。"
+      },
+      {
+        "title": "技术爱好者/手机用户迁移者",
+        "desc": "从旧设备或第三方工具导出的 CSV 迁移到 iOS/Android，新系统仅支持 VCF。核心痛点：格式兼容与乱码修复。"
+      },
+      {
+        "title": "会议/活动组织者",
+        "desc": "大型会议或活动前，需将所有嘉宾联系方式快速添加到团队手机以便高效联络。核心痛点：时效性，立即完成转换与导入。"
+      }
+    ]
   }
 }

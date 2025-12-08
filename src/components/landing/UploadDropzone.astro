@@ -1,3 +1,7 @@
+---
+// 1. 导入正确的模块和函数
+const { t } = Astro.props;
+---
 <section class="py-12">
   <div class="px-8 mx-auto md:px-12 lg:px-24 max-w-5xl">
     <div class="bg-accent-50 rounded-2xl p-10">
@@ -10,10 +14,10 @@
               <path d="M4 16h16v3a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-3Z" stroke-width="2" stroke-linecap="round"/>
             </svg>
           </div>
-          <div class="text-base font-medium text-base-900">拖拽视频文件或点击选择</div>
-          <div class="text-xs text-base-500">支持 XLS、CSV、XLSX 等格式</div>
+          <div class="text-base font-medium text-base-900">{t('uploadDropzone.drag')}</div>
+          <div class="text-xs text-base-500">{t('uploadDropzone.support')}</div>
           <div class="pt-2">
-            <a id="upload-trigger" href="#" class="inline-flex items-center justify-center transition-all duration-200 focus:ring-2 focus:outline-none text-base-50 bg-accent-600 hover:bg-accent-700 transition duration-300 transform hover:scale-105 focus:ring-base-700/30 h-9 px-4 text-sm font-medium rounded-md">选择文件</a>
+            <a id="upload-trigger" href="#" class="inline-flex items-center justify-center transition-all duration-200 focus:ring-2 focus:outline-none text-base-50 bg-accent-600 hover:bg-accent-700 transition duration-300 transform hover:scale-105 focus:ring-base-700/30 h-9 px-4 text-sm font-medium rounded-md">{t('uploadDropzone.button')}</a>
           </div>
         </div>
       </div>
