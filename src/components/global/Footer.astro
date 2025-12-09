@@ -1,33 +1,28 @@
 ---
 import OptimizedImage from "../../layouts/utilities/OptimizedImage.astro";
 const { lang, t } = Astro.props;
-console.log(lang, t);
 const sections = [
   {
-    title: "Features",
+    title: t("footer.sections.features"),
     links: [
-
-      { name: "Partners", href: "/partners" },
-      { name: "Terms", href: "/terms" },
-      { name: "Privacy", href: "/privacy" },
+      { name: t("footer.links.partners"), href: "/partners" },
     ],
   },
   {
-    title: "Company",
+    title: t("footer.sections.support"),
     links: [
-
-      { name: "Partners", href: "/partners" },
-      { name: "Terms", href: "/terms" },
-      { name: "Privacy", href: "/privacy" },
+      { name: t("info.faqPage.title"), href: `/${lang}/faq` },
+      { name: t("info.support.title"), href: `/${lang}/support` },
+      { name: t("info.changelog.title"), href: `/${lang}/changelog` },
     ],
   },
   {
-    title: "Support",
+    title: t("footer.sections.legal"),
     links: [
-      { name: "Help Center", href: "/help" },
-      { name: "Community", href: "/community" },
-      { name: "Contact Support", href: "/support" },
-      { name: "Live Chat", href: "/chat" },
+      { name: t("legal.privacy.title"), href: `/${lang}/privacy` },
+      { name: t("legal.terms.title"), href: `/${lang}/terms` },
+      { name: t("legal.cookie.title"), href: `/${lang}/cookie-policy` },
+      { name: t("legal.copyright.title"), href: `/${lang}/copyright` },
     ],
   },
 ];
@@ -41,12 +36,9 @@ const sections = [
       <div class="md:col-span-1">
         <a href="/" class="inline-flex items-center gap-3">
           <OptimizedImage width={40} src="/logo.svg" alt="logo" />
-          <span class="text-lg font-semibold text-black">Syntro</span>
+          <span class="text-lg font-semibold text-black">{t("nav.brand")}</span>
         </a>
-        <p class="mt-4 text-sm text-gray-500">
-          Open-source SaaS starter built with Astro & Tailwind CSS. Customize
-          freely and deploy with ease.
-        </p>
+        <p class="mt-4 text-sm text-gray-500">{t("footer.intro")}</p>
       </div>
       {
         sections.map(({ title, links }) => (
@@ -73,7 +65,7 @@ const sections = [
       class="pt-12 mt-12 border-t border-base-200 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400"
     >
       <p>
-        &copy; {new Date().getFullYear()} Your Company Name. Crafted by Michael Andreuzza
+        &copy; {new Date().getFullYear()} {t("footer.companyName")}. Crafted by Michael Andreuzza
         &
         <a
           href="https://getastrothemes.com/free-astro-themes-templates/"

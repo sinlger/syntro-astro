@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { initI18n } from "../../i18n.js";
+
+export function getStaticPaths() {
+  const locales = ["zh", "en"];
+  return locales.map((locale) => ({ params: { locale } }));
+}
+
+const locale = Astro.params.locale;
+const i18nInstance = initI18n(locale);
+const t = i18nInstance.t.bind(i18nInstance);
+const htmlLang = locale === "zh" ? "zh-Hans" : "en";
+const pageTitle = t("legal.copyright.title");
+const pageDescription = t("legal.copyright.seo.description");
+const canonicalPath = "/copyright";
+---
+
+<BaseLayout
+  htmlLang={htmlLang}
+  lang={locale}
+  t={t}
+  pageTitle={pageTitle}
+  pageDescription={pageDescription}
+  canonicalPath={canonicalPath}
+>
+  <section id="copyright" class="px-6 md:px-12 lg:px-24 py-20 max-w-7xl mx-auto">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4 border-b pb-2">{pageTitle}</h2>
+    <p class="text-sm text-gray-500 mb-6">{t("legal.common.lastUpdated")}</p>
+
+    <div class="space-y-4 text-gray-700" set:html={t("legal.copyright.contentHtml")}></div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,99 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { initI18n } from "../../i18n.js";
+// --- 【核心修正】: 添加 getStaticPaths 函数 ---
+export function getStaticPaths() {
+  // 1. 定义我们支持的所有语言代码
+  const locales = ["zh", "en"];
+
+  // 2. 为每个语言代码创建一个路径对象
+  // Astro 将使用这里的 params.locale 值来渲染页面
+  return locales.map((locale) => {
+    return {
+      params: {
+        locale: locale, // 将 locale 赋值给动态参数 [locale]
+      },
+      // 可以在这里传递额外的 props，例如翻译实例
+      // props: { /* ... */ }
+    };
+  });
+}
+// ----------------------------------------------------
+
+// 3. 从路由参数中获取语言代码 (现在它不会是 undefined 了)
+const locale = Astro.params.locale;
+const effectiveLocale = locale;
+
+// 4. 初始化 i18next 实例
+const i18nInstance = initI18n(effectiveLocale);
+const t = i18nInstance.t.bind(i18nInstance);
+const htmlLang = locale === "zh" ? "zh-Hans" : "en";
+const pageTitle = t("info.support.title");
+const pageDescription = t("info.support.title");
+const canonicalPath = "/support";
+---
+
+<BaseLayout
+  htmlLang={htmlLang}
+  lang={locale}
+  t={t}
+  pageTitle={pageTitle}
+  pageDescription={pageDescription}
+  canonicalPath={canonicalPath}
+>
+  <!-- 2. 联系我们 / 支持页面 -->
+  <section id="support" class="px-6 md:px-12 lg:px-24 py-20 max-w-7xl mx-auto">
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">{t("info.support.title")}</h2>
+
+    <div class="bg-accent-50 p-6 rounded-lg shadow-md space-y-6 ring-1 ring-base-200">
+      <p class="text-base-700">{t("info.support.intro")}</p>
+
+      <!-- 联系方式卡片 -->
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="bg-white p-4 rounded-lg ring-1 ring-base-200">
+          <p class="font-bold text-accent-700">{t("info.support.techTitle")}</p>
+          <p class="text-lg font-mono text-base-800 break-words">{t("info.support.techEmail")}</p>
+          <p class="text-sm text-base-500 mt-1">{t("info.support.techNote")}</p>
+        </div>
+        <div class="bg-white p-4 rounded-lg ring-1 ring-base-200">
+          <p class="font-bold text-accent-700">{t("info.support.bizTitle")}</p>
+          <p class="text-lg font-mono text-base-800 break-words">{t("info.support.bizEmail")}</p>
+          <p class="text_sm text-base-500 mt-1">{t("info.support.bizNote")}</p>
+        </div>
+      </div>
+
+      <!-- 留言表单 (Placeholder) -->
+      <div class="mt-8">
+        <h3 class="text-xl font-semibold mb-3 text-base-800">{t("info.support.formTitle")}</h3>
+        <form
+          onsubmit={`alert('${t("info.support.formSubmitAlert")}'); return false;`}
+          class="space-y-4"
+        >
+          <input
+            type="text"
+            placeholder={t("info.support.formName")}
+            required
+            class="w-full p-3 border border-base-200 rounded-lg focus:ring-accent-600 focus:border-accent-600"
+          />
+          <input
+            type="email"
+            placeholder={t("info.support.formEmail")}
+            required
+            class="w-full p-3 border border-base-200 rounded-lg focus:ring-accent-600 focus:border-accent-600"
+          />
+          <textarea
+            placeholder={t("info.support.formMessage")}
+            rows="5"
+            required
+            class="w-full p-3 border border-base-200 rounded-lg focus:ring-accent-600 focus:border-accent-600"
+          ></textarea>
+          <button
+            type="submit"
+            class="w-full bg-accent-600 text-white font-bold py-3 rounded-lg hover:bg-accent-700 transition duration-150"
+            >{t("info.support.formSubmit")}</button
+          >
+        </form>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

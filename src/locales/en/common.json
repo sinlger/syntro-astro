@@ -8,5 +8,17 @@
     "excelToVCard": "Excel to VCard",
     "vcardToExcel": "VCard to Excel",
     "faq": "FAQ"
+  },
+  "footer": {
+    "sections": {
+      "features": "Features",
+      "support": "Support",
+      "legal": "Legal & Compliance"
+    },
+    "links": {
+      "partners": "Partners"
+    },
+    "intro": "Open-source SaaS starter built with Astro & Tailwind CSS. Customize freely and deploy with ease.",
+    "companyName": "Your Company Name"
   }
 }

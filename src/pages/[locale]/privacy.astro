@@ -1,13 +1,11 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import Privacy from "../../components/infopages/Privacy.astro";
-
-import { initI18n } from '../../i18n.js';
+import { initI18n } from "../../i18n.js";
 // --- 【核心修正】: 添加 getStaticPaths 函数 ---
 export function getStaticPaths() {
   // 1. 定义我们支持的所有语言代码
-  const locales = ['zh', 'en']; 
-  
+  const locales = ["zh", "en"];
+
   // 2. 为每个语言代码创建一个路径对象
   // Astro 将使用这里的 params.locale 值来渲染页面
   return locales.map((locale) => {
@@ -16,24 +14,23 @@ export function getStaticPaths() {
         locale: locale, // 将 locale 赋值给动态参数 [locale]
       },
       // 可以在这里传递额外的 props，例如翻译实例
-      // props: { /* ... */ } 
+      // props: { /* ... */ }
     };
   });
 }
 // ----------------------------------------------------
 
 // 3. 从路由参数中获取语言代码 (现在它不会是 undefined 了)
-const locale = Astro.params.locale; 
-const effectiveLocale = locale
+const locale = Astro.params.locale;
+const effectiveLocale = locale;
 
 // 4. 初始化 i18next 实例
 const i18nInstance = initI18n(effectiveLocale);
 const t = i18nInstance.t.bind(i18nInstance);
 const htmlLang = locale === "zh" ? "zh-Hans" : "en";
-const pageTitle = t("nav.brand");
-const pageDescription = t("nav.brand");
+const pageTitle = t("legal.privacy.title");
+const pageDescription = t("legal.privacy.seo.description");
 const canonicalPath = "/privacy";
-
 ---
 
 <BaseLayout
@@ -44,5 +41,10 @@ const canonicalPath = "/privacy";
   pageDescription={pageDescription}
   canonicalPath={canonicalPath}
 >
-  <Privacy />
+  <section class="px-6 md:px-12 lg:px-24 py-20 max-w-7xl mx-auto">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4 border-b pb-2">{pageTitle}</h2>
+    <p class="text-sm text-gray-500 mb-6">{t("legal.common.lastUpdated")}</p>
+
+    <div class="space-y-4 text-gray-700" set:html={t("legal.privacy.contentHtml")}></div>
+  </section>
 </BaseLayout>
