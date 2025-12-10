@@ -2,6 +2,7 @@ import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
+import cloudflare from '@astrojs/cloudflare'
 export default defineConfig({
   site: "https://yoursite.com",
   integrations: [sitemap(), react()],
@@ -13,6 +14,8 @@ export default defineConfig({
       prefixDefaultLocale: true, 
     },
   },
+  output: 'static',
+  adapter: cloudflare(),
   vite: {
     plugins: [tailwindcss()],
   },

@@ -4,13 +4,33 @@ import * as VCF from 'vcf'
 import Modal from './Modal'
 import FieldMapping from './FieldMapping'
 import { FN, TEL, FIELDS_V3, FIELDS_V4 } from './vCard'
+import i18next from 'i18next'
+import { I18nextProvider, useTranslation } from 'react-i18next'
 const VCardCtor: any = (VCF as any).default || (VCF as any).vCard || (VCF as any)
 
 function normalizePhone(p: string) {
   return p.replace(/\s+/g, '')
 }
 
-export default function CsvToVCardUpload({ accept = '.csv,.xlsx,.xls' }: { accept?: string }) {
+const i18nClient = i18next.createInstance()
+const setupI18n = (initialLocale: string, translations: any) => {
+  const resources = translations ? { [initialLocale]: { common: translations } } : { [initialLocale]: { common: {} } }
+  if (!i18nClient.isInitialized) {
+    i18nClient.init({
+      lng: initialLocale,
+      resources,
+      fallbackLng: 'zh',
+      ns: ['common'],
+      defaultNS: 'common',
+      interpolation: { escapeValue: false },
+    })
+  } else if (i18nClient.language !== initialLocale) {
+    i18nClient.changeLanguage(initialLocale)
+  }
+}
+
+export default function CsvToVCardUpload({ accept = '.csv,.xlsx,.xls', locale = 'zh', translations }: { accept?: string, locale?: string, translations?: any }) {
+  setupI18n(locale, translations)
   const inputRef = useRef<HTMLInputElement | null>(null)
   const [open, setOpen] = useState(false)
   const [version, setVersion] = useState<'3.0' | '4.0'>('3.0')
@@ -27,11 +47,11 @@ export default function CsvToVCardUpload({ accept = '.csv,.xlsx,.xls' }: { accep
     return tokens.some((t) => (t.startsWith('.') ? name.endsWith(t) : type === t))
   }
 
-  const handleFiles = async (fileList: FileList | null) => {
+  const handleFiles = async (fileList: FileList | null, t: (k: string, o?: any) => string) => {
     const file = fileList && fileList[0]
     if (!file || !VCardCtor) return
     if (!isAccepted(file)) {
-      setNotice({ type: 'error', text: `文件类型不支持：${file.name}（允许：${accept}）` })
+      setNotice({ type: 'error', text: t('pages.csv.ui.notice.unsupportedType', { name: file.name, accept }) })
       return
     }
 
@@ -76,9 +96,9 @@ export default function CsvToVCardUpload({ accept = '.csv,.xlsx,.xls' }: { accep
     inputRef.current?.click()
   }
 
-  const onDrop = (e: React.DragEvent<HTMLDivElement>) => {
+  const onDrop = (e: React.DragEvent<HTMLDivElement>, t: (k: string, o?: any) => string) => {
     e.preventDefault()
-    handleFiles(e.dataTransfer.files)
+    handleFiles(e.dataTransfer.files, t)
   }
 
   const onDragOver = (e: React.DragEvent<HTMLDivElement>) => {
@@ -308,7 +328,9 @@ export default function CsvToVCardUpload({ accept = '.csv,.xlsx,.xls' }: { accep
     if (inputRef.current) inputRef.current.value = ''
   }
 
-  return (
+  const Content = () => {
+    const { t } = useTranslation('common')
+    return (
     <div className="rounded-2xl p-4 sm:p-6 bg-accent-50 shadow-sm ring-1 ring-base-200 mt-6 sm:mt-10">
       <div className="flex items-center gap-2 text-sm sm:text-base font-semibold text-black">
         <svg className="size-5 sm:size-6 text-base-600" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -316,14 +338,14 @@ export default function CsvToVCardUpload({ accept = '.csv,.xlsx,.xls' }: { accep
           <path d="M12 4v12" strokeWidth="1.5" strokeLinecap="round" />
           <path d="M8 8l4-4 4 4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
-        <span>选择 {accept.includes('csv') ? 'CSV' : 'Excel'} 文件</span>
+        <span>{accept.includes('csv') ? t('pages.csv.ui.selectFileLabelCsv') : t('pages.excel.ui.selectFileLabelExcel')}</span>
       </div>
 
       <div className="mt-6">
         <div className="rounded-xl p-3 sm:p-4">
           <div
             className="rounded-xl border-2 border-dashed border-base-200 py-12 sm:py-16 px-4 flex items-center justify-center text-center"
-            onDrop={onDrop}
+            onDrop={(e) => onDrop(e, t)}
             onDragOver={onDragOver}
           >
             <div className="space-y-3">
@@ -331,18 +353,18 @@ export default function CsvToVCardUpload({ accept = '.csv,.xlsx,.xls' }: { accep
                 <g transform="translate(0,1)"><path d="M12 3l4 4h-3v5h-2V7H8l4-4Z" /></g>
                 <path d="M4 16h2v3h12v-3h2v3a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-3Z" />
               </svg>
-              <div className="text-sm sm:text-base font-medium text-base-800">拖拽文件到这里</div>
-              <div className="text-xs text-base-500">仅支持 {accept}，首行作为字段名</div>
+              <div className="text-sm sm:text-base font-medium text-base-800">{t('pages.csv.ui.dropHere')}</div>
+              <div className="text-xs text-base-500">{t('pages.csv.ui.onlyAcceptWithHeader', { accept })}</div>
               <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 flex-wrap">
                 <div className="flex items-center gap-2 w-full sm:w-auto">
-                  <label className="text-xs text-base-600">vCard 版本</label>
+                  <label className="text-xs text-base-600">{t('pages.csv.ui.vcardVersion')}</label>
                   <select
                     value={version}
                     onChange={(e) => setVersion(e.target.value as '3.0' | '4.0')}
                     className="h-10 px-3 w-full sm:w-40 rounded-md ring-1 ring-base-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-accent-500"
                   >
-                    <option value="3.0">3.0（推荐）</option>
-                    <option value="4.0">4.0</option>
+                    <option value="3.0">{t('pages.csv.ui.v3Recommended')}</option>
+                    <option value="4.0">{t('pages.csv.ui.v4')}</option>
                   </select>
                 </div>
                 <div className="flex items-center w-full sm:w-auto">
@@ -351,9 +373,9 @@ export default function CsvToVCardUpload({ accept = '.csv,.xlsx,.xls' }: { accep
                     onClick={onClickTrigger}
                     className="inline-flex items-center justify-center transition-all duration-200 ring-1 focus:ring-2 ring-accent-700 focus:outline-none text-base-50 bg-accent-600 hover:bg-accent-700 focus:ring-base-500/50 h-10 px-5 text-sm font-medium rounded-md w-full sm:w-auto"
                   >
-                    选择文件
+                    {t('pages.csv.ui.chooseFile')}
                   </a>
-                  <input ref={inputRef} type="file" accept={accept} className="hidden" onChange={(e) => handleFiles(e.target.files)} />
+                  <input ref={inputRef} type="file" accept={accept} className="hidden" onChange={(e) => handleFiles(e.target.files, t)} />
                 </div>
               </div>
             </div>
@@ -369,33 +391,39 @@ export default function CsvToVCardUpload({ accept = '.csv,.xlsx,.xls' }: { accep
               </svg>
               <p className="text-sm font-medium {notice.type === 'error' ? 'text-red-700' : 'text-accent-700'}">{notice.text}</p>
             </div>
-            <button onClick={() => setNotice(null)} aria-label="关闭提示" className="inline-flex items-center justify-center h-8 w-8 rounded-md text-base-600 hover:text-black focus:outline-none focus:ring-2 focus:ring-accent-500">×</button>
+            <button onClick={() => setNotice(null)} aria-label={t('pages.csv.ui.notice.closeLabel')} className="inline-flex items-center justify-center h-8 w-8 rounded-md text-base-600 hover:text-black focus:outline-none focus:ring-2 focus:ring-accent-500">×</button>
           </div>
         </div>
       )}
       <Modal
         open={open}
-        title="字段映射：智能识别与精准校验"
+        title={t('pages.csv.ui.mapping.title')}
         onClose={onCloseModal}
         footer={
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-0 justify-between">
-            <div className="text-xs text-base-600">当前版本支持字段数 {supportedFields.length}</div>
+            <div className="text-xs text-base-600">{t('pages.csv.ui.supportedFieldCount', { count: supportedFields.length })}</div>
             <button
               type="button"
               onClick={generateVCard}
               disabled={!mapping.fullName || !mapping.phone}
               className="inline-flex items-center justify-center transition-all duration-200 ring-1 focus:ring-2 ring-accent-700 focus:outline-none text-base-50 bg-accent-600 hover:bg-accent-700 focus:ring-base-500/50 h-9 px-4 text-sm font-medium rounded-md disabled:opacity-50 disabled:cursor-not-allowed w-full sm:w-auto"
             >
-              导出 vCard
+              {t('pages.csv.ui.exportVCard')}
             </button>
           </div>
         }
       >
         <div className="max-w-5xl px-2 sm:px-0">
-          <div className="text-xs text-base-600">请确保 {FN.zh} 与 {TEL.zh} 被正确映射。当前版本支持字段数 {supportedFields.length}。</div>
+          <div className="text-xs text-base-600">{t('pages.csv.ui.ensureMapping', { fn: FN.zh, tel: TEL.zh, count: supportedFields.length })}</div>
           <FieldMapping version={version} columns={columns} sampleRows={sampleRows} onChange={onMappingChange} />
         </div>
       </Modal>
     </div>
+    )
+  }
+  return (
+    <I18nextProvider i18n={i18nClient}>
+      <Content />
+    </I18nextProvider>
   )
 }

@@ -28,6 +28,7 @@ const effectiveLocale = locale
 // 4. 初始化 i18next 实例
 const i18nInstance = initI18n(effectiveLocale);
 const t = i18nInstance.t.bind(i18nInstance);
+const translationsBundle = i18nInstance.getResourceBundle(effectiveLocale, 'common');
 // 1. 定义 HTML lang 属性（BCP 47 标准）
 const htmlLang = locale === "zh" ? "zh-Hans" : "en";
 
@@ -58,7 +59,7 @@ const canonicalPath = "/";
         <p class="text-base leading-normal mt-4 text-base-500 font-medium">{t('pages.vcardExcel.subtitle')}</p>
       </div>
 
-      <VCardToCsv accept=".vcf,text/vcard" client:load />
+      <VCardToCsv accept=".vcf,text/vcard" client:load locale={locale} translations={translationsBundle} />
       <!-- 1. 核心特点区域 - 强调双向功能 -->
       <section class="space-y-6 mt-12">
         <h2 class="text-3xl font-bold text-gray-800 mb-6">{t('pages.vcardExcel.featuresTitle')}</h2>

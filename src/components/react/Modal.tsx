@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 
 type ModalProps = {
   open: boolean
@@ -10,6 +11,7 @@ type ModalProps = {
 }
 
 export default function Modal({ open, title, onClose, children, headerExtra, footer }: ModalProps) {
+  const { t } = useTranslation('common')
   useEffect(() => {
     if (!open) return
     const html = document.documentElement
@@ -43,7 +45,7 @@ export default function Modal({ open, title, onClose, children, headerExtra, foo
               {headerExtra}
               <button
                 type="button"
-                aria-label="Close"
+                aria-label={t('components.modal.closeAria')}
                 onClick={onClose}
                 className="inline-flex items-center justify-center size-8 rounded-md text-base-600 hover:text-black hover:bg-base-100"
               >
@@ -63,7 +65,7 @@ export default function Modal({ open, title, onClose, children, headerExtra, foo
                 onClick={onClose}
                 className="inline-flex items-center justify-center transition-all duration-200 ring-1 focus:ring-2 ring-accent-700 focus:outline-none text-base-50 bg-accent-600 hover:bg-accent-700 focus:ring-base-500/50 h-9 px-4 text-sm font-medium rounded-md"
               >
-                关闭
+                {t('components.modal.closeLabel')}
               </button>
             </div>
           )}

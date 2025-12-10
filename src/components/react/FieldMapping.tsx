@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { FN, TEL, ORG, NOTE, EMAIL, ADR, LABEL, FIELDS_V3, FIELDS_V4, VCardTypeTel, VCardTypeEmail, VCardTypeAdr, VCardTypeV4Common, VCardTypeTelZh, VCardTypeEmailZh, VCardTypeAdrZh } from './vCard'
 
 type Props = {
@@ -9,10 +10,10 @@ type Props = {
 }
 
 const TARGETS = [
-  { key: 'fullName', label: '全名/显示名称', required: true },
-  { key: 'phone', label: '手机号', required: true },
-  { key: 'company', label: '公司/组织', required: false },
-  { key: 'notes', label: '备注', required: false },
+  { key: 'fullName', label: 'fullName', required: true },
+  { key: 'phone', label: 'phone', required: true },
+  { key: 'company', label: 'company', required: false },
+  { key: 'notes', label: 'notes', required: false },
 ]
 
 function suggestTargetForColumn(col: string) {
@@ -25,6 +26,7 @@ function suggestTargetForColumn(col: string) {
 }
 
 export default function FieldMapping({ version, columns, sampleRows, onChange }: Props) {
+  const { t } = useTranslation('common')
   const [selectionByColumn, setSelectionByColumn] = useState<Record<string, string>>({})
   const [typeByColumn, setTypeByColumn] = useState<Record<string, string>>({})
   const [prefByColumn, setPrefByColumn] = useState<Record<string, boolean>>({})
@@ -116,13 +118,13 @@ export default function FieldMapping({ version, columns, sampleRows, onChange }:
 
   return (
     <div className="mt-6">
-      <div className="text-xs text-base-600">以下为您上传的字段，请为每个字段选择匹配的 vCard 标准字段。请确保“全名”和“手机号”至少各选择一次。</div>
+      <div className="text-xs text-base-600">{t('pages.csv.mapping.instructions')}</div>
       <div className="mt-4 h-64 overflow-auto rounded-xl ring-1 ring-base-200 bg-white">
         <table className="min-w-full text-sm">
           <thead className="bg-base-50 text-base-600 sticky top-0 z-10">
             <tr>
-              <th className="px-3 py-2 text-left w-1/2">上传字段</th>
-              <th className="px-3 py-2 text-left">映射到 vCard 字段</th>
+              <th className="px-3 py-2 text-left w-1/2">{t('pages.csv.mapping.th.source')}</th>
+              <th className="px-3 py-2 text-left">{t('pages.csv.mapping.th.target')}</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-base-200">
@@ -144,7 +146,7 @@ export default function FieldMapping({ version, columns, sampleRows, onChange }:
                       }}
                       className="w-full h-9 px-2 rounded-md ring-1 ring-base-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-accent-500"
                     >
-                      <option value="">忽略此列</option>
+                      <option value="">{t('pages.csv.mapping.ignoreColumn')}</option>
                       {supportedFields.map((f) => (
                         <option key={f.key} value={f.key}>{f.zh}（{f.key}）</option>
                       ))}
@@ -158,7 +160,7 @@ export default function FieldMapping({ version, columns, sampleRows, onChange }:
                         }}
                         className="h-9 w-40 px-2 rounded-md ring-1 ring-base-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-accent-500"
                       >
-                        <option value="">类型</option>
+                        <option value="">{t('pages.csv.mapping.typeLabel')}</option>
                         {(
                           selectionByColumn[col] === TEL.key
                             ? (version === '4.0'
@@ -173,8 +175,8 @@ export default function FieldMapping({ version, columns, sampleRows, onChange }:
                                     : [VCardTypeAdr.HOME_V3, VCardTypeAdr.WORK_V3, VCardTypeAdr.POSTAL_V3, VCardTypeAdr.PARCEL_V3]
                                   )
                                 : []
-                        ).map((t) => (
-                          <option key={t} value={t}>{(selectionByColumn[col] === TEL.key ? VCardTypeTelZh[t] : selectionByColumn[col] === EMAIL.key ? VCardTypeEmailZh[t] : VCardTypeAdrZh[t]) || t}</option>
+                        ).map((tKey) => (
+                          <option key={tKey} value={tKey}>{(selectionByColumn[col] === TEL.key ? VCardTypeTelZh[tKey] : selectionByColumn[col] === EMAIL.key ? VCardTypeEmailZh[tKey] : VCardTypeAdrZh[tKey]) || tKey}</option>
                         ))}
                       </select>
                     )}
@@ -185,7 +187,7 @@ export default function FieldMapping({ version, columns, sampleRows, onChange }:
                           checked={!!prefByColumn[col]}
                           onChange={(e) => setPrefByColumn((m) => ({ ...m, [col]: e.target.checked }))}
                         />
-                        首选(PREF)
+                        {t('pages.csv.mapping.prefLabel')}
                       </label>
                     )}
                   </div>
@@ -198,13 +200,13 @@ export default function FieldMapping({ version, columns, sampleRows, onChange }:
 
       {(!mapping.fullName || !mapping.phone) && (
         <div className="mt-3 p-3 rounded-md bg-red-50 ring-1 ring-red-200 text-red-700 text-xs">
-          请至少选择一次“全名”和“手机号”。当前缺少：
-          {!mapping.fullName ? ' 全名' : ''}{!mapping.phone ? ' 手机号' : ''}
+          {t('pages.csv.mapping.missingRequiredPrefix')}
+          {!mapping.fullName ? ` ${t('pages.csv.mapping.targets.fullName')}` : ''}{!mapping.phone ? ` ${t('pages.csv.mapping.targets.phone')}` : ''}
         </div>
       )}
 
       <div className="mt-6">
-        <div className="text-sm font-semibold text-black">数据样本预览（前 5 行）</div>
+        <div className="text-sm font-semibold text-black">{t('pages.csv.mapping.previewTitle')}</div>
         <div className="mt-2 overflow-x-auto rounded-xl ring-1 ring-base-200 bg-white">
           <table className="min-w-full text-sm">
             <thead className="bg-base-50 text-base-600">
@@ -229,4 +231,3 @@ export default function FieldMapping({ version, columns, sampleRows, onChange }:
     </div>
   )
 }
-
