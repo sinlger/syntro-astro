@@ -22,21 +22,17 @@ const { lang, t, pageTitle, pageDescription,htmlLang,canonicalPath } = Astro.pro
 // 如果 t 存在，则尝试翻译页面标题键 (假设父页面会传入 key)
 // 3. 定义全局 SEO 变量 (用于 BaseHead)
 const siteUrl = "https://excel2vcf.com";
-const canonicalUrl = siteUrl + canonicalPath;
+const canonicalUrl = `${siteUrl}/${lang}${canonicalPath}`;
 
 // 4. 定义 Hreflangs 数据 (这是多语言 SEO 的核心，需要手动构造)
 // 假设您的语言是 'zh' 和 'en'
 const hreflangsData = [
-  // 当前语言
-  { locale: lang, url: canonicalUrl },
-  // 另一种语言
+  { locale: lang, url: `${siteUrl}/${lang}${canonicalPath}` },
   {
     locale: lang === "zh" ? "en" : "zh",
-    // 需要计算出另一语言的 URL
     url: `${siteUrl}/${lang === "zh" ? "en" : "zh"}${canonicalPath}`,
   },
-  // x-default (指向网站根目录，或者默认语言的根目录)
-  { locale: "x-default", url: siteUrl },
+  { locale: "x-default", url: `${siteUrl}${canonicalPath}` },
 ];
 ---
 

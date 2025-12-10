@@ -198,10 +198,8 @@ const canonicalPath = "/";
               1
             </div>
             <div>
-              <h4 class="text-lg font-semibold text-base-900">上传文件</h4>
-              <p class="text-base-600 text-sm mt-1">
-                拖拽或通过按钮选择您的 CSV 或 Excel 文件。
-              </p>
+              <h4 class="text-lg font-semibold text-base-900">{t('pages.excel.howSteps.0.title')}</h4>
+              <p class="text-base-600 text-sm mt-1">{t('pages.excel.howSteps.0.desc')}</p>
             </div>
           </div>
 
@@ -213,11 +211,8 @@ const canonicalPath = "/";
               2
             </div>
             <div>
-              <h4 class="text-lg font-semibold text-base-900">字段映射调整</h4>
-              <p class="text-base-600 text-sm mt-1">
-                系统将进行智能匹配。请确保将正确的列映射为<strong>“全名”</strong
-                >和<strong>“手机号码”</strong>。
-              </p>
+              <h4 class="text-lg font-semibold text-base-900">{t('pages.excel.howSteps.1.title')}</h4>
+              <p class="text-base-600 text-sm mt-1" set:html={t('pages.excel.howSteps.1.desc')}></p>
             </div>
           </div>
 
@@ -229,10 +224,8 @@ const canonicalPath = "/";
               3
             </div>
             <div>
-              <h4 class="text-lg font-semibold text-base-900">转换处理</h4>
-              <p class="text-base-600 text-sm mt-1">
-                点击“开始转换”，数据将实时在您的本地设备上被处理。
-              </p>
+              <h4 class="text-lg font-semibold text-base-900">{t('pages.excel.howSteps.2.title')}</h4>
+              <p class="text-base-600 text-sm mt-1">{t('pages.excel.howSteps.2.desc')}</p>
             </div>
           </div>
 
@@ -244,10 +237,8 @@ const canonicalPath = "/";
               4
             </div>
             <div>
-              <h4 class="text-lg font-semibold text-base-900">下载 VCF 文件</h4>
-              <p class="text-base-600 text-sm mt-1">
-                获取生成的 .vcf 文件，即可导入到任何主流通讯录应用中。
-              </p>
+              <h4 class="text-lg font-semibold text-base-900">{t('pages.excel.howSteps.3.title')}</h4>
+              <p class="text-base-600 text-sm mt-1">{t('pages.excel.howSteps.3.desc')}</p>
             </div>
           </div>
         </div>
@@ -310,7 +301,7 @@ const canonicalPath = "/";
             <summary
               class="flex justify-between items-center cursor-pointer list-none font-semibold text-gray-800 hover:text-blue-600 transition"
             >
-              使用 Excel 文件进行转换，我的联系人数据安全有保障吗？
+              {t('pages.excel.faq.2.q')}
               <span class="transform transition group-open:rotate-180">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -324,11 +315,7 @@ const canonicalPath = "/";
                 >
               </span>
             </summary>
-            <p class="text-gray-600 text-sm mt-2 ml-4">
-              请放心，无论是 **Excel 转 VCF** 还是 CSV
-              转换，我们都采用**完全本地处理**技术。您的原始 Excel
-              文件或任何联系人数据都不会离开您的浏览器环境，**绝不会上传到我们的服务器**。这确保了您的数据隐私达到最高安全级别。
-            </p>
+            <p class="text-gray-600 text-sm mt-2 ml-4" set:html={t('pages.excel.faq.2.a')}></p>
           </details>
 
           <!-- FAQ 4: 字符编码 (关键词: Excel 转 VCF 中文乱码, 特殊字符) -->
@@ -336,7 +323,7 @@ const canonicalPath = "/";
             <summary
               class="flex justify-between items-center cursor-pointer list-none font-semibold text-gray-800 hover:text-blue-600 transition"
             >
-              Excel 表格中的中文或特殊字符转换后会出现乱码吗？
+              {t('pages.excel.faq.3.q')}
               <span class="transform transition group-open:rotate-180">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -350,12 +337,7 @@ const canonicalPath = "/";
                 >
               </span>
             </summary>
-            <p class="text-gray-600 text-sm mt-2 ml-4">
-              不会。我们的工具在处理 <strong>Excel 转 VCF</strong> 时，会自动处理 UTF-8
-              编码，确保中文、日文、特殊符号等字符能够被正确识别并写入 VCF
-              文件。同时，我们生成的 VCF 文件会采用标准的 UTF-8
-              编码，这是目前所有主流手机和应用程序推荐的格式，可以有效避免<strong>中文乱码</strong>问题。
-            </p>
+            <p class="text-gray-600 text-sm mt-2 ml-4" set:html={t('pages.excel.faq.3.a')}></p>
           </details>
 
           <!-- FAQ 5: Excel 版本支持 (关键词: XLSX 转 VCF, XLS 兼容性) -->
@@ -363,7 +345,7 @@ const canonicalPath = "/";
             <summary
               class="flex justify-between items-center cursor-pointer list-none font-semibold text-gray-800 hover:text-blue-600 transition"
             >
-              我的 Excel 文件是旧版 (XLS)，是否也能进行转换？
+              {t('pages.excel.faq.4.q')}
               <span class="transform transition group-open:rotate-180">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -377,13 +359,7 @@ const canonicalPath = "/";
                 >
               </span>
             </summary>
-            <p class="text-gray-600 text-sm mt-2 ml-4">
-              本工具提供了强大的兼容性。它不仅支持最新的 <strong>XLSX 转
-              VCF</strong>，同时也完全支持旧版 Excel
-              文件（`.xls`）。无论您使用哪个版本的
-              Excel，只需确保联系人数据位于第一个工作表，即可顺利完成 <strong>Excel 转
-              VCard</strong> 的过程。
-            </p>
+            <p class="text-gray-600 text-sm mt-2 ml-4" set:html={t('pages.excel.faq.4.a')}></p>
           </details>
         </div>
       </section>

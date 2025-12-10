@@ -223,7 +223,7 @@ const canonicalPath = "/";
             <summary
               class="flex justify-between items-center cursor-pointer list-none font-semibold text-gray-800 hover:text-blue-600 transition"
             >
-              什么是 VCF/VCard 文件？它和通讯录有什么关系？
+              {t('pages.vcardExcel.faq.0.q')}
               <span class="transform transition group-open:rotate-180">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -237,13 +237,7 @@ const canonicalPath = "/";
                 >
               </span>
             </summary>
-            <p class="text-gray-600 text-sm mt-2 ml-4">
-              VCF（Virtual Contact File），通常称为
-              VCard，是用于存储通讯录信息的标准格式。它是将联系人<strong
-                >批量导入通讯录</strong
-              >到手机（iOS/Android）或邮件客户端的最常用格式。我们的工具支持高效的
-              <strong>CSV/Excel 转 VCard (VCF)</strong> 转换。
-            </p>
+            <p class="text-gray-600 text-sm mt-2 ml-4" set:html={t('pages.vcardExcel.faq.0.a')}></p>
           </details>
 
           <!-- FAQ 2: Excel 多列数据映射 (关键词: Excel 转 VCF 多字段, 家庭电话, 手机号码) -->
@@ -251,7 +245,7 @@ const canonicalPath = "/";
             <summary
               class="flex justify-between items-center cursor-pointer list-none font-semibold text-gray-800 hover:text-blue-600 transition"
             >
-              我的 Excel 中有“手机”、“家庭电话”等多列数据，如何分别映射到 VCF？
+              {t('pages.vcardExcel.faq.1.q')}
               <span class="transform transition group-open:rotate-180">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -265,15 +259,7 @@ const canonicalPath = "/";
                 >
               </span>
             </summary>
-            <p class="text-gray-600 text-sm mt-2 ml-4">
-              在 <strong>Excel 转 VCF</strong> 的过程中，我们的映射界面允许您将不同的
-              Excel 列分别指定为 VCard 中的不同属性（如 <code
-                >TEL;TYPE=CELL</code
-              >
-              手机号码、<code>TEL;TYPE=HOME</code> 家庭电话、<code>EMAIL</code>
-              邮箱等）。您只需在第二步<strong>字段映射</strong
-              >中，为每一列选择对应的 VCard 标签即可，实现精细化数据导入。
-            </p>
+            <p class="text-gray-600 text-sm mt-2 ml-4" set:html={t('pages.vcardExcel.faq.1.a')}></p>
           </details>
 
           <!-- FAQ 3: VCF 转 Excel 的用途 (关键词: VCF 批量转 Excel, 通讯录备份, 数据编辑) -->
@@ -281,7 +267,7 @@ const canonicalPath = "/";
             <summary
               class="flex justify-between items-center cursor-pointer list-none font-semibold text-gray-800 hover:text-blue-600 transition"
             >
-              将 VCF 文件转换为 Excel 或 CSV 有哪些主要用途？
+              {t('pages.vcardExcel.faq.2.q')}
               <span class="transform transition group-open:rotate-180">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -295,21 +281,7 @@ const canonicalPath = "/";
                 >
               </span>
             </summary>
-            <p class="text-gray-600 text-sm mt-2 ml-4">
-              执行 <strong>VCF 批量转 Excel</strong> 或 CSV 主要有以下三个目的：
-              <ul class="list-disc ml-6 mt-2 space-y-1">
-                <li>
-                  <strong>批量编辑与清洗：</strong> Excel 提供了强大的排序、筛选和查找功能，方便您对数千条联系人进行统一的格式修正和数据清洗。
-                </li>
-                <li>
-                  <strong>通用备份：</strong> 将通讯录数据导出为 Excel 或 CSV 文件，作为通用格式进行长期存储和备份。
-                </li>
-                <li>
-                  <strong>系统导入准备：</strong> 许多商业或CRM系统只支持导入 CSV
-                  或 Excel 文件，通过此功能可以轻松准备数据源。
-                </li>
-              </ul>
-            </p>
+            <p class="text-gray-600 text-sm mt-2 ml-4" set:html={t('pages.vcardExcel.faq.2.a')}></p>
           </details>
 
           <!-- FAQ 4: VCF 转 Excel 字段完整性 (关键词: VCF 字段丢失, 备注信息, 完整转换) -->
@@ -317,8 +289,7 @@ const canonicalPath = "/";
             <summary
               class="flex justify-between items-center cursor-pointer list-none font-semibold text-gray-800 hover:text-blue-600 transition"
             >
-              VCF 转 Excel
-              时，我的所有联系人信息（如备注、地址）都能完整保留吗？
+              {t('pages.vcardExcel.faq.3.q')}
               <span class="transform transition group-open:rotate-180">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -332,14 +303,7 @@ const canonicalPath = "/";
                 >
               </span>
             </summary>
-            <p class="text-gray-600 text-sm mt-2 ml-4">
-              是的。在执行 <strong>VCF 转 Excel</strong> 的过程中，我们的解析器会全面提取
-              VCard 标准支持的所有字段，包括姓名、电话、邮箱、公司、职务、地址，乃至<strong
-                >联系人备注信息</strong
-              >等。这些数据在 Excel/CSV 中将以独立的列形式呈现，确保数据<strong
-                >完整转换</strong
-              >，不会有任何关键信息丢失。
-            </p>
+            <p class="text-gray-600 text-sm mt-2 ml-4" set:html={t('pages.vcardExcel.faq.3.a')}></p>
           </details>
 
           <!-- FAQ 5: VCF 文件限制 (关键词: 多个 VCF 合并, VCF 导入 Excel) -->
@@ -347,7 +311,7 @@ const canonicalPath = "/";
             <summary
               class="flex justify-between items-center cursor-pointer list-none font-semibold text-gray-800 hover:text-blue-600 transition"
             >
-              我可以上传多个 VCF 文件或一个包含多个联系人的 VCF 文件吗？
+              {t('pages.vcardExcel.faq.4.q')}
               <span class="transform transition group-open:rotate-180">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -361,15 +325,7 @@ const canonicalPath = "/";
                 >
               </span>
             </summary>
-            <p class="text-gray-600 text-sm mt-2 ml-4">
-              没问题。本工具支持您一次性上传包含多个联系人的单个 VCF
-              文件，或同时选择多个独立的 <code>.vcf</code>
-              文件。我们的工具会自动识别并解析所有联系人记录，然后将它们<strong
-                >合并</strong
-              >到一个统一的 Excel 或 CSV 表格中，方便您进行<strong
-                >VCF 导入 Excel</strong
-              > 的整理工作。
-            </p>
+            <p class="text-gray-600 text-sm mt-2 ml-4" set:html={t('pages.vcardExcel.faq.4.a')}></p>
           </details>
 
           <!-- FAQ 6: 字符编码 (关键词: Excel 转 VCF 中文乱码, 特殊字符) -->
@@ -377,7 +333,7 @@ const canonicalPath = "/";
             <summary
               class="flex justify-between items-center cursor-pointer list-none font-semibold text-gray-800 hover:text-blue-600 transition"
             >
-              Excel/VCF 转换中文字符编码的处理机制是怎样的？
+              {t('pages.vcardExcel.faq.5.q')}
               <span class="transform transition group-open:rotate-180">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -391,15 +347,7 @@ const canonicalPath = "/";
                 >
               </span>
             </summary>
-            <p class="text-gray-600 text-sm mt-2 ml-4">
-              无论是 <strong>Excel 转 VCF</strong> 还是 <strong
-                >VCF 转 Excel</strong
-              >，我们都将全程采用标准的 UTF-8
-              编码进行处理。这确保了中文、日文、韩文以及其他特殊字符能够被准确无误地写入
-              VCF 或导出到 Excel/CSV 文件中，彻底解决常见的<strong
-                >中文乱码</strong
-              >问题。
-            </p>
+            <p class="text-gray-600 text-sm mt-2 ml-4" set:html={t('pages.vcardExcel.faq.5.a')}></p>
           </details>
 
           <!-- FAQ 7: 版本支持 (关键词: XLSX/XLS 兼容性) -->
@@ -407,7 +355,7 @@ const canonicalPath = "/";
             <summary
               class="flex justify-between items-center cursor-pointer list-none font-semibold text-gray-800 hover:text-blue-600 transition"
             >
-              本工具支持哪些 Excel 和 VCF 文件的版本？
+              {t('pages.vcardExcel.faq.6.q')}
               <span class="transform transition group-open:rotate-180">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -421,21 +369,7 @@ const canonicalPath = "/";
                 >
               </span>
             </summary>
-            <p class="text-gray-600 text-sm mt-2 ml-4">
-              本工具提供了强大的文件兼容性：
-              <ul class="list-disc ml-6 mt-2 space-y-1">
-                <li>
-                  <strong>Excel/CSV：</strong> 支持读取 <code>.xlsx</code>, <code
-                    >.xls</code
-                  >, 和 <code>.csv</code>
-                  文件。导出时可以选择 CSV 或 Excel 格式。
-                </li>
-                <li>
-                  <strong>VCF：</strong> 完全兼容 VCF 3.0 和 VCF 4.0 两种标准格式。无论是导入还是导出
-                  VCF，都能保证最高兼容性。
-                </li>
-              </ul>
-            </p>
+            <p class="text-gray-600 text-sm mt-2 ml-4" set:html={t('pages.vcardExcel.faq.6.a')}></p>
           </details>
 
           <!-- FAQ 8: 数据安全 (关键词: 本地转换, 数据安全, VCF 隐私) -->
@@ -443,7 +377,7 @@ const canonicalPath = "/";
             <summary
               class="flex justify-between items-center cursor-pointer list-none font-semibold text-gray-800 hover:text-blue-600 transition"
             >
-              使用 VCF 文件进行逆向转换安全吗？
+              {t('pages.vcardExcel.faq.7.q')}
               <span class="transform transition group-open:rotate-180">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -457,12 +391,7 @@ const canonicalPath = "/";
                 >
               </span>
             </summary>
-            <p class="text-gray-600 text-sm mt-2 ml-4">
-              请放心，无论是正向的 <strong>Excel 转 VCF</strong> 还是逆向的 <strong
-                >VCF 转 Excel</strong
-              >，我们始终采用<strong>完全本地处理</strong>技术。您的 VCF
-              文件或任何联系人数据都不会上传到任何服务器，所有计算均在您的浏览器中完成，确保您的数据隐私达到最高安全级别。
-            </p>
+            <p class="text-gray-600 text-sm mt-2 ml-4" set:html={t('pages.vcardExcel.faq.7.a')}></p>
           </details>
         </div>
       </section>
