@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { FN, TEL, ORG, NOTE, EMAIL, ADR, LABEL, FIELDS_V3, FIELDS_V4, VCardTypeTel, VCardTypeEmail, VCardTypeAdr, VCardTypeV4Common, VCardTypeTelZh, VCardTypeEmailZh, VCardTypeAdrZh } from './vCard'
 
@@ -20,6 +20,7 @@ function suggestTargetForColumn(col: string) {
 }
 
 export default function FieldMapping({ version, columns, sampleRows, onChange }: Props) {
+  console.log(version, columns, sampleRows, onChange)
   const { t } = useTranslation('common')
   const [selectionByColumn, setSelectionByColumn] = useState<Record<string, string>>({})
   const [typeByColumn, setTypeByColumn] = useState<Record<string, string>>({})
@@ -28,35 +29,41 @@ export default function FieldMapping({ version, columns, sampleRows, onChange }:
   const supportedFields = useMemo(() => (version === '4.0' ? FIELDS_V4 : FIELDS_V3), [version])
 
   useEffect(() => {
-    const init: Record<string, string> = {}
-    const initType: Record<string, string> = {}
-    for (const c of columns) init[c] = suggestTargetForColumn(c)
+    const nextInit: Record<string, string> = {}
+    const nextType: Record<string, string> = {}
+    const nextPref: Record<string, boolean> = {}
+
     for (const c of columns) {
-      const k = init[c]
+      nextInit[c] = suggestTargetForColumn(c)
+    }
+
+    for (const c of columns) {
+      const k = nextInit[c]
       if (k === TEL.key) {
-        initType[c] = version === '4.0' ? VCardTypeV4Common.CELL : VCardTypeTel.CELL_V3
-        prefByColumn[c] = false
+        nextType[c] = version === '4.0' ? VCardTypeV4Common.CELL : VCardTypeTel.CELL_V3
+        nextPref[c] = false
       } else if (k === EMAIL.key) {
-        initType[c] = VCardTypeEmail.INTERNET
-        prefByColumn[c] = false
+        nextType[c] = VCardTypeEmail.INTERNET
+        nextPref[c] = false
       } else if (k === ADR.key) {
-        initType[c] = version === '4.0' ? VCardTypeV4Common.HOME : VCardTypeAdr.HOME_V3
-        prefByColumn[c] = false
+        nextType[c] = version === '4.0' ? VCardTypeV4Common.HOME : VCardTypeAdr.HOME_V3
+        nextPref[c] = false
       } else if (k === ORG.key) {
-        initType[c] = ''
-        prefByColumn[c] = false
+        nextType[c] = ''
+        nextPref[c] = false
       } else if (k === NOTE.key) {
-        initType[c] = ''
-        prefByColumn[c] = false
+        nextType[c] = ''
+        nextPref[c] = false
       } else {
-        initType[c] = ''
-        prefByColumn[c] = false
+        nextType[c] = ''
+        nextPref[c] = false
       }
     }
-    setSelectionByColumn(init)
-    setTypeByColumn(initType)
-    setPrefByColumn({ ...prefByColumn })
-  }, [columns])
+    setSelectionByColumn(nextInit)
+    setTypeByColumn(nextType)
+    setPrefByColumn(nextPref)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [columns.join(','), version])
 
   const mapping = useMemo(() => {
     const invert = Object.entries(selectionByColumn)
@@ -87,9 +94,19 @@ export default function FieldMapping({ version, columns, sampleRows, onChange }:
     }
   }, [selectionByColumn, typeByColumn, prefByColumn])
 
+  const onChangeRef = useRef(onChange)
   useEffect(() => {
-    onChange?.(mapping)
-  }, [mapping, onChange])
+    onChangeRef.current = onChange
+  }, [onChange])
+
+  const prevMappingRef = useRef<string>('')
+  useEffect(() => {
+    const s = JSON.stringify(mapping)
+    if (s !== prevMappingRef.current) {
+      prevMappingRef.current = s
+      onChangeRef.current?.(mapping)
+    }
+  }, [mapping])
 
   const preview = useMemo(() => {
     const mapped = Object.entries(selectionByColumn)

@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from 'react'
+import React, { useCallback, useMemo, useRef, useState } from 'react'
 import * as XLSX from 'xlsx'
 import * as VCF from 'vcf'
 import Modal from './Modal'
@@ -34,7 +34,7 @@ export default function CsvToVCardUpload({ accept = '.csv,.xlsx,.xls', locale = 
   const inputRef = useRef<HTMLInputElement | null>(null)
   const [open, setOpen] = useState(false)
   const [version, setVersion] = useState<'3.0' | '4.0'>('3.0')
-  const [columns, setColumns] = useState<string[]>(['姓名', '电话号码', '公司', '备注'])
+  const [columns, setColumns] = useState<string[]>(() => ['姓名', '电话号码', '公司', '备注'])
   const [sampleRows, setSampleRows] = useState<Record<string, any>[]>([])
   const [rows, setRows] = useState<Record<string, any>[]>([])
   const [mapping, setMapping] = useState<Record<string, string>>({})
@@ -105,9 +105,9 @@ export default function CsvToVCardUpload({ accept = '.csv,.xlsx,.xls', locale = 
     e.preventDefault()
   }
 
-  const onMappingChange = (m: Record<string, string>) => {
+  const onMappingChange = useCallback((m: Record<string, string>) => {
     setMapping(m)
-  }
+  }, [])
 
   const supportedFields = useMemo(() => (version === '4.0' ? FIELDS_V4 : FIELDS_V3), [version])
 

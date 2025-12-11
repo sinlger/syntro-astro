@@ -7,7 +7,7 @@
   },
   "page": {
     "home_title": "Excel/CSV/XLSX 一键转 vCard (VCF) 转换器 - 100%本地批量导入通讯录",
-    "home_description": "告别手动输入！安全、快速、精准地将 Excel/CSV 通讯录批量转换成 VCF 名片文件，全程在本地浏览器处理，数据永不泄露，兼容 iOS/Android。"
+    "home_description": "告别手动输入！安全、快速、精准地将 Excel/CSV 通讯录批量转换成 VCF 名片文件，全程在本地浏览器处理，100% 离线转换 ， 数据永不离开设备，兼容 iOS/Android。"
   },
   "uploadDropzone": {
     "drag": "拖拽视频文件或点击选择",
@@ -198,8 +198,8 @@
     },
     "excel": {
       "seo": {
-        "title": "Excel 转 vCard 在线转换器 - XLSX/XLS 到 VCF 批量导入",
-        "description": "在线将 Excel (XLSX/XLS) 批量转换成 vCard (VCF) 文件。100% 本地处理，安全高效，支持 Excel/CSV 到 VCF 格式的精确映射和导入。"
+        "title": "Excel/XLSX 批量转 VCF (vCard) 在线转换器 - 100%本地安全，数据不上传，确保通讯录导入 iOS/Android 兼容。",
+        "description": "将 Excel/XLSX 文件安全地批量转换为 VCF 名片格式，全程在浏览器本地完成，数据不上传，确保通讯录导入 iOS/Android 兼容。"
       },
       "title": "专业的 Excel 转 vCard 在线转换工具",
       "subtitle": "上传 Excel 文件，自动生成可导入通讯录的 .vcf 名片。",
