@@ -9,12 +9,6 @@ type Props = {
   onChange?: (mapping: Record<string, string>) => void
 }
 
-const TARGETS = [
-  { key: 'fullName', label: 'fullName', required: true },
-  { key: 'phone', label: 'phone', required: true },
-  { key: 'company', label: 'company', required: false },
-  { key: 'notes', label: 'notes', required: false },
-]
 
 function suggestTargetForColumn(col: string) {
   const l = col.toLowerCase()

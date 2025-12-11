@@ -30,14 +30,14 @@ const i18nInstance = initI18n(effectiveLocale);
 const t = i18nInstance.t.bind(i18nInstance);
 const translationsBundle = i18nInstance.getResourceBundle(effectiveLocale, 'common');
 // 1. 定义 HTML lang 属性（BCP 47 标准）
-const htmlLang = locale === "zh" ? "zh-Hans" : "en";
+const htmlLang = locale === "zh" ? "zh-Hans" :locale;
 
 // 2. 翻译 SEO 元数据
 const pageTitle = t("pages.csv.seo.title");
 const pageDescription = t("pages.csv.seo.description");
 
 // 3. 定义语言无关的规范路径 (例如：首页是 '/'，关于页面是 '/about')
-const canonicalPath = "/";
+const canonicalPath = "/CSV-to-vCard";
 ---
 
 <BaseLayout 

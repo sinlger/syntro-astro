@@ -6,8 +6,8 @@
     "badge": "100% 离线转换 · 数据永不离开设备"
   },
   "page": {
-    "home_title": "Excel/CSV to vCard (VCF) Converter & VCF to Excel Tool",
-    "home_description": "Online VCF to Excel/CSV conversion. Completely local and privacy-secure bulk contact conversion. Supports XLSX/XLS/CSV, generating VCF files."
+    "home_title": "Excel/CSV/XLSX 一键转 vCard (VCF) 转换器 - 100%本地批量导入通讯录",
+    "home_description": "告别手动输入！安全、快速、精准地将 Excel/CSV 通讯录批量转换成 VCF 名片文件，全程在本地浏览器处理，数据永不泄露，兼容 iOS/Android。"
   },
   "uploadDropzone": {
     "drag": "拖拽视频文件或点击选择",
