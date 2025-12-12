@@ -1,14 +1,16 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, { forwardRef, useEffect, useImperativeHandle, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { FN, TEL, ORG, NOTE, EMAIL, ADR, LABEL, FIELDS_V3, FIELDS_V4, VCardTypeTel, VCardTypeEmail, VCardTypeAdr, VCardTypeV4Common, VCardTypeTelZh, VCardTypeEmailZh, VCardTypeAdrZh } from './vCard'
+import { FN, TEL, ORG, NOTE, EMAIL, ADR, FIELDS_V3, FIELDS_V4, VCardTypeTel, VCardTypeEmail, VCardTypeAdr, VCardTypeV4Common, VCardTypeTelZh, VCardTypeEmailZh, VCardTypeAdrZh } from './vCard'
 
 type Props = {
   version: '3.0' | '4.0'
   columns: string[]
   sampleRows: Array<Record<string, any>>
-  onChange?: (mapping: Record<string, string>) => void
 }
 
+export interface FieldMappingHandle {
+  getMapping: () => any
+}
 
 function suggestTargetForColumn(col: string) {
   const l = col.toLowerCase()
@@ -19,8 +21,7 @@ function suggestTargetForColumn(col: string) {
   return ''
 }
 
-export default function FieldMapping({ version, columns, sampleRows, onChange }: Props) {
-  console.log(version, columns, sampleRows, onChange)
+const FieldMapping = forwardRef<FieldMappingHandle, Props>(({ version, columns, sampleRows }, ref) => {
   const { t } = useTranslation('common')
   const [selectionByColumn, setSelectionByColumn] = useState<Record<string, string>>({})
   const [typeByColumn, setTypeByColumn] = useState<Record<string, string>>({})
@@ -94,19 +95,9 @@ export default function FieldMapping({ version, columns, sampleRows, onChange }:
     }
   }, [selectionByColumn, typeByColumn, prefByColumn])
 
-  const onChangeRef = useRef(onChange)
-  useEffect(() => {
-    onChangeRef.current = onChange
-  }, [onChange])
-
-  const prevMappingRef = useRef<string>('')
-  useEffect(() => {
-    const s = JSON.stringify(mapping)
-    if (s !== prevMappingRef.current) {
-      prevMappingRef.current = s
-      onChangeRef.current?.(mapping)
-    }
-  }, [mapping])
+  useImperativeHandle(ref, () => ({
+    getMapping: () => mapping
+  }))
 
   const preview = useMemo(() => {
     const mapped = Object.entries(selectionByColumn)
@@ -241,4 +232,6 @@ export default function FieldMapping({ version, columns, sampleRows, onChange }:
       </div>
     </div>
   )
-}
+})
+
+export default FieldMapping

@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useRef, useState } from 'react'
 import * as XLSX from 'xlsx'
 import * as VCF from 'vcf'
 import Modal from './Modal'
-import FieldMapping from './FieldMapping'
+import FieldMapping, { type FieldMappingHandle } from './FieldMapping'
 import { FN, TEL, FIELDS_V3, FIELDS_V4 } from './vCard'
 import i18next from 'i18next'
 import { I18nextProvider, useTranslation } from 'react-i18next'
@@ -32,12 +32,12 @@ const setupI18n = (initialLocale: string, translations: any) => {
 export default function CsvToVCardUpload({ accept = '.csv,.xlsx,.xls', locale = 'zh', translations }: { accept?: string, locale?: string, translations?: any }) {
   setupI18n(locale, translations)
   const inputRef = useRef<HTMLInputElement | null>(null)
+  const fieldMappingRef = useRef<FieldMappingHandle>(null)
   const [open, setOpen] = useState(false)
   const [version, setVersion] = useState<'3.0' | '4.0'>('3.0')
   const [columns, setColumns] = useState<string[]>(() => ['姓名', '电话号码', '公司', '备注'])
   const [sampleRows, setSampleRows] = useState<Record<string, any>[]>([])
   const [rows, setRows] = useState<Record<string, any>[]>([])
-  const [mapping, setMapping] = useState<Record<string, string>>({})
   const [notice, setNotice] = useState<{ type: 'success' | 'error', text: string } | null>(null)
 
   const isAccepted = (file: File) => {
@@ -105,15 +105,18 @@ export default function CsvToVCardUpload({ accept = '.csv,.xlsx,.xls', locale = 
     e.preventDefault()
   }
 
-  const onMappingChange = useCallback((m: Record<string, string>) => {
-    setMapping(m)
-  }, [])
-
   const supportedFields = useMemo(() => (version === '4.0' ? FIELDS_V4 : FIELDS_V3), [version])
 
   const generateVCard = () => {
+    const mapping = fieldMappingRef.current?.getMapping()
+    if (!mapping || !mapping.fullName || !mapping.phone) {
+      // @ts-ignore
+      const t = i18nClient.t.bind(i18nClient)
+      setNotice({ type: 'error', text: t('pages.csv.ui.notice.missingRequired') || 'Missing required fields' })
+      return
+    }
+
     const source = rows.length ? rows : sampleRows
-    console.log(source)
     const fields = (mapping as any).fields as Array<{ fieldKey: string; column: string; type?: string; pref?: boolean }>
     const entries = source
       .map((r) => {
@@ -405,7 +408,6 @@ export default function CsvToVCardUpload({ accept = '.csv,.xlsx,.xls', locale = 
             <button
               type="button"
               onClick={generateVCard}
-              disabled={!mapping.fullName || !mapping.phone}
               className="inline-flex items-center justify-center transition-all duration-200 ring-1 focus:ring-2 ring-accent-700 focus:outline-none text-base-50 bg-accent-600 hover:bg-accent-700 focus:ring-base-500/50 h-9 px-4 text-sm font-medium rounded-md disabled:opacity-50 disabled:cursor-not-allowed w-full sm:w-auto"
             >
               {t('pages.csv.ui.exportVCard')}
@@ -415,7 +417,7 @@ export default function CsvToVCardUpload({ accept = '.csv,.xlsx,.xls', locale = 
       >
         <div className="max-w-5xl px-2 sm:px-0">
           <div className="text-xs text-base-600">{t('pages.csv.ui.ensureMapping', { fn: FN.zh, tel: TEL.zh, count: supportedFields.length })}</div>
-          <FieldMapping version={version} columns={columns} sampleRows={sampleRows} onChange={onMappingChange} />
+          <FieldMapping ref={fieldMappingRef} version={version} columns={columns} sampleRows={sampleRows} />
         </div>
       </Modal>
     </div>
