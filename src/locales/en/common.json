@@ -7,7 +7,9 @@
   },
   "page": {
     "home_title": "Excel/CSV to vCard (VCF) Converter & VCF to Excel Tool - 100% Local Bulk Import",
-    "home_description": "The ultimate bulk converter: Securely and instantly transform Excel/CSV/XLSX contacts to VCF for iOS/Android import, or VCF back to Excel/CSV. 100% offline and privacy-guaranteed processing."
+    "home_description": "The ultimate bulk converter: Securely and instantly transform Excel/CSV/XLSX contacts to VCF for iOS/Android import, or VCF back to Excel/CSV. 100% offline and privacy-guaranteed processing.",
+    "blog_title": "Blog",
+    "blog_description": "Latest updates and articles from the Excel2VCF team."
   },
   "uploadDropzone": {
     "drag": "Drag & drop your file or click to select",
@@ -94,11 +96,59 @@
     ]
   },
   "nav": {
-    "brand": "Syntro",
+    "brand": "Excel2VCF",
     "csvToVCard": "CSV to VCard/VCF",
     "excelToVCard": "Excel to VCard/VCF",
     "vcardToExcel": "VCF/VCard to Excel",
+    "blog": "Blog",
     "faq": "FAQ"
+  },
+  "vcard": {
+    "field": {
+      "VERSION": { "label": "Version", "desc": "vCard Version (3.0 or 4.0)." },
+      "FN": { "label": "Full Name", "desc": "Display name of the contact, usually required." },
+      "N": { "label": "Name Structure", "desc": "Format: Family Name; Given Name; Middle Name; Prefix; Suffix." },
+      "TEL": { "label": "Telephone", "desc": "Supports TYPE parameter (e.g. CELL, WORK, HOME)." },
+      "EMAIL": { "label": "Email", "desc": "Supports TYPE parameter (e.g. INTERNET)." },
+      "ORG": { "label": "Organization", "desc": "Company and Department name." },
+      "TITLE": { "label": "Job Title", "desc": "Job title or position." },
+      "ADR": { "label": "Address", "desc": "Supports TYPE parameter (e.g. HOME, WORK)." },
+      "URL": { "label": "Website", "desc": "Personal or company website." },
+      "NOTE": { "label": "Note", "desc": "Additional notes." },
+      "BDAY": { "label": "Birthday", "desc": "Format: YYYY-MM-DD." },
+      "NICKNAME": { "label": "Nickname", "desc": "Contact nickname." },
+      "LABEL": { "label": "Label", "desc": "Address label for printing (associated with ADR)." },
+      "PHOTO": { "label": "Photo", "desc": "Supports Base64 encoded image." },
+      "UID": { "label": "UID", "desc": "Unique identifier for the contact." },
+      "REV": { "label": "Last Revision", "desc": "ISO 8601 timestamp." },
+      "CATEGORIES": { "label": "Categories", "desc": "Used to categorize contacts." },
+      "GENDER": { "label": "Gender", "desc": "Format: M, F, O, U." },
+      "ANNIVERSARY": { "label": "Anniversary", "desc": "E.g. Wedding anniversary." },
+      "LANG": { "label": "Language", "desc": "Language used by the contact." },
+      "ROLE": { "label": "Role", "desc": "Role within the organization." },
+      "TZ": { "label": "Timezone", "desc": "Timezone of the contact." },
+      "X_PREFIX": { "label": "Custom Field", "desc": "E.g. X-INSTANT-MESSENGER, X-SKYPE." },
+      "IMPP": { "label": "Instant Messenger", "desc": "E.g. IMPP:skype:username." },
+      "SOUND": { "label": "Sound", "desc": "Usually used for pronunciation." }
+    },
+    "type": {
+      "HOME": "Home",
+      "WORK": "Work",
+      "VOICE": "Voice",
+      "CELL": "Mobile",
+      "FAX": "Fax",
+      "PAGER": "Pager",
+      "TEXT": "Text",
+      "VIDEO": "Video",
+      "TEXTPHONE": "Textphone",
+      "INTERNET": "Internet",
+      "A400": "X.400",
+      "POSTAL": "Postal",
+      "PARCEL": "Parcel",
+      "DOM": "Domestic",
+      "INTL": "International",
+      "PREF": "Preferred"
+    }
   },
   "pages": {
     "csv": {
@@ -467,8 +517,8 @@
     "links": {
       "partners": "Partners"
     },
-    "intro": "An open-source SaaS starter project built on Astro and Tailwind CSS. Freely customizable and easy to deploy.",
-    "companyName": "VCF2XLS"
+    "intro": "Excel2VCF is a free online tool dedicated to providing secure and fast bi-directional conversion between Excel/CSV and vCard (VCF), processed entirely locally to protect your privacy.",
+    "companyName": "Excel2VCF"
   },
   "components": {
     "modal": {

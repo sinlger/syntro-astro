@@ -3,7 +3,7 @@ import * as XLSX from 'xlsx'
 import * as VCF from 'vcf'
 import Modal from './Modal'
 import FieldMapping, { type FieldMappingHandle } from './FieldMapping'
-import { FN, TEL, FIELDS_V3, FIELDS_V4 } from './vCard'
+import { FN, TEL, useVCardFields } from './vCard'
 import i18next from 'i18next'
 import { I18nextProvider, useTranslation } from 'react-i18next'
 const VCardCtor: any = (VCF as any).default || (VCF as any).vCard || (VCF as any)
@@ -105,8 +105,6 @@ export default function CsvToVCardUpload({ accept = '.csv,.xlsx,.xls', locale = 
     e.preventDefault()
   }
 
-  const supportedFields = useMemo(() => (version === '4.0' ? FIELDS_V4 : FIELDS_V3), [version])
-
   const generateVCard = () => {
     const mapping = fieldMappingRef.current?.getMapping()
     if (!mapping || !mapping.fullName || !mapping.phone) {
@@ -127,7 +125,7 @@ export default function CsvToVCardUpload({ accept = '.csv,.xlsx,.xls', locale = 
         const lines: string[] = []
         lines.push('BEGIN:VCARD')
         lines.push(`VERSION:${version}`)
-        lines.push('PRODID:-//Syntro//CSV-to-vCard//ZH')
+        lines.push('PRODID:-//Excel2VCF//CSV-to-vCard//ZH')
         const hasNInFields = Array.isArray(fields) && fields.some((f) => f.fieldKey === 'N')
         const makeStructuredName = (s: string) => {
           const n = s.trim()
@@ -333,6 +331,7 @@ export default function CsvToVCardUpload({ accept = '.csv,.xlsx,.xls', locale = 
 
   const Content = () => {
     const { t } = useTranslation('common')
+    const supportedFields = useVCardFields(version)
     return (
     <div className="rounded-2xl p-4 sm:p-6 bg-accent-50 shadow-sm ring-1 ring-base-200 mt-6 sm:mt-10">
       <div className="flex items-center gap-2 text-sm sm:text-base font-semibold text-black">
@@ -416,7 +415,7 @@ export default function CsvToVCardUpload({ accept = '.csv,.xlsx,.xls', locale = 
         }
       >
         <div className="max-w-5xl px-2 sm:px-0">
-          <div className="text-xs text-base-600">{t('pages.csv.ui.ensureMapping', { fn: FN.zh, tel: TEL.zh, count: supportedFields.length })}</div>
+          <div className="text-xs text-base-600">{t('pages.csv.ui.ensureMapping', { fn: t(FN.labelKey), tel: t(TEL.labelKey), count: supportedFields.length })}</div>
           <FieldMapping ref={fieldMappingRef} version={version} columns={columns} sampleRows={sampleRows} />
         </div>
       </Modal>

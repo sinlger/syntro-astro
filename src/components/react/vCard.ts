@@ -1,38 +1,41 @@
+import i18next from 'i18next'
+import { useTranslation } from 'react-i18next'
+
 export type VCardField = {
   key: string
-  zh: string
+  labelKey: string
   v3: boolean
   v4: boolean
-  desc: string
+  descKey: string
 }
 
-// --- vCard 字段定义（保持不变）---
+// --- vCard 字段定义 ---
 
-export const VERSION: VCardField = { key: 'VERSION', zh: '版本号', v3: true, v4: true, desc: 'vCard 版本（3.0 或 4.0）。' }
-export const FN: VCardField = { key: 'FN', zh: '全名', v3: true, v4: true, desc: '显示的联系人名称，通常必填。' }
-export const N: VCardField = { key: 'N', zh: '姓名结构', v3: true, v4: true, desc: '格式：姓;名;中间名;称呼;后缀。' }
-export const TEL: VCardField = { key: 'TEL', zh: '电话号码', v3: true, v4: true, desc: '支持 TYPE 参数（如 CELL, WORK, HOME）。' }
-export const EMAIL: VCardField = { key: 'EMAIL', zh: '电子邮箱', v3: true, v4: true, desc: '支持 TYPE 参数（如 INTERNET）。' }
-export const ORG: VCardField = { key: 'ORG', zh: '组织/公司', v3: true, v4: true, desc: '公司名和部门名。' }
-export const TITLE: VCardField = { key: 'TITLE', zh: '职位/头衔', v3: true, v4: true, desc: '职业或职务。' }
-export const ADR: VCardField = { key: 'ADR', zh: '地址', v3: true, v4: true, desc: '支持 TYPE 参数（如 HOME, WORK）。' }
-export const URL: VCardField = { key: 'URL', zh: '网站', v3: true, v4: true, desc: '个人或公司网站。' }
-export const NOTE: VCardField = { key: 'NOTE', zh: '备注', v3: true, v4: true, desc: '额外说明信息。' }
-export const BDAY: VCardField = { key: 'BDAY', zh: '生日', v3: true, v4: true, desc: '格式：YYYY-MM-DD。' }
-export const NICKNAME: VCardField = { key: 'NICKNAME', zh: '昵称', v3: true, v4: true, desc: '联系人昵称。' }
-export const LABEL: VCardField = { key: 'LABEL', zh: '地址标签', v3: true, v4: false, desc: '用于打印的地址标签（与 ADR 关联）。' }
-export const PHOTO: VCardField = { key: 'PHOTO', zh: '头像', v3: true, v4: true, desc: '支持 Base64 编码嵌入图片。' }
-export const UID: VCardField = { key: 'UID', zh: '唯一标识符', v3: true, v4: true, desc: '联系人的唯一 ID。' }
-export const REV: VCardField = { key: 'REV', zh: '最后修改时间', v3: true, v4: true, desc: 'ISO 8601 时间戳。' }
-export const CATEGORIES: VCardField = { key: 'CATEGORIES', zh: '分类', v3: true, v4: true, desc: '用于标记联系人类型。' }
-export const GENDER: VCardField = { key: 'GENDER', zh: '性别', v3: false, v4: true, desc: '格式：M、F、O、U。' }
-export const ANNIVERSARY: VCardField = { key: 'ANNIVERSARY', zh: '纪念日', v3: false, v4: true, desc: '如结婚纪念日。' }
-export const LANG: VCardField = { key: 'LANG', zh: '语言', v3: false, v4: true, desc: '联系人使用的语言（如 zh-CN）。' }
-export const ROLE: VCardField = { key: 'ROLE', zh: '角色', v3: true, v4: true, desc: '在组织中的角色。' }
-export const TZ: VCardField = { key: 'TZ', zh: '时区', v3: true, v4: true, desc: '联系人所在时区（如 +08:00）。' }
-export const X_PREFIX: VCardField = { key: 'X-*', zh: '自定义字段', v3: true, v4: true, desc: '如 X-INSTANT-MESSENGER、X-SKYPE。' }
-export const IMPP: VCardField = { key: 'IMPP', zh: '即时通讯', v3: false, v4: true, desc: '如 IMPP:skype:username。' }
-export const SOUND: VCardField = { key: 'SOUND', zh: '音频信息', v3: true, v4: true, desc: '通常用于存储联系人发音。' }
+export const VERSION: VCardField = { key: 'VERSION', labelKey: 'vcard.field.VERSION.label', v3: true, v4: true, descKey: 'vcard.field.VERSION.desc' }
+export const FN: VCardField = { key: 'FN', labelKey: 'vcard.field.FN.label', v3: true, v4: true, descKey: 'vcard.field.FN.desc' }
+export const N: VCardField = { key: 'N', labelKey: 'vcard.field.N.label', v3: true, v4: true, descKey: 'vcard.field.N.desc' }
+export const TEL: VCardField = { key: 'TEL', labelKey: 'vcard.field.TEL.label', v3: true, v4: true, descKey: 'vcard.field.TEL.desc' }
+export const EMAIL: VCardField = { key: 'EMAIL', labelKey: 'vcard.field.EMAIL.label', v3: true, v4: true, descKey: 'vcard.field.EMAIL.desc' }
+export const ORG: VCardField = { key: 'ORG', labelKey: 'vcard.field.ORG.label', v3: true, v4: true, descKey: 'vcard.field.ORG.desc' }
+export const TITLE: VCardField = { key: 'TITLE', labelKey: 'vcard.field.TITLE.label', v3: true, v4: true, descKey: 'vcard.field.TITLE.desc' }
+export const ADR: VCardField = { key: 'ADR', labelKey: 'vcard.field.ADR.label', v3: true, v4: true, descKey: 'vcard.field.ADR.desc' }
+export const URL: VCardField = { key: 'URL', labelKey: 'vcard.field.URL.label', v3: true, v4: true, descKey: 'vcard.field.URL.desc' }
+export const NOTE: VCardField = { key: 'NOTE', labelKey: 'vcard.field.NOTE.label', v3: true, v4: true, descKey: 'vcard.field.NOTE.desc' }
+export const BDAY: VCardField = { key: 'BDAY', labelKey: 'vcard.field.BDAY.label', v3: true, v4: true, descKey: 'vcard.field.BDAY.desc' }
+export const NICKNAME: VCardField = { key: 'NICKNAME', labelKey: 'vcard.field.NICKNAME.label', v3: true, v4: true, descKey: 'vcard.field.NICKNAME.desc' }
+export const LABEL: VCardField = { key: 'LABEL', labelKey: 'vcard.field.LABEL.label', v3: true, v4: false, descKey: 'vcard.field.LABEL.desc' }
+export const PHOTO: VCardField = { key: 'PHOTO', labelKey: 'vcard.field.PHOTO.label', v3: true, v4: true, descKey: 'vcard.field.PHOTO.desc' }
+export const UID: VCardField = { key: 'UID', labelKey: 'vcard.field.UID.label', v3: true, v4: true, descKey: 'vcard.field.UID.desc' }
+export const REV: VCardField = { key: 'REV', labelKey: 'vcard.field.REV.label', v3: true, v4: true, descKey: 'vcard.field.REV.desc' }
+export const CATEGORIES: VCardField = { key: 'CATEGORIES', labelKey: 'vcard.field.CATEGORIES.label', v3: true, v4: true, descKey: 'vcard.field.CATEGORIES.desc' }
+export const GENDER: VCardField = { key: 'GENDER', labelKey: 'vcard.field.GENDER.label', v3: false, v4: true, descKey: 'vcard.field.GENDER.desc' }
+export const ANNIVERSARY: VCardField = { key: 'ANNIVERSARY', labelKey: 'vcard.field.ANNIVERSARY.label', v3: false, v4: true, descKey: 'vcard.field.ANNIVERSARY.desc' }
+export const LANG: VCardField = { key: 'LANG', labelKey: 'vcard.field.LANG.label', v3: false, v4: true, descKey: 'vcard.field.LANG.desc' }
+export const ROLE: VCardField = { key: 'ROLE', labelKey: 'vcard.field.ROLE.label', v3: true, v4: true, descKey: 'vcard.field.ROLE.desc' }
+export const TZ: VCardField = { key: 'TZ', labelKey: 'vcard.field.TZ.label', v3: true, v4: true, descKey: 'vcard.field.TZ.desc' }
+export const X_PREFIX: VCardField = { key: 'X-*', labelKey: 'vcard.field.X_PREFIX.label', v3: true, v4: true, descKey: 'vcard.field.X_PREFIX.desc' }
+export const IMPP: VCardField = { key: 'IMPP', labelKey: 'vcard.field.IMPP.label', v3: false, v4: true, descKey: 'vcard.field.IMPP.desc' }
+export const SOUND: VCardField = { key: 'SOUND', labelKey: 'vcard.field.SOUND.label', v3: true, v4: true, descKey: 'vcard.field.SOUND.desc' }
 
 // --- TYPE 参数值定义（v3 与 v4 通用和 v4 特有）---
 
@@ -110,45 +113,45 @@ export const VCardTypeAdr = {
 
 // --- TYPE 中文标签映射 ---
 
-export const VCardTypeTelZh: Record<string, string> = {
-  HOME: '家庭',
-  WORK: '工作',
-  VOICE: '语音',
-  CELL: '手机',
-  FAX: '传真',
-  PAGER: '寻呼机',
-  home: '家庭',
-  work: '工作',
-  voice: '语音',
-  cell: '手机',
-  fax: '传真',
-  text: '短信',
-  video: '视频',
-  pager: '寻呼机',
-  textphone: '助听设备',
+export const VCardTypeTelKeys: Record<string, string> = {
+  HOME: 'vcard.type.HOME',
+  WORK: 'vcard.type.WORK',
+  VOICE: 'vcard.type.VOICE',
+  CELL: 'vcard.type.CELL',
+  FAX: 'vcard.type.FAX',
+  PAGER: 'vcard.type.PAGER',
+  home: 'vcard.type.HOME',
+  work: 'vcard.type.WORK',
+  voice: 'vcard.type.VOICE',
+  cell: 'vcard.type.CELL',
+  fax: 'vcard.type.FAX',
+  text: 'vcard.type.TEXT',
+  video: 'vcard.type.VIDEO',
+  pager: 'vcard.type.PAGER',
+  textphone: 'vcard.type.TEXTPHONE',
 }
 
-export const VCardTypeEmailZh: Record<string, string> = {
-  INTERNET: '互联网邮件',
-  A400: 'X.400 邮件',
+export const VCardTypeEmailKeys: Record<string, string> = {
+  INTERNET: 'vcard.type.INTERNET',
+  A400: 'vcard.type.A400',
 }
 
-export const VCardTypeAdrZh: Record<string, string> = {
-  HOME: '家庭',
-  WORK: '工作',
-  POSTAL: '邮政地址',
-  PARCEL: '包裹地址',
-  home: '家庭',
-  work: '工作',
-  dom: '境内地址',
-  intl: '国际地址',
+export const VCardTypeAdrKeys: Record<string, string> = {
+  HOME: 'vcard.type.HOME',
+  WORK: 'vcard.type.WORK',
+  POSTAL: 'vcard.type.POSTAL',
+  PARCEL: 'vcard.type.PARCEL',
+  home: 'vcard.type.HOME',
+  work: 'vcard.type.WORK',
+  dom: 'vcard.type.DOM',
+  intl: 'vcard.type.INTL',
 }
 
-export const VCardTypeCommonZh: Record<string, string> = {
-  PREF: '首选',
+export const VCardTypeCommonKeys: Record<string, string> = {
+  PREF: 'vcard.type.PREF',
 }
 
-// --- 字段数组定义（保持不变）---
+// --- 字段数组定义 ---
 
 export const FIELDS: VCardField[] = [
   VERSION,
@@ -182,3 +185,37 @@ export const FIELDS_V3: VCardField[] = FIELDS.filter((f) => f.v3)
 export const FIELDS_V4: VCardField[] = FIELDS.filter((f) => f.v4)
 export const FIELD_KEYS_V3: string[] = FIELDS_V3.map((f) => f.key)
 export const FIELD_KEYS_V4: string[] = FIELDS_V4.map((f) => f.key)
+
+// --- Hooks ---
+
+export const useVCardFields = (version: '3.0' | '4.0' = '3.0') => {
+    const { t } = useTranslation('common');
+    const fields = version === '4.0' ? FIELDS_V4 : FIELDS_V3;
+    
+    return fields.map(f => ({
+        ...f,
+        label: t(f.labelKey),
+        desc: t(f.descKey)
+    }));
+}
+
+export const useVCardTypes = () => {
+    const { t } = useTranslation('common');
+    
+    return {
+        getTypeLabel: (type: string, category: 'tel' | 'email' | 'adr' | 'common' = 'common') => {
+             let key = '';
+             if (category === 'tel') key = VCardTypeTelKeys[type];
+             else if (category === 'email') key = VCardTypeEmailKeys[type];
+             else if (category === 'adr') key = VCardTypeAdrKeys[type];
+             else if (category === 'common') key = VCardTypeCommonKeys[type];
+             
+             // Fallback to trying all if specific category not matched or generic
+             if (!key) {
+                 key = VCardTypeTelKeys[type] || VCardTypeEmailKeys[type] || VCardTypeAdrKeys[type] || VCardTypeCommonKeys[type];
+             }
+             
+             return key ? t(key) : type;
+        }
+    }
+}

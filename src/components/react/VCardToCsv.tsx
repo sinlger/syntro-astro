@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import * as VCF from 'vcf'
 import * as XLSX from 'xlsx'
-import { VCardTypeTelZh, VCardTypeEmailZh, VCardTypeAdrZh, VCardTypeCommonZh } from './vCard'
+import { useVCardTypes } from './vCard'
 import i18next from 'i18next'
 import { I18nextProvider, useTranslation } from 'react-i18next'
 type Row = Record<string, string>
@@ -42,14 +42,14 @@ function parseVcf(text: string): any[] {
   return []
 }
 
-function zhTypeLabel(t: any): string {
+function zhTypeLabel(t: any, getTypeLabel: (k: string, cat?: any) => string): string {
   if (!t) return ''
   const arr = Array.isArray(t) ? t : [t]
-  const mapped = arr.map((x) => (VCardTypeTelZh[x] || VCardTypeEmailZh[x] || VCardTypeAdrZh[x] || (x === 'pref' ? VCardTypeCommonZh.PREF : x)))
+  const mapped = arr.map((x) => getTypeLabel(x === 'pref' ? 'PREF' : x))
   return mapped.join(',')
 }
 
-function cardToRow(card: any): Row {
+function cardToRow(card: any, getTypeLabel: (k: string, cat?: any) => string): Row {
   const nParts = valOf(card.get('n')).split(';')
 
   const tels = toArray(card.get('tel')).map((p: any) => {
@@ -58,13 +58,13 @@ function cardToRow(card: any): Row {
     if (Array.isArray(p.type)) types.push(...p.type)
     else if (p.type) types.push(p.type)
     if (p.pref) types.push('pref')
-    const tLabel = zhTypeLabel(types)
+    const tLabel = zhTypeLabel(types, getTypeLabel)
     return `${v}${tLabel ? ` (${tLabel})` : ''}`
   }).join(' | ')
 
   const emails = toArray(card.get('email')).map((p: any) => {
     const v = valOf(p).replace(/^mailto:/, '')
-    const tLabel = zhTypeLabel(p.type)
+    const tLabel = zhTypeLabel(p.type, getTypeLabel)
     return `${v}${tLabel ? ` (${tLabel})` : ''}`
   }).join(' | ')
 
@@ -76,7 +76,7 @@ function cardToRow(card: any): Row {
     const region = parts[4] || ''
     const postal = parts[5] || ''
     const country = parts[6] || ''
-    const tLabel = zhTypeLabel(p.type)
+    const tLabel = zhTypeLabel(p.type, getTypeLabel)
     const payload = [street, city, region, postal, country].filter(Boolean).join(' ')
     return `${payload}${tLabel ? ` (${tLabel})` : ''}`
   }).join(' | ')
@@ -134,22 +134,22 @@ export default function VCardToCsv({ accept = '.vcf,text/vcard', locale = 'zh', 
     return tokens.some((t) => (t.startsWith('.') ? name.endsWith(t) : type === t))
   }
 
-  const onFile = async (file: File, t: (k: string, o?: any) => string) => {
+  const onFile = async (file: File, t: (k: string, o?: any) => string, getTypeLabel: (k: string, cat?: any) => string) => {
     if (!isAccepted(file)) {
       setNotice({ type: 'error', text: t('pages.vcardExcel.ui.notice.unsupportedType', { name: file.name, accept }) })
       return
     }
     const text = await file.text()
     const cards = parseVcf(text)
-    const data = cards.map(cardToRow)
+    const data = cards.map((c) => cardToRow(c, getTypeLabel))
     setRows(data)
     setFileName(file.name || '')
     setNotice({ type: 'success', text: t('pages.vcardExcel.ui.notice.parseSuccess', { count: data.length, name: file.name || '' }) })
   }
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>, t: (k: string, o?: any) => string) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>, t: (k: string, o?: any) => string, getTypeLabel: (k: string, cat?: any) => string) => {
     const f = e.target.files && e.target.files[0]
-    if (f) onFile(f, t)
+    if (f) onFile(f, t, getTypeLabel)
   }
 
   const onDragEnter = (e: React.DragEvent<HTMLDivElement>) => {
@@ -170,12 +170,12 @@ export default function VCardToCsv({ accept = '.vcf,text/vcard', locale = 'zh', 
     setDragOver(false)
   }
 
-  const onDrop = (e: React.DragEvent<HTMLDivElement>, t: (k: string, o?: any) => string) => {
+  const onDrop = (e: React.DragEvent<HTMLDivElement>, t: (k: string, o?: any) => string, getTypeLabel: (k: string, cat?: any) => string) => {
     e.preventDefault()
     e.stopPropagation()
     setDragOver(false)
     const f = e.dataTransfer.files && e.dataTransfer.files[0]
-    if (f) onFile(f, t)
+    if (f) onFile(f, t, getTypeLabel)
   }
 
   const download = () => {
@@ -201,6 +201,7 @@ export default function VCardToCsv({ accept = '.vcf,text/vcard', locale = 'zh', 
 
   const Content = () => {
     const { t } = useTranslation('common')
+    const { getTypeLabel } = useVCardTypes()
     return (
     <div>
       <div className="rounded-2xl p-4 sm:p-6 bg-accent-50 shadow-sm ring-1 ring-base-200 mt-6 sm:mt-10">
@@ -218,7 +219,7 @@ export default function VCardToCsv({ accept = '.vcf,text/vcard', locale = 'zh', 
             onDragEnter={onDragEnter}
             onDragOver={onDragOver}
             onDragLeave={onDragLeave}
-            onDrop={(e) => onDrop(e, t)}
+            onDrop={(e) => onDrop(e, t, getTypeLabel)}
             className={`rounded-xl p-8  ring-base-200`}
           >
             <div className={`rounded-xl border-2 ${dragOver ? 'border-accent-400 bg-accent-50' : 'border-dashed border-base-200'} py-16 flex items-center justify-center text-center`}>
@@ -242,7 +243,7 @@ export default function VCardToCsv({ accept = '.vcf,text/vcard', locale = 'zh', 
                     </select>
                   </div>
                   <label htmlFor="vcf-input" className="inline-flex items-center justify-center transition-all duration-200 ring-1 focus:ring-2 ring-accent-700 focus:outline-none text-base-50 bg-accent-600 hover:bg-accent-700 focus:ring-base-500/50 h-10 px-5 text-sm font-medium rounded-md cursor-pointer">{t('pages.vcardExcel.ui.chooseFile')}</label>
-                <input id="vcf-input" type="file" accept={accept} onChange={(e) => onChange(e, t)} className="hidden" />
+                <input id="vcf-input" type="file" accept={accept} onChange={(e) => onChange(e, t, getTypeLabel)} className="hidden" />
                 </div>
               </div>
             </div>

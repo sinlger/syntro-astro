@@ -5,7 +5,9 @@ const sections = [
   {
     title: t("footer.sections.features"),
     links: [
-      { name: t("footer.links.partners"), href: "/partners" },
+      { name: t("nav.csvToVCard"), href: `/${lang}/CSV-to-vCard` },
+      { name: t("nav.excelToVCard"), href: `/${lang}/Excel-to-vCard` },
+      { name: t("nav.vcardToExcel"), href: `/${lang}/vCard-to-Excel` },
     ],
   },
   {
@@ -65,16 +67,8 @@ const sections = [
       class="pt-12 mt-12 border-t border-base-200 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400"
     >
       <p>
-        &copy; {new Date().getFullYear()} {t("footer.companyName")}. Crafted by Michael Andreuzza
-        &
-        <a
-          href="https://getastrothemes.com/free-astro-themes-templates/"
-          class="underline text-blue-600 hover:text-blue-800"
-        >
-          Getastrothemes
-        </a>
+        &copy; {new Date().getFullYear()} {t("footer.companyName")}.
       </p>
-      <p>Additionally Development by Bektur Aslan</p>
     </div>
   </div>
 </footer>

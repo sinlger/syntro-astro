@@ -1,6 +1,6 @@
 import React, { forwardRef, useEffect, useImperativeHandle, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { FN, TEL, ORG, NOTE, EMAIL, ADR, FIELDS_V3, FIELDS_V4, VCardTypeTel, VCardTypeEmail, VCardTypeAdr, VCardTypeV4Common, VCardTypeTelZh, VCardTypeEmailZh, VCardTypeAdrZh } from './vCard'
+import { FN, TEL, ORG, NOTE, EMAIL, ADR, FIELDS_V3, FIELDS_V4, VCardTypeTel, VCardTypeEmail, VCardTypeAdr, VCardTypeV4Common, useVCardFields, useVCardTypes } from './vCard'
 
 type Props = {
   version: '3.0' | '4.0'
@@ -27,7 +27,8 @@ const FieldMapping = forwardRef<FieldMappingHandle, Props>(({ version, columns, 
   const [typeByColumn, setTypeByColumn] = useState<Record<string, string>>({})
   const [prefByColumn, setPrefByColumn] = useState<Record<string, boolean>>({})
 
-  const supportedFields = useMemo(() => (version === '4.0' ? FIELDS_V4 : FIELDS_V3), [version])
+  const supportedFields = useVCardFields(version)
+  const { getTypeLabel } = useVCardTypes()
 
   useEffect(() => {
     const nextInit: Record<string, string> = {}
@@ -88,12 +89,12 @@ const FieldMapping = forwardRef<FieldMappingHandle, Props>(({ version, columns, 
       adrType: adrCol ? (typeByColumn[adrCol] ?? '') : '',
       phonePref: phoneCol ? !!prefByColumn[phoneCol] : false,
       emailPref: emailCol ? !!prefByColumn[emailCol] : false,
-      phoneTypeZh: phoneCol ? (VCardTypeTelZh[typeByColumn[phoneCol] ?? ''] ?? '') : '',
-      emailTypeZh: emailCol ? (VCardTypeEmailZh[typeByColumn[emailCol] ?? ''] ?? '') : '',
-      adrTypeZh: adrCol ? (VCardTypeAdrZh[typeByColumn[adrCol] ?? ''] ?? '') : '',
+      phoneTypeZh: phoneCol ? getTypeLabel(typeByColumn[phoneCol] ?? '', 'tel') : '',
+      emailTypeZh: emailCol ? getTypeLabel(typeByColumn[emailCol] ?? '', 'email') : '',
+      adrTypeZh: adrCol ? getTypeLabel(typeByColumn[adrCol] ?? '', 'adr') : '',
       fields,
     }
-  }, [selectionByColumn, typeByColumn, prefByColumn])
+  }, [selectionByColumn, typeByColumn, prefByColumn, getTypeLabel])
 
   useImperativeHandle(ref, () => ({
     getMapping: () => mapping
@@ -105,7 +106,7 @@ const FieldMapping = forwardRef<FieldMappingHandle, Props>(({ version, columns, 
       .map(([col, sel]) => ({ col, field: supportedFields.find((f) => f.key === sel) }))
       .filter((e) => !!e.field) as Array<{ col: string; field: typeof supportedFields[number] }>
 
-    const head = mapped.map(({ col, field }) => ({ key: `${field.key}:${col}`, label: `${field.zh}（${field.key}）` }))
+    const head = mapped.map(({ col, field }) => ({ key: `${field.key}:${col}`, label: `${field.label}（${field.key}）` }))
 
     const rows = (sampleRows || []).map((r) => {
       const obj: Record<string, any> = {}
@@ -150,7 +151,7 @@ const FieldMapping = forwardRef<FieldMappingHandle, Props>(({ version, columns, 
                     >
                       <option value="">{t('pages.csv.mapping.ignoreColumn')}</option>
                       {supportedFields.map((f) => (
-                        <option key={f.key} value={f.key}>{f.zh}（{f.key}）</option>
+                        <option key={f.key} value={f.key}>{f.label}（{f.key}）</option>
                       ))}
                     </select>
                     {(selectionByColumn[col] === TEL.key || selectionByColumn[col] === EMAIL.key || selectionByColumn[col] === ADR.key) && (
@@ -178,7 +179,7 @@ const FieldMapping = forwardRef<FieldMappingHandle, Props>(({ version, columns, 
                                   )
                                 : []
                         ).map((tKey) => (
-                          <option key={tKey} value={tKey}>{(selectionByColumn[col] === TEL.key ? VCardTypeTelZh[tKey] : selectionByColumn[col] === EMAIL.key ? VCardTypeEmailZh[tKey] : VCardTypeAdrZh[tKey]) || tKey}</option>
+                          <option key={tKey} value={tKey}>{getTypeLabel(tKey, selectionByColumn[col] === TEL.key ? 'tel' : selectionByColumn[col] === EMAIL.key ? 'email' : 'adr')}</option>
                         ))}
                       </select>
                     )}

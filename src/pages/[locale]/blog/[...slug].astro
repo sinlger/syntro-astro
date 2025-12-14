@@ -1,0 +1,186 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { initI18n } from "../../../i18n.js";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => {
+    const [locale, ...slugParts] = post.slug.split('/');
+    const slug = slugParts.join('/');
+    return {
+      params: { locale, slug },
+      props: { post },
+    };
+  });
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const locale = Astro.params.locale;
+const effectiveLocale = locale;
+const i18nInstance = initI18n(effectiveLocale);
+const t = i18nInstance.t.bind(i18nInstance);
+
+const htmlLang = locale === "zh" ? "zh-Hans" : locale;
+const canonicalPath = `/blog/${Astro.params.slug}`;
+
+// Format date
+const formattedDate = post.data.pubDate.toLocaleDateString(htmlLang, {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+
+// Calculate reading time (rough estimate: 200 words per minute)
+const wordCount = post.body.split(/\s+/g).length;
+const readingTime = Math.ceil(wordCount / 200);
+
+// Gradient logic
+const gradients = [
+  "bg-gradient-to-br from-accent-400 to-accent-600",
+  "bg-gradient-to-br from-blue-400 to-blue-600",
+  "bg-gradient-to-br from-purple-400 to-purple-600",
+  "bg-gradient-to-br from-green-400 to-green-600",
+  "bg-gradient-to-br from-red-400 to-red-600",
+];
+const randomGradient = gradients[post.slug.length % gradients.length];
+---
+
+<BaseLayout
+  htmlLang={htmlLang}
+  lang={locale}
+  t={t}
+  pageTitle={post.data.title}
+  pageDescription={post.data.description}
+  canonicalPath={canonicalPath}
+>
+  <article class="px-6 md:px-8 py-12 md:py-20 max-w-5xl mx-auto">
+    {/* Back Link */}
+    <div class="mb-8">
+      <a 
+        href={`/${locale}/blog`} 
+        class="inline-flex items-center gap-2 text-base-600 hover:text-accent-600 transition-colors font-medium"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5"/>
+          <path d="m12 19-7-7 7-7"/>
+        </svg>
+        Back to Blog
+      </a>
+    </div>
+
+    {/* Header Info */}
+    <div class="mb-12">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-base-900 mb-6 leading-tight">
+        {post.data.title}
+      </h1>
+      
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-base-500 text-sm md:text-base">
+        <div class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="18" height="18" x="3" y="4" rx="2" ry="2"/>
+            <line x1="16" x2="16" y1="2" y2="6"/>
+            <line x1="8" x2="8" y1="2" y2="6"/>
+            <line x1="3" x2="21" y1="10" y2="10"/>
+          </svg>
+          <time datetime={post.data.pubDate.toISOString()}>{formattedDate}</time>
+        </div>
+        
+        <div class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+          <span>{post.data.author}</span>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+          <span>{readingTime} min read</span>
+        </div>
+      </div>
+    </div>
+
+    {/* Featured Card */}
+    <div class={`relative w-full aspect-[16/9] md:aspect-[2/1] rounded-3xl overflow-hidden mb-16 shadow-lg ${!post.data.image ? randomGradient : 'bg-neutral-100'}`}>
+      {post.data.image ? (
+        <>
+          <img
+            src={post.data.image.url}
+            alt={post.data.image.alt}
+            class="absolute inset-0 w-full h-full object-cover"
+          />
+          {/* Overlay gradient to ensure text readability if we were to put text over image, 
+              but per design, if image exists it might just be the image. 
+              However, the design shows a styled card. Let's replicate the styled card look even with image as background 
+              or maybe the design implies the card IS the image if it's a custom graphic.
+              
+              If we want to enforce the text overlay style:
+          */}
+          <div class="absolute inset-0 bg-black/40 md:bg-black/20"></div>
+          <div class="absolute inset-0 p-6 md:p-12 flex flex-col justify-end md:justify-center text-white">
+             {/* We can optionally hide this text if the image itself contains text, 
+                 but for a generic template it's safer to show it or have a 'cover' mode.
+                 Given the design shows text on a yellow background, let's assume the "Card" 
+                 is primarily for the title/meta presentation when no custom hero image is designed.
+                 
+                 If there IS an image, we display the image. 
+                 If there IS NO image, we display the styled card.
+             */}
+          </div>
+        </>
+      ) : (
+        <div class="absolute inset-0 p-8 md:p-12 flex flex-col justify-between text-white">
+          <div class="max-w-3xl">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4">
+              {post.data.title}
+            </h2>
+            <p class="text-lg md:text-xl opacity-90 line-clamp-3 max-w-2xl">
+              {post.data.description}
+            </p>
+          </div>
+          
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mt-8">
+            <div class="text-sm font-medium opacity-80">
+              By {post.data.author} — {post.data.pubDate.toISOString().split('T')[0]}
+            </div>
+            
+            {post.data.tags && (
+              <div class="flex flex-wrap gap-2">
+                {post.data.tags.map(tag => (
+                  <span class="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-medium uppercase tracking-wider">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+
+    {/* Content */}
+    <div class="prose prose-lg prose-neutral max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-accent-600 hover:prose-a:text-accent-700 prose-img:rounded-2xl prose-img:shadow-md">
+      <Content />
+    </div>
+
+    {/* Divider */}
+    <hr class="my-16 border-base-200" />
+
+    {/* Continue Reading */}
+    <div class="text-center">
+      <h3 class="text-2xl font-bold text-base-900 mb-8">Continue Reading</h3>
+      <a 
+        href={`/${locale}/blog`}
+        class="inline-flex items-center justify-center px-8 py-3 text-base font-medium text-white bg-accent-600 hover:bg-accent-700 rounded-lg transition-colors shadow-sm hover:shadow-md"
+      >
+        View All Posts
+      </a>
+    </div>
+  </article>
+</BaseLayout>
