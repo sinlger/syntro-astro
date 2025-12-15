@@ -1,7 +1,7 @@
 ---
 title: "Say Goodbye to Manual Entry: How to Safely and Efficiently Bulk Import Excel/CSV Contacts to Your Phone"
 description: "Have hundreds of contacts in an Excel/CSV file but have to enter them manually? Use the Excel to VCF/CSV to vCard tool to easily achieve bulk contact import and completely eliminate tedious manual entry."
-pubDate: 2025-12-14
+pubDate: 2025-11-05
 author: "Excel2VCF Team"
 tags: ["Excel to VCF", "CSV to vCard", "Bulk Contact Import", "Tutorial"]
 ---

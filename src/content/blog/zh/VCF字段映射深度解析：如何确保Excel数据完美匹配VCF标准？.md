@@ -1,7 +1,7 @@
 ---
 title: "VCF 字段映射深度解析：如何确保 Excel 数据完美匹配 VCF 标准？"
 description: "转换后部分联系人信息缺失？这其实是忽略了「VCF字段映射」这一关键步骤。本文结合VCF 3.0标准，教你如何实现Excel列名对应VCF字段的完美匹配。"
-pubDate: 2025-12-14
+pubDate: 2025-12-12
 author: "Excel2VCF 团队"
 tags: ["字段映射", "VCF标准", "数据匹配", "进阶教程"]
 ---
