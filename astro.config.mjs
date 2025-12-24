@@ -3,7 +3,7 @@ import sitemap from "@astrojs/sitemap";
 import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
-  site: "https://yoursite.com",
+  site: "https://excel2vcf.com",
   integrations: [sitemap(), react()],
   i18n: {
     locales: ["zh", "en"],
