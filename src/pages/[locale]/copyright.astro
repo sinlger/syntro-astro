@@ -10,7 +10,7 @@ export function getStaticPaths() {
 const locale = Astro.params.locale;
 const i18nInstance = initI18n(locale);
 const t = i18nInstance.t.bind(i18nInstance);
-const htmlLang = locale === "zh" ? "zh-Hans" : "en";
+const htmlLang = locale === "zh" ? "zh-Hans" :locale;
 const pageTitle = t("legal.copyright.title");
 const pageDescription = t("legal.copyright.seo.description");
 const canonicalPath = "/copyright";

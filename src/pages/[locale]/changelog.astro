@@ -27,7 +27,7 @@ const effectiveLocale = locale;
 // 4. 初始化 i18next 实例
 const i18nInstance = initI18n(effectiveLocale);
 const t = i18nInstance.t.bind(i18nInstance);
-const htmlLang = locale === "zh" ? "zh-Hans" : "en";
+const htmlLang = locale === "zh" ? "zh-Hans" :locale;
 const pageTitle = t("info.changelog.title");
 const pageDescription = t("info.changelog.intro");
 const canonicalPath = "/changelog";

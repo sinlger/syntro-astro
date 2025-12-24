@@ -1,0 +1,139 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { initI18n } from "../../../i18n.js";
+
+export async function getStaticPaths() {
+  const locales = ["zh", "en"];
+  return locales.map((locale) => {
+    return {
+      params: {
+        locale: locale,
+      },
+    };
+  });
+}
+
+const locale = Astro.params.locale;
+const effectiveLocale = locale;
+const i18nInstance = initI18n(effectiveLocale);
+const t = i18nInstance.t.bind(i18nInstance);
+
+const htmlLang = locale === "zh" ? "zh-Hans" : locale;
+const pageTitle = t("page.blog_title") || "Blog";
+const pageDescription = t("page.blog_description") || "Latest updates and articles";
+const canonicalPath = "/blog";
+
+const posts = await getCollection("blog");
+const filteredPosts = posts.filter((post) => post.slug.startsWith(`${locale}/`));
+
+// Sort by date desc
+filteredPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout
+  htmlLang={htmlLang}
+  lang={locale}
+  t={t}
+  pageTitle={pageTitle}
+  pageDescription={pageDescription}
+  canonicalPath={canonicalPath}
+>
+  <section class="py-12 md:py-24">
+    <div class="px-8 max-w-6xl mx-auto">
+      <div class="max-w-3xl mx-auto text-center mb-16">
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-base-900 mb-6">
+          {pageTitle}
+        </h1>
+        <p class="text-lg md:text-xl text-base-500 max-w-2xl mx-auto">
+          {pageDescription}
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {
+          filteredPosts.map((post) => {
+             const urlSlug = post.slug.split('/').slice(1).join('/');
+             // Random gradient if no image, or a specific placeholder based on title length
+             const gradients = [
+                "bg-gradient-to-br from-accent-400 to-accent-600",
+                "bg-gradient-to-br from-blue-400 to-blue-600",
+                "bg-gradient-to-br from-purple-400 to-purple-600",
+                "bg-gradient-to-br from-green-400 to-green-600",
+                "bg-gradient-to-br from-red-400 to-red-600",
+             ];
+             const randomGradient = gradients[post.slug.length % gradients.length];
+
+             return (
+              <a href={`/${locale}/blog/${urlSlug}`} class="group flex flex-col bg-accent-50 rounded-3xl overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <div class={`aspect-[1.6] w-full relative overflow-hidden ${!post.data.image ? randomGradient : 'bg-neutral-100'}`}>
+                  {post.data.image ? (
+                     <img
+                      src={post.data.image.url}
+                      alt={post.data.image.alt}
+                      class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                    />
+                  ) : (
+                    <div class="absolute inset-0 flex items-center justify-center p-8">
+                        <h3 class="text-white text-2xl font-bold leading-tight text-center drop-shadow-md">
+                            {post.data.title}
+                        </h3>
+                    </div>
+                  )}
+                </div>
+                
+                <div class="p-6 flex flex-col flex-grow">
+                  <div class="mb-4">
+                     <span class="inline-block bg-accent-200/50 text-accent-900 text-xs font-semibold px-3 py-1 rounded-full">
+                        <time datetime={post.data.pubDate.toISOString()}>
+                          {post.data.pubDate.toLocaleDateString(htmlLang, {
+                              year: "numeric",
+                              month: "short",
+                              day: "numeric",
+                          })}
+                        </time>
+                     </span>
+                  </div>
+
+                  <h3 class="text-xl font-bold text-base-900 mb-3 line-clamp-2 group-hover:text-accent-600 transition-colors">
+                    {post.data.title}
+                  </h3>
+                  
+                  <p class="text-base-500 text-sm mb-6 flex-grow line-clamp-3 leading-relaxed">
+                    {post.data.description}
+                  </p>
+
+                  <div class="flex items-center justify-between pt-4 border-t border-accent-200/30 mt-auto">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-accent-200 flex items-center justify-center text-accent-700 font-bold text-xs uppercase">
+                            {post.data.author ? post.data.author.charAt(0) : 'S'}
+                        </div>
+                        <span class="text-xs font-medium text-base-700">
+                            {post.data.author}
+                        </span>
+                    </div>
+                    <span class="text-sm font-medium text-base-900 group-hover:text-accent-600 transition-colors">
+                        Read more
+                    </span>
+                  </div>
+                </div>
+              </a>
+            )
+          })
+        }
+      </div>
+      
+      {filteredPosts.length === 0 && (
+        <div class="text-center py-24">
+            <div class="bg-accent-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                </svg>
+            </div>
+          <h3 class="text-lg font-medium text-base-900 mb-1">No posts found</h3>
+          <p class="text-base-500">Check back later for new articles.</p>
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>

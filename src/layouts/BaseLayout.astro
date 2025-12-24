@@ -28,10 +28,6 @@ const canonicalUrl = `${siteUrl}/${lang}${canonicalPath}`;
 // 假设您的语言是 'zh' 和 'en'
 const hreflangsData = [
   { locale: lang, url: `${siteUrl}/${lang}${canonicalPath}` },
-  {
-    locale: lang === "zh" ? "en" : "zh",
-    url: `${siteUrl}/${lang === "zh" ? "en" : "zh"}${canonicalPath}`,
-  },
   { locale: "x-default", url: `${siteUrl}${canonicalPath}` },
 ];
 ---
@@ -52,7 +48,7 @@ const hreflangsData = [
   <body class="bg-accent-25 flex flex-col min-h-svh">
     <Navigation lang={lang} t={t} />
     
-    <main class="grow"><slot /></main>
+    <main class="grow w-full"><slot /></main>
     <Footer lang={lang} t={t} />
   </body>
 </html>

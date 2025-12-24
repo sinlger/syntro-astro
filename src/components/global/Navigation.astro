@@ -4,7 +4,7 @@ const menuItems = [
   { key: "nav.csvToVCard", path: "/CSV-to-vCard" },
   { key: "nav.excelToVCard", path: "/Excel-to-vCard" },
   { key: "nav.vcardToExcel", path: "/vCard-to-Excel" },
-  { key: "nav.faq", path: "/#FAQ", isHash: true }, // 锚点链接
+  { key: "nav.blog", path: "/blog" }
 ];
 // 1. 定义接收的 Props
 interface Props {
@@ -38,7 +38,7 @@ const getLocalizedUrl = (path, locale, isHash) => {
       <div class="flex flex-row items-center justify-between lg:justify-start">
         <a href="/" class="text-black inline-flex items-center gap-3">
           <OptimizedImage width={40} src="/logo.svg" alt="logo" />
-          <span class="font-bold">Syntro</span>
+          <span class="font-bold">Excel2VCF</span>
         </a>
         <button
           @click="open = !open"

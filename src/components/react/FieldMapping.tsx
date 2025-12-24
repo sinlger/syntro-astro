@@ -1,19 +1,16 @@
-import React, { useEffect, useMemo, useState } from 'react'
-import { FN, TEL, ORG, NOTE, EMAIL, ADR, LABEL, FIELDS_V3, FIELDS_V4, VCardTypeTel, VCardTypeEmail, VCardTypeAdr, VCardTypeV4Common, VCardTypeTelZh, VCardTypeEmailZh, VCardTypeAdrZh } from './vCard'
+import React, { forwardRef, useEffect, useImperativeHandle, useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { FN, TEL, ORG, NOTE, EMAIL, ADR, FIELDS_V3, FIELDS_V4, VCardTypeTel, VCardTypeEmail, VCardTypeAdr, VCardTypeV4Common, useVCardFields, useVCardTypes } from './vCard'
 
 type Props = {
   version: '3.0' | '4.0'
   columns: string[]
   sampleRows: Array<Record<string, any>>
-  onChange?: (mapping: Record<string, string>) => void
 }
 
-const TARGETS = [
-  { key: 'fullName', label: '全名/显示名称', required: true },
-  { key: 'phone', label: '手机号', required: true },
-  { key: 'company', label: '公司/组织', required: false },
-  { key: 'notes', label: '备注', required: false },
-]
+export interface FieldMappingHandle {
+  getMapping: () => any
+}
 
 function suggestTargetForColumn(col: string) {
   const l = col.toLowerCase()
@@ -24,43 +21,51 @@ function suggestTargetForColumn(col: string) {
   return ''
 }
 
-export default function FieldMapping({ version, columns, sampleRows, onChange }: Props) {
+const FieldMapping = forwardRef<FieldMappingHandle, Props>(({ version, columns, sampleRows }, ref) => {
+  const { t } = useTranslation('common')
   const [selectionByColumn, setSelectionByColumn] = useState<Record<string, string>>({})
   const [typeByColumn, setTypeByColumn] = useState<Record<string, string>>({})
   const [prefByColumn, setPrefByColumn] = useState<Record<string, boolean>>({})
 
-  const supportedFields = useMemo(() => (version === '4.0' ? FIELDS_V4 : FIELDS_V3), [version])
+  const supportedFields = useVCardFields(version)
+  const { getTypeLabel } = useVCardTypes()
 
   useEffect(() => {
-    const init: Record<string, string> = {}
-    const initType: Record<string, string> = {}
-    for (const c of columns) init[c] = suggestTargetForColumn(c)
+    const nextInit: Record<string, string> = {}
+    const nextType: Record<string, string> = {}
+    const nextPref: Record<string, boolean> = {}
+
     for (const c of columns) {
-      const k = init[c]
+      nextInit[c] = suggestTargetForColumn(c)
+    }
+
+    for (const c of columns) {
+      const k = nextInit[c]
       if (k === TEL.key) {
-        initType[c] = version === '4.0' ? VCardTypeV4Common.CELL : VCardTypeTel.CELL_V3
-        prefByColumn[c] = false
+        nextType[c] = version === '4.0' ? VCardTypeV4Common.CELL : VCardTypeTel.CELL_V3
+        nextPref[c] = false
       } else if (k === EMAIL.key) {
-        initType[c] = VCardTypeEmail.INTERNET
-        prefByColumn[c] = false
+        nextType[c] = VCardTypeEmail.INTERNET
+        nextPref[c] = false
       } else if (k === ADR.key) {
-        initType[c] = version === '4.0' ? VCardTypeV4Common.HOME : VCardTypeAdr.HOME_V3
-        prefByColumn[c] = false
+        nextType[c] = version === '4.0' ? VCardTypeV4Common.HOME : VCardTypeAdr.HOME_V3
+        nextPref[c] = false
       } else if (k === ORG.key) {
-        initType[c] = ''
-        prefByColumn[c] = false
+        nextType[c] = ''
+        nextPref[c] = false
       } else if (k === NOTE.key) {
-        initType[c] = ''
-        prefByColumn[c] = false
+        nextType[c] = ''
+        nextPref[c] = false
       } else {
-        initType[c] = ''
-        prefByColumn[c] = false
+        nextType[c] = ''
+        nextPref[c] = false
       }
     }
-    setSelectionByColumn(init)
-    setTypeByColumn(initType)
-    setPrefByColumn({ ...prefByColumn })
-  }, [columns])
+    setSelectionByColumn(nextInit)
+    setTypeByColumn(nextType)
+    setPrefByColumn(nextPref)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [columns.join(','), version])
 
   const mapping = useMemo(() => {
     const invert = Object.entries(selectionByColumn)
@@ -84,16 +89,16 @@ export default function FieldMapping({ version, columns, sampleRows, onChange }:
       adrType: adrCol ? (typeByColumn[adrCol] ?? '') : '',
       phonePref: phoneCol ? !!prefByColumn[phoneCol] : false,
       emailPref: emailCol ? !!prefByColumn[emailCol] : false,
-      phoneTypeZh: phoneCol ? (VCardTypeTelZh[typeByColumn[phoneCol] ?? ''] ?? '') : '',
-      emailTypeZh: emailCol ? (VCardTypeEmailZh[typeByColumn[emailCol] ?? ''] ?? '') : '',
-      adrTypeZh: adrCol ? (VCardTypeAdrZh[typeByColumn[adrCol] ?? ''] ?? '') : '',
+      phoneTypeZh: phoneCol ? getTypeLabel(typeByColumn[phoneCol] ?? '', 'tel') : '',
+      emailTypeZh: emailCol ? getTypeLabel(typeByColumn[emailCol] ?? '', 'email') : '',
+      adrTypeZh: adrCol ? getTypeLabel(typeByColumn[adrCol] ?? '', 'adr') : '',
       fields,
     }
-  }, [selectionByColumn, typeByColumn, prefByColumn])
+  }, [selectionByColumn, typeByColumn, prefByColumn, getTypeLabel])
 
-  useEffect(() => {
-    onChange?.(mapping)
-  }, [mapping, onChange])
+  useImperativeHandle(ref, () => ({
+    getMapping: () => mapping
+  }))
 
   const preview = useMemo(() => {
     const mapped = Object.entries(selectionByColumn)
@@ -101,7 +106,7 @@ export default function FieldMapping({ version, columns, sampleRows, onChange }:
       .map(([col, sel]) => ({ col, field: supportedFields.find((f) => f.key === sel) }))
       .filter((e) => !!e.field) as Array<{ col: string; field: typeof supportedFields[number] }>
 
-    const head = mapped.map(({ col, field }) => ({ key: `${field.key}:${col}`, label: `${field.zh}（${field.key}）` }))
+    const head = mapped.map(({ col, field }) => ({ key: `${field.key}:${col}`, label: `${field.label}（${field.key}）` }))
 
     const rows = (sampleRows || []).map((r) => {
       const obj: Record<string, any> = {}
@@ -116,13 +121,13 @@ export default function FieldMapping({ version, columns, sampleRows, onChange }:
 
   return (
     <div className="mt-6">
-      <div className="text-xs text-base-600">以下为您上传的字段，请为每个字段选择匹配的 vCard 标准字段。请确保“全名”和“手机号”至少各选择一次。</div>
+      <div className="text-xs text-base-600">{t('pages.csv.mapping.instructions')}</div>
       <div className="mt-4 h-64 overflow-auto rounded-xl ring-1 ring-base-200 bg-white">
         <table className="min-w-full text-sm">
           <thead className="bg-base-50 text-base-600 sticky top-0 z-10">
             <tr>
-              <th className="px-3 py-2 text-left w-1/2">上传字段</th>
-              <th className="px-3 py-2 text-left">映射到 vCard 字段</th>
+              <th className="px-3 py-2 text-left w-1/2">{t('pages.csv.mapping.th.source')}</th>
+              <th className="px-3 py-2 text-left">{t('pages.csv.mapping.th.target')}</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-base-200">
@@ -144,9 +149,9 @@ export default function FieldMapping({ version, columns, sampleRows, onChange }:
                       }}
                       className="w-full h-9 px-2 rounded-md ring-1 ring-base-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-accent-500"
                     >
-                      <option value="">忽略此列</option>
+                      <option value="">{t('pages.csv.mapping.ignoreColumn')}</option>
                       {supportedFields.map((f) => (
-                        <option key={f.key} value={f.key}>{f.zh}（{f.key}）</option>
+                        <option key={f.key} value={f.key}>{f.label}（{f.key}）</option>
                       ))}
                     </select>
                     {(selectionByColumn[col] === TEL.key || selectionByColumn[col] === EMAIL.key || selectionByColumn[col] === ADR.key) && (
@@ -158,7 +163,7 @@ export default function FieldMapping({ version, columns, sampleRows, onChange }:
                         }}
                         className="h-9 w-40 px-2 rounded-md ring-1 ring-base-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-accent-500"
                       >
-                        <option value="">类型</option>
+                        <option value="">{t('pages.csv.mapping.typeLabel')}</option>
                         {(
                           selectionByColumn[col] === TEL.key
                             ? (version === '4.0'
@@ -173,8 +178,8 @@ export default function FieldMapping({ version, columns, sampleRows, onChange }:
                                     : [VCardTypeAdr.HOME_V3, VCardTypeAdr.WORK_V3, VCardTypeAdr.POSTAL_V3, VCardTypeAdr.PARCEL_V3]
                                   )
                                 : []
-                        ).map((t) => (
-                          <option key={t} value={t}>{(selectionByColumn[col] === TEL.key ? VCardTypeTelZh[t] : selectionByColumn[col] === EMAIL.key ? VCardTypeEmailZh[t] : VCardTypeAdrZh[t]) || t}</option>
+                        ).map((tKey) => (
+                          <option key={tKey} value={tKey}>{getTypeLabel(tKey, selectionByColumn[col] === TEL.key ? 'tel' : selectionByColumn[col] === EMAIL.key ? 'email' : 'adr')}</option>
                         ))}
                       </select>
                     )}
@@ -185,7 +190,7 @@ export default function FieldMapping({ version, columns, sampleRows, onChange }:
                           checked={!!prefByColumn[col]}
                           onChange={(e) => setPrefByColumn((m) => ({ ...m, [col]: e.target.checked }))}
                         />
-                        首选(PREF)
+                        {t('pages.csv.mapping.prefLabel')}
                       </label>
                     )}
                   </div>
@@ -198,13 +203,13 @@ export default function FieldMapping({ version, columns, sampleRows, onChange }:
 
       {(!mapping.fullName || !mapping.phone) && (
         <div className="mt-3 p-3 rounded-md bg-red-50 ring-1 ring-red-200 text-red-700 text-xs">
-          请至少选择一次“全名”和“手机号”。当前缺少：
-          {!mapping.fullName ? ' 全名' : ''}{!mapping.phone ? ' 手机号' : ''}
+          {t('pages.csv.mapping.missingRequiredPrefix')}
+          {!mapping.fullName ? ` ${t('pages.csv.mapping.targets.fullName')}` : ''}{!mapping.phone ? ` ${t('pages.csv.mapping.targets.phone')}` : ''}
         </div>
       )}
 
       <div className="mt-6">
-        <div className="text-sm font-semibold text-black">数据样本预览（前 5 行）</div>
+        <div className="text-sm font-semibold text-black">{t('pages.csv.mapping.previewTitle')}</div>
         <div className="mt-2 overflow-x-auto rounded-xl ring-1 ring-base-200 bg-white">
           <table className="min-w-full text-sm">
             <thead className="bg-base-50 text-base-600">
@@ -228,5 +233,6 @@ export default function FieldMapping({ version, columns, sampleRows, onChange }:
       </div>
     </div>
   )
-}
+})
 
+export default FieldMapping

@@ -28,15 +28,16 @@ const effectiveLocale = locale
 // 4. 初始化 i18next 实例
 const i18nInstance = initI18n(effectiveLocale);
 const t = i18nInstance.t.bind(i18nInstance);
+const translationsBundle = i18nInstance.getResourceBundle(effectiveLocale, 'common');
 // 1. 定义 HTML lang 属性（BCP 47 标准）
-const htmlLang = locale === "zh" ? "zh-Hans" : "en";
+const htmlLang = locale === "zh" ? "zh-Hans" :locale;
 
 // 2. 翻译 SEO 元数据
 const pageTitle = t("pages.excel.seo.title");
 const pageDescription = t("pages.excel.seo.description");
 
 // 3. 定义语言无关的规范路径 (例如：首页是 '/'，关于页面是 '/about')
-const canonicalPath = "/";
+const canonicalPath = "/Excel-to-vCard";
 ---
 
 <BaseLayout
@@ -58,7 +59,7 @@ const canonicalPath = "/";
         <p class="text-base leading-normal mt-4 text-base-500 font-medium" set:html={t('pages.excel.subtitle')}></p>
       </div>
 
-      <CsvToVCardUpload accept=".xlsx,.xls" client:load />
+  <CsvToVCardUpload accept=".xlsx,.xls" client:load locale={locale} translations={translationsBundle} />
       <!-- 安全提示横幅（主题色） -->
       <div class="mb-6 p-4 bg-accent-50 rounded-xl mt-10 ring-1 ring-base-200">
         <div class="flex items-center gap-3">
