@@ -31,11 +31,20 @@ export const POST: APIRoute = async ({ request, locals }) => {
         });
       }
 
-      // Default to a safe sender/receiver if not configured
-      // Note: onboarding@resend.dev only works for testing to your own verified email
-      // Once you verify a domain, you can send from any address @yourdomain.com
-      const fromEmail = "onboarding@resend.dev"; 
-      const toEmail = contactEmail || "support@excel2vcf.com";
+      // --- Email Routing Configuration ---
+      
+      // 1. SENDER (From):
+      // Must be an address from your verified domain (excel2vcf.com).
+      // Standard practice for support forms.
+      const fromEmail = "support@excel2vcf.com"; 
+
+      // 2. RECIPIENT (To):
+      // Where you actually want to read the emails.
+      // You want to receive them at your 139.com address.
+      const toEmail = "donghe587@139.com"; 
+
+      // Note: This setup REQUIRES that 'excel2vcf.com' is verified in Resend.
+      // If not verified yet, this will fail.
 
       const { data: resendData, error } = await resend.emails.send({
         from: fromEmail,
