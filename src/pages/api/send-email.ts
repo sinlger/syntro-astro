@@ -2,11 +2,14 @@ export const prerender = false;
 import type { APIRoute } from "astro";
 import { Resend } from 'resend';
 
-export const POST: APIRoute = async ({ request }) => {
-  const apiKey = import.meta.env.RESEND_API_KEY;
+export const POST: APIRoute = async ({ request, locals }) => {
+  const runtimeEnv = locals.runtime?.env || {};
+  const apiKey = runtimeEnv.RESEND_API_KEY || import.meta.env.RESEND_API_KEY;
+  const contactEmail = runtimeEnv.CONTACT_EMAIL || import.meta.env.CONTACT_EMAIL;
+
   if (!apiKey) {
     return new Response(JSON.stringify({
-      message: "Missing RESEND_API_KEY environment variable",
+      message: "Missing RESEND_API_KEY environment variable. If running on Cloudflare, ensure it is set in the Dashboard.",
     }), { status: 500 });
   }
 
@@ -25,8 +28,8 @@ export const POST: APIRoute = async ({ request }) => {
     // Default to a safe sender/receiver if not configured
     // Note: onboarding@resend.dev only works for testing to your own verified email
     // Once you verify a domain, you can send from any address @yourdomain.com
-    const fromEmail = "support@excel2vcf.com"; 
-    const toEmail = import.meta.env.CONTACT_EMAIL;
+    const fromEmail = "onboarding@resend.dev"; 
+    const toEmail = contactEmail || "support@excel2vcf.com";
 
     const { data: resendData, error } = await resend.emails.send({
       from: fromEmail,

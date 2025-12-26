@@ -126,10 +126,11 @@ const canonicalPath = "/support";
             alert(successMsg);
             form.reset();
           } else {
-            alert(`${errorMsg}: ${result.message}`);
+            console.error('Server returned error:', result);
+            alert(`${errorMsg}: ${result.message || 'Unknown error'}`);
           }
         } catch (error) {
-          alert('An error occurred. Please try again.');
+          alert(`An error occurred: ${error.message || error}`);
           console.error(error);
         } finally {
           submitBtn.disabled = false;
