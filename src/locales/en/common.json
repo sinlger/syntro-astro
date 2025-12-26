@@ -429,7 +429,7 @@
         "description": "Protecting website content, trademarks, and design from unauthorized reproduction."
       },
       "title": "Copyright Notice",
-      "contentHtml": "<h3 class=\"text-xl font-semibold\">1. Copyright Ownership</h3><p>This website **VCF2XLS.com** and all of its content, features, and functionality (including but not limited to all information, software, text, displays, images, video and audio, and the design, selection, and arrangement thereof) are owned by [Your Company/Individual Name] and are protected by Chinese and international copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws.</p><h3 class=\"text-xl font-semibold mt-6\">2. Permitted Use</h3><p>Unless expressly permitted otherwise in writing, you must not copy, distribute, modify, create derivative works of, publicly display or perform, republish, download, store, or transmit any of the material on our website, except as follows:</p><ul class=\"list-disc ml-6 space-y-1\"><li>Your computer may temporarily store copies of such materials in RAM incidental to your accessing and viewing those materials.</li><li>You may print or download one reasonable number of copies of pages for your own personal, non-commercial use.</li></ul><h3 class=\"text-xl font-semibold mt-6\">3. Trademarks</h3><p>The “VCF2XLS” name, the Logo, and all related names, logos, product and service names, and design marks are trademarks or registered trademarks of [Your Company/Individual Name]. You must not use these marks without prior written permission.</p><p class=\"mt-8 font-bold text-sm\">© 2024 VCF2XLS.com All rights reserved.</p>"
+      "contentHtml": "<h3 class=\"text-xl font-semibold\">1. Copyright Ownership</h3><p>This website **excel2vcf.com** and all of its content, features, and functionality (including but not limited to all information, software, text, displays, images, video and audio, and the design, selection, and arrangement thereof) are owned by [Your Company/Individual Name] and are protected by Chinese and international copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws.</p><h3 class=\"text-xl font-semibold mt-6\">2. Permitted Use</h3><p>Unless expressly permitted otherwise in writing, you must not copy, distribute, modify, create derivative works of, publicly display or perform, republish, download, store, or transmit any of the material on our website, except as follows:</p><ul class=\"list-disc ml-6 space-y-1\"><li>Your computer may temporarily store copies of such materials in RAM incidental to your accessing and viewing those materials.</li><li>You may print or download one reasonable number of copies of pages for your own personal, non-commercial use.</li></ul><h3 class=\"text-xl font-semibold mt-6\">3. Trademarks</h3><p>The “VCF2XLS” name, the Logo, and all related names, logos, product and service names, and design marks are trademarks or registered trademarks of [Your Company/Individual Name]. You must not use these marks without prior written permission.</p><p class=\"mt-8 font-bold text-sm\">© 2024 excel2vcf.com All rights reserved.</p>"
     },
     "privacy": {
       "seo": {
@@ -453,10 +453,10 @@
       "title": "Contact Us",
       "intro": "If you encounter any technical issues, find a bug, or have feature suggestions while using VCF2XLS, please feel free to contact us through the following methods. We will respond to you as soon as possible.",
       "techTitle": "Technical Support Email",
-      "techEmail": "support@vcf2xls.com",
+      "techEmail": "support@excel2vcf.com",
       "techNote": "For bug reports, conversion failures, and other technical issues.",
       "bizTitle": "Business Inquiries and Suggestions",
-      "bizEmail": "hello@vcf2xls.com",
+      "bizEmail": "hello@excel2vcf.com",
       "bizNote": "For feature suggestions, partnership inquiries, and non-urgent matters.",
       "formTitle": "Leave a Direct Message/Feedback",
       "formName": "Your Name",

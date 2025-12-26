@@ -1,4 +1,5 @@
 ---
+export const prerender = true;
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { initI18n } from "../../i18n.js";
 // --- 【核心修正】: 添加 getStaticPaths 函数 ---
@@ -55,33 +56,31 @@ const canonicalPath = "/support";
           <p class="text-lg font-mono text-base-800 break-words">{t("info.support.techEmail")}</p>
           <p class="text-sm text-base-500 mt-1">{t("info.support.techNote")}</p>
         </div>
-        <div class="bg-white p-4 rounded-lg ring-1 ring-base-200">
-          <p class="font-bold text-accent-700">{t("info.support.bizTitle")}</p>
-          <p class="text-lg font-mono text-base-800 break-words">{t("info.support.bizEmail")}</p>
-          <p class="text_sm text-base-500 mt-1">{t("info.support.bizNote")}</p>
-        </div>
       </div>
 
       <!-- 留言表单 (Placeholder) -->
       <div class="mt-8">
         <h3 class="text-xl font-semibold mb-3 text-base-800">{t("info.support.formTitle")}</h3>
         <form
-          onsubmit={`alert('${t("info.support.formSubmitAlert")}'); return false;`}
+          id="contact-form"
           class="space-y-4"
         >
           <input
             type="text"
+            name="name"
             placeholder={t("info.support.formName")}
             required
             class="w-full p-3 border border-base-200 rounded-lg focus:ring-accent-600 focus:border-accent-600"
           />
           <input
             type="email"
+            name="email"
             placeholder={t("info.support.formEmail")}
             required
             class="w-full p-3 border border-base-200 rounded-lg focus:ring-accent-600 focus:border-accent-600"
           />
           <textarea
+            name="message"
             placeholder={t("info.support.formMessage")}
             rows="5"
             required
@@ -89,11 +88,54 @@ const canonicalPath = "/support";
           ></textarea>
           <button
             type="submit"
-            class="w-full bg-accent-600 text-white font-bold py-3 rounded-lg hover:bg-accent-700 transition duration-150"
+            class="w-full bg-accent-600 text-white font-bold py-3 rounded-lg hover:bg-accent-700 transition duration-150 disabled:opacity-50 disabled:cursor-not-allowed"
             >{t("info.support.formSubmit")}</button
           >
         </form>
       </div>
     </div>
   </section>
+
+  <script define:vars={{ successMsg: t("info.support.formSubmitAlert"), errorMsg: "Sending failed" }}>
+    const form = document.getElementById('contact-form');
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerText;
+        submitBtn.disabled = true;
+        submitBtn.innerText = '...'; 
+
+        const formData = new FormData(form);
+        const data = {
+          name: formData.get('name'),
+          email: formData.get('email'),
+          message: formData.get('message')
+        };
+
+        try {
+          const response = await fetch('/api/send-email', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+
+          const result = await response.json();
+
+          if (response.ok) {
+            alert(successMsg);
+            form.reset();
+          } else {
+            alert(`${errorMsg}: ${result.message}`);
+          }
+        } catch (error) {
+          alert('An error occurred. Please try again.');
+          console.error(error);
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.innerText = originalText;
+        }
+      });
+    }
+  </script>
 </BaseLayout>
