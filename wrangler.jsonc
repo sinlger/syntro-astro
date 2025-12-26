@@ -1,8 +1,13 @@
 {
   "name": "syntro-astro",
+  "main": "./dist/_worker.js/index.js",
   "compatibility_date": "2025-12-10",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
   "assets": {
-    "directory": "./dist"
+    "directory": "./dist",
+    "binding": "ASSETS"
   },
   "workers_dev": true
 }
