@@ -120,7 +120,14 @@ const canonicalPath = "/support";
             body: JSON.stringify(data)
           });
 
-          const result = await response.json();
+          const responseText = await response.text();
+          let result;
+          try {
+            result = JSON.parse(responseText);
+          } catch (e) {
+            console.error('Failed to parse JSON response:', responseText);
+            throw new Error(`Invalid server response: ${responseText.substring(0, 100)}...`);
+          }
 
           if (response.ok) {
             alert(successMsg);
