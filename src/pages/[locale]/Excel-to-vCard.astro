@@ -59,7 +59,7 @@ const canonicalPath = "/Excel-to-vCard";
         <p class="text-base leading-normal mt-4 text-base-500 font-medium" set:html={t('pages.excel.subtitle')}></p>
       </div>
 
-  <CsvToVCardUpload accept=".xlsx,.xls" client:load locale={locale} translations={translationsBundle} />
+      <CsvToVCardUpload accept=".xlsx,.xls" client:load locale={locale} translations={translationsBundle} />
       <!-- 安全提示横幅（主题色） -->
       <div class="mb-6 p-4 bg-accent-50 rounded-xl mt-10 ring-1 ring-base-200">
         <div class="flex items-center gap-3">
