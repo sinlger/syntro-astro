@@ -431,7 +431,7 @@
         "description": "保护网站内容、商标与设计不被未经授权复制。"
       },
       "title": "版权声明",
-      "contentHtml": "<h3 class=\"text-xl font-semibold\">1. 版权所有</h3><p>本网站 <strong>VCF2XLS.com</strong> 及其所有内容、特征和功能（包括但不限于所有信息、软件、文本、显示、图像、视频和音频，以及其设计、选择和排列）均归 [您的公司/个人名称] 所有，并受中国和国际版权、商标、专利、商业秘密及其他知识产权或专有权利法律的保护。</p><h3 class=\"text-xl font-semibold mt-6\">2. 允许使用范围</h3><p>除非另有书面明确许可，您不得复制、分发、修改、创建衍生作品、公开展示或表演、重新发布、下载、存储或传输本网站的任何材料，以下情况除外：</p><ul class=\"list-disc ml-6 space-y-1\"><li>您的计算机可能会临时存储此类材料的副本，以访问和查看目的。</li><li>您可以出于个人非商业用途打印或下载一合理数量的页面副本。</li></ul><h3 class=\"text-xl font-semibold mt-6\">3. 商标</h3><p>“VCF2XLS”名称、Logo，以及所有相关名称、Logo、产品和服务名称、设计标志都是 [您的公司/个人名称] 的商标或注册商标。未经事先书面许可，您不得使用这些标志。</p><p class=\"mt-8 font-bold text-sm\">© 2024 VCF2XLS.com 保留所有权利。</p>"
+      "contentHtml": "<h3 class=\"text-xl font-semibold\">1. 版权所有</h3><p>本网站 <strong>excel2vcf.com</strong> 及其所有内容、特征和功能（包括但不限于所有信息、软件、文本、显示、图像、视频和音频，以及其设计、选择和排列）均归 [您的公司/个人名称] 所有，并受中国和国际版权、商标、专利、商业秘密及其他知识产权或专有权利法律的保护。</p><h3 class=\"text-xl font-semibold mt-6\">2. 允许使用范围</h3><p>除非另有书面明确许可，您不得复制、分发、修改、创建衍生作品、公开展示或表演、重新发布、下载、存储或传输本网站的任何材料，以下情况除外：</p><ul class=\"list-disc ml-6 space-y-1\"><li>您的计算机可能会临时存储此类材料的副本，以访问和查看目的。</li><li>您可以出于个人非商业用途打印或下载一合理数量的页面副本。</li></ul><h3 class=\"text-xl font-semibold mt-6\">3. 商标</h3><p>“VCF2XLS”名称、Logo，以及所有相关名称、Logo、产品和服务名称、设计标志都是 [您的公司/个人名称] 的商标或注册商标。未经事先书面许可，您不得使用这些标志。</p><p class=\"mt-8 font-bold text-sm\">© 2024 excel2vcf.com 保留所有权利。</p>"
     },
     "privacy": {
       "seo": {
@@ -455,10 +455,10 @@
       "title": "联系我们",
       "intro": "如果您在使用 VCF2XLS 过程中遇到任何技术问题、发现 Bug 或有功能建议，请随时通过以下方式联系我们。我们会尽快回复您。",
       "techTitle": "技术支持邮箱",
-      "techEmail": "support@vcf2xls.com",
+      "techEmail": "support@excel2vcf.com",
       "techNote": "适用于 Bug 报告、转换失败等问题。",
       "bizTitle": "商务合作与建议",
-      "bizEmail": "hello@vcf2xls.com",
+      "bizEmail": "hello@excel2vcf.com",
       "bizNote": "适用于功能建议、合作咨询等非紧急事务。",
       "formTitle": "直接留言反馈",
       "formName": "您的姓名",
