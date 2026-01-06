@@ -1,6 +1,7 @@
 ---
 export const prerender = true;
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import JsonLd from "../../components/seo/JsonLd.astro";
 import { initI18n } from "../../i18n.js";
 // --- 【核心修正】: 添加 getStaticPaths 函数 ---
 export function getStaticPaths() {
