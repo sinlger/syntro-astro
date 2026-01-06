@@ -47,6 +47,40 @@ const canonicalPath = "/changelog";
     <p class="text-gray-600 mb-6">{t("info.changelog.intro")}</p>
 
     <ol class="relative border-l border-gray-200 ml-4">
+      <!-- Version 2.1.0 -->
+      <li class="mb-10 ml-6">
+        <span
+          class="absolute flex items-center justify-center w-6 h-6 bg-emerald-100 rounded-full -left-3 ring-8 ring-white"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 text-accent-600"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 13l4 4L19 7"></path></svg
+          >
+        </span>
+        <h3 class="flex items-center mb-1 text-xl font-bold text-gray-900">
+          {t("info.changelog.v2_1.title")} <span
+            class="bg-accent-100 text-accent-700 text-sm font-medium mr-2 px-2.5 py-0.5 rounded ml-3"
+            >{t("info.changelog.tags.feature")}</span>
+        </h3>
+        <time class="block mb-2 text-sm font-normal leading-none text-gray-400">{t("info.changelog.v2_1.date")}</time>
+        <div class="text-gray-700 space-y-1">
+          <p>
+            <span set:html={t("info.changelog.v2_1.p1")}></span>
+          </p>
+          <p>
+            <span set:html={t("info.changelog.v2_1.p2")}></span>
+          </p>
+        </div>
+      </li>
+
       <!-- Version 2.0.0 -->
       <li class="mb-10 ml-6">
         <span

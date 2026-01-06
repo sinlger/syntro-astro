@@ -32,7 +32,61 @@ const htmlLang = locale === "zh" ? "zh-Hans" :locale;
 const pageTitle = t("info.faqPage.title");
 const pageDescription = t("info.faqPage.subtitle");
 const canonicalPath = "/faq";
+
+const siteUrl = "https://excel2vcf.com";
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${siteUrl}/${locale}${canonicalPath}`,
+      "url": `${siteUrl}/${locale}${canonicalPath}`,
+      "name": pageTitle,
+      "description": pageDescription,
+      "inLanguage": locale
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": t("info.faqPage.q1"),
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": t("info.faqPage.a1")
+          }
+        },
+        {
+          "@type": "Question",
+          "name": t("info.faqPage.q2"),
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": t("info.faqPage.a2")
+          }
+        },
+        {
+          "@type": "Question",
+          "name": t("info.faqPage.q3"),
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": t("info.faqPage.a3")
+          }
+        },
+        {
+          "@type": "Question",
+          "name": t("info.faqPage.q4"),
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": t("info.faqPage.a4")
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
+
+<JsonLd schema={schema} />
 
 <BaseLayout
   htmlLang={htmlLang}

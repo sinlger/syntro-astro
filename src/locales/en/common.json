@@ -531,6 +531,12 @@
         "fix": "Bug Fix",
         "feature": "New Feature"
       },
+      "v2_1": {
+        "title": "V2.1.0 - SEO Schema Enhancement",
+        "date": "January 6, 2026",
+        "p1": "<span class=\"font-bold text-accent-700\">New Feature:</span> Added comprehensive SEO Schema (JSON-LD) support for all tool pages (CSV/Excel/vCard) and FAQ sections to improve search engine visibility.",
+        "p2": "<span class=\"font-bold text-accent-700\">Optimization/Improvement:</span> Implemented SoftwareApplication and FAQPage structured data types to support rich results."
+      },
       "v2": {
         "title": "V2.0.0 - Bi-Directional Conversion Engine Officially Released",
         "date": "December 9, 2025",

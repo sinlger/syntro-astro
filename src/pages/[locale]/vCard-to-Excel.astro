@@ -2,6 +2,7 @@
 export const prerender = true;
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import VCardToCsv from "../../components/react/VCardToCsv";
+import JsonLd from "../../components/seo/JsonLd.astro";
 import { initI18n } from '../../i18n.js';
 // --- 【核心修正】: 添加 getStaticPaths 函数 ---
 export function getStaticPaths() {
@@ -39,7 +40,50 @@ const pageDescription = t("pages.vcardExcel.seo.description");
 
 // 3. 定义语言无关的规范路径 (例如：首页是 '/'，关于页面是 '/about')
 const canonicalPath = "/vCard-to-Excel";
+
+const siteUrl = "https://excel2vcf.com";
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${siteUrl}/${locale}${canonicalPath}`,
+      "url": `${siteUrl}/${locale}${canonicalPath}`,
+      "name": pageTitle,
+      "description": pageDescription,
+      "inLanguage": locale
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "vCard to Excel Converter",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+  ]
+};
+
+const faqItems = t('pages.vcardExcel.faq', { returnObjects: true });
+if (Array.isArray(faqItems)) {
+  schema['@graph'].push({
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(item => ({
+      "@type": "Question",
+      "name": item.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.a
+      }
+    }))
+  });
+}
 ---
+
+<JsonLd schema={schema} />
 
 <BaseLayout
   htmlLang={htmlLang}

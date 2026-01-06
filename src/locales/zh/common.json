@@ -533,6 +533,12 @@
         "fix": "修复 Bug",
         "feature": "新增功能"
       },
+      "v2_1": {
+        "title": "V2.1.0 - SEO Schema 增强",
+        "date": "2026 年 1 月 6 日",
+        "p1": "<span class=\"font-bold text-accent-700\">新增功能：</span> 为所有工具页面（CSV/Excel/vCard）及 FAQ 部分添加了完整的 SEO Schema (JSON-LD) 支持，提升搜索引擎可见性。",
+        "p2": "<span class=\"font-bold text-accent-700\">优化改进：</span> 实现了 SoftwareApplication 和 FAQPage 结构化数据类型，支持富文本搜索结果。"
+      },
       "v2": {
         "title": "V2.0.0 - 双向转换引擎正式发布",
         "date": "2025 年 12 月 9 日",

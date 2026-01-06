@@ -7,6 +7,7 @@ import HowItWorks from "../../components/landing/HowItWorks.astro";
 import WhoUse from "../../components/landing/WhoUse.astro";
 import FAQ from "../../components/landing/FAQ.astro";
 import SupportedFormats from "../../components/landing/SupportedFormats.astro";
+import JsonLd from "../../components/seo/JsonLd.astro";
 import { initI18n } from "../../i18n.js";
 // --- 【核心修正】: 添加 getStaticPaths 函数 ---
 export function getStaticPaths() {
@@ -43,6 +44,47 @@ const pageDescription = t("page.home_description");
 
 // 3. 定义语言无关的规范路径 (例如：首页是 '/'，关于页面是 '/about')
 const canonicalPath = "/";
+
+const siteUrl = "https://excel2vcf.com";
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "name": "Excel to VCF Converter",
+      "url": siteUrl,
+      "inLanguage": locale
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Excel to VCF Converter",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "description": pageDescription,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+  ]
+};
+
+// 获取 FAQ 数据并生成 Schema
+const faqItems = t('faq.items', { returnObjects: true });
+if (Array.isArray(faqItems)) {
+  schema['@graph'].push({
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(item => ({
+      "@type": "Question",
+      "name": item.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.a
+      }
+    }))
+  });
+}
 ---
 
 <BaseLayout
@@ -53,6 +95,7 @@ const canonicalPath = "/";
   pageDescription={pageDescription}
   canonicalPath={canonicalPath}
 >
+  <JsonLd schema={schema} />
   <Hero t={t}/>
   <SupportedFormats t={t}/>
   <UploadDropzone t={t}/>
