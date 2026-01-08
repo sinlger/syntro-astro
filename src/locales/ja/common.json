@@ -1,0 +1,578 @@
+{
+  "hero": {
+    "title": "Excel/CSVからvCard (VCF)へ一括変換",
+    "description": "手入力はもう不要。安全・迅速・正確にExcel/CSV連絡先をvCard (VCF)形式に変換。iOS/Androidに完全対応。",
+    "cta": "変換を開始する（すべてローカルで処理）",
+    "badge": "100% オフライン変換 ・ データはデバイス外に送信されません"
+  },
+  "page": {
+    "home_title": "Excel/CSV/XLSXからvCard (VCF)への一括変換ツール - 100%ローカル処理",
+    "home_description": "手入力にさようなら！安全・迅速・正確にExcel/CSV連絡先をVCF形式に一括変換。ブラウザ内ですべて完結するため、データがサーバーに送信されることはありません。iOS/Android対応。",
+    "blog_title": "ブログ",
+    "blog_description": "Excel2VCF チームの最新アップデートと記事。"
+  },
+  "uploadDropzone": {
+    "drag": "ファイルをドラッグ＆ドロップ、またはクリックして選択",
+    "support": "XLS、CSV、XLSX 形式に対応",
+    "button": "ファイルを選択"
+  },
+  "supportedFormats": {
+    "title": "対応している連絡先ファイル形式",
+    "subtitle": "幅広いスプレッドシート形式に対応しており、連絡先データを簡単に一括インポートできます。すべての変換はローカルで行われるため、プライバシーも安全です。",
+    "items": [
+      {
+        "name": "Excel ワークブック (.xlsx)",
+        "desc": "Microsoft Excel 2007以降で作成された標準ファイルに対応。最初のシートを読み取り、日本語データや大量の連絡先も正確に処理します。"
+      },
+      {
+        "name": "旧形式 Excel (.xls)",
+        "desc": "以前のバージョンのExcelファイル形式 (.xls) にも完全対応。古いシステムからエクスポートしたデータも、形式変換の手間なくそのままアップロードできます。"
+      },
+      {
+        "name": "CSV (カンマ区切り) (.csv)",
+        "desc": "最も汎用的なデータ交換形式です。カンマやタブなどの区切り文字を自動識別し、UTF-8やShift-JISなどのエンコードも適切に処理して文字化けを防ぎます。"
+      }
+    ]
+  },
+  "faq": {
+    "title": "よくある質問 (FAQ)",
+    "subtitle": "データセキュリティや変換の互換性に関する疑問にお答えします。",
+    "items": [
+      {
+        "q": "データセキュリティとプライバシー：ファイルはサーバーに保存または漏洩しませんか？",
+        "a": "一切ありません。当ツールの核心は<strong>「100% オフライン変換」</strong>です。アップロードからVCF生成まで、データは常に<strong>ブラウザのメモリ内</strong>でのみ処理され、外部サーバーを通過することはありません。技術的に連絡先情報の絶対的なプライバシーを保証します。"
+      },
+      {
+        "q": "インポート後の文字化け：連絡先名が文字化けするのはなぜですか？",
+        "a": "当ツールが生成するVCFファイルは、国際標準の<strong>UTF-8エンコード</strong>を採用しています。文字化けは通常、<strong>受信側のシステムやアプリ</strong>（古いAndroidやOutlookなど）のデフォルトエンコード設定が原因です。<br/><strong>💡 推奨：</strong> Apple iCloudやGoogleコンタクトなどの現代的なクラウドサービスにインポートしてください。これらはUTF-8を自動認識し、日本語を正しく表示します。"
+      },
+      {
+        "q": "連絡先データの欠落：変換された件数とインポート成功数が一致しないのはなぜですか？",
+        "a": "VCF形式として成立するための最小条件があります。スプレッドシートの行に<strong>氏名 (FN)</strong> または <strong>電話番号 (TEL;CELL)</strong> が欠けている場合、そのデータは無効としてスキップされます。<br/><strong>✅ 解決策：</strong> 変換ステップの<strong>「ステップ 2（フィールドマッピング）」</strong>に戻り、元のファイルのこれら2つの列が正しくマッピングされているか確認してください。"
+      },
+      {
+        "q": "VCFバージョンの選択：どのバージョンが最も互換性が高いですか？",
+        "a": "デフォルトでは <strong>vCard 3.0</strong> を使用します。これは現在、業界で最も広く普及しているバージョンであり、Apple iOS、Google Android、主要なメールサービスなど、ほとんどの現代的なプラットフォームで正しく認識されます。"
+      }
+    ]
+  },
+  "howItWorks": {
+    "title": "簡単3ステップで連絡先を一括インポート",
+    "subtitle": "手入力の手間を省きましょう！当ツールを使えば、わずか3つの簡単なステップでExcel/CSVデータをVCF形式に変換できます。",
+    "steps": [
+      {
+        "title": "ファイルを安全にアップロード",
+        "desc": "<p>💡 操作：ExcelまたはCSVファイルをドラッグ＆ドロップします。</p><p><strong>.xlsx</strong>、<strong>.xls</strong>、<strong>.csv</strong> に対応しています。ファイルはブラウザ上でローカル処理されるため、サーバーにアップロードされることはありません。プライバシーは完全に守られます。</p>"
+      },
+      {
+        "title": "列とVCFフィールドをマッピング",
+        "desc": "<p>💡 操作：スプレッドシートの列名（「名前」「携帯電話」など）を、VCF標準フィールド（<strong>FN</strong>、<strong>TEL</strong>）に対応させます。</p><div class=\"font-semibold mt-2\">重要なポイント：</div><ul class=\"list-disc pl-5 space-y-1\"><li><strong>必須項目チェック：</strong>氏名と電話番号がマッピングされていることを確認します。</li><li><strong>データプレビュー：</strong>数件のサンプルデータをリアルタイムで確認し、設定ミスを防ぎます。</li></ul>"
+      },
+      {
+        "title": "VCFファイルをダウンロードしてインポート",
+        "desc": "<p>💡 操作：「変換開始」をクリックし、生成されたVCFファイルをダウンロードします。</p><p>標準的な <strong>VCF 3.0</strong> 形式（UTF-8）で出力されます。以下の方法で活用できます：</p><ul class=\"list-disc pl-5 space-y-1\"><li><strong>PCから：</strong>iCloudやGoogleコンタクト経由でスマホと同期。</li><li><strong>スマホから：</strong>iOSまたはAndroidデバイスで直接開き、連絡先を一括更新。</li></ul>"
+      }
+    ]
+  },
+  "whoUse": {
+    "title": "Excel/CSV to VCF 変換ツールはどのような方に使われていますか？",
+    "groups": [
+      {
+        "title": "営業・マーケティング担当者",
+        "desc": "展示会やCRMから書き出した顧客リストをスマホへ素早く登録し、電話やSNSでの連絡をスムーズにしたい方。課題：効率化と移動中の連絡先確保。"
+      },
+      {
+        "title": "総務・人事担当者",
+        "desc": "従業員リストの管理と配布。最新の社員名簿をVCFに変換し、社内携帯の連絡先を統一・正確に保ちたい方。課題：一括管理とフォーマットの正確性。"
+      },
+      {
+        "title": "機種変更・データ移行ユーザー",
+        "desc": "古いデバイスやサードパーティツールから書き出したCSVを、VCFしか対応していないiOS/Androidへ移行したい方。課題：互換性と文字化けの解消。"
+      },
+      {
+        "title": "イベント・会議運営者",
+        "desc": "イベント前に、ゲストの連絡先をチーム全員のスマホへ迅速に追加して連携を強化したい方。課題：即時性と一括インポート。"
+      }
+    ]
+  },
+  "nav": {
+    "brand": "Excel2VCF",
+    "csvToVCard": "CSVをVCard/VCFに変換",
+    "excelToVCard": "ExcelをVCard/VCFに変換",
+    "vcardToExcel": "VCF/VCardをExcelに変換",
+    "blog": "ブログ",
+    "faq": "よくある質問"
+  },
+  "vcard": {
+    "field": {
+      "VERSION": { "label": "バージョン", "desc": "vCardのバージョン（3.0 または 4.0）。" },
+      "FN": { "label": "氏名（表示名）", "desc": "表示される連絡先名。通常は必須。" },
+      "N": { "label": "名前の構造", "desc": "形式：姓;名;ミドルネーム;敬称;接尾辞。" },
+      "TEL": { "label": "電話番号", "desc": "TYPEパラメータ（CELL, WORK, HOMEなど）に対応。" },
+      "EMAIL": { "label": "メールアドレス", "desc": "TYPEパラメータ（INTERNETなど）に対応。" },
+      "ORG": { "label": "組織/会社", "desc": "会社名および部署名。" },
+      "TITLE": { "label": "役職/肩書き", "desc": "職業上の役職。" },
+      "ADR": { "label": "住所", "desc": "TYPEパラメータ（HOME, WORKなど）に対応。" },
+      "URL": { "label": "ウェブサイト", "desc": "個人または会社のサイト。" },
+      "NOTE": { "label": "メモ", "desc": "追加の補足情報。" },
+      "BDAY": { "label": "誕生日", "desc": "形式：YYYY-MM-DD。" },
+      "NICKNAME": { "label": "ニックネーム", "desc": "連絡先の愛称。" },
+      "LABEL": { "label": "住所ラベル", "desc": "配送用の住所ラベル（ADRに関連付け）。" },
+      "PHOTO": { "label": "写真", "desc": "Base64エンコードによる画像埋め込み。" },
+      "UID": { "label": "一意識別子", "desc": "連絡先固有のID。" },
+      "REV": { "label": "最終更新日時", "desc": "ISO 8601 タイムスタンプ。" },
+      "CATEGORIES": { "label": "カテゴリ", "desc": "連絡先のグループ分けに使用。" },
+      "GENDER": { "label": "性別", "desc": "形式：M、F、O、U。" },
+      "ANNIVERSARY": { "label": "記念日", "desc": "結婚記念日など。" },
+      "LANG": { "label": "言語", "desc": "使用言語（例：ja-JP）。" },
+      "ROLE": { "label": "役割", "desc": "組織内での役割。" },
+      "TZ": { "label": "タイムゾーン", "desc": "所在地のタイムゾーン（例：+09:00）。" },
+      "X_PREFIX": { "label": "カスタムフィールド", "desc": "X-SKYPEなどの独自フィールド。" },
+      "IMPP": { "label": "インスタントメッセージ", "desc": "例：IMPP:skype:username。" },
+      "SOUND": { "label": "音声情報", "desc": "名前の読み上げ発音など。" }
+    },
+    "type": {
+      "HOME": "自宅",
+      "WORK": "勤務先",
+      "VOICE": "音声",
+      "CELL": "携帯電話",
+      "FAX": "FAX",
+      "PAGER": "ポケベル",
+      "TEXT": "テキスト",
+      "VIDEO": "ビデオ",
+      "TEXTPHONE": "聴覚障害者用電話",
+      "INTERNET": "メール",
+      "A400": "X.400メール",
+      "POSTAL": "郵便住所",
+      "PARCEL": "小包住所",
+      "DOM": "国内住所",
+      "INTL": "国際住所",
+      "PREF": "優先"
+    }
+  },
+  "pages": {
+    "csv": {
+      "seo": {
+        "title": "CSV to vCard オンラインツール - CSVをVCF連絡先に一括変換",
+        "description": "オンラインでCSVファイルをvCard (VCF) 形式に一括変換。100%ローカル処理で安全かつ迅速にインポート可能な連絡先ファイルを生成します。"
+      },
+      "title": "CSV to vCard/VCF 一括変換ツール",
+      "subtitle": "CSVファイルをアップロードして、スマホにインポート可能な.vcf形式を自動生成。文字化け自動修復対応。",
+      "securityBanner": "✅ <strong>データセキュリティ保証：</strong> 変換は<strong>すべてブラウザ内</strong>で行われます。データはサーバーを通過せず、漏洩のリスクはありません。",
+      "featuresTitle": "主な特徴",
+      "features": [
+        {
+          "title": "完全ローカル変換",
+          "desc": "データは<strong>サーバーに送信されません</strong>。すべての処理がデバイス上で行われるため、高いプライバシーを維持できます。"
+        },
+        {
+          "title": "スマートフィールドマッチング",
+          "desc": "「名前」「携帯」などのヘッダーを自動認識。VCFフィールドへ賢くマッピングし、設定時間を短縮します。"
+        },
+        {
+          "title": "幅広い互換性",
+          "desc": "CSVだけでなくExcel (XLSX/XLS) にも対応。VCF 4.0/3.0 を出力でき、主要な連絡先アプリで使えます。"
+        },
+        {
+          "title": "高速一括処理",
+          "desc": "ブラウザの計算能力をフル活用。数千件のデータでも数秒で変換が完了します。"
+        }
+      ],
+      "howTitle": "使い方",
+      "howSteps": [
+        {
+          "title": "ファイルをアップロード",
+          "desc": "CSVまたはExcelファイルをドラッグ、またはボタンで選択します。"
+        },
+        {
+          "title": "マッピングの調整",
+          "desc": "自動マッチングを確認し、<strong>氏名</strong>と<strong>電話番号</strong>が正しく設定されているかチェックします。"
+        },
+        {
+          "title": "変換処理",
+          "desc": "「変換開始」をクリック。デバイス上でリアルタイムに処理されます。"
+        },
+        {
+          "title": "VCFをダウンロード",
+          "desc": "生成された.vcfファイルを保存し、お好みの連絡先アプリにインポートしてください。"
+        }
+      ],
+      "faqTitle": "よくある質問 (FAQ)",
+      "faq": [
+        {
+          "q": "VCF/vCardファイルとは何ですか？連絡先とどう関係しますか？",
+          "a": "VCF（Virtual Contact File）は、氏名、電話番号、メールアドレスなどを保存するための標準的なフォーマットです。スマホ（iOS/Android）やメールソフトへ<strong>連絡先を一括インポート</strong>する際に最も一般的に使われます。"
+        },
+        {
+          "q": "データセキュリティはどう守られていますか？",
+          "a": "プライバシーを最優先しています。当ツールは<strong>完全ローカル変換</strong>技術を採用しており、ファイルはブラウザ外に出ることはありません。サーバーに保存されることもないため、非常に安全です。"
+        },
+        {
+          "q": "CSV以外にExcel (XLSX) 形式も変換できますか？",
+          "a": "はい。<strong>CSV to VCF</strong> だけでなく、Excel (.xlsx/.xls) にも完全対応しています。シート内のデータを自動で読み取り、マッピング画面へ案内します。"
+        },
+        {
+          "q": "VCF 4.0 と 3.0 の違いは何ですか？",
+          "a": "VCF 4.0 は最新の標準で、より多くのフィールドや高解像度の写真に対応しています。3.0 は古いシステムとの互換性が高いです。迷った場合は <strong>VCF 4.0</strong> をお試しいただき、問題があれば 3.0 に切り替えてください。"
+        }
+      ],
+      "ui": {
+        "selectFileLabelCsv": "CSVファイルを選択",
+        "dropHere": "ここにファイルをドロップ",
+        "onlyAcceptWithHeader": "{{accept}} のみ対応（ヘッダー行が必要）",
+        "vcardVersion": "vCard バージョン",
+        "v3Recommended": "3.0（推奨）",
+        "v4": "4.0",
+        "chooseFile": "ファイルを選択",
+        "notice": {
+          "unsupportedType": "非対応の形式です：{{name}}（許可：{{accept}}）",
+          "closeLabel": "閉じる"
+        },
+        "mapping": { "title": "フィールドマッピング" },
+        "supportedFieldCount": "対応フィールド数：{{count}}",
+        "ensureMapping": "{{fn}} や {{tel}} などの必須フィールドを含め、計 {{count}} 項目をマッピングしてください",
+        "exportVCard": "変換してVCFをダウンロード"
+      },
+      "mapping": {
+        "instructions": "スプレッドシートの列をVCardフィールドに対応させてください",
+        "th": { "source": "元の列名", "target": "マッピング先" },
+        "ignoreColumn": "この列を無視",
+        "typeLabel": "タイプ",
+        "prefLabel": "優先",
+        "missingRequiredPrefix": "必須項目が不足しています：",
+        "targets": { "fullName": "氏名", "phone": "電話番号" },
+        "previewTitle": "データプレビュー（先頭5行）"
+      }
+    },
+    "excel": {
+      "seo": {
+        "title": "Excel/XLSX to VCF (vCard) オンライン変換 - 100%ローカルで安全、iOS/Android対応",
+        "description": "Excel/XLSXファイルを安全にVCF形式へ一括変換。ブラウザ内完結でデータ漏洩なし。スマホの連絡先移行に最適です。"
+      },
+      "title": "プロ仕様の Excel to vCard 変換ツール",
+      "subtitle": "Excelファイルをアップロードして、連絡先にインポート可能な.vcfファイルを自動生成。",
+      "securityBanner": "✅ <strong>データセキュリティ保証：</strong> この変換は<strong>お客様のブラウザ内</strong>で完結します。データが外部に送信されることはありません。",
+      "featuresTitle": "主な特徴",
+      "features": [
+        {
+          "title": "完全ローカル変換",
+          "desc": "データが<strong>サーバーを通過することはありません</strong>。すべての操作をブラウザ内で行うため、プライバシーが守られます。"
+        },
+        {
+          "title": "インテリジェント・マッチング",
+          "desc": "「名前」「電話」といったヘッダーを自動検出し、VCF項目へスマートに割り当てます。"
+        },
+        {
+          "title": "マルチフォーマット対応",
+          "desc": "CSV, XLSX, XLS に対応。出力は VCF 4.0/3.0 を選択でき、あらゆるデバイスと互換性があります。"
+        },
+        {
+          "title": "超高速処理",
+          "desc": "ブラウザ上で直接処理するため、大量の連絡先データも待たされることなく変換できます。"
+        }
+      ],
+      "howTitle": "使い方",
+      "howSteps": [
+        {
+          "title": "ファイルをアップロード",
+          "desc": "ExcelまたはCSVファイルを指定の場所にドラッグするか、ボタンで選択します。"
+        },
+        {
+          "title": "マッピングの調整",
+          "desc": "システムが自動提案するマッピングを確認し、特に<strong>氏名</strong>と<strong>携帯電話</strong>が正しいか確認してください。"
+        },
+        {
+          "title": "ローカル変換",
+          "desc": "「変換開始」を押すと、お使いのデバイス上で即座にデータが処理されます。"
+        },
+        {
+          "title": "VCFを保存",
+          "desc": "完成した.vcfファイルをダウンロードし、スマホやクラウドサービスへインポートします。"
+        }
+      ],
+      "faqTitle": "よくある質問 (FAQ)",
+      "faq": [
+        {
+          "q": "VCF/vCardファイルとは何ですか？",
+          "a": "VCFは、連絡先情報を保存するための世界共通のファイル形式です。Excelデータをこの形式に変換することで、スマホの連絡先アプリに一括で登録できるようになります。"
+        },
+        {
+          "q": "Excel (XLSX) 以外の形式も使えますか？",
+          "a": "はい。新しい <code>.xlsx</code> だけでなく、古い <code>.xls</code> 形式や <code>.csv</code> にも対応しています。"
+        },
+        {
+          "q": "Excelデータのセキュリティは大丈夫ですか？",
+          "a": "ご安心ください。<strong>Excel to VCF</strong> 変換はすべてローカルで行われます。データが弊社のサーバーにアップロードされることは決してありません。"
+        },
+        {
+          "q": "日本語の文字化けは発生しますか？",
+          "a": "いいえ。当ツールは標準でUTF-8エンコードを使用しており、日本語や特殊文字も正確に処理します。これにより、スマホにインポートした際の文字化けを効果的に防ぎます。"
+        },
+        {
+          "q": "古いバージョンのExcel (.xls) でも大丈夫ですか？",
+          "a": "はい、対応しています。ファイル内の最初のワークシートを自動的に読み取ります。"
+        }
+      ],
+      "ui": {
+        "selectFileLabelExcel": "Excelファイルを選択"
+      }
+    },
+    "vcardExcel": {
+      "seo": {
+        "title": "VCF to Excel オンラインツール - vCardをCSV/XLSXに一括変換",
+        "description": "VCFからExcel/CSVへの一括変換。vCard 3.0/4.0の複雑なフィールドを解析し、ローカルで安全にスプレッドシート化します。"
+      },
+      "title": "VCF/vCard to Excel/CSV 一括変換ツール",
+      "subtitle": ".vcfファイルをアップロードして、Excel (.xlsx) や CSV にエクスポート。連絡先管理をより効率的に。",
+      "featuresTitle": "主な特徴",
+      "features": [
+        {
+          "title": "完全ローカル変換",
+          "desc": "データは<strong>サーバーに送信されません</strong>。ブラウザ内ですべて完結するため、機密情報も安心です。"
+        },
+        {
+          "title": "複雑な構造を解析",
+          "desc": "VCard 3.0/4.0 に対応。複数の電話番号、メール、住所、<strong>メモ</strong>などの複雑なデータを、Excel上で整理された形式で出力します。"
+        },
+        {
+          "title": "双方向変換に対応",
+          "desc": "<strong>Excel/CSV to VCF</strong> だけでなく、<strong>VCF to Excel/CSV</strong> にも対応。連絡先データの入出力ソリューションをこれ一つで完結できます。"
+        },
+        {
+          "title": "高速一括エクスポート",
+          "desc": "大量のVCFファイルも数秒で解析し、編集可能なスプレッドシートに変換します。"
+        }
+      ],
+      "howTitle": "使い方",
+      "howBlock": {
+        "title": "VCard (VCF) to Excel/CSV",
+        "desc": "連絡先のバックアップファイルを編集可能な表形式に変換します。",
+        "steps": [
+          { "title": "形式を選択", "desc": "出力したい形式を <strong>CSV</strong> または <strong>Excel (.xlsx)</strong> から選びます。" },
+          { "title": "VCFをアップロード", "desc": "VCFファイルをドラッグ、または選択します（複数ファイル同時選択可）。" },
+          { "title": "ダウンロード", "desc": "ローカルでの変換完了後、ボタンを押してファイルを保存します。" }
+        ]
+      },
+      "ui": {
+        "selectVcfLabel": "VCFファイルを選択",
+        "dropHere": "ここにVCFをドロップ",
+        "onlyAccept": "{{accept}} 形式のみ",
+        "downloadFormat": "出力形式",
+        "excelOption": "Excel (.xlsx)",
+        "csvOption": "CSV (.csv)",
+        "chooseFile": "ファイルを選択",
+        "notice": {
+          "unsupportedType": "非対応の形式です：{{name}}（許可：{{accept}}）",
+          "parseSuccess": "{{count}} 件の連絡先を解析しました：{{name}}",
+          "closeLabel": "閉じる"
+        },
+        "fileNamePrefix": "ファイル：",
+        "parsedCount": "{{count}} 件の連絡先を解析済み",
+        "downloadButton": "ダウンロード",
+        "securityTitle": "セキュリティ保証：",
+        "securityDesc": "この変換はブラウザ内で完結し、データが外部へ漏れることはありません。",
+        "features": {
+          "multiFormat": {
+            "title": "マルチバージョン対応",
+            "desc": "vCard 2.1, 3.0, 4.0 をサポート。iOS, Android, Outlook などのデータに対応。"
+          },
+          "smartParse": {
+            "title": "インテリジェント解析",
+            "desc": "複数の電話やメールを自動統合し、住所やラベル情報を適切な列に抽出します。"
+          }
+        },
+        "success": {
+          "title": "変換成功！",
+          "desc": "ファイル ({{format}}) の準備が整いました。自動的にダウンロードが始まります。<br/>始まらない場合は下のボタンをクリックしてください。",
+          "downloadAgain": "再ダウンロード",
+          "convertAnother": "別のファイルを変換"
+        },
+        "export": {
+          "title": "エクスポートの準備",
+          "desc": "{{count}} 件の連絡先が解析されました。<br/>内容を確認し、出力してください。",
+          "cancel": "キャンセルして再アップロード"
+        },
+        "preview": {
+          "configTitle": "出力フィールド設定",
+          "tableTitle": "データプレビュー (先頭50件)",
+          "totalCount": "合計 {{count}} 件",
+          "noData": "データがありません",
+          "parseError": "解析に失敗しました。ファイル形式を確認してください",
+          "columns": {
+            "FN": "氏名 (FN)",
+            "TELs": "電話番号 (TELs)",
+            "EMAILs": "メールアドレス (EMAILs)",
+            "ORG": "会社名 (ORG)",
+            "TITLE": "役職 (TITLE)",
+            "ADRs": "住所 (ADRs)",
+            "NOTE": "メモ (NOTE)",
+            "LABELs": "ラベル (LABELs)",
+            "N_Last": "姓 (Last Name)",
+            "N_First": "名 (First Name)",
+            "ADR_Street": "丁目・番地 (Street)",
+            "ADR_City": "市区町村 (City)",
+            "ADR_Region": "都道府県 (Region)",
+            "ADR_Postal": "郵便番号 (Postal)",
+            "ADR_Country": "国 (Country)"
+          }
+        }
+      },
+      "faqTitle": "よくある質問 (FAQ)",
+      "faq": [
+        {
+          "q": "VCF/vCardファイルとは何ですか？",
+          "a": "連絡先情報を保存するための標準形式です。スマホやメールソフトの連絡先を書き出すとこの形式になります。"
+        },
+        {
+          "q": "Excelに「携帯」「自宅」など複数の電話列がある場合、どうマッピングしますか？",
+          "a": "<strong>Excel to VCF</strong> のステップ2にて、各列を個別に <code>TEL;TYPE=CELL</code> や <code>TEL;TYPE=HOME</code> に割り当てることができます。"
+        },
+        {
+          "q": "VCFをExcel/CSVに変換するメリットは何ですか？",
+          "a": "主に以下の3点です：<ul class=\"list-disc ml-6 mt-2 space-y-1\"><li><strong>一括編集：</strong> Excelのフィルタや置換機能を使って、数千件のデータを一気に整理できます。</li><li><strong>汎用バックアップ：</strong> どのソフトでも開ける形式で長期保存できます。</li><li><strong>他システムへの導入：</strong> CRMや顧客管理ソフトへ取り込むための元データとして活用できます。</li></ul>"
+        },
+        {
+          "q": "メモや住所などの情報も保持されますか？",
+          "a": "はい。<strong>VCF to Excel</strong> 解析時に、標準フィールド（氏名・電話・メール）だけでなく、会社、役職、住所、そして<strong>メモ欄</strong>もすべて個別の列として抽出します。"
+        },
+        {
+          "q": "複数のVCFファイルを一度にアップロードできますか？",
+          "a": "可能です。複数の <code>.vcf</code> ファイルを選択、または一つにまとまったVCFファイルをアップロードすると、自動的にそれらを一つのExcelシートにまとめて出力します。"
+        },
+        {
+          "q": "日本語の文字化けは解決されていますか？",
+          "a": "はい。入出力ともにUTF-8を標準採用しており、日本語も正確に処理します。"
+        },
+        {
+          "q": "どのバージョンに対応していますか？",
+          "a": "Excelは <code>.xlsx</code>、<code>.xls</code>、<code>.csv</code>。VCFは 3.0 と 4.0 の両方に対応しており、高い互換性を誇ります。"
+        },
+        {
+          "q": "逆変換（VCF to Excel）も安全ですか？",
+          "a": "はい。正方向も逆方向もすべて<strong>ローカル処理</strong>です。データがサーバーに送信されることはありません。"
+        }
+      ]
+    }
+  },
+  "legal": {
+    "common": {
+      "lastUpdated": "最終更新日：2025年12月9日"
+    },
+    "cookie": {
+      "seo": {
+        "title": "Cookieポリシー",
+        "description": "当サイトで使用するCookieの種類、用途、およびユーザーの選択について説明します。"
+      },
+      "title": "Cookieポリシー",
+      "contentHtml": "<p>本ウェブサイトでは、ユーザーを識別し、より良い体験を提供し、サイトを改善するためにCookieおよび類似の技術を使用しています。</p><h3>1. Cookieの種類と目的</h3><ul class=\"list-disc ml-6 space-y-1\"><li><strong>必須Cookie：</strong>サイトの基本機能を動作させるために必要なものです。セッション情報の保持やローカル設定の保存などが含まれます。</li><li><strong>分析/パフォーマンスCookie：</strong>訪問者数を把握し、サイトの利用状況を確認するために使用します（例：VCF to ExcelとExcel to VCFのどちらがより利用されているかなど）。これによりサイト改善を図ります。</li><li><strong>機能性Cookie：</strong>再訪問時にユーザーを認識し、言語設定などのパーソナライズされた設定を保持するために使用します。</li></ul><h3 class=\"text-xl font-semibold mt-6\">2. ユーザーの選択</h3><p>ほとんどのブラウザでCookieの設定を管理できます。すべてのCookieを拒否するように設定することも可能ですが、必須Cookieを無効にするとサイトの一部機能が正しく動作しなくなる場合があります。</p>"
+    },
+    "copyright": {
+      "seo": {
+        "title": "著作権声明",
+        "description": "サイトコンテンツ、商標、デザインの無断転載・複製を制限します。"
+      },
+      "title": "著作権声明",
+      "contentHtml": "<h3 class=\"text-xl font-semibold\">1. 著作権の帰属</h3><p>ウェブサイト <strong>excel2vcf.com</strong> およびそのすべてのコンテンツ、機能（情報、ソフトウェア、テキスト、表示、画像、動画、音声、およびそれらのデザイン、選択、配置を含むがこれらに限定されない）は、[会社名/個人名] に帰属し、著作権法、商標法、その他の知的財産権法によって保護されています。</p><h3 class=\"text-xl font-semibold mt-6\">2. 利用の許諾範囲</h3><p>書面による明示的な許可がない限り、本サイトのいかなる資料も複製、配布、改変、二次的著作物の作成、公開展示、再出版、ダウンロード、保存、送信することはできません。ただし、以下の場合は除きます：</p><ul class=\"list-disc ml-6 space-y-1\"><li>閲覧を目的として、コンピュータが一時的に資料のコピーをメモリに保存する場合。</li><li>個人的、非商業的な利用を目的として、合理的な範囲でページを印刷またはダウンロードする場合。</li></ul><h3 class=\"text-xl font-semibold mt-6\">3. 商標</h3><p>「VCF2XLS」の名称、ロゴ、および関連するすべての名称、ロゴ、製品・サービス名、デザインマークは、[会社名/個人名] の商標または登録商標です。事前の書面による許可なくこれらを使用することはできません。</p><p class=\"mt-8 font-bold text-sm\">© 2024 excel2vcf.com All Rights Reserved.</p>"
+    },
+    "privacy": {
+      "seo": {
+        "title": "プライバシーポリシー",
+        "description": "データがすべてローカルで処理され、サーバーに送信されないことを明示します。"
+      },
+      "title": "プライバシーポリシー",
+      "contentHtml": "<p class=\"p-3 bg-red-50 border border-red-200 rounded-lg text-base\"><strong><span class=\"highlight\">VCF2XLSの約束：すべてのファイル変換処理はお使いのブラウザ内（ローカル）で行われます。</span></strong> <strong><span class=\"highlight\">お客様のファイルや含まれる連絡先情報は、VCF2XLSや第三者のサーバーへアップロード、保存、転送されることは一切ありません。</span></strong> ブラウザを閉じるかページを離れると、メモリ上のデータは即座に破棄されます。</p><h3 class=\"text-xl font-semibold mt-6\">1. 収集する情報の種類</h3><p>当サービスは完全にローカルで動作するため、アップロードされたファイルの内容を収集することはありません。</p><ul class=\"list-disc ml-6 space-y-1\"><li><strong>非個人情報：</strong>サイトのパフォーマンス最適化のため、第三者の分析サービス（Google Analyticsなど）を使用して、訪問時間、デバイスの種類、ブラウザのバージョン、閲覧ページなどの匿名情報を収集する場合があります。</li><li><strong>お問い合わせ情報：</strong>サポートメール等で直接ご連絡いただいた場合に限り、返信の目的でお名前やメールアドレスを保持します。</li></ul><h3 class=\"text-xl font-semibold mt-6\">2. 情報の利用目的</h3><p>収集した非個人情報は以下の目的でのみ使用します：</p><ul class=\"list-disc ml-6 space-y-1\"><li>VCF2XLSサイトの機能・性能の維持と改善。</li><li>ユーザーニーズを把握するためのトレンド分析。</li><li>サポートリクエストへの対応。</li></ul><h3 class=\"text-xl font-semibold mt-6\">3. 第三者リンク</h3><p>本サイトには第三者のサイトへのリンクが含まれる場合があります。それら外部サイトのプライバシー慣行について、当社は責任を負いかねます。</p>"
+    },
+    "terms": {
+      "seo": {
+        "title": "利用規約",
+        "description": "サービス利用時の権利・義務および免責事項を定義します。"
+      },
+      "title": "利用規約",
+      "contentHtml": "<h3 class=\"text-xl font-semibold\">1. サービスの同意と利用</h3><p>VCF2XLSを利用することで、本規約に同意したものとみなされます。当サービスは、VCardとExcel/CSVファイル間の安全なローカル変換を提供することを目的としています。</p><h3 class=\"text-xl font-semibold mt-6\">2. ユーザーの責任</h3><ul class=\"list-disc ml-6 space-y-1\"><li><strong>データの合法性：</strong>ユーザーは、変換に使用するファイルおよびデータを使用する適正な権限を有していることを保証するものとします。不法なデータの処理に本サービスを利用することはできません。</li><li><strong>リスクの負担：</strong>変換精度の向上に努めておりますが、形式の差異が発生する可能性があります。インポート前にデータを検証する責任はユーザーにあります。</li></ul><h3 class=\"text-xl font-semibold mt-6\">3. 免責事項</h3><p>本サービスは「現状有姿」で提供されます。VCF2XLSは、サービスの中断、エラー、または完全な正確性を保証しません。本サービスの利用によって生じた直接的、間接的損害（データ紛失等を含む）について、一切の責任を負いません。</p><h3 class=\"text-xl font-semibold mt-6\">4. 知的財産権</h3><p>本サイト、ソースコード、デザイン、ロゴ、およびすべてのコンテンツは VCF2XLS に帰属し、法律で保護されています。</p>"
+    }
+  },
+  "info": {
+    "support": {
+      "title": "お問い合わせ",
+      "intro": "VCF2XLSのご利用中に技術的な問題やバグ、改善の提案などがございましたら、お気軽にご連絡ください。早急に対応させていただきます。",
+      "techTitle": "技術サポート",
+      "techEmail": "support@excel2vcf.com",
+      "techNote": "バグ報告、変換の失敗などについて。",
+      "bizTitle": "ビジネス・ご提案",
+      "bizEmail": "hello@excel2vcf.com",
+      "bizNote": "機能提案、提携のご相談など。",
+      "formTitle": "フィードバックフォーム",
+      "formName": "お名前",
+      "formEmail": "メールアドレス（返信用）",
+      "formMessage": "問題の内容や提案をご記入ください",
+      "formSubmit": "送信する",
+      "formSubmitAlert": "メッセージを送信しました。順次確認させていただきます。（※現在はデモ用であり、実際の送信にはバックエンドが必要です）"
+    },
+    "faqPage": {
+      "title": "よくある質問 (FAQ)",
+      "subtitle": "データセキュリティや互換性に関する疑問を素早く解決。",
+      "q1": "VCFやExcelファイルがサーバーにアップロードされることはありますか？",
+      "a1": "<strong>絶対にありません。</strong> VCF2XLSの最大の特徴は、<span class=\"text-accent-700 font-bold\">すべての処理がお使いのデバイス内で行われること</span>です。データが外に出ることはないため、最高レベルのプライバシーが保証されます。",
+      "q2": "スマホにインポートすると日本語が文字化けします。どうすればいいですか？",
+      "a2": "文字化けは主に <span class=\"font-bold\">Excel/CSV to VCF</span> の際に発生します。元のCSVが <strong>UTF-8エンコード</strong> で保存されているか確認してください。当ツールはUTF-8でVCFを出力します。解決しない場合は、ExcelでCSVを開き直し、「名前を付けて保存」からUTF-8形式を選んで再度お試しください。",
+      "q3": "VCF to Excelの際、メモや複数の電話番号が消えてしまいました。",
+      "a3": "当ツールの解析エンジンは標準・非標準を問わず、可能な限りすべてのフィールドを抽出するよう設計されています。<ul class=\"list-disc ml-6 mt-2 space-y-1\"><li><strong>重複フィールド：</strong> 複数の電話番号がある場合、一つのセルにまとめるか、複数の列（電話1, 電話2...）に分けて出力します。</li><li>特定のファイルでデータが欠落する場合は、解析精度向上のため、サンプルファイルを送付いただければ対応を検討いたします。</li></ul>",
+      "q4": "ファイルサイズや件数に制限はありますか？",
+      "a4": "ローカル処理のため、お使いのデバイスのスペック（CPU/メモリ）に依存します。理論上の制限はありませんが、<strong>50,000件以上</strong> の連絡先を含む場合、処理に時間がかかることがあります。完了までページを閉じずにお待ちください。"
+    },
+    "changelog": {
+      "title": "アップデート履歴",
+      "intro": "VCF2XLSは、変換精度の向上とユーザー体験の改善に継続的に取り組んでいます。",
+      "tags": {
+        "major": "メジャーアップデート",
+        "opt": "最適化・改善",
+        "fix": "バグ修正",
+        "feature": "新機能"
+      },
+      "v2_1": {
+        "title": "V2.1.0 - SEO Schema の強化",
+        "date": "2026年1月6日",
+        "p1": "<span class=\"font-bold text-accent-700\">新機能：</span> すべてのツールページとFAQにSEO Schema (JSON-LD) を追加。検索エンジンでの視認性が向上しました。",
+        "p2": "<span class=\"font-bold text-accent-700\">最適化：</span> SoftwareApplication および FAQPage の構造化データを実装しました。"
+      },
+      "v2": {
+        "title": "V2.0.0 - 双方向変換エンジン正式リリース",
+        "date": "2025年12月9日",
+        "p1": "<span class=\"font-bold text-accent-700\">新機能：</span> VCF解析エンジンを導入し、<strong>VCF → Excel/CSV</strong> の逆変換に対応しました。",
+        "p2": "<span class=\"font-bold text-accent-700\">新機能：</span> VCF 4.0 規格をサポート。住所、組織、メモなどの複雑なフィールドも抽出可能に。",
+        "p3": "<span class=\"font-bold text-accent-700\">最適化：</span> Excel → VCF のフィールドマッピング画面を改善し、カスタムラベルをサポート。",
+        "p4": "<span class=\"font-bold text-accent-700\">最適化：</span> 処理速度の向上。1万件を超える大規模データの処理速度が約30%アップしました。"
+      },
+      "v1_1": {
+        "title": "V1.1.0 - CSV文字化け修正と互換性強化",
+        "date": "2025年10月28日",
+        "p1": "<span class=\"font-bold text-accent-700\">最適化：</span> VCF出力時のUTF-8エンコードを強制し、日本語の文字化け問題を解消。",
+        "p2": "<span class=\"font-bold text-accent-700\">バグ修正：</span> 特定のExcel形式 (.xls) でヘッダーが正しく認識されない問題を修正。"
+      },
+      "v1_0": {
+        "title": "V1.0.0 - 初版リリース",
+        "date": "2025年9月15日",
+        "p1": "<span class=\"font-bold text-accent-700\">新機能：</span> 基礎となる <strong>Excel/CSV → VCF</strong> 変換機能を実装。",
+        "p2": "<span class=\"font-bold text-accent-700\">新機能：</span> ローカル処理エンジンにより、データセキュリティを確保。"
+      }
+    }
+  },
+  "footer": {
+    "sections": {
+      "features": "機能",
+      "support": "サポート",
+      "legal": "法的情報"
+    },
+    "links": {
+      "partners": "パートナー"
+    },
+    "intro": "Excel2VCFは、Excel/CSVとvCard (VCF) の双方向変換を安全・迅速に提供する無料オンラインツールです。すべての処理はローカルで行われ、プライバシーは完全に守られます。",
+    "companyName": "Excel2VCF"
+  },
+  "components": {
+    "modal": {
+      "closeAria": "モーダルを閉じる",
+      "closeLabel": "閉じる"
+    }
+  }
+}

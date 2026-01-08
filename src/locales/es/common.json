@@ -1,0 +1,454 @@
+{
+  "hero": {
+    "title": "Convertir Excel/CSV a vCard (VCF) en lote",
+    "description": "Dígale adiós a la entrada manual. Convierta sus contactos de Excel/CSV al formato vCard (VCF) de forma segura, rápida y precisa. Totalmente compatible con iOS y Android.",
+    "cta": "Iniciar conversión (procesamiento local)",
+    "badge": "Conversión 100% fuera de línea · Sus datos nunca salen de su dispositivo"
+  },
+  "page": {
+    "home_title": "Convertidor de Excel/CSV/XLSX a vCard (VCF) - Procesamiento local seguro",
+    "home_description": "¡Olvídese de escribir uno por uno! Convierta sus agendas de Excel/CSV a archivos VCF de forma masiva. Todo se procesa localmente en su navegador, garantizando que sus datos nunca se envíen a un servidor. Compatible con iOS/Android.",
+    "blog_title": "Blog",
+    "blog_description": "Últimas actualizaciones y artículos del equipo de Excel2VCF."
+  },
+  "uploadDropzone": {
+    "drag": "Arrastre y suelte un archivo o haga clic para seleccionar",
+    "support": "Soporta formatos XLS, CSV, XLSX",
+    "button": "Seleccionar archivo"
+  },
+  "supportedFormats": {
+    "title": "Formatos de contacto compatibles",
+    "subtitle": "Soportamos una amplia gama de formatos de hojas de cálculo para facilitar la importación masiva de sus contactos. Todas las conversiones son locales para garantizar su privacidad.",
+    "items": [
+      {
+        "name": "Libro de Excel (.xlsx)",
+        "desc": "Compatible con archivos estándar creados con Microsoft Excel 2007 y posteriores. Lee la primera hoja y procesa con precisión caracteres especiales y listas extensas."
+      },
+      {
+        "name": "Excel antiguo (.xls)",
+        "desc": "Totalmente compatible con versiones anteriores de Excel. Puede cargar directamente datos exportados de sistemas antiguos sin conversión previa."
+      },
+      {
+        "name": "CSV (valores separados por comas) (.csv)",
+        "desc": "El formato de intercambio de datos más universal. Identifica automáticamente separadores (comas, tabulaciones) y gestiona la codificación UTF-8 para evitar caracteres extraños."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Preguntas Frecuentes (FAQ)",
+    "subtitle": "Respuestas sobre seguridad de datos y compatibilidad.",
+    "items": [
+      {
+        "q": "¿Mis datos están seguros? ¿Se guardan en algún servidor?",
+        "a": "Absolutamente no. El núcleo de nuestra herramienta es la <strong>«conversión 100% local»</strong>. Desde la carga hasta la generación del VCF, sus datos se procesan únicamente en la <strong>memoria de su navegador</strong> y nunca pasan por un servidor externo. La privacidad está garantizada técnicamente."
+      },
+      {
+        "q": "Caracteres extraños tras importar: ¿por qué los nombres se ven mal?",
+        "a": "Los archivos VCF generados usan la codificación estándar internacional <strong>UTF-8</strong>. Los errores de visualización suelen deberse al sistema receptor (Android antiguos u Outlook) que espera otra codificación.<br/><strong>💡 Sugerencia:</strong> Importe mediante servicios modernos como Apple iCloud o Google Contacts, que reconocen UTF-8 automáticamente."
+      },
+      {
+        "q": "Faltan contactos: el número convertido no coincide con el total.",
+        "a": "Para que una ficha VCF sea válida, debe contener al menos un <strong>Nombre (FN)</strong> o un <strong>Teléfono (TEL)</strong>. Las filas vacías o incompletas se omiten.<br/><strong>✅ Solución:</strong> Revise en el <strong>«Paso 2 (Mapeo de campos)»</strong> que las columnas estén correctamente asignadas."
+      },
+      {
+        "q": "Versión de VCF: ¿cuál es la más compatible?",
+        "a": "Por defecto usamos <strong>vCard 3.0</strong>. Es la versión más extendida y funciona perfectamente con iOS, Android, Gmail y la mayoría de servicios de correo modernos."
+      }
+    ]
+  },
+  "howItWorks": {
+    "title": "Importe sus contactos en 3 pasos simples",
+    "subtitle": "¡Ahorre tiempo! Transforme sus datos de Excel/CSV al formato VCF en cuestión de segundos.",
+    "steps": [
+      {
+        "title": "Carga Segura",
+        "desc": "<p>💡 Acción: Arrastre su archivo Excel o CSV.</p><p>Formatos <strong>.xlsx</strong>, <strong>.xls</strong>, <strong>.csv</strong> soportados. El archivo se lee localmente: sin carga en la nube.</p>"
+      },
+      {
+        "title": "Mapeo de Campos",
+        "desc": "<p>💡 Acción: Vincule sus columnas (ej: 'Nombre', 'Móvil') con los campos estándar de VCF (<strong>FN</strong>, <strong>TEL</strong>).</p><div class=\"font-semibold mt-2\">Importante:</div><ul class=\"list-disc pl-5 space-y-1\"><li><strong>Campos obligatorios:</strong> Asegúrese de mapear Nombre y Teléfono.</li><li><strong>Vista previa:</strong> Vea las primeras filas en tiempo real para evitar errores.</li></ul>"
+      },
+      {
+        "title": "Descarga e Importación",
+        "desc": "<p>💡 Acción: Haga clic en 'Iniciar conversión' y descargue su archivo .vcf.</p><p>Formato estándar <strong>VCF 3.0</strong> (UTF-8). Puede:</p><ul class=\"list-disc pl-5 space-y-1\"><li><strong>En PC:</strong> Sincronizar vía iCloud o Google Contacts.</li><li><strong>En Smartphone:</strong> Abrir el archivo directamente para agregar los contactos.</li></ul>"
+      }
+    ]
+  },
+  "whoUse": {
+    "title": "¿Quién utiliza nuestro convertidor de Excel a VCF?",
+    "groups": [
+      {
+        "title": "Equipos de Ventas y Marketing",
+        "desc": "Para registrar rápidamente prospectos de ferias o CRM en el móvil y facilitar el contacto por WhatsApp o llamadas."
+      },
+      {
+        "title": "Recursos Humanos y Administración",
+        "desc": "Para gestionar y distribuir directorios de empleados. Ideal para mantener los teléfonos de empresa actualizados con datos precisos."
+      },
+      {
+        "title": "Usuarios particulares",
+        "desc": "Al cambiar de móvil, para transferir contactos exportados en CSV desde sistemas antiguos a nuevos iPhone o Android."
+      },
+      {
+        "title": "Organizadores de Eventos",
+        "desc": "Para añadir instantáneamente las listas de invitados a los dispositivos de todo el equipo de trabajo antes de un evento."
+      }
+    ]
+  },
+  "nav": {
+    "brand": "Excel2VCF",
+    "csvToVCard": "CSV a VCard/VCF",
+    "excelToVCard": "Excel a VCard/VCF",
+    "vcardToExcel": "VCF/VCard a Excel",
+    "blog": "Blog",
+    "faq": "FAQ"
+  },
+  "vcard": {
+    "field": {
+      "VERSION": { "label": "Versión", "desc": "Versión de vCard (3.0 o 4.0)." },
+      "FN": { "label": "Nombre completo", "desc": "El nombre como aparecerá en los contactos. Requerido." },
+      "N": { "label": "Estructura del nombre", "desc": "Formato: Apellidos;Nombre;Segundo nombre;Prefijo;Sufijo." },
+      "TEL": { "label": "Teléfono", "desc": "Soporta tipos como CELL, WORK, HOME, etc." },
+      "EMAIL": { "label": "Correo electrónico", "desc": "Soporta el tipo INTERNET." },
+      "ORG": { "label": "Organización", "desc": "Nombre de la empresa y departamento." },
+      "TITLE": { "label": "Título / Cargo", "desc": "Puesto profesional." },
+      "ADR": { "label": "Dirección", "desc": "Soporta tipos como HOME, WORK, etc." },
+      "URL": { "label": "Sitio Web", "desc": "Enlace al perfil o web de la empresa." },
+      "NOTE": { "label": "Notas", "desc": "Información adicional." },
+      "BDAY": { "label": "Cumpleaños", "desc": "Formato: AAAA-MM-DD." },
+      "NICKNAME": { "label": "Apodo", "desc": "Nombre informal del contacto." },
+      "LABEL": { "label": "Etiqueta de dirección", "desc": "Etiqueta para envío (vinculada a ADR)." },
+      "PHOTO": { "label": "Foto", "desc": "Imagen integrada en codificación Base64." },
+      "UID": { "label": "ID Único", "desc": "Identificador único del contacto." },
+      "REV": { "label": "Última revisión", "desc": "Marca de tiempo ISO 8601." },
+      "CATEGORIES": { "label": "Categorías", "desc": "Usado para agrupar contactos." },
+      "GENDER": { "label": "Género", "desc": "Formato: M, F, O, U." },
+      "ANNIVERSARY": { "label": "Aniversario", "desc": "Ej: Fecha de boda." },
+      "LANG": { "label": "Idioma", "desc": "Idioma utilizado (ej: es-ES)." },
+      "ROLE": { "label": "Rol", "desc": "Rol dentro de la organización." },
+      "TZ": { "label": "Zona horaria", "desc": "Zona horaria (ej: -05:00)." },
+      "X_PREFIX": { "label": "Campo personalizado", "desc": "Campos específicos como X-SKYPE." },
+      "IMPP": { "label": "Mensajería instantánea", "desc": "Ej: skype:usuario." },
+      "SOUND": { "label": "Información de sonido", "desc": "Pronunciación del nombre." }
+    },
+    "type": {
+      "HOME": "Casa",
+      "WORK": "Trabajo",
+      "VOICE": "Voz",
+      "CELL": "Móvil",
+      "FAX": "Fax",
+      "PAGER": "Localizador",
+      "TEXT": "Texto",
+      "VIDEO": "Vídeo",
+      "TEXTPHONE": "Texto/Sordos",
+      "INTERNET": "E-mail",
+      "A400": "X.400",
+      "POSTAL": "Postal",
+      "PARCEL": "Paquete",
+      "DOM": "Nacional",
+      "INTL": "Internacional",
+      "PREF": "Preferido"
+    }
+  },
+  "pages": {
+    "csv": {
+      "seo": {
+        "title": "Convertidor CSV a vCard Online - Gratis y Seguro",
+        "description": "Convierta archivos CSV a vCard (VCF) en línea. Procesamiento 100% local para máxima seguridad de sus contactos."
+      },
+      "title": "Convertidor CSV a vCard/VCF",
+      "subtitle": "Transforme archivos CSV en archivos .vcf para todos los smartphones. Corrección automática de codificación.",
+      "securityBanner": "✅ <strong>Seguridad Garantizada:</strong> La conversión ocurre <strong>en su navegador</strong>. No guardamos datos en nuestros servidores.",
+      "featuresTitle": "Características Principales",
+      "features": [
+        {
+          "title": "Conversión 100% Local",
+          "desc": "Sus datos <strong>no salen de su PC</strong>. Todo se mantiene privado y seguro."
+        },
+        {
+          "title": "Mapeo Inteligente",
+          "desc": "Reconocimiento automático de cabeceras como 'Nombre' o 'Tel'. Ahorre tiempo."
+        },
+        {
+          "title": "Alta Compatibilidad",
+          "desc": "Soporta CSV y Excel. Exporta en VCF 3.0/4.0 para iOS, Android y Outlook."
+        },
+        {
+          "title": "Ultra Rápido",
+          "desc": "Usa la potencia de su navegador para procesar miles de contactos en segundos."
+        }
+      ],
+      "howTitle": "Cómo funciona",
+      "howSteps": [
+        {
+          "title": "Subir Archivo",
+          "desc": "Seleccione su archivo CSV o Excel."
+        },
+        {
+          "title": "Verificar Campos",
+          "desc": "Asegúrese de que <strong>Nombre</strong> y <strong>Teléfono</strong> estén bien vinculados."
+        },
+        {
+          "title": "Iniciar",
+          "desc": "Haga clic en 'Iniciar'. El proceso es instantáneo."
+        },
+        {
+          "title": "Descargar",
+          "desc": "Guarde el archivo .vcf e impórtelo en su aplicación de contactos."
+        }
+      ],
+      "faqTitle": "Preguntas Frecuentes",
+      "faq": [
+        {
+          "q": "¿Qué es un archivo VCF?",
+          "a": "Es un formato estándar para guardar contactos. Se usa para <strong>importar masivamente</strong> datos en smartphones."
+        },
+        {
+          "q": "¿Es seguro usar esta web?",
+          "a": "Sí, usamos <strong>tecnología de conversión local</strong>. Nada se sube a servidores externos."
+        }
+      ],
+      "ui": {
+        "selectFileLabelCsv": "Seleccionar CSV",
+        "dropHere": "Suelte el archivo aquí",
+        "onlyAcceptWithHeader": "Solo archivos con encabezados ({{accept}})",
+        "vcardVersion": "Versión vCard",
+        "v3Recommended": "3.0 (Recomendado)",
+        "v4": "4.0",
+        "chooseFile": "Elegir archivo",
+        "notice": {
+          "unsupportedType": "Formato no soportado: {{name}}",
+          "closeLabel": "Cerrar"
+        },
+        "mapping": { "title": "Configurar Mapeo de Campos" },
+        "supportedFieldCount": "Campos soportados: {{count}}",
+        "ensureMapping": "Por favor, asigne los campos obligatorios (Nombre, Teléfono)",
+        "exportVCard": "Convertir y Descargar VCF"
+      },
+      "mapping": {
+        "instructions": "Vincule las columnas de su archivo con los campos de VCard",
+        "th": { "source": "Columna origen", "target": "Campo destino" },
+        "ignoreColumn": "Ignorar columna",
+        "typeLabel": "Tipo",
+        "prefLabel": "Preferido",
+        "missingRequiredPrefix": "Faltan campos obligatorios:",
+        "targets": { "fullName": "Nombre completo", "phone": "Teléfono" },
+        "previewTitle": "Vista previa (5 primeras filas)"
+      }
+    },
+    "excel": {
+      "seo": {
+        "title": "Convertir Excel a VCF online - Rápido y Gratis",
+        "description": "Convierta listas Excel (XLSX/XLS) a archivos vCard (VCF) para iPhone y Android. 100% seguro."
+      },
+      "title": "Convertidor Excel a vCard Profesional",
+      "subtitle": "Convierta archivos Excel en contactos importables al instante.",
+      "securityBanner": "✅ <strong>Privacidad:</strong> La conversión se realiza <strong>exclusivamente en su navegador</strong>.",
+      "featuresTitle": "¿Por qué elegirnos?",
+      "features": [
+        {
+          "title": "Privacidad Total",
+          "desc": "Ningún dato sale de su computadora."
+        },
+        {
+          "title": "Detección Automática",
+          "desc": "La herramienta detecta qué columna es el nombre o el teléfono."
+        },
+        {
+          "title": "Multi-formato",
+          "desc": "Soporta XLS, XLSX y CSV con exportación a VCF 3.0/4.0."
+        },
+        {
+          "title": "Alto Rendimiento",
+          "desc": "Procese 10.000 contactos en un parpadeo."
+        }
+      ],
+      "howTitle": "Instrucciones",
+      "howSteps": [
+        {
+          "title": "Cargar Excel",
+          "desc": "Suba su archivo .xlsx o .xls."
+        },
+        {
+          "title": "Verificar Campos",
+          "desc": "Asegúrese de que el nombre y el teléfono estén vinculados."
+        },
+        {
+          "title": "Procesado Local",
+          "desc": "La conversión ocurre en tiempo real en su equipo."
+        },
+        {
+          "title": "Guardar",
+          "desc": "Descargue su archivo .vcf final."
+        }
+      ],
+      "faqTitle": "FAQ de Excel",
+      "faq": [
+        {
+          "q": "¿Soporta tildes y eñes?",
+          "a": "Sí, al usar UTF-8, todos los caracteres especiales del español se procesan correctamente."
+        },
+        {
+          "q": "¿Puedo usar archivos .xls antiguos?",
+          "a": "Sí, soportamos tanto el formato antiguo (97-2003) como el moderno .xlsx."
+        }
+      ],
+      "ui": {
+        "selectFileLabelExcel": "Seleccionar Excel"
+      }
+    },
+    "vcardExcel": {
+      "seo": {
+        "title": "Convertidor VCF a Excel/CSV Online",
+        "description": "Exporte contactos de archivos VCF a Excel o CSV. Herramienta gratuita con procesamiento local."
+      },
+      "title": "Convertidor VCF a Excel/CSV",
+      "subtitle": "Exporte archivos .vcf a tablas de Excel (.xlsx) para una gestión fácil.",
+      "featuresTitle": "Sus Ventajas",
+      "features": [
+        {
+          "title": "Local y Privado",
+          "desc": "Sus contactos personales nunca se envían por internet."
+        },
+        {
+          "title": "Análisis Completo",
+          "desc": "Extrae todos los campos: múltiples números, correos, direcciones y notas."
+        },
+        {
+          "title": "Exportación Flexible",
+          "desc": "Elija entre Excel (.xlsx) o CSV según lo necesite."
+        }
+      ],
+      "howTitle": "Procedimiento",
+      "howBlock": {
+        "title": "VCF a Excel",
+        "desc": "Convierta copias de seguridad de contactos en tablas editables.",
+        "steps": [
+          { "title": "Formato", "desc": "Elija CSV o Excel." },
+          { "title": "Cargar VCF", "desc": "Seleccione uno o varios archivos .vcf." },
+          { "title": "Descargar", "desc": "Baje su tabla generada localmente." }
+        ]
+      },
+      "ui": {
+        "selectVcfLabel": "Seleccionar VCF",
+        "dropHere": "Suelte el VCF aquí",
+        "onlyAccept": "Solo formato {{accept}}",
+        "downloadFormat": "Formato de salida",
+        "excelOption": "Excel (.xlsx)",
+        "csvOption": "CSV (.csv)",
+        "chooseFile": "Elegir archivo",
+        "notice": {
+          "unsupportedType": "Formato no soportado: {{name}}",
+          "parseSuccess": "{{count}} contactos analizados: {{name}}",
+          "closeLabel": "Cerrar"
+        },
+        "fileNamePrefix": "Archivo: ",
+        "parsedCount": "{{count}} contactos listos",
+        "downloadButton": "Descargar",
+        "securityTitle": "Seguridad: ",
+        "securityDesc": "Ningún dato sale de su navegador.",
+        "success": {
+          "title": "¡Conversión exitosa!",
+          "desc": "El archivo ({{format}}) está listo. La descarga debería empezar sola.",
+          "downloadAgain": "Volver a descargar",
+          "convertAnother": "Convertir otro archivo"
+        },
+        "preview": {
+          "configTitle": "Configuración de Columnas",
+          "tableTitle": "Vista previa (primeros 50 contactos)",
+          "totalCount": "Total: {{count}} contactos",
+          "columns": {
+            "FN": "Nombre completo",
+            "TELs": "Teléfonos",
+            "EMAILs": "E-mails",
+            "ORG": "Empresa",
+            "TITLE": "Cargo",
+            "ADRs": "Direcciones",
+            "NOTE": "Nota",
+            "LABELs": "Etiquetas",
+            "N_Last": "Apellidos",
+            "N_First": "Nombre"
+          }
+        }
+      }
+    }
+  },
+  "legal": {
+    "common": {
+      "lastUpdated": "Última actualización: 9 de diciembre de 2025"
+    },
+    "cookie": {
+      "seo": { "title": "Política de Cookies" },
+      "title": "Política de Cookies",
+      "contentHtml": "<p>Usamos cookies para mejorar la experiencia. Las esenciales son para el funcionamiento, y las de análisis nos ayudan a entender el uso de nuestras herramientas locales.</p>"
+    },
+    "copyright": {
+      "title": "Derechos de Autor",
+      "contentHtml": "<p>© 2024 excel2vcf.com. Todos los derechos reservados. Prohibida la reproducción no autorizada.</p>"
+    },
+    "privacy": {
+      "seo": { "title": "Política de Privacidad" },
+      "title": "Política de Privacidad",
+      "contentHtml": "<p><strong>Promesa de VCF2XLS:</strong> Todas las conversiones son <strong>locales</strong>. Sus datos nunca se envían a nuestros servidores.</p>"
+    },
+    "terms": {
+      "title": "Términos de Uso",
+      "contentHtml": "<p>Al usar este servicio, acepta que la conversión se ofrece 'tal cual'. No nos responsabilizamos por pérdidas de datos al importar en sistemas de terceros.</p>"
+    }
+  },
+  "info": {
+    "support": {
+      "title": "Contacto",
+      "intro": "¿Preguntas o errores? Estamos para ayudarle.",
+      "techTitle": "Soporte Técnico",
+      "techEmail": "support@excel2vcf.com",
+      "bizTitle": "Alianzas",
+      "bizEmail": "hello@excel2vcf.com",
+      "formTitle": "Formulario",
+      "formName": "Su nombre",
+      "formEmail": "Su e-mail",
+      "formMessage": "Mensaje",
+      "formSubmit": "Enviar",
+      "formSubmitAlert": "Mensaje enviado (solo demo)."
+    },
+    "faqPage": {
+      "title": "FAQ Detallada",
+      "subtitle": "Todo sobre la conversión Excel/VCF.",
+      "q1": "¿Se suben mis archivos?",
+      "a1": "<strong>No.</strong> Todo ocurre localmente en su memoria RAM.",
+      "q4": "¿Hay límite de tamaño?",
+      "a4": "No, pero con más de 50.000 contactos, la velocidad dependerá de su computadora."
+    },
+    "changelog": {
+      "title": "Historial de cambios",
+      "intro": "Siga la evolución de nuestras herramientas.",
+      "tags": {
+        "major": "Actualización mayor",
+        "opt": "Optimización",
+        "fix": "Corrección",
+        "feature": "Nueva función"
+      },
+      "v2": {
+        "title": "V2.0.0 - Sistema bidireccional",
+        "date": "9 de diciembre de 2025",
+        "p1": "Añadida conversión de <strong>VCF a Excel/CSV</strong>.",
+        "p2": "Soporte completo para vCard 4.0."
+      }
+    }
+  },
+  "footer": {
+    "sections": {
+      "features": "Herramientas",
+      "support": "Ayuda",
+      "legal": "Legal"
+    },
+    "intro": "Excel2VCF es una herramienta gratuita y segura para convertir contactos. Todo es local para proteger su privacidad.",
+    "companyName": "Excel2VCF"
+  },
+  "components": {
+    "modal": {
+      "closeAria": "Cerrar ventana",
+      "closeLabel": "Cerrar"
+    }
+  }
+}
