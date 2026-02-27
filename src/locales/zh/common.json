@@ -100,6 +100,7 @@
     "csvToVCard": "CSV 转 VCard/VCF",
     "excelToVCard": "Excel 转 VCard/VCF",
     "vcardToExcel": "VCF/VCard 转 Excel",
+    "vcardPreview": "vCard 预览",
     "blog": "博客",
     "faq": "常见问题"
   },
@@ -578,5 +579,38 @@
       "closeAria": "关闭弹窗",
       "closeLabel": "关闭"
     }
+  },
+  "vcardPreview": {
+      "title": "vCard 预览与编辑",
+      "description": "在线预览、编辑并导出您的 vCard 联系人。",
+      "upload": {
+        "title": "上传 vCard 文件",
+        "desc": "拖拽或点击上传 .vcf 文件",
+        "btn": "选择文件"
+      },
+      "stats": {
+        "total": "总联系人数",
+        "version": "vCard 版本"
+      },
+      "actions": {
+        "clear": "清空",
+        "export": "导出 vCard"
+      },
+      "table": {
+        "name": "姓名",
+        "phone": "电话",
+        "email": "电子邮件",
+        "actions": "操作"
+      },
+      "modal": {
+        "title": "编辑联系人",
+        "cancel": "取消",
+        "save": "保存",
+        "add": "添加"
+      },
+      "error": {
+        "parse": "解析 vCard 文件失败",
+        "export": "导出 vCard 文件失败"
+      }
   }
 }

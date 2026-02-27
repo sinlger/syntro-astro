@@ -100,6 +100,7 @@
     "csvToVCard": "CSV를 VCard/VCF로 변환",
     "excelToVCard": "Excel을 VCard/VCF로 변환",
     "vcardToExcel": "VCF/VCard를 Excel로 변환",
+    "vcardPreview": "vCard 미리보기",
     "blog": "블로그",
     "faq": "자주 묻는 질문"
   },
@@ -574,5 +575,38 @@
       "closeAria": "모달 닫기",
       "closeLabel": "닫기"
     }
+  },
+  "vcardPreview": {
+      "title": "vCard 미리보기 및 편집",
+      "description": "vCard 연락처를 온라인에서 미리보고 편집하고 내보냅니다.",
+      "upload": {
+        "title": "vCard 파일 업로드",
+        "desc": ".vcf 파일을 드래그 앤 드롭하거나 클릭하여 업로드",
+        "btn": "파일 선택"
+      },
+      "stats": {
+        "total": "총 연락처",
+        "version": "vCard 버전"
+      },
+      "actions": {
+        "clear": "지우기",
+        "export": "vCard 내보내기"
+      },
+      "table": {
+        "name": "이름",
+        "phone": "전화번호",
+        "email": "이메일",
+        "actions": "작업"
+      },
+      "modal": {
+        "title": "연락처 편집",
+        "cancel": "취소",
+        "save": "저장",
+        "add": "추가"
+      },
+      "error": {
+        "parse": "vCard 파일 구문 분석 실패",
+        "export": "vCard 파일 내보내기 실패"
+      }
   }
 }
