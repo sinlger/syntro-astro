@@ -66,7 +66,7 @@ filteredPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
              const randomGradient = gradients[post.slug.length % gradients.length];
 
              return (
-              <a href={`/${locale}/blog/${urlSlug}`} class="group flex flex-col bg-accent-50 rounded-3xl overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+              <a href={`/${locale}/blog/${urlSlug}/`} class="group flex flex-col bg-accent-50 rounded-3xl overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                 <div class={`aspect-[1.6] w-full relative overflow-hidden ${!post.data.image ? randomGradient : 'bg-neutral-100'}`}>
                   {post.data.image ? (
                      <img

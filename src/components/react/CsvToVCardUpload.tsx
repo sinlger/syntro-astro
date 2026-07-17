@@ -60,14 +60,20 @@ export default function CsvToVCardUpload({ accept = '.csv,.xlsx,.xls', locale = 
       const wb = XLSX.read(buf, { type: 'array', dense: true })
       const ws = wb.Sheets[wb.SheetNames[0]]
       const rowsAoA = XLSX.utils.sheet_to_json(ws, { header: 1, blankrows: false }) as any[]
-      const headerRow = (rowsAoA[0] || []).map((c: any) => String(c ?? '').trim()).filter((c: string) => c)
+      // Keep the original column index for every non-empty header so that data cells
+      // are read from the correct position even when there are blank header columns.
+      const headerCells = (rowsAoA[0] || []).map((c: any) => String(c ?? '').trim())
+      const headerEntries = headerCells
+        .map((h: string, i: number) => ({ h, i }))
+        .filter((e: { h: string; i: number }) => e.h)
+      const headerRow = headerEntries.map((e: { h: string; i: number }) => e.h)
       if (headerRow.length) {
         setColumns(headerRow)
         const dataAoA = rowsAoA.slice(1)
         const records = dataAoA
           .map((row: any[]) => {
             const obj: Record<string, any> = {}
-            headerRow.forEach((h, i) => {
+            headerEntries.forEach(({ h, i }) => {
               obj[h] = row?.[i] ?? ''
             })
             return obj
@@ -283,13 +289,14 @@ export default function CsvToVCardUpload({ accept = '.csv,.xlsx,.xls', locale = 
           }
           else if (f.fieldKey === 'NICKNAME') addText('NICKNAME', val)
           else if (f.fieldKey === 'LABEL') {
+            const t = f.type ? `;TYPE=${f.type}` : ''
             if (version === '3.0') {
-              const t = f.type ? `;TYPE=${f.type}` : ''
               lines.push(`LABEL${t};CHARSET=UTF-8:${val}`)
+            } else {
+              lines.push(`LABEL${t}:${val}`)
             }
           }
           else if (f.fieldKey === 'GENDER') {
-            if (version === '4.0') {
               const m = val.trim().toLowerCase()
               const code = m === 'm' || m === 'male' || m === '男' ? 'M'
                 : m === 'f' || m === 'female' || m === '女' ? 'F'
@@ -297,8 +304,11 @@ export default function CsvToVCardUpload({ accept = '.csv,.xlsx,.xls', locale = 
                     : m === 'n' || m === 'none' || m === '无' ? 'N'
                       : m === 'u' || m === 'unknown' || m === '未知' ? 'U'
                         : (m[0] ? m[0].toUpperCase() : 'U')
-              lines.push(`GENDER:${code}`)
-            }
+              if (version === '4.0') {
+                lines.push(`GENDER:${code}`)
+              } else {
+                lines.push(`X-GENDER:${code}`)
+              }
           }
           else if (f.fieldKey === 'PHOTO') addPhoto(val)
           else addText(f.fieldKey, val)

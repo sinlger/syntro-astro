@@ -28,6 +28,13 @@ const t = i18nInstance.t.bind(i18nInstance);
 const htmlLang = locale === "zh" ? "zh-Hans" : locale;
 const canonicalPath = `/blog/${Astro.params.slug}`;
 
+// Blog posts exist only in their own language (slugs differ per language), so we
+// emit a single self-referential hreflang instead of pointing at non-existent
+// translations. The canonical URL keeps a trailing slash to match routing.
+const siteUrl = "https://excel2vcf.com";
+const canonicalUrl = `${siteUrl}/${locale}${canonicalPath}`.replace(/\/+$/, "") + "/";
+const hreflangs = [{ locale: htmlLang, url: canonicalUrl }];
+
 // Format date
 const formattedDate = post.data.pubDate.toLocaleDateString(htmlLang, {
   year: "numeric",
@@ -49,7 +56,6 @@ const gradients = [
 ];
 const randomGradient = gradients[post.slug.length % gradients.length];
 
-const siteUrl = "https://excel2vcf.com";
 const schema = {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
@@ -60,9 +66,11 @@ const schema = {
     "name": post.data.author
   },
   "datePublished": post.data.pubDate.toISOString(),
+  "dateModified": post.data.pubDate.toISOString(),
+  "inLanguage": locale,
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": `${siteUrl}/${locale}/blog/${Astro.params.slug}`
+    "@id": canonicalUrl
   }
 };
 
@@ -70,6 +78,16 @@ if (post.data.image) {
   // @ts-ignore
   schema.image = post.data.image.url.startsWith('http') ? post.data.image.url : `${siteUrl}${post.data.image.url}`;
 }
+
+// Article-specific Open Graph metadata for richer social/blog previews.
+const ogImage = post.data.image
+  ? (post.data.image.url.startsWith('http') ? post.data.image.url : `${siteUrl}${post.data.image.url}`)
+  : undefined;
+const articleMeta = {
+  publishedTime: post.data.pubDate.toISOString(),
+  author: post.data.author,
+  tags: post.data.tags ?? [],
+};
 ---
 
 <BaseLayout
@@ -79,13 +97,17 @@ if (post.data.image) {
   pageTitle={post.data.title}
   pageDescription={post.data.description}
   canonicalPath={canonicalPath}
+  hreflangs={hreflangs}
+  ogType="article"
+  ogImage={ogImage}
+  article={articleMeta}
 >
   <JsonLd schema={schema} />
   <article class="px-6 md:px-8 py-12 md:py-20 max-w-5xl mx-auto">
     {/* Back Link */}
     <div class="mb-8">
       <a 
-        href={`/${locale}/blog`} 
+        href={`/${locale}/blog/`} 
         class="inline-flex items-center gap-2 text-base-600 hover:text-accent-600 transition-colors font-medium"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -201,7 +223,7 @@ if (post.data.image) {
     <div class="text-center">
       <h3 class="text-2xl font-bold text-base-900 mb-8">Continue Reading</h3>
       <a 
-        href={`/${locale}/blog`}
+        href={`/${locale}/blog/`}
         class="inline-flex items-center justify-center px-8 py-3 text-base font-medium text-white bg-accent-600 hover:bg-accent-700 rounded-lg transition-colors shadow-sm hover:shadow-md"
       >
         View All Posts

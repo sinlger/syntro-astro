@@ -12,20 +12,19 @@ interface Props {
   lang: string; // 当前语言代码 (e.g., 'zh')
 }
 const { lang: currentLocale, t } = Astro.props; // 使用解构并重命名 lang 为 currentLocale
-console.log(currentLocale, t);
 // 2. 路径生成函数 (核心逻辑)
 const getLocalizedUrl = (path, locale, isHash) => {
   if (isHash) {
     // 对于锚点链接 (/faq), 只需将前缀加到 URL 的根路径上
     // 例: /zh/#FAQ
-    return `/${locale}/${path.replace("/", "")}`;
+    return `/${locale}/${path.replace("/", "")}/`;
   }
 
   // 对于常规页面链接
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
 
   // 网站的根路径 (/) 总是重定向，但这里我们构造带前缀的 URL
-  return `/${locale}${normalizedPath}`;
+  return `/${locale}${normalizedPath}`.replace(/\/+$/, "") + "/";
 };
 ---
 

@@ -1,0 +1,33 @@
+---
+export const prerender = false;
+
+// Redirect the root path to the locale that best matches the visitor's
+// Accept-Language header, falling back to the default locale.
+// Keep this list in sync with the locales in astro.config.mjs.
+const supported = ["zh", "en", "ja", "ko", "fr", "de", "es"];
+const defaultLocale = "zh";
+
+const header = Astro.request.headers.get("accept-language") ?? "";
+const preferred = header
+  .split(",")
+  .map((part) => {
+    const [tag, q] = part.trim().split(";q=");
+    return { base: tag.toLowerCase().split("-")[0], q: q ? parseFloat(q) : 1 };
+  })
+  .filter((l) => l.base)
+  .sort((a, b) => b.q - a.q)
+  .find((l) => supported.includes(l.base));
+
+const target = preferred?.base ?? defaultLocale;
+
+// Build the redirect manually so we can attach a Vary header. This tells shared
+// caches that the response depends on Accept-Language, preventing one visitor's
+// language-based redirect from being served to a visitor with different prefs.
+return new Response(null, {
+  status: 302,
+  headers: {
+    Location: `/${target}/`,
+    Vary: "Accept-Language",
+  },
+});
+---

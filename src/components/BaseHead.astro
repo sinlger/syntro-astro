@@ -3,14 +3,24 @@
 
 import "../styles/global.css";
 
-// 接收 Layout 传递的所有 SEO 数据
+interface ArticleMeta {
+    publishedTime?: string;
+    modifiedTime?: string;
+    author?: string;
+    tags?: string[];
+}
+
+// SEO data forwarded from the layout.
 interface Props {
     title: string;
     description: string;
     canonicalUrl: string;
     siteUrl: string;
     hreflangs: any[];
-    ogImage?: string; 
+    ogImage?: string;
+    ogType?: string;
+    ogLocale?: string;
+    article?: ArticleMeta;
 }
 
 const {
@@ -20,6 +30,9 @@ const {
     siteUrl,
     hreflangs,
     ogImage = `${siteUrl}/og-image.png`,
+    ogType = "website",
+    ogLocale,
+    article,
 } = Astro.props;
 ---
 
@@ -39,11 +52,25 @@ const {
 ))}
 
 
-<meta property="og:type" content="website" />
+<meta property="og:type" content={ogType} />
+<meta property="og:site_name" content="Excel2VCF" />
+{ogLocale && <meta property="og:locale" content={ogLocale} />}
 <meta property="og:url" content={canonicalUrl} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={ogImage} />
+{ogType === "article" && article?.publishedTime && (
+    <meta property="article:published_time" content={article.publishedTime} />
+)}
+{ogType === "article" && article?.modifiedTime && (
+    <meta property="article:modified_time" content={article.modifiedTime} />
+)}
+{ogType === "article" && article?.author && (
+    <meta property="article:author" content={article.author} />
+)}
+{ogType === "article" && article?.tags?.map((tag) => (
+    <meta property="article:tag" content={tag} />
+))}
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={canonicalUrl} />
 <meta property="twitter:title" content={title} />
