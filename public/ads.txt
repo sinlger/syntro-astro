@@ -1,0 +1,8 @@
+# ads.txt for excel2vcf.com
+# Authorized Digital Sellers (IAB spec): https://iabtechlab.com/ads-txt/
+#
+# AdSense is not approved yet, so no publisher ID exists.
+# After AdSense approval, replace the line below with your real
+# publisher ID (found in AdSense > Account > Settings), e.g.:
+#
+# google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0

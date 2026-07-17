@@ -80,23 +80,10 @@ const getLocalizedUrl = (path, locale, isHash) => {
                 <a
                   href={url}
                   class={`text-sm text-black transition duration-300 hover:text-blue-600 ${index === 0 ? 'lg:ml-auto' : 'relative'}`}>
-                  {text}
-                </a>
+                 {text}
+               </a>
             );
         })}
-
-        <div class="inline-flex items-center gap-2 list-none py-px lg:ml-auto">
-          <!-- <a
-            href="/signup"
-            class="flex items-center justify-center transition-all duration-200 focus:ring-2 focus:outline-none text-base-500 bg-white hover:text-accent-600 ring-1 ring-base-200 focus:bg-accent-100 h-8 px-4 py-2 text-xs font-medium rounded-md hover:bg-accent-100">
-            Sign up
-          </a>
-          <a
-            href="/login"
-            class="flex items-center justify-center transition-all duration-200 ring-1 focus:ring-2 ring-accent-700 focus:outline-none text-base-50 bg-accent-600 hover:bg-accent-700 focus:ring-base-500/50 h-8 px-4 py-2 text-xs font-medium rounded-md">
-            Log in
-          </a> -->
-        </div>
       </nav>
     </div>
   </div>
