@@ -100,6 +100,7 @@
     "csvToVCard": "CSV vers VCard/VCF",
     "excelToVCard": "Excel vers VCard/VCF",
     "vcardToExcel": "VCF/VCard vers Excel",
+    "vcardPreview": "Aperçu vCard",
     "blog": "Blog",
     "faq": "FAQ"
   },
@@ -450,5 +451,38 @@
       "closeAria": "Fermer la fenêtre",
       "closeLabel": "Fermer"
     }
-  }
+  },
+  "vcardPreview": {
+      "title": "vCard Preview & Edit",
+      "description": "Preview, edit, and export your vCard contacts online.",
+      "upload": {
+        "title": "Upload vCard File",
+        "desc": "Drag and drop or click to upload .vcf file",
+        "btn": "Select File"
+      },
+      "stats": {
+        "total": "Total Contacts",
+        "version": "vCard Version"
+      },
+      "actions": {
+        "clear": "Clear",
+        "export": "Export vCard"
+      },
+      "table": {
+        "name": "Name",
+        "phone": "Phone",
+        "email": "Email",
+        "actions": "Actions"
+      },
+      "modal": {
+        "title": "Edit Contact",
+        "cancel": "Cancel",
+        "save": "Save",
+        "add": "Add"
+      },
+      "error": {
+        "parse": "Failed to parse vCard file",
+        "export": "Failed to export vCard file"
+      }
+    }
 }

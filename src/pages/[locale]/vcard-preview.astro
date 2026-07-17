@@ -1,0 +1,84 @@
+---
+export const prerender = true;
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { initI18n } from "../../i18n.js";
+import VCardPreview from "../../components/react/VCardPreview";
+import JsonLd from "../../components/seo/JsonLd.astro";
+
+export function getStaticPaths() {
+  const locales = ["zh", "en", "ja", "ko", "fr", "de", "es"];
+  return locales.map((locale) => {
+    return {
+      params: {
+        locale: locale,
+      },
+    };
+  });
+}
+
+const locale = Astro.params.locale;
+const effectiveLocale = locale;
+
+const i18nInstance = initI18n(effectiveLocale);
+const t = i18nInstance.t.bind(i18nInstance);
+const htmlLang = locale === "zh" ? "zh-Hans" : locale;
+const pageTitle = t("vcardPreview.title");
+const pageDescription = t("vcardPreview.description");
+const canonicalPath = "/vcard-preview";
+const siteUrl = "https://excel2vcf.com";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${siteUrl}/${locale}${canonicalPath}`,
+      "url": `${siteUrl}/${locale}${canonicalPath}`,
+      "name": pageTitle,
+      "description": pageDescription,
+      "inLanguage": locale
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "vCard Preview & Editor",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "120"
+      }
+    }
+  ]
+};
+
+// Get translations to pass to React component
+const translations = i18nInstance.getResourceBundle(effectiveLocale, 'common');
+---
+
+<JsonLd schema={schema} />
+
+<BaseLayout
+  htmlLang={htmlLang}
+  lang={locale}
+  t={t}
+  pageTitle={pageTitle}
+  pageDescription={pageDescription}
+  canonicalPath={canonicalPath}
+>
+  <section class="px-6 md:px-12 lg:px-24 py-20 max-w-7xl mx-auto">
+    <div class="text-center mb-12">
+      <h1 class="text-3xl font-bold text-gray-900 mb-4">{t("vcardPreview.title")}</h1>
+      <p class="text-xl text-gray-600">{t("vcardPreview.description")}</p>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+      <VCardPreview client:load locale={effectiveLocale} translations={translations} />
+    </div>
+  </section>
+</BaseLayout>

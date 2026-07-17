@@ -100,6 +100,7 @@
     "csvToVCard": "CSVをVCard/VCFに変換",
     "excelToVCard": "ExcelをVCard/VCFに変換",
     "vcardToExcel": "VCF/VCardをExcelに変換",
+    "vcardPreview": "vCardプレビュー",
     "blog": "ブログ",
     "faq": "よくある質問"
   },
@@ -574,5 +575,38 @@
       "closeAria": "モーダルを閉じる",
       "closeLabel": "閉じる"
     }
+  },
+  "vcardPreview": {
+      "title": "vCard プレビュー＆編集",
+      "description": "オンラインでvCard連絡先をプレビュー、編集、エクスポートします。",
+      "upload": {
+        "title": "vCardファイルをアップロード",
+        "desc": "ドラッグ＆ドロップまたはクリックして.vcfファイルをアップロード",
+        "btn": "ファイルを選択"
+      },
+      "stats": {
+        "total": "総連絡先数",
+        "version": "vCardバージョン"
+      },
+      "actions": {
+        "clear": "クリア",
+        "export": "vCardをエクスポート"
+      },
+      "table": {
+        "name": "氏名",
+        "phone": "電話番号",
+        "email": "メール",
+        "actions": "操作"
+      },
+      "modal": {
+        "title": "連絡先を編集",
+        "cancel": "キャンセル",
+        "save": "保存",
+        "add": "追加"
+      },
+      "error": {
+        "parse": "vCardファイルの解析に失敗しました",
+        "export": "vCardファイルのエクスポートに失敗しました"
+      }
   }
 }
