@@ -1,6 +1,6 @@
 ---
-title: "Essentiel pour la Vente & les RH : Cas pratiques pour gérer rapidement les contacts clients et employés avec un convertisseur VCF"
-description: "Comment les équipes de vente peuvent-elles synchroniser rapidement les données clients des salons ? Comment les RH peuvent-ils distribuer efficacement les contacts des employés ? Cet article s'appuie sur des études de cas réels pour vous aider à maîtriser l'exportation de clients CRM, la distribution massive de contacts d'employés et booster considérablement votre efficacité au travail."
+title: "Convertisseur VCF pour la vente et les RH : cas pratiques"
+description: "Voyez comment la vente synchronise ses leads de salon et les RH diffusent l'annuaire interne : export CRM, une conversion, un fichier VCF prêt à importer."
 pubDate: 2025-12-08
 author: "Équipe Excel2VCF"
 tags: ["Application Professionnelle", "Conseils de Vente", "Outils RH", "Importation Massive"]

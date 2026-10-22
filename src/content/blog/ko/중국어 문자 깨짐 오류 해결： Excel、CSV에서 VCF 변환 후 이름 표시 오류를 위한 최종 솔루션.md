@@ -1,6 +1,6 @@
 ---
-title: "중국어 문자 깨짐 오류 해결: Excel/CSV에서 VCF 변환 후 이름 표시 오류를 위한 최종 솔루션"
-description: "Excel/CSV를 VCF로 변환한 후 연락처 이름이 깨져서 나오나요? 이 글은 CSV-VCF 변환 시 문자 깨짐 복구 및 VCF 파일 인코딩 설정을 포함하여 중국어 표시 문제를 완벽하게 해결하는 단계별 가이드를 제공합니다."
+title: "문자 깨짐 해결: Excel/CSV를 VCF로 변환할 때"
+description: "변환 후 이름이 물음표나 네모로 보이나요? 원인과 함께 UTF-8로 출력되는 VCF가 중국어·일본어·한국어를 제대로 표시하는 이유를 설명합니다."
 pubDate: 2025-12-01
 author: "Excel2VCF 팀"
 tags: ["중국어 문자 깨짐", "VCF 복구", "UTF-8", "문제 해결"]

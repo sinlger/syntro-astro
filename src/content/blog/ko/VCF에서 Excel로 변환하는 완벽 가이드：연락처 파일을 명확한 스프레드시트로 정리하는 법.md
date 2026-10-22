@@ -1,6 +1,6 @@
 ---
-title: "VCF에서 Excel로 변환하는 완벽 가이드: 연락처 파일을 명확한 스프레드시트로 정리하는 법"
-description: "내보낸 VCF 연락처가 정리되지 않아 고민이신가요? 요약을 위해 연락처를 일괄 추출해야 하나요? 이 기사에서는 VCF를 Excel/CSV로 쉽게 변환하여 흩어진 연락처 데이터를 편집 및 백업에 최적화된 명확한 스프레드시트로 바꾸는 방법을 설명합니다."
+title: "VCF에서 Excel로: 연락처를 표로 정리하는 법"
+description: "내보낸 VCF가 코드처럼 보이나요? Excel이나 CSV로 바꾸면 정렬과 중복 정리가 되는 표가 됩니다. 브라우저 안에서 몇 초면 끝납니다."
 pubDate: 2025-11-24
 author: "Excel2VCF Team"
 tags: ["VCF Excel 변환", "vCard CSV 변환", "연락처 정리", "튜토리얼"]

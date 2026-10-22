@@ -1,6 +1,6 @@
 ---
-title: "VCF 필드 매핑 심층 분석: Excel에서 vCard 표준으로의 완벽한 데이터 일치 보장"
-description: "변환 후 일부 연락처 정보가 누락되었습니까? 이는 VCF 필드 매핑을 무시했기 때문일 수 있습니다. VCF 3.0 표준을 기반으로 한 이 문서에서는 Excel 열과 VCF 필드 간의 완벽한 일치를 달성하는 방법을 교육합니다."
+title: "VCF 필드 매핑: Excel 열을 vCard에 맞추는 법"
+description: "변환 후 이름만 남고 전화번호가 없나요? Excel 열을 vCard의 FN·TEL·ORG에 연결해 연락처 정보를 잃지 않는 법을 알려드립니다."
 pubDate: 2025-12-12
 author: "Excel2VCF Team"
 tags: ["필드 매핑", "VCF 표준", "데이터 일치", "고급 튜토리얼"]

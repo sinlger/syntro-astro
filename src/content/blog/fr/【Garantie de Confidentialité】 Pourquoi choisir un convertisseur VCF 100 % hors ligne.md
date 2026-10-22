@@ -1,6 +1,6 @@
 ---
-title: "【Garantie de Confidentialité】 Pourquoi choisir un convertisseur VCF 100 % hors ligne"
-description: "Peur que vos fichiers Excel ne fuitent via des téléchargements sur le cloud ? Vous ne savez pas quel convertisseur VCF est sûr ? Découvrez pourquoi vous devez choisir un convertisseur VCF 100 % hors ligne pour la confidentialité de vos données et comment il renforce la sécurité de vos contacts."
+title: "Convertisseur VCF hors ligne : vos contacts restent privés"
+description: "Vos contacts sont sensibles. Un convertisseur VCF hors ligne traite Excel et CSV dans le navigateur : aucun envoi, aucun serveur, aucune trace."
 pubDate: 2025-11-15
 author: "Excel2VCF Team"
 tags: ["Confidentialité des données", "Traitement hors ligne", "Convertisseur VCF", "Sécurité"]

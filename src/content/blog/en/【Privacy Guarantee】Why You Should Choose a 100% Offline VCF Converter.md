@@ -1,6 +1,6 @@
 ---
-title: "【Privacy Guarantee】Why You Should Choose a 100% Offline VCF Converter"
-description: "Worried about Excel files leaking from cloud uploads? Unsure which VCF converter is safe? Why you must choose a 100% offline VCF converter for data privacy, and how it fortifies your contact security."
+title: "Offline VCF Converter: Keep Contact Data 100% Private"
+description: "Your contact list is sensitive. An offline VCF converter runs in your browser, so Excel and CSV files never leave your device: no upload, no server."
 pubDate: 2025-11-15
 author: "Excel2VCF Team"
 tags: ["Data Privacy", "Offline Processing", "VCF Converter", "Security"]

@@ -1,6 +1,6 @@
 ---
-title: "Unverzichtbar für Vertrieb & HR: Praktische Fallbeispiele für die schnelle Verwaltung von Kunden- und Mitarbeiterkontakten mit einem VCF-Konverter"
-description: "Wie können Vertriebsteams Messedaten schnell synchronisieren? Wie verteilt die Personalabteilung Mitarbeiterkontakte effizient? Dieser Artikel nutzt praxisnahe Fallstudien, um Ihnen zu helfen, CRM-Kundenexporte sowie die Massenverteilung von Mitarbeiterkontakten zu meistern und die Arbeitseffizienz deutlich zu steigern."
+title: "VCF-Konverter für Vertrieb und HR: so geht's"
+description: "Wie der Vertrieb Messeleads synchronisiert und HR Mitarbeiterkontakte verteilt: So kommen Sie vom CRM-Export zur fertigen VCF-Datei für den Import."
 pubDate: 2025-12-08
 author: "Excel2VCF Team"
 tags: ["Business-Anwendung", "Vertriebstipps", "HR-Tools", "Massenimport"]

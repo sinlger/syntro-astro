@@ -1,6 +1,6 @@
 ---
-title: "Analyse approfondie du mappage de champs VCF : Assurer une correspondance parfaite des données d'Excel au standard vCard"
-description: "Il vous manque des informations de contact après la conversion ? Cela est dû au fait que vous ignorez le mappage des champs VCF. Cet article, basé sur les normes VCF 3.0, vous enseigne comment obtenir une correspondance parfaite entre les colonnes Excel et les champs VCF."
+title: "Mappage des champs VCF : Excel vers le standard vCard"
+description: "Seuls les noms apparaissent après conversion ? Associez chaque colonne Excel au bon champ vCard (FN, TEL, ORG) et ne perdez plus téléphones ni e-mails."
 pubDate: 2025-12-12
 author: "Excel2VCF Team"
 tags: ["Mappage de champs", "Standard VCF", "Correspondance de données", "Tutoriel avancé"]

@@ -1,6 +1,6 @@
 ---
-title: "Zeichensatz-Fehler beheben: Namen nach Excel/CSV zu VCF"
-description: "Namen nach Excel/CSV zu VCF unlesbar? So beheben Sie Zeichensatz-Fehler und importieren UTF-8 korrekt in iCloud, Google Kontakte und Outlook."
+title: "Zeichensatz-Fehler beheben: Excel/CSV zu VCF"
+description: "Namen erscheinen nach der Konvertierung als Zeichensalat? Lesen Sie, warum das passiert und wie UTF-8-VCF chinesische Namen dauerhaft korrekt zeigt."
 pubDate: 2025-12-01
 author: "Excel2VCF Team"
 tags: ["Zeichensatz-Fehler", "UTF-8", "vCard reparieren", "Fehlerbehebung"]

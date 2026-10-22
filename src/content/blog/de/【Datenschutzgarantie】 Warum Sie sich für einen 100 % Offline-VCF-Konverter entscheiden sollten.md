@@ -1,6 +1,6 @@
 ---
-title: "【Datenschutzgarantie】Warum Sie sich für einen 100% Offline-VCF-Konverter entscheiden sollten"
-description: "Besorgt über Excel-Dateien, die durch Cloud-Uploads durchsickern? Unsicher, welcher VCF-Konverter sicher ist? Warum Sie für den Datenschutz einen 100% Offline-VCF-Konverter wählen müssen und wie dieser die Sicherheit Ihrer Kontakte stärkt."
+title: "Offline-VCF-Konverter: Kontaktdaten bleiben privat"
+description: "Ihre Kontakte sind sensibel. Ein Offline-VCF-Konverter arbeitet komplett im Browser: Excel- und CSV-Dateien verlassen Ihr Gerät nie, ohne Upload."
 pubDate: 2025-11-15
 author: "Excel2VCF Team"
 tags: ["Datenschutz", "Offline-Verarbeitung", "VCF-Konverter", "Sicherheit"]

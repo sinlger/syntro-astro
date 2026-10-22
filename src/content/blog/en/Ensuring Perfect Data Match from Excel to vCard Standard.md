@@ -1,6 +1,6 @@
 ---
-title: "VCF Field Mapping Deep Dive: Ensuring Perfect Data Match from Excel to vCard Standard"
-description: "Missing some contact info after conversion? This is due to ignoring VCF Field Mapping. This article, based on VCF 3.0 standards, teaches you how to achieve a perfect match between Excel columns and VCF fields."
+title: "VCF Field Mapping: Match Excel Columns to vCard Fields"
+description: "Only names show up after conversion? Map each Excel column to the right vCard field (FN, TEL, ORG) and stop losing phone numbers, emails and notes."
 pubDate: 2025-12-12
 author: "Excel2VCF Team"
 tags: ["Field Mapping", "VCF Standard", "Data Match", "Advanced Tutorial"]

@@ -1,6 +1,6 @@
 ---
-title: "The Complete Guide to VCF to Excel: How to Organize Contact Files into a Clear Spreadsheet"
-description: "Are your exported VCF contacts disorganized? Need to batch extract contacts for summary? This article teaches you how to easily convert VCF to Excel/CSV, turning scattered contact data into a clear spreadsheet for editing and backup."
+title: "VCF to Excel: Turn Contact Files into a Clear Spreadsheet"
+description: "Exported VCF contacts look like raw code? Convert them to Excel or CSV and get a clean, editable table for sorting, deduplicating and backup."
 pubDate: 2025-11-24
 author: "Excel2VCF Team"
 tags: ["VCF to Excel", "vCard to CSV", "Contact Organization", "Tutorial"]

@@ -1,6 +1,6 @@
 ---
-title: "Cómo solucionar errores de codificación de caracteres chinos: La solución definitiva para nombres incorrectos tras la conversión de Excel/CSV a VCF"
-description: "¿Los nombres de tus contactos aparecen como códigos extraños tras convertir de Excel/CSV a VCF? Este artículo ofrece soluciones paso a paso, desde la reparación de códigos corruptos en CSV hasta el ajuste de codificación en archivos VCF, para resolver por completo los problemas de visualización de caracteres chinos."
+title: "Arregle la codificación de nombres al convertir a VCF"
+description: "¿Los nombres aparecen como caracteres extraños tras convertir? Descubra por qué y cómo una salida VCF en UTF-8 lo resuelve de una vez por todas."
 pubDate: 2025-12-01
 author: "Excel2VCF Team"
 tags: ["Código Chino Corrupto", "Reparación VCF", "UTF-8", "Solución de Problemas"]

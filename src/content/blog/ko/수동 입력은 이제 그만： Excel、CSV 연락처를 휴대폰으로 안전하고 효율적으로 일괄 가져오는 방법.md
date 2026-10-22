@@ -1,6 +1,6 @@
 ---
-title: "수동 입력은 이제 그만: Excel/CSV 연락처를 휴대폰으로 안전하고 효율적으로 일괄 가져오는 방법"
-description: "수백 개의 연락처가 Excel/CSV 파일에 있는데 일일이 수동으로 입력하고 계신가요? Excel to VCF/CSV to vCard 도구를 사용하여 간편하게 대량 연락처 가져오기를 실행하고 번거로운 수동 입력을 완전히 없애보세요."
+title: "Excel to VCF: 연락처를 휴대폰으로 일괄 가져오기"
+description: "연락처가 엑셀에만 있나요? 브라우저에서 Excel/CSV를 VCF로 바꿔 아이폰·안드로이드로 가져오세요. 파일은 기기 밖으로 나가지 않습니다."
 pubDate: 2025-11-05
 author: "Excel2VCF 팀"
 tags: ["Excel to VCF", "CSV to vCard", "연락처 일괄 가져오기", "튜토리얼"]

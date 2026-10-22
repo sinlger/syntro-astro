@@ -1,6 +1,6 @@
 ---
-title: "告别手动输入：Excel/CSV 联系人如何安全高效地批量导入手机通讯录？"
-description: "整理了几百条联系人存放在Excel/CSV表格，却要手动逐条输入到手机通讯录？借助Excel转VCF、CSV转vCard工具，轻松实现批量导入通讯录，彻底告别繁琐的手动输入。"
+title: "Excel 转 VCF：批量导入手机通讯录"
+description: "几百条联系人还堆在表格里？用浏览器把 Excel 或 CSV 转成 VCF，一键批量导入 iPhone 或安卓通讯录，全程本地处理，文件不会被上传。"
 pubDate: 2025-11-05
 author: "Excel2VCF 团队"
 tags: ["Excel转VCF", "CSV转vCard", "批量导入通讯录", "教程"]

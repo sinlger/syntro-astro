@@ -1,6 +1,6 @@
 ---
-title: "Solving Chinese Character Encoding Errors: The Ultimate Solution for Incorrect Names After Excel/CSV to VCF Conversion"
-description: "Contact names showing up as garbled code after Excel/CSV to VCF conversion? This article provides step-by-step fixes, covering CSV to VCF garbled code repair and VCF file encoding settings, to completely resolve Chinese display issues."
+title: "Fix Chinese Encoding Errors: Excel/CSV to VCF"
+description: "Names turning into garbled text after conversion? See why it happens and how UTF-8 VCF output restores Chinese, Japanese and Korean names for good."
 pubDate: 2025-12-01
 author: "Excel2VCF Team"
 tags: ["Chinese Garbled Code", "VCF Repair", "UTF-8", "Troubleshooting"]

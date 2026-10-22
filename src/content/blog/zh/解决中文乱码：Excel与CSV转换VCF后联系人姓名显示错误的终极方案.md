@@ -1,6 +1,6 @@
 ---
-title: "解决中文乱码：Excel/CSV 转换 VCF 后联系人姓名显示错误的终极方案"
-description: "Excel/CSV转换VCF后，联系人姓名变成一堆乱码？本文从成因分析到分步修复，提供CSV转VCF乱码修复、VCF文件编码设置等实用方案，助你彻底解决中文显示问题。"
+title: "解决中文乱码：Excel/CSV 转 VCF 姓名出错"
+description: "转换后姓名变成问号或方块？本文讲清乱码成因，并说明为什么输出 UTF-8 的 VCF 能一次修好中文、日文、韩文显示，导入手机即正常。"
 pubDate: 2025-12-01
 author: "Excel2VCF 团队"
 tags: ["中文乱码", "VCF修复", "UTF-8", "故障排除"]

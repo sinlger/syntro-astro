@@ -1,6 +1,6 @@
 ---
-title: "手入力にさよなら：Excel/CSV連絡先を安全かつ効率的にスマホへ一括インポートする方法"
-description: "数百件もの連絡先がExcelやCSVファイルにあるのに、手動で入力していませんか？「Excel to VCF/CSV to vCard」ツールを使えば、連絡先の一括インポートが簡単に行え、面倒な手作業を完全に排除できます。"
+title: "Excel to VCF：連絡先をスマホへ一括インポート"
+description: "数百件の連絡先がExcelやCSVに残っていませんか？ブラウザでVCFに変換し、iPhoneやAndroidへ一括インポート。データは端末の外に出ません。"
 pubDate: 2025-11-05
 author: "Excel2VCF Team"
 tags: ["Excel to VCF", "CSV to vCard", "連絡先一括インポート", "チュートリアル"]

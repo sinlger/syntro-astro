@@ -1,6 +1,6 @@
 ---
-title: "Deep Dive en el Mapeo de Campos VCF: Asegurando la Coincidencia Perfecta de Datos de Excel al Estándar vCard"
-description: "¿Falta información de contacto después de la conversión? Esto se debe a que se ignora el mapeo de campos VCF. Este artículo, basado en los estándares VCF 3.0, le enseña cómo lograr una coincidencia perfecta entre las columnas de Excel y los campos VCF."
+title: "Mapeo de campos VCF: ajuste Excel al estándar vCard"
+description: "¿Solo aparecen los nombres tras convertir? Asigne cada columna de Excel al campo vCard correcto (FN, TEL, ORG) y no pierda teléfonos ni correos."
 pubDate: 2025-12-12
 author: "Excel2VCF Team"
 tags: ["Mapeo de campos", "Estándar VCF", "Coincidencia de datos", "Tutorial avanzado"]

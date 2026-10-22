@@ -1,6 +1,6 @@
 ---
-title: "Résoudre les erreurs d'encodage des caractères chinois : La solution ultime pour les noms incorrects après la conversion d'Excel/CSV en VCF"
-description: "Les noms de vos contacts s'affichent sous forme de code illisible après une conversion Excel/CSV en VCF ? Cet article propose des solutions étape par étape, couvrant la réparation du code illisible CSV vers VCF et les paramètres d'encodage des fichiers VCF, pour résoudre complètement les problèmes d'affichage du chinois."
+title: "Corriger l'encodage des noms après conversion en VCF"
+description: "Vos noms s'affichent en caractères illisibles après conversion ? Découvrez pourquoi et comment une sortie VCF en UTF-8 rétablit l'affichage durablement."
 pubDate: 2025-12-01
 author: "Équipe Excel2VCF"
 tags: ["Code Chinois Illisible", "Réparation VCF", "UTF-8", "Dépannage"]

@@ -1,6 +1,6 @@
 ---
-title: "Esencial para Ventas y RR.HH.: Casos prácticos para gestionar rápidamente contactos de clientes y empleados con un conversor VCF"
-description: "¿Cómo pueden los equipos de ventas sincronizar rápidamente los datos de clientes de una feria? ¿Cómo puede RR.HH. distribuir eficientemente los contactos de los empleados? Este artículo utiliza estudios de casos reales para ayudarte a dominar la exportación de clientes de CRM, la distribución masiva de contactos de empleados y aumentar significativamente la eficiencia laboral."
+title: "Conversor VCF para ventas y RR.HH.: casos reales"
+description: "Descubra cómo ventas sincroniza los leads de una feria y RR.HH. reparte el directorio interno: exporte del CRM, convierta una vez y comparta el VCF."
 pubDate: 2025-12-08
 author: "Equipo Excel2VCF"
 tags: ["Aplicación Empresarial", "Consejos de Ventas", "Herramientas de RR.HH.", "Importación Masiva"]

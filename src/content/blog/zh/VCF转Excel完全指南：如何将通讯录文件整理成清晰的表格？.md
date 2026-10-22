@@ -1,6 +1,6 @@
 ---
-title: "VCF 转 Excel 完全指南：如何将通讯录文件整理成清晰的表格？"
-description: "导出的VCF通讯录文件杂乱无章？需要批量提取联系人做汇总？本文将教你如何通过VCF转Excel/CSV，轻松将零散的通讯录数据整理成清晰表格，方便编辑与备份。"
+title: "VCF 转 Excel：把通讯录整理成清晰表格"
+description: "导出的 VCF 打开像一串代码？转成 Excel 或 CSV，就能得到可排序、可去重、可备份的清晰表格，几十秒完成，全程在浏览器本地处理。"
 pubDate: 2025-11-24
 author: "Excel2VCF 团队"
 tags: ["VCF转Excel", "vCard转CSV", "通讯录整理", "教程"]

@@ -1,6 +1,6 @@
 ---
-title: "VCF-Feldzuordnung Deep Dive: Perfekte Datenübereinstimmung von Excel zum vCard-Standard sicherstellen"
-description: "Fehlen Kontaktinformationen nach der Konvertierung? Dies liegt oft an der Vernachlässigung der VCF-Feldzuordnung. Dieser Artikel, basierend auf VCF 3.0-Standards, zeigt Ihnen, wie Sie eine perfekte Übereinstimmung zwischen Excel-Spalten und VCF-Feldern erzielen."
+title: "VCF-Feldzuordnung: Excel-Spalten richtig zuordnen"
+description: "Fehlen nach der Konvertierung Telefonnummern? Ordnen Sie jede Excel-Spalte dem passenden vCard-Feld (FN, TEL, ORG) zu und behalten Sie alle Daten."
 pubDate: 2025-12-12
 author: "Excel2VCF Team"
 tags: ["Feldzuordnung", "VCF-Standard", "Datenabgleich", "Fortgeschrittenes Tutorial"]
