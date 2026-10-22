@@ -459,8 +459,8 @@
     }
   },
   "vcardPreview": {
-      "title": "vCard Preview & Edit",
-      "description": "Preview, edit, and export your vCard contacts online.",
+      "title": "vCard Preview & Editor – View, Edit & Export VCF",
+      "description": "Preview and edit vCard contacts in your browser. Fix names, phones or emails, delete duplicates and export a clean VCF file — all processed locally.",
       "upload": {
         "title": "Upload vCard File",
         "desc": "Drag and drop or click to upload .vcf file",
@@ -490,6 +490,67 @@
         "parse": "Failed to parse vCard file",
         "export": "Failed to export vCard file"
       }
+  },
+  "vcardPreviewPage": {
+    "intro": "This free online vCard and VCF preview tool lets you open any .vcf file, review every contact in a clear table, and correct names, phone numbers or email addresses before exporting a clean file again. You can also remove duplicate or outdated contacts and save the result as a VCF for your phone or contacts cloud service. Everything runs locally in your browser: your files are never uploaded to a server.",
+    "capabilities": {
+      "title": "What you can do with it",
+      "items": [
+        {
+          "title": "Open any VCF file",
+          "desc": "Upload a .vcf or .vcard file and see every contact in a table with name, phone and email. vCard 2.1, 3.0 and 4.0 files with one or many contacts are supported, and the original file is never modified."
+        },
+        {
+          "title": "Edit contact details",
+          "desc": "Change a name, add or remove phone numbers and email addresses, adjust their type (cell, work, home) and delete duplicate, outdated or wrongly imported contacts. Every change appears in the table immediately."
+        },
+        {
+          "title": "Export a clean VCF",
+          "desc": "Choose vCard 2.1, 3.0 or 4.0, then download a fresh .vcf file that imports into iPhone, Android, Google Contacts or Outlook. The export version is up to you."
+        }
+      ]
+    },
+    "how": {
+      "title": "How it works",
+      "steps": [
+        {
+          "title": "Upload your file",
+          "desc": "Click Select File and choose a .vcf file from your device. It is read locally in your browser, so nothing is uploaded, and the original file stays untouched."
+        },
+        {
+          "title": "Review and edit",
+          "desc": "Check the contact table row by row, open any contact to fix a name, phone or email, and remove duplicates or mistakes you no longer need."
+        },
+        {
+          "title": "Export and import",
+          "desc": "Pick the vCard version your phone expects, download the cleaned file and import it into your device or contacts app. Back up your old contacts first if you plan to replace them."
+        }
+      ]
+    },
+    "faqTitle": "Frequently asked questions",
+    "faq": [
+      {
+        "q": "What is a VCF file?",
+        "a": "A VCF (vCard File) is the standard plain-text format for contact cards. Each contact sits between BEGIN:VCARD and END:VCARD and stores a name, phone numbers, email addresses, company, address and other details. iPhone, Android, Google Contacts and Outlook all use it to import and export contacts, which makes VCF the most portable format for moving an address book between devices."
+      },
+      {
+        "q": "How do I open a VCF file on iPhone or Android?",
+        "a": "On iPhone, open the file from Mail or Files and tap Add All Contacts to save it to the address book. On Android, open it with the Contacts app, or go to Contacts > Manage contacts > Import and select the file; Google Contacts can also import it directly. If you only want to check the contents first, preview it here without adding anything to your address book."
+      },
+      {
+        "q": "How do I import edited contacts back into my phone?",
+        "a": "Export the edited file, then open the downloaded .vcf on your phone and confirm the import, or use Import in Google Contacts. If you edited contacts that already exist, delete the old copies first so you do not end up with duplicates, then search for a name afterwards to confirm the import worked."
+      },
+      {
+        "q": "Which vCard versions and multi-contact files are supported?",
+        "a": "The editor reads vCard 2.1, 3.0 and 4.0. A single .vcf can hold one contact or hundreds, and every card is listed separately so you can edit or delete each one. When exporting, you choose 2.1, 3.0 or 4.0 yourself to match what your phone or contacts service accepts."
+      },
+      {
+        "q": "Is my data uploaded to a server?",
+        "a": "No. The file is parsed and edited entirely in your browser, and no contact data is sent to us or stored on a server. Closing or refreshing the page clears it from memory, and only the VCF you download stays on your device; on a shared computer, remember to delete the downloaded file."
+      }
+    ],
+    "relatedTitle": "Related tools"
   },
   "legal": {
     "common": {

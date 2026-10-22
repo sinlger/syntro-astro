@@ -459,8 +459,8 @@
     }
   },
   "vcardPreview": {
-    "title": "vCard-Vorschau und -Bearbeitung",
-    "description": "vCard-Kontakte online ansehen, bearbeiten und exportieren.",
+    "title": "vCard-Vorschau und -Editor: VCF ansehen und exportieren",
+    "description": "vCard-Kontakte im Browser ansehen und bearbeiten, Namen, Telefon und E-Mail korrigieren und eine saubere VCF-Datei exportieren – ohne Upload.",
     "upload": {
       "title": "vCard-Datei hochladen",
       "desc": "Ziehen Sie eine .vcf-Datei hierher oder klicken Sie zum Hochladen",
@@ -490,6 +490,67 @@
       "parse": "vCard-Datei konnte nicht gelesen werden",
       "export": "vCard-Datei konnte nicht exportiert werden"
     }
+  },
+  "vcardPreviewPage": {
+    "intro": "Mit diesem kostenlosen Online-Tool für vCard-Vorschau und -Bearbeitung öffnen Sie jede .vcf-Datei, prüfen alle Kontakte in einer übersichtlichen Tabelle und korrigieren Namen, Telefonnummern oder E-Mail-Adressen, bevor Sie die Datei wieder exportieren. Doppelte oder veraltete Kontakte lassen sich löschen, anschließend speichern Sie das Ergebnis als VCF für Ihr Smartphone oder Ihren Kontakt-Dienst in der Cloud. Die Verarbeitung erfolgt vollständig lokal im Browser: Ihre Dateien werden nie auf einen Server hochgeladen.",
+    "capabilities": {
+      "title": "Das können Sie damit tun",
+      "items": [
+        {
+          "title": "Jede VCF-Datei öffnen",
+          "desc": "Laden Sie eine .vcf- oder .vcard-Datei hoch und sehen Sie alle Kontakte in einer Tabelle mit Name, Telefon und E-Mail. Unterstützt werden vCard 2.1, 3.0 und 4.0 sowie Dateien mit einem oder mehreren Kontakten; die Originaldatei wird nicht verändert."
+        },
+        {
+          "title": "Kontaktdaten bearbeiten",
+          "desc": "Ändern Sie einen Namen, fügen Sie Telefonnummern und E-Mail-Adressen hinzu oder entfernen Sie sie, passen Sie den Typ an (Mobil, geschäftlich, privat) und löschen Sie doppelte, veraltete oder falsch importierte Kontakte. Jede Änderung erscheint sofort in der Tabelle."
+        },
+        {
+          "title": "Saubere VCF exportieren",
+          "desc": "Wählen Sie vCard 2.1, 3.0 oder 4.0 und laden Sie eine neue .vcf-Datei herunter, die sich in iPhone, Android, Google Kontakte oder Outlook importieren lässt. Die Exportversion bestimmen Sie selbst."
+        }
+      ]
+    },
+    "how": {
+      "title": "So funktioniert es",
+      "steps": [
+        {
+          "title": "Datei hochladen",
+          "desc": "Klicken Sie auf „Datei auswählen“ und wählen Sie eine .vcf-Datei von Ihrem Gerät. Sie wird lokal im Browser gelesen, nichts wird hochgeladen und die Originaldatei bleibt unverändert."
+        },
+        {
+          "title": "Prüfen und bearbeiten",
+          "desc": "Gehen Sie die Tabelle Kontakt für Kontakt durch, öffnen Sie den gewünschten Eintrag und korrigieren Sie Name, Telefon oder E-Mail. Doppelte und fehlerhafte Kontakte können Sie anschließend löschen."
+        },
+        {
+          "title": "Exportieren und importieren",
+          "desc": "Wählen Sie die vCard-Version, die Ihr Smartphone erwartet, laden Sie die bereinigte Datei herunter und importieren Sie sie in Ihr Gerät oder Ihre Kontakte-App. Sichern Sie vorher Ihre alten Kontakte, wenn Sie sie ersetzen möchten."
+        }
+      ]
+    },
+    "faqTitle": "Häufig gestellte Fragen",
+    "faq": [
+      {
+        "q": "Was ist eine VCF-Datei?",
+        "a": "Eine VCF-Datei ist das Standard-Textformat für Visitenkarten. Jeder Kontakt steht zwischen BEGIN:VCARD und END:VCARD und enthält Name, Telefonnummern, E-Mail-Adressen, Firma, Anschrift und weitere Angaben. iPhone, Android, Google Kontakte und Outlook nutzen dieses Format zum Import und Export – damit ist VCF das portabelste Format, um ein Adressbuch zwischen Geräten zu übertragen."
+      },
+      {
+        "q": "Wie öffne ich eine VCF-Datei auf iPhone oder Android?",
+        "a": "Auf dem iPhone öffnen Sie die Datei in Mail oder Dateien und tippen auf „Alle Kontakte hinzufügen“, um sie ins Adressbuch zu übernehmen. Auf Android öffnen Sie sie mit der Kontakte-App oder gehen auf Kontakte > Kontakte verwalten > Importieren; Google Kontakte kann sie ebenfalls direkt importieren. Wenn Sie den Inhalt nur prüfen möchten, sehen Sie ihn hier vorab an, ohne etwas ins Adressbuch zu übernehmen."
+      },
+      {
+        "q": "Wie importiere ich bearbeitete Kontakte zurück?",
+        "a": "Exportieren Sie die bearbeitete Datei, öffnen Sie die heruntergeladene .vcf auf Ihrem Smartphone und bestätigen Sie den Import – oder nutzen Sie „Importieren“ in Google Kontakte. Wenn Sie vorhandene Kontakte bearbeitet haben, löschen Sie zuerst die alten Einträge, damit keine Duplikate entstehen, und suchen Sie anschließend nach einem Namen, um den Import zu prüfen."
+      },
+      {
+        "q": "Welche vCard-Versionen und Dateien mit mehreren Kontakten werden unterstützt?",
+        "a": "Der Editor liest vCard 2.1, 3.0 und 4.0. Eine .vcf-Datei kann einen einzigen oder hunderte Kontakte enthalten; jeder Eintrag wird einzeln aufgeführt und lässt sich bearbeiten oder löschen. Beim Export wählen Sie selbst 2.1, 3.0 oder 4.0 – je nachdem, was Ihr Smartphone oder Kontaktdienst akzeptiert."
+      },
+      {
+        "q": "Werden meine Daten auf einen Server hochgeladen?",
+        "a": "Nein. Die Datei wird ausschließlich im Browser ausgewertet und bearbeitet; es werden keine Kontaktdaten an uns gesendet oder auf einem Server gespeichert. Beim Schließen oder Aktualisieren der Seite wird sie aus dem Speicher entfernt, und nur die heruntergeladene VCF-Datei bleibt auf Ihrem Gerät; auf einem gemeinsam genutzten Computer sollten Sie sie anschließend löschen."
+      }
+    ],
+    "relatedTitle": "Verwandte Tools"
   },
   "legal": {
     "common": {

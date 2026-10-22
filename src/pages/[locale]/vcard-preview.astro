@@ -27,6 +27,32 @@ const pageDescription = t("vcardPreview.description");
 const canonicalPath = "/vcard-preview";
 const siteUrl = "https://excel2vcf.com";
 
+// Page content (rendered below the interactive editor)
+const intro = t("vcardPreviewPage.intro");
+const capabilitiesTitle = t("vcardPreviewPage.capabilities.title");
+const capabilityItemsRaw = t("vcardPreviewPage.capabilities.items", { returnObjects: true });
+const capabilityItems = Array.isArray(capabilityItemsRaw) ? capabilityItemsRaw : [];
+const howTitle = t("vcardPreviewPage.how.title");
+const howStepsRaw = t("vcardPreviewPage.how.steps", { returnObjects: true });
+const howSteps = Array.isArray(howStepsRaw) ? howStepsRaw : [];
+const faqTitle = t("vcardPreviewPage.faqTitle");
+const faqItemsRaw = t("vcardPreviewPage.faq", { returnObjects: true });
+const faqItems = Array.isArray(faqItemsRaw) ? faqItemsRaw : [];
+const relatedTitle = t("vcardPreviewPage.relatedTitle");
+
+const relatedTools = [
+  { href: `/${locale}/Excel-to-vCard/`, label: t("nav.excelToVCard") },
+  { href: `/${locale}/CSV-to-vCard/`, label: t("nav.csvToVCard") },
+  { href: `/${locale}/vCard-to-Excel/`, label: t("nav.vcardToExcel") },
+];
+
+// One icon per capability card (document, pencil, download)
+const capabilityIcons = [
+  "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
+  "M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z",
+  "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4",
+];
+
 const schema = {
   "@context": "https://schema.org",
   "@graph": [
@@ -52,6 +78,20 @@ const schema = {
   ]
 };
 
+if (faqItems.length > 0) {
+  schema["@graph"].push({
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map((item) => ({
+      "@type": "Question",
+      "name": item.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.a
+      }
+    }))
+  });
+}
+
 // Get translations to pass to React component
 const translations = i18nInstance.getResourceBundle(effectiveLocale, 'common');
 ---
@@ -70,9 +110,112 @@ const translations = i18nInstance.getResourceBundle(effectiveLocale, 'common');
       <h1 class="text-3xl font-bold text-gray-900 mb-4">{t("vcardPreview.title")}</h1>
       <p class="text-xl text-gray-600">{t("vcardPreview.description")}</p>
     </div>
-    
+
     <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
       <VCardPreview client:load locale={effectiveLocale} translations={translations} />
+    </div>
+
+    <div class="mt-16 space-y-16">
+      <p class="text-lg leading-relaxed text-base-600 max-w-4xl">{intro}</p>
+
+      <section class="space-y-6">
+        <h2 class="text-3xl font-bold text-base-900 mb-6">{capabilitiesTitle}</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          {
+            capabilityItems.map((item, index) => (
+              <div class="p-6 text-accent-600 rounded-xl ring-1 ring-base-200 bg-white transition-shadow hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),_0_4px_6px_-2px_rgba(0,0,0,0.05)]">
+                <div class="flex items-start space-x-4">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-8 w-8 text-accent-600 mt-1 flex-shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d={capabilityIcons[index] ?? capabilityIcons[0]}
+                    />
+                  </svg>
+                  <div>
+                    <h3 class="text-xl font-semibold text-base-900 mb-1">{item.title}</h3>
+                    <p class="text-sm text-base-500 leading-relaxed">{item.desc}</p>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </section>
+
+      <section class="space-y-6">
+        <h2 class="text-3xl font-bold text-base-900 mb-6">{howTitle}</h2>
+        <div class="p-6 rounded-xl ring-1 ring-base-200 bg-white divide-y divide-base-100">
+          {
+            howSteps.map((step, index) => (
+              <div class="flex items-start py-4 first:pt-0 last:pb-0">
+                <div class="mr-4 flex-shrink-0 bg-accent-700 text-white w-8 h-8 flex items-center justify-center font-bold rounded-full">
+                  {index + 1}
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold text-base-900">{step.title}</h4>
+                  <p class="text-sm text-base-500 mt-1 leading-relaxed">{step.desc}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </section>
+
+      <section class="space-y-6">
+        <h2 class="text-3xl font-bold text-base-900 mb-6">{faqTitle}</h2>
+        <div class="p-6 rounded-xl ring-1 ring-base-200 bg-white divide-y divide-base-100">
+          {
+            faqItems.map((item, index) => (
+              <details class="py-3 group" open={index === 0}>
+                <summary class="flex justify-between items-center cursor-pointer list-none font-semibold text-base-900 hover:text-accent-700 transition">
+                  <span>{item.q}</span>
+                  <span class="transform transition group-open:rotate-180">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </span>
+                </summary>
+                <p class="text-base-500 text-sm mt-2 ml-4 leading-relaxed">{item.a}</p>
+              </details>
+            ))
+          }
+        </div>
+      </section>
+
+      <section class="space-y-6">
+        <h3 class="text-2xl font-bold text-base-900 mb-6">{relatedTitle}</h3>
+        <div class="grid md:grid-cols-3 gap-4">
+          {
+            relatedTools.map((tool) => (
+              <a
+                href={tool.href}
+                class="p-5 rounded-xl bg-accent-50 ring-1 ring-base-200 text-base-900 font-medium hover:ring-accent-300 transition"
+              >
+                {tool.label} <span aria-hidden="true">→</span>
+              </a>
+            ))
+          }
+        </div>
+      </section>
     </div>
   </section>
 </BaseLayout>
