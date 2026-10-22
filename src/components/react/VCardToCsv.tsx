@@ -199,17 +199,28 @@ const VCardToCsvContent = ({ accept, onFileRef }: { accept: string, onFileRef: a
     return tokens.some((t) => (t.startsWith('.') ? name.endsWith(t) : type === t))
   }
 
-  const processFile = async (file: File) => {
-    if (!isAccepted(file)) {
-      setNotice({ type: 'error', text: t('pages.vcardExcel.ui.notice.unsupportedType', { name: file.name, accept }) })
+  // Accepts one or many files: each .vcf is parsed and the contacts are merged
+  // into a single preview table / workbook. Files are read locally only.
+  const processFiles = async (files: File[]) => {
+    if (!files.length) return
+    const accepted = files.filter(isAccepted)
+    if (!accepted.length) {
+      setNotice({ type: 'error', text: t('pages.vcardExcel.ui.notice.unsupportedType', { name: files[0].name, accept }) })
       return
     }
     try {
-      const text = await file.text()
-      const cards = parseVcf(text)
-      const data = cards.map((c) => cardToRow(c, getTypeLabel))
-      setRows(data)
-      setFileName(file.name || '')
+      const allRows: Row[] = []
+      for (const file of accepted) {
+        const text = await file.text()
+        const cards = parseVcf(text)
+        allRows.push(...cards.map((c: any) => cardToRow(c, getTypeLabel)))
+      }
+      if (!allRows.length) {
+        setNotice({ type: 'error', text: t('pages.vcardExcel.ui.preview.parseError') })
+        return
+      }
+      setRows(allRows)
+      setFileName(accepted.map((f) => f.name).join(', '))
       setStep(2) // Move to preview step
       setNotice(null)
     } catch (e) {
@@ -220,14 +231,14 @@ const VCardToCsvContent = ({ accept, onFileRef }: { accept: string, onFileRef: a
 
   // File Handlers
   const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const f = e.target.files && e.target.files[0]
-    if (f) processFile(f)
+    const files = Array.from(e.target.files || [])
+    if (files.length) processFiles(files)
   }
 
   const onDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault(); e.stopPropagation(); setDragOver(false);
-    const f = e.dataTransfer.files && e.dataTransfer.files[0]
-    if (f) processFile(f)
+    const files = Array.from(e.dataTransfer.files || [])
+    if (files.length) processFiles(files)
   }
 
   const reset = () => {
@@ -313,6 +324,7 @@ const VCardToCsvContent = ({ accept, onFileRef }: { accept: string, onFileRef: a
               ref={fileInputRef}
               onChange={onFileChange}
               accept={accept}
+              multiple
               className="hidden"
             />
             <div className="bg-accent-100 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform">
