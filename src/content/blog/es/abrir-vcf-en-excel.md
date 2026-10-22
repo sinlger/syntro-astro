@@ -53,7 +53,7 @@ Editar el VCF a mano para convertirlo en tabla no funciona: un punto y coma de m
 Porque el CSV no declara su codificación y Excel prueba con la del sistema. Exporta en **XLSX** o abre el CSV desde `Datos` → `Desde texto/CSV` con `65001: Unicode (UTF-8)`.
 
 **¿Puedo convertir varios VCF a la vez?**
-Sí, puedes seleccionar varios `.vcf` en el paso de carga y obtener una única tabla con todos los contactos detectados.
+Sí, puedes seleccionar varios `.vcf` en el paso de carga y convertirlos en la misma sesión, con una vista previa de los contactos detectados.
 
 **¿Puedo volver a pasar la tabla al móvil?**
 El `.xlsx` o el `.csv` no se importa como contactos. Conserva el VCF original o genera uno nuevo con la herramienta de Excel a VCF.

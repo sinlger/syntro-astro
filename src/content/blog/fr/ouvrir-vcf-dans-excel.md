@@ -23,13 +23,13 @@ Les versions compliquent tout : vCard 3.0 (Android, Outlook) et 4.0 replient les
 Laissez un convertisseur lire les fiches et produire un classeur où chaque contact occupe une ligne. Le [convertisseur VCF vers Excel](/fr/vCard-to-Excel/) de ce site le fait entièrement dans votre navigateur.
 
 1. **Ouvrez le convertisseur.** Le sens est déjà réglé sur VCF → Excel.
-2. **Ajoutez le fichier.** Glissez le `.vcf` dans la zone de dépôt ou cliquez sur *Choisir un fichier*. Votre navigateur le lit en local : rien n'est envoyé, aucun compte n'est requis.
+2. **Ajoutez les fichiers.** Glissez un ou plusieurs `.vcf` dans la zone de dépôt, ou cliquez sur *Choisir un fichier* pour les sélectionner ensemble. Votre navigateur les lit en local : rien n'est envoyé, aucun compte n'est requis.
 3. **Vérifiez l'aperçu.** Les contacts s'affichent en tableau avant tout téléchargement. Activez ou désactivez des champs — nom, téléphones, e-mails, société, adresses, notes — et ajoutez des colonnes prénom et nom.
 4. **Téléchargez et ouvrez.** Choisissez *Excel* (`.xlsx`) ou *CSV*. Le classeur s'ouvre comme une feuille avec en-têtes ; le CSV contient un BOM UTF-8 pour préserver les accents.
 
-Le parseur traite les vCard 2.1, 3.0 et 4.0 : exports d'iPhone, d'Android, d'Outlook, de Google Contacts et de la plupart des CRM. Une conversion lit un fichier, donc vous répétez les étapes pour plusieurs exports. Les valeurs imbriquées sont aplaties : mobile, fixe et fax d'un même contact tiennent dans une seule cellule.
+Le parseur traite les vCard 2.1, 3.0 et 4.0 : exports d'iPhone, d'Android, d'Outlook, de Google Contacts et de la plupart des CRM. Plusieurs fichiers peuvent être sélectionnés ensemble : leurs contacts sont réunis dans un seul aperçu et un seul classeur. Les valeurs imbriquées sont aplaties : mobile, fixe et fax d'un même contact tiennent dans une seule cellule.
 
-Dans Excel, la liste devient exploitable : trier par société, filtrer par pays, supprimer les doublons. Le [guide pour organiser vos fichiers de contacts dans un tableau clair](/fr/blog/le-guide-complet-de-vcf-vers-excel--comment-organiser-vos-fichiers-de-contacts-dans-un-tableau-clair/) détaille le nettoyage qui suit.
+Dans Excel, la liste devient exploitable : trier par société, filtrer par pays, supprimer les doublons. Le [guide complet de VCF vers Excel](/fr/blog/le-guide-complet-de-vcf-vers-excel--comment-organiser-vos-fichiers-de-contacts-dans-un-tableau-clair/) montre comment trier, dédoublonner et archiver le tableau obtenu.
 
 ## Méthode 2 : importer le VCF dans Outlook / Google Contacts d'abord
 
@@ -55,7 +55,7 @@ Vérifiez le format téléchargé. Un `.xlsx` porte lui-même l'Unicode ; un CSV
 
 ### Peut-on convertir plusieurs fichiers VCF d'un coup ?
 
-Une conversion traite un seul `.vcf` : avec plusieurs exports, enchaînez les étapes. Les noms téléchargés sont uniques et ne s'écrasent pas, et l'aperçu affiche le fichier en cours.
+Oui. Sélectionnez plusieurs `.vcf` en une fois : les contacts sont lus ensemble et réunis dans un seul aperçu, exporté en un classeur unique.
 
 ### Peut-on renvoyer le tableau sur le téléphone ?
 

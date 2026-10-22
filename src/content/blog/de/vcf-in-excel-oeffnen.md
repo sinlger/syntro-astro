@@ -23,11 +23,11 @@ Dazu kommen Eigenheiten der Versionen: vCard 3.0 (typisch für Android und Outlo
 Lassen Sie einen Konverter die vCard-Datensätze auslesen und eine echte Arbeitsmappe schreiben, in der jeder Kontakt eine Zeile belegt. Der [VCF-zu-Excel-Konverter](/de/vCard-to-Excel/) auf dieser Seite macht genau das – vollständig in Ihrem Browser.
 
 1. **Konverter öffnen.** Rufen Sie die Seite VCF zu Excel auf; die Richtung steht bereits auf VCF → Excel.
-2. **Datei hinzufügen.** Ziehen Sie die `.vcf` in den Ablagebereich oder klicken Sie auf *Datei auswählen*. Ihr Browser liest die Datei lokal: Es wird nichts hochgeladen, ein Konto ist nicht nötig.
+2. **Dateien hinzufügen.** Ziehen Sie eine oder mehrere `.vcf`-Dateien in den Ablagebereich oder wählen Sie sie zusammen über *Datei auswählen*. Ihr Browser liest sie lokal: Es wird nichts hochgeladen, ein Konto ist nicht nötig.
 3. **Vorschau prüfen.** Die Kontakte erscheinen als Tabelle, bevor etwas heruntergeladen wird. Schalten Sie Felder an oder aus – Name, Telefonnummern, E-Mails, Firma, Adressen, Notizen – und ergänzen Sie getrennte Spalten wie Vor- und Nachname.
 4. **Herunterladen und öffnen.** Wählen Sie *Excel* für eine `.xlsx`-Datei oder *CSV* für andere Systeme. Die Arbeitsmappe öffnet sich als normales Blatt mit Kopfzeile; die CSV enthält eine UTF-8-BOM, damit Umlaute erhalten bleiben.
 
-Der Parser verarbeitet vCard 2.1, 3.0 und 4.0 und deckt damit Exporte von iPhone, Android, Outlook, Google Kontakte und den meisten CRM-Systemen ab. Eine Umwandlung liest eine Datei; bei mehreren Exporten wiederholen Sie die Schritte. Verschachtelte Werte werden flach in eine Zelle geschrieben: Ein Kontakt mit Mobil-, Büro- und Faxnummer zeigt alle drei in der Telefonspalte.
+Der Parser verarbeitet vCard 2.1, 3.0 und 4.0 und deckt damit Exporte von iPhone, Android, Outlook, Google Kontakte und den meisten CRM-Systemen ab. Mehrere Dateien lassen sich gleichzeitig auswählen: Ihre Kontakte landen in einer Vorschau und einer Arbeitsmappe. Verschachtelte Werte werden flach in eine Zelle geschrieben: Ein Kontakt mit Mobil-, Büro- und Faxnummer zeigt alle drei in der Telefonspalte.
 
 In Excel wird die Liste handhabbar: nach Firma sortieren, nach Land filtern, Duplikate entfernen – die Tabelle ist zugleich ein besseres Backup als eine unlesbare Datei.
 
@@ -55,7 +55,7 @@ Prüfen Sie zuerst das Format: Eine `.xlsx`-Datei trägt Unicode selbst und kann
 
 ### Kann ich mehrere VCF-Dateien gleichzeitig umwandeln?
 
-Pro Umwandlung wird eine `.vcf` verarbeitet; bei mehreren Exporten wiederholen Sie die Schritte. Die Dateinamen beim Download sind eindeutig und überschreiben sich nicht; die Vorschau zeigt den aktuellen Dateinamen.
+Ja. Wählen Sie mehrere `.vcf`-Dateien zusammen aus; die Kontakte werden gemeinsam ausgelesen und erscheinen in einer Vorschau, die als eine Arbeitsmappe exportiert wird.
 
 ### Kann ich die Tabelle wieder aufs Handy bringen?
 

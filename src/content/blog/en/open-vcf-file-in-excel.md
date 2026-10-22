@@ -8,7 +8,7 @@ tags: ["VCF", "Excel", "Tutorial", "Import"]
 
 Your phone exported `contacts.vcf`, you have Excel open, and the double-click gets you nowhere. On Windows the file usually goes to the People app; force it through *Open with → Excel* and you get one narrow column of lines such as `BEGIN:VCARD`, `VERSION:3.0` and `TEL;TYPE=CELL:+49…`. No headers, no columns, nothing to sort.
 
-That is the contact file as written, not a broken export: Excel has no VCF importer, so the table has to be built before Excel sees the file. Here are the three routes people try, and what each is good for.
+That is the contact file as written, not a broken export: Excel has no VCF importer, so the table must be built before Excel sees the file. Here are the three routes, and what each is good for.
 
 ## Why Excel can't open VCF files directly
 
@@ -23,11 +23,11 @@ Version quirks make it worse: vCard 3.0 (common from Android and Outlook) and 4.
 Let a converter parse the vCard records and write a workbook in which each contact is one row. The [VCF to Excel converter](/en/vCard-to-Excel/) on this site does exactly that, entirely in your browser.
 
 1. **Open the converter.** Go to the VCF to Excel page; the direction is already VCF → Excel.
-2. **Add the file.** Drag the `.vcf` onto the drop area or click *Choose file*. Your browser reads it locally: nothing is uploaded, no account is required.
+2. **Add the files.** Drag one or several `.vcf` files onto the drop area, or click *Choose file* and select them together. Your browser reads them locally: nothing is uploaded, no account is required.
 3. **Check the preview.** Parsed contacts appear as a table before anything downloads. Switch fields on or off — name, phones, emails, company, addresses, notes — and add split columns such as first or last name when you need them.
-4. **Download and open.** Choose *Excel* for an `.xlsx` workbook or *CSV* for other systems. The workbook opens as a normal sheet with headers; the CSV carries a UTF-8 byte-order mark, so accented characters survive instead of turning into question marks.
+4. **Download and open.** Choose *Excel* for an `.xlsx` workbook or *CSV* for other systems. The workbook opens as a normal sheet with headers; the CSV carries a UTF-8 byte-order mark, so accents survive.
 
-The parser handles vCard 2.1, 3.0 and 4.0, covering exports from iPhones, Android, Outlook, Google Contacts and most CRMs. Each conversion reads one file, so with several exports you repeat the steps. Nested values are flattened: a contact with mobile, work and fax numbers shows all three in one phone cell rather than spawning extra rows.
+The parser handles vCard 2.1, 3.0 and 4.0, covering exports from iPhones, Android, Outlook, Google Contacts and most CRMs. Several files can be selected at once: their contacts are merged into one preview table and one workbook. Nested values are flattened: a contact with mobile, work and fax numbers shows all three in one phone cell rather than spawning extra rows.
 
 In Excel the data finally behaves: sort by company, filter by country, remove duplicates, pivot by city — and that sheet is a better backup than an unreadable file. The [walkthrough on organising contact files into a clear spreadsheet](/en/blog/how-to-organize-contact-files-into-a-clear-spreadsheet/) covers the cleanup that follows.
 
@@ -49,13 +49,13 @@ That helps for a handful of jobs: confirming a file contains contacts at all, se
 
 There is no delimiter to split on. A VCF separates records with `BEGIN:VCARD`/`END:VCARD` markers and fields with line breaks, so a text import treats every physical line as one cell in a single column. Columns only appear after a vCard-aware parser maps them.
 
-### Names came out garbled after conversion. What now?
+### Why do Chinese or accented names come out garbled?
 
 Check what you downloaded. An `.xlsx` file carries Unicode itself and cannot garble text; a CSV needs a byte-order mark, which the converter adds. If you re-saved the CSV as ANSI, export it again, or open it via *Data → From Text/CSV* and set the encoding to UTF-8 explicitly.
 
 ### Can I convert several VCF files at once?
 
-One `.vcf` per conversion, so run several exports through the steps one after another. Downloaded names are unique and will not overwrite each other, and the preview shows the current file name.
+Yes. Select or drop several `.vcf` files in one go; their contacts are parsed together and appear in a single preview table, which then exports as one workbook.
 
 ### Can I send the converted table back to my phone?
 
