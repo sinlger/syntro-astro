@@ -9,6 +9,7 @@
     "home_title": "Excel/CSV/XLSXからvCard (VCF)への一括変換ツール - 100%ローカル処理",
     "home_description": "手入力にさようなら！安全・迅速・正確にExcel/CSV連絡先をVCF形式に一括変換。ブラウザ内ですべて完結するため、データがサーバーに送信されることはありません。iOS/Android対応。",
     "blog_title": "ブログ - Excel/CSV と vCard (VCF) 変換ガイド | Excel2VCF",
+    "blog_tools_title": "これらのツールで今すぐ変換",
     "blog_description": "Excel/CSV の連絡先と vCard (VCF) を相互変換する実用ガイド。スマホへの一括インポート、フィールドマッピング、文字化けの解決、オフラインでのプライバシー保護を解説します。"
   },
   "uploadDropzone": {

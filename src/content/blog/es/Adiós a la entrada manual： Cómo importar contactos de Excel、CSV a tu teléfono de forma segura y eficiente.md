@@ -16,7 +16,7 @@ Primero, expliquemos por qué se recomienda el método "Excel/CSV a VCF" para la
 
 Por un lado, Excel/CSV es el formato más utilizado para organizar contactos, ofreciendo flexibilidad y eficiencia para la edición masiva de nombres, números de teléfono y departamentos. Por otro lado, las agendas de los teléfonos no admiten directamente la importación de formatos de hojas de cálculo, lo que hace que la entrada manual requiera mucho tiempo y sea propensa a errores como números incorrectos o falta de información.
 
-**VCF (vCard)** es el formato de contacto universal, perfectamente compatible con todos los teléfonos móviles, incluidos iPhone y Android. Convertir tu archivo de hoja de cálculo a VCF permite una importación masiva con un solo clic, ahorrando tiempo y garantizando la precisión, especialmente adecuado para escenarios que requieren actualizaciones masivas de contactos telefónicos.
+**VCF (vCard)** es el formato de contacto universal, perfectamente compatible con todos los teléfonos móviles, incluidos iPhone y Android. Convertir tu archivo de hoja de cálculo a VCF permite una importación masiva con un solo clic, ahorrando tiempo y garantizando la precisión, especialmente adecuado para escenarios que requieren actualizaciones masivas de contactos telefónicos. Si alguna columna no llega al teléfono, casi siempre es un problema de correspondencia: el [análisis del mapeo de campos VCF](/es/blog/deep-dive-en-el-mapeo-de-campos-vcf-asegurando-la-coincidencia-perfecta-de-datos-de-excel-al-estándar-vcard/) explica qué revisar.
 
 ## Pasos de operación: De hoja de cálculo a VCF + Importación masiva al teléfono
 
@@ -26,7 +26,7 @@ A continuación, se detallan los pasos específicos para la operación "Hoja de 
     Preprocesa tu archivo Excel/CSV, asegurándote de tener encabezados claros (los campos sugeridos incluyen Nombre, Número de teléfono móvil, Correo electrónico) y elimina cualquier contacto duplicado o inválido para evitar la necesidad de una limpieza secundaria después de la importación.
 
 2.  **Paso 2: Cargar el archivo**
-    Abre un convertidor de vCard profesional (como Excel2VCF), selecciona la función "**Excel a VCF**" o "**CSV a vCard**" y carga tu archivo de hoja de cálculo preprocesado.
+    Abre un convertidor de vCard profesional (como [Excel2VCF](/es/Excel-to-vCard/)), selecciona la función "**Excel a VCF**" o "**CSV a vCard**" y carga tu archivo de hoja de cálculo preprocesado.
 
 3.  **Paso 3: Verificar la información**
     Verifica rápidamente la información de contacto. Si hay errores menores, puedes editarlos directamente dentro de la herramienta sin tener que volver a la hoja de cálculo.
@@ -47,7 +47,7 @@ Hay dos formas de hacerlo:
 La operación es más sencilla para los usuarios de Android:
 Busca el archivo VCF en el administrador de archivos de tu teléfono, haz clic en él y selecciona "Importar a contactos". El sistema importará automáticamente todos los contactos de forma masiva.
 
-Si necesitas realizar una **actualización masiva de contactos telefónicos**, simplemente vuelve a generar un archivo VCF que contenga la información más reciente y repite los pasos de importación. Algunos teléfonos te preguntarán si deseas "Sobrescribir contactos duplicados"; marcar esta opción completará rápidamente la actualización.
+Si necesitas realizar una **actualización masiva de contactos telefónicos**, simplemente vuelve a generar un archivo VCF que contenga la información más reciente y repite los pasos de importación. Algunos teléfonos te preguntarán si deseas "Sobrescribir contactos duplicados"; marcar esta opción completará rápidamente la actualización. También conviene guardar una copia maestra en una hoja de cálculo: la [guía completa de VCF a Excel](/es/blog/la-guía-completa-de-vcf-a-excelcómo-organizar-archivos-de-contactos-en-una-hoja-de-cálculo-clara/) muestra cómo volver de un VCF exportado a columnas editables.
 
 ## Resumen
 

@@ -20,9 +20,9 @@ During this process, your contact data is subjected to multiple network transmis
 
 ## 100% Offline Processing: Eliminating Leaks at the Root
 
-A **100% offline VCF converter** (such as Excel2VCF) perfectly avoids this problem—all files are processed entirely on your local device (computer/mobile phone). **Excel files are not uploaded**, and **contact data never reaches the cloud**, eliminating the possibility of data leakage at the source.
+A **100% offline VCF converter** (such as [Excel2VCF](/en/CSV-to-vCard/)) perfectly avoids this problem—all files are processed entirely on your local device (computer/mobile phone). **Excel files are not uploaded**, and **contact data never reaches the cloud**, eliminating the possibility of data leakage at the source.
 
-For users who value data privacy, "local processing of contact data" is more than just a slogan; it's a tangible security guarantee.
+For users who value data privacy, "local processing of contact data" is more than just a slogan; it's a tangible security guarantee, and an easy way to check it is to convert a sample back into a [clear contact spreadsheet](/en/blog/how-to-organize-contact-files-into-a-clear-spreadsheet/) and compare the columns.
 
 Taking the common "Excel to VCF" need as an example, the process with an offline tool is:
 1.  Open the local tool.
@@ -30,7 +30,7 @@ Taking the common "Excel to VCF" need as an example, the process with an offline
 3.  Complete the conversion.
 4.  Export the VCF file.
 
-No data leaves the device throughout the entire process. Even when the converted VCF file needs to be imported into a phone, it can be done via local transfer methods like a data cable or AirDrop, without relying on network upload. Compared to the online tool's "upload-convert-download" chain, the privacy and security advantages of offline processing are clear.
+No data leaves the device throughout the entire process. Even when the converted VCF file needs to be imported into a phone, it can be done via local transfer methods like a data cable or AirDrop, without relying on network upload. Compared to the online tool's "upload-convert-download" chain, the privacy and security advantages of offline processing are clear. Once the file is generated, the [bulk import walkthrough for iPhone and Android](/en/blog/how-to-safely-and-efficiently-bulk-import-exce-contacts-to-your-phone/) shows how to load it without a single cloud step.
 
 ## Security and Convenience Combined
 

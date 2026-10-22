@@ -20,7 +20,7 @@ Le VCF (vCard) est un format de contact universel, idéal pour la synchronisatio
 
 En revanche, le **format tableur Excel/CSV** permet l'édition en masse, le filtrage et le tri. Il présente clairement tous les champs de contact — nom, téléphone, e-mail, etc. — ce qui en fait le choix optimal pour l'organisation et la sauvegarde des contacts.
 
-Que vous soyez un particulier organisant des contacts exportés d'un téléphone ou une entreprise regroupant les données d'employés ou de clients, la conversion VCF vers Excel est une étape cruciale pour améliorer l'efficacité.
+Que vous soyez un particulier organisant des contacts exportés d'un téléphone ou une entreprise regroupant les données d'employés ou de clients, la conversion VCF vers Excel est une étape cruciale pour améliorer l'efficacité. Les [cas pratiques en vente et en RH](/fr/blog/essentiel-pour-la-vente--les-rh--cas-pratiques-pour-gérer-rapidement-les-contacts-clients-et-employés-avec-un-convertisseur-vcf/) montrent comment ce tri sert au quotidien.
 
 ## Guide étape par étape : Convertir sans effort un VCF en tableur
 
@@ -30,7 +30,7 @@ Voici les étapes détaillées pour la conversion VCF vers Excel, simples et rap
     Préparez les fichiers VCF que vous devez convertir. Si vous avez plusieurs fichiers VCF dispersés, regroupez-les au préalable dans un seul dossier (pour faciliter le traitement par lot ultérieur).
 
 2.  **Étape 2 : Télécharger et convertir**
-    Ouvrez un convertisseur vCard professionnel (tel qu'Excel2VCF) et sélectionnez la fonction « **VCF vers Excel** ». L'outil prend en charge le téléchargement par lot de plusieurs fichiers VCF, vous permettant d'extraire facilement vos contacts.
+    Ouvrez un convertisseur vCard professionnel (tel qu'[Excel2VCF](/fr/vCard-to-Excel/)) et sélectionnez la fonction « **VCF vers Excel** ». L'outil prend en charge le téléchargement par lot de plusieurs fichiers VCF, vous permettant d'extraire facilement vos contacts.
 
 3.  **Étape 3 : Définir les paramètres**
     Définissez les paramètres de conversion. Vous pouvez choisir sélectivement les champs de contact à conserver (nom, numéro de mobile, e-mail, adresse, etc.), en filtrant les informations invalides ou inutiles pour rendre le tableur final plus propre.
@@ -48,7 +48,7 @@ Modifier directement un fichier VCF est difficile, mais l'édition est beaucoup 
 * **Déduplication en masse** : utilisez la « Mise en forme conditionnelle » d'Excel pour trouver et supprimer les contacts en double, évitant ainsi la redondance des données.
 * **Standardisation du format** : unifiez le format de présentation des numéros de téléphone et des e-mails pour faciliter les recherches futures.
 
-Le tableur finalisé sert à la fois de répertoire de contacts clair et de fichier de sauvegarde sécurisé, qui peut être stocké sur votre ordinateur ou sur un disque externe.
+Le tableur finalisé sert à la fois de répertoire de contacts clair et de fichier de sauvegarde sécurisé, qui peut être stocké sur votre ordinateur ou sur un disque externe. Si ce tableau doit repartir vers un téléphone au format VCF et que les noms chinois arrivent illisibles, la [solution aux erreurs d'encodage des caractères chinois](/fr/blog/résoudre-les-erreurs-dencodage-des-caractères-chinois-la-solution-ultime-pour-les-noms-incorrects-après-la-conversion-dexcelcsv-en-vcf/) permet de tout ramener en UTF-8.
 
 ## Conseils pour l'extraction et la fusion par lot
 

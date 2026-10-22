@@ -9,6 +9,7 @@
     "home_title": "Convertidor de Excel/CSV a vCard (VCF) y VCF a Excel",
     "home_description": "¡Olvídese de escribir uno por uno! Convierta sus agendas de Excel/CSV a archivos VCF de forma masiva. Todo se procesa localmente en su navegador, garantizando que sus datos nunca se envíen a un servidor. Compatible con iOS/Android.",
     "blog_title": "Blog: guías de Excel/CSV a vCard (VCF) | Excel2VCF",
+    "blog_tools_title": "Convierte ahora con estas herramientas",
     "blog_description": "Guías prácticas para convertir contactos de Excel/CSV a vCard (VCF): importación masiva, mapeo de campos, codificación y privacidad sin conexión."
   },
   "uploadDropzone": {

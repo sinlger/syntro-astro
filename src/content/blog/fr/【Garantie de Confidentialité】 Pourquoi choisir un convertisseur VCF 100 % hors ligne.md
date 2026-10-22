@@ -20,9 +20,9 @@ Au cours de ce processus, vos données de contact sont soumises à plusieurs tra
 
 ## Traitement 100 % hors ligne : éliminer les fuites à la racine
 
-Un **convertisseur VCF 100 % hors ligne** (tel qu'Excel2VCF) évite parfaitement ce problème : tous les fichiers sont traités entièrement sur votre appareil local (ordinateur/téléphone portable). **Les fichiers Excel ne sont pas téléchargés** et **les données de contact n'atteignent jamais le cloud**, ce qui élimine toute possibilité de fuite de données à la source.
+Un **convertisseur VCF 100 % hors ligne** (tel qu'[Excel2VCF](/fr/CSV-to-vCard/)) évite parfaitement ce problème : tous les fichiers sont traités entièrement sur votre appareil local (ordinateur/téléphone portable). **Les fichiers Excel ne sont pas téléchargés** et **les données de contact n'atteignent jamais le cloud**, ce qui élimine toute possibilité de fuite de données à la source.
 
-Pour les utilisateurs qui apprécient la confidentialité des données, le « traitement local des données de contact » est plus qu'un simple slogan ; c'est une garantie de sécurité concrète.
+Pour les utilisateurs qui apprécient la confidentialité des données, le « traitement local des données de contact » est plus qu'un simple slogan ; c'est une garantie de sécurité concrète. Pour vérifier qu'aucune donnée n'a été perdue, le plus simple est de reconvertir un échantillon en [tableur de contacts lisible](/fr/blog/le-guide-complet-de-vcf-vers-excel--comment-organiser-vos-fichiers-de-contacts-dans-un-tableau-clair/) et de comparer les colonnes.
 
 En prenant l'exemple du besoin courant de conversion « Excel vers VCF », le processus avec un outil hors ligne est le suivant :
 1.  Ouvrez l'outil local.
@@ -30,7 +30,7 @@ En prenant l'exemple du besoin courant de conversion « Excel vers VCF », le pr
 3.  Terminez la conversion.
 4.  Exportez le fichier VCF.
 
-Aucune donnée ne quitte l'appareil tout au long du processus. Même lorsque le fichier VCF converti doit être importé dans un téléphone, cela peut être fait via des méthodes de transfert local comme un câble de données ou AirDrop, sans dépendre d'un téléchargement sur le réseau. Comparé à la chaîne « téléchargement-conversion-récupération » des outils en ligne, les avantages de confidentialité et de sécurité du traitement hors ligne sont évidents.
+Aucune donnée ne quitte l'appareil tout au long du processus. Même lorsque le fichier VCF converti doit être importé dans un téléphone, cela peut être fait via des méthodes de transfert local comme un câble de données ou AirDrop, sans dépendre d'un téléchargement sur le réseau. Comparé à la chaîne « téléchargement-conversion-récupération » des outils en ligne, les avantages de confidentialité et de sécurité du traitement hors ligne sont évidents. Une fois le fichier généré, l'[importation massive vers iPhone et Android](/fr/blog/dites-adieu-à-la-saisie-manuelle--comment-importer-massivement-vos-contacts-excelcsv-sur-votre-téléphone-en-toute-sécurité/) se fait elle aussi sans aucun envoi vers le cloud.
 
 ## Sécurité et commodité combinées
 

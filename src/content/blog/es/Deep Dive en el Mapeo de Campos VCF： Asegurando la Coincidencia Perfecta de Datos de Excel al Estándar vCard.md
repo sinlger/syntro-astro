@@ -14,7 +14,7 @@ Este tutorial avanzado analizará profundamente la lógica central del mapeo de 
 
 En pocas palabras, el mapeo de campos establece una correspondencia entre los nombres de las columnas en su tabla de Excel/CSV (por ejemplo, "Nombre", "Número de móvil", "Empresa") y los campos estándar en el archivo VCF (por ejemplo, **Campo FN**, **Campo TEL**, **Campo ORG**).
 
-Solo asegurándose de que los datos de Excel se dirijan correctamente al campo VCF correspondiente, el archivo convertido podrá ser reconocido correctamente por los teléfonos y el software de gestión de contactos.
+Solo asegurándose de que los datos de Excel se dirijan correctamente al campo VCF correspondiente, el archivo convertido podrá ser reconocido correctamente por los teléfonos y el software de gestión de contactos. Si prefieres revisar el resultado como tabla en lugar de texto VCF, la [guía completa de VCF a Excel](/es/blog/la-guía-completa-de-vcf-a-excelcómo-organizar-archivos-de-contactos-en-una-hoja-de-cálculo-clara/) explica cómo hacer el recorrido de ida y vuelta.
 
 ## Explicación de los Campos Principales de VCF 3.0
 
@@ -68,6 +68,6 @@ Dado que diferentes usuarios pueden tener diferentes nombres de columna en Excel
 
 ## Conclusión
 
-El mapeo de campos VCF es el paso central para garantizar que los datos de Excel se conviertan perfectamente en un archivo VCF. Al dominar las reglas de mapeo para campos principales como FN y TEL y configurarlos correctamente en el convertidor, puede prevenir eficazmente la pérdida de datos o errores.
+El mapeo de campos VCF es el paso central para garantizar que los datos de Excel se conviertan perfectamente en un archivo VCF. Al dominar las reglas de mapeo para campos principales como FN y TEL y configurarlos correctamente en el [conversor de Excel a VCF](/es/Excel-to-vCard/), puede prevenir eficazmente la pérdida de datos o errores.
 
-Se recomienda verificar su tabla de Excel con los campos de vCard requeridos antes de cada conversión y establecer el hábito de un mapeo estandarizado.
+Se recomienda verificar su tabla de Excel con los campos de vCard requeridos antes de cada conversión y establecer el hábito de un mapeo estandarizado. Un archivo mapeado conserva todas las columnas de tu tabla original: si lo procesas con un [conversor 100% offline](/es/blog/garantía-de-privacidad-por-qué-debería-elegir-un-convertidor-vcf-100-offline/), esos datos más completos nunca salen de tu equipo.

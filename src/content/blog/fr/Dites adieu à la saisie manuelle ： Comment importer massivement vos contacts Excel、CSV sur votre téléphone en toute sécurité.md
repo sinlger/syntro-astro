@@ -16,7 +16,7 @@ Expliquons d'abord pourquoi la méthode "Excel/CSV vers VCF" est recommandée po
 
 D'une part, Excel/CSV est le format le plus couramment utilisé pour organiser des contacts, offrant flexibilité et efficacité pour la modification en masse des noms, des numéros de téléphone et des services. D'autre part, les répertoires téléphoniques ne prennent pas directement en charge l'importation de formats de tableur, ce qui rend la saisie manuelle longue et sujette aux erreurs (mauvais numéros, informations manquantes, etc.).
 
-Le format **VCF (vCard)** est le format de contact universel, parfaitement compatible avec tous les téléphones mobiles, y compris l'iPhone et Android. Convertir votre fichier tableur en VCF permet une importation en masse en un clic, garantissant ainsi rapidité et précision, ce qui est particulièrement adapté aux mises à jour massives de répertoires.
+Le format **VCF (vCard)** est le format de contact universel, parfaitement compatible avec tous les téléphones mobiles, y compris l'iPhone et Android. Convertir votre fichier tableur en VCF permet une importation en masse en un clic, garantissant ainsi rapidité et précision, ce qui est particulièrement adapté aux mises à jour massives de répertoires. Si certaines colonnes n'arrivent pas sur le téléphone, il s'agit le plus souvent d'un problème de correspondance : le [guide du mappage des champs VCF](/fr/blog/analyse-approfondie-du-mappage-de-champs-vcf--assurer-une-correspondance-parfaite-des-données-dexcel-au-standard-vcard/) détaille les correspondances à vérifier.
 
 ## Étapes de fonctionnement : Du tableur au VCF + Importation massive sur le téléphone
 
@@ -24,7 +24,7 @@ Voici les étapes spécifiques pour l'opération "Tableur vers VCF + Importation
 
 1.  **Étape 1 : Pré-traiter le fichier** Préparez votre fichier Excel/CSV en vous assurant d'avoir des en-têtes clairs (champs suggérés : Nom, Numéro de mobile, E-mail) et supprimez les contacts en double ou invalides pour éviter un nettoyage secondaire après l'importation.
 
-2.  **Étape 2 : Télécharger le fichier** Ouvrez un convertisseur vCard professionnel (tel qu'Excel2VCF), sélectionnez la fonction "**Excel vers VCF**" ou "**CSV vers vCard**", et téléchargez votre fichier tableur pré-traité.
+2.  **Étape 2 : Télécharger le fichier** Ouvrez un convertisseur vCard professionnel (tel qu'[Excel2VCF](/fr/Excel-to-vCard/)), sélectionnez la fonction "**Excel vers VCF**" ou "**CSV vers vCard**", et téléchargez votre fichier tableur pré-traité.
 
 3.  **Étape 3 : Vérifier les informations** Vérifiez rapidement les coordonnées. Si vous constatez de petites erreurs, vous pouvez les modifier directement dans l'outil sans avoir à retourner dans votre tableur.
 
@@ -43,7 +43,7 @@ Il existe deux méthodes :
 L'opération est encore plus simple pour les utilisateurs d'Android :  
 Trouvez le fichier VCF dans le gestionnaire de fichiers de votre téléphone, cliquez dessus et sélectionnez "Importer dans les contacts". Le système importera automatiquement tous les contacts en masse.
 
-Si vous devez effectuer une **mise à jour massive de vos contacts**, générez simplement un nouveau fichier VCF contenant les dernières informations et répétez les étapes d'importation. Certains téléphones vous proposeront de "Remplacer les contacts en double" ; cocher cette option permet de finaliser rapidement la mise à jour.
+Si vous devez effectuer une **mise à jour massive de vos contacts**, générez simplement un nouveau fichier VCF contenant les dernières informations et répétez les étapes d'importation. Certains téléphones vous proposeront de "Remplacer les contacts en double" ; cocher cette option permet de finaliser rapidement la mise à jour. Il est aussi utile de conserver une copie maîtresse dans un tableur : le [guide complet de VCF vers Excel](/fr/blog/le-guide-complet-de-vcf-vers-excel--comment-organiser-vos-fichiers-de-contacts-dans-un-tableau-clair/) explique comment repasser d'un VCF exporté à des colonnes modifiables.
 
 ## Résumé
 

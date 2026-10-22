@@ -14,7 +14,7 @@ Ce tutoriel avancé analysera en profondeur la logique centrale du mappage de ch
 
 En termes simples, le mappage de champs établit une correspondance entre les noms des colonnes de votre tableau Excel/CSV (par exemple, « Nom », « Numéro de mobile », « Entreprise ») et les champs standard du fichier VCF (par exemple, **Champ FN**, **Champ TEL**, **Champ ORG**).
 
-Ce n'est qu'en garantissant que les données d'Excel sont correctement dirigées vers le champ VCF correspondant que le fichier converti pourra être correctement reconnu par les téléphones et les logiciels de gestion de contacts.
+Ce n'est qu'en garantissant que les données d'Excel sont correctement dirigées vers le champ VCF correspondant que le fichier converti pourra être correctement reconnu par les téléphones et les logiciels de gestion de contacts. Pour contrôler le résultat sous forme de tableau plutôt que de texte VCF, le [guide complet de VCF vers Excel](/fr/blog/le-guide-complet-de-vcf-vers-excel--comment-organiser-vos-fichiers-de-contacts-dans-un-tableau-clair/) explique comment faire l'aller-retour.
 
 ## Explication des champs de base VCF 3.0
 
@@ -68,6 +68,6 @@ VCF 3.0 est le standard vCard le plus utilisé, lequel définit les identifiants
 
 ## Conclusion
 
-Le mappage de champs VCF est l'étape centrale pour garantir que les données Excel sont parfaitement converties en un fichier VCF. En maîtrisant les règles de mappage pour les champs de base tels que FN et TEL et en les configurant correctement dans le convertisseur, vous pouvez prévenir efficacement la perte de données ou les erreurs.
+Le mappage de champs VCF est l'étape centrale pour garantir que les données Excel sont parfaitement converties en un fichier VCF. En maîtrisant les règles de mappage pour les champs de base tels que FN et TEL et en les configurant correctement dans le [convertisseur Excel vers VCF](/fr/Excel-to-vCard/), vous pouvez prévenir efficacement la perte de données ou les erreurs.
 
-Il est recommandé de vérifier votre tableau Excel par rapport aux champs vCard requis avant chaque conversion et d'instaurer une habitude de mappage standardisé.
+Il est recommandé de vérifier votre tableau Excel par rapport aux champs vCard requis avant chaque conversion et d'instaurer une habitude de mappage standardisé. Un fichier mappé contient toutes les colonnes de votre tableau d'origine : en le traitant avec un [convertisseur 100 % hors ligne](/fr/blog/garantie-de-confidentialité-pourquoi-choisir-un-convertisseur-vcf-100--hors-ligne/), ces données plus riches ne quittent jamais votre machine.

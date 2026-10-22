@@ -16,7 +16,7 @@ Let's first explain why the "Excel/CSV to VCF" method is recommended for bulk co
 
 On one hand, Excel/CSV is the most commonly used format for organizing contacts, offering flexibility and efficiency for bulk editing names, phone numbers, and departments. On the other hand, phone address books do not directly support importing spreadsheet formats, making manual entry time-consuming and prone to errors like wrong numbers or missing information.
 
-**VCF (vCard)** is the universal contact format, perfectly compatible with all mobile phones, including iPhone and Android. Converting your spreadsheet file to VCF allows for one-click bulk import, saving time and ensuring accuracy, especially suitable for scenarios requiring bulk updates to phone contacts.
+**VCF (vCard)** is the universal contact format, perfectly compatible with all mobile phones, including iPhone and Android. Converting your spreadsheet file to VCF allows for one-click bulk import, saving time and ensuring accuracy, especially suitable for scenarios requiring bulk updates to phone contacts, and if columns go missing along the way, the [VCF field mapping deep dive](/en/blog/ensuring-perfect-data-match-from-excel-to-vcard-standard/) explains why.
 
 ## Operation Steps: Spreadsheet to VCF + Bulk Import to Phone
 
@@ -26,7 +26,7 @@ Below are the specific steps for the "Spreadsheet to VCF + Bulk Import to Phone"
     Pre-process your Excel/CSV file, ensuring clear headers (suggested fields include Name, Mobile Number, Email), and delete any duplicate or invalid contacts to avoid the need for secondary clean-up after import.
 
 2.  **Step 2: Upload the File**
-    Open a professional vCard converter (such as Excel2VCF), select the "**Excel to VCF**" or "**CSV to vCard**" function, and upload your pre-processed spreadsheet file.
+    Open a professional vCard converter (such as [Excel2VCF](/en/Excel-to-vCard/)), select the "**Excel to VCF**" or "**CSV to vCard**" function, and upload your pre-processed spreadsheet file.
 
 3.  **Step 3: Verify Information**
     Quickly verify the contact information. If there are minor errors, you can edit them directly within the tool without returning to the spreadsheet.
@@ -47,7 +47,7 @@ There are two ways to do this:
 The operation is simpler for Android users:
 Find the VCF file in your phone's file manager, click it, and select "Import to Contacts." The system will automatically import all contacts in bulk.
 
-If you need to perform a **bulk phone contact update**, simply regenerate a VCF file containing the latest information and repeat the import steps. Some phones will prompt you to "Overwrite duplicate contacts"; checking this option will quickly complete the update.
+If you need to perform a **bulk phone contact update**, simply regenerate a VCF file containing the latest information and repeat the import steps. Some phones will prompt you to "Overwrite duplicate contacts"; checking this option will quickly complete the update. It also pays to keep a master copy in a spreadsheet: the [complete VCF to Excel guide](/en/blog/how-to-organize-contact-files-into-a-clear-spreadsheet/) shows how to turn an exported VCF back into editable columns.
 
 ## Summary
 

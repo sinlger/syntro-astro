@@ -7,17 +7,53 @@ import { initI18n } from "../../../i18n.js";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
+  const siteUrl = "https://excel2vcf.com";
+  const localeOrder = ["zh", "en", "ja", "ko", "fr", "de", "es"];
+
+  // Translations of the same topic share the exact same pubDate (6 topics x
+  // 7 languages). Grouping by date lets every language version emit the full
+  // hreflang cluster, so Google treats them as one multilingual page instead
+  // of seven near-duplicate documents competing with each other.
+  const clusters = new Map();
+  for (const post of posts) {
+    const key = post.data.pubDate.toISOString().slice(0, 10);
+    if (!clusters.has(key)) clusters.set(key, []);
+    clusters.get(key).push(post);
+  }
+
   return posts.map((post) => {
     const [locale, ...slugParts] = post.slug.split('/');
     const slug = slugParts.join('/');
+    const cluster = clusters.get(post.data.pubDate.toISOString().slice(0, 10)) ?? [post];
+
+    const hreflangs = cluster
+      .map((p) => {
+        const [loc, ...rest] = p.slug.split('/');
+        return {
+          locale: loc === 'zh' ? 'zh-Hans' : loc,
+          url: `${siteUrl}/${loc}/blog/${rest.join('/')}/`,
+          rawLocale: loc,
+        };
+      })
+      .sort(
+        (a, b) => localeOrder.indexOf(a.rawLocale) - localeOrder.indexOf(b.rawLocale)
+      )
+      .map(({ locale: hrefLang, url }) => ({ locale: hrefLang, url }));
+
+    const zhVersion = cluster.find((p) => p.slug.startsWith('zh/'));
+    const xDefaultSlug = zhVersion
+      ? zhVersion.slug.split('/').slice(1).join('/')
+      : slug;
+    hreflangs.push({ locale: 'x-default', url: `${siteUrl}/zh/blog/${xDefaultSlug}/` });
+
     return {
       params: { locale, slug },
-      props: { post },
+      props: { post, hreflangs },
     };
   });
 }
 
-const { post } = Astro.props;
+const { post, hreflangs } = Astro.props;
 const { Content } = await post.render();
 
 const locale = Astro.params.locale;
@@ -28,12 +64,10 @@ const t = i18nInstance.t.bind(i18nInstance);
 const htmlLang = locale === "zh" ? "zh-Hans" : locale;
 const canonicalPath = `/blog/${Astro.params.slug}`;
 
-// Blog posts exist only in their own language (slugs differ per language), so we
-// emit a single self-referential hreflang instead of pointing at non-existent
-// translations. The canonical URL keeps a trailing slash to match routing.
+// Blog posts are grouped into language clusters by pubDate (see getStaticPaths),
+// so pass the full cluster through instead of a single self-referential entry.
 const siteUrl = "https://excel2vcf.com";
 const canonicalUrl = `${siteUrl}/${locale}${canonicalPath}`.replace(/\/+$/, "") + "/";
-const hreflangs = [{ locale: htmlLang, url: canonicalUrl }];
 
 // Format date
 const formattedDate = post.data.pubDate.toLocaleDateString(htmlLang, {
@@ -214,6 +248,25 @@ const articleMeta = {
     {/* Content */}
     <div class="prose prose-lg prose-neutral max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-accent-600 hover:prose-a:text-accent-700 prose-img:rounded-2xl prose-img:shadow-md">
       <Content />
+    </div>
+
+    {/* Tool CTA: the only path from an article to a converter page */}
+    <div class="mt-14 rounded-2xl bg-accent-50 ring-1 ring-base-200 p-6 md:p-8">
+      <h2 class="text-xl md:text-2xl font-bold text-base-900 mb-5">{t("page.blog_tools_title")}</h2>
+      <div class="grid gap-3 sm:grid-cols-3">
+        <a href={`/${locale}/Excel-to-vCard/`} class="flex flex-col rounded-xl bg-white ring-1 ring-base-200 px-5 py-4 hover:bg-accent-100 transition-colors">
+          <span class="font-semibold text-accent-700">{t("nav.excelToVCard")}</span>
+          <span class="text-sm text-base-500 mt-1">XLSX / XLS → VCF</span>
+        </a>
+        <a href={`/${locale}/CSV-to-vCard/`} class="flex flex-col rounded-xl bg-white ring-1 ring-base-200 px-5 py-4 hover:bg-accent-100 transition-colors">
+          <span class="font-semibold text-accent-700">{t("nav.csvToVCard")}</span>
+          <span class="text-sm text-base-500 mt-1">CSV → VCF</span>
+        </a>
+        <a href={`/${locale}/vCard-to-Excel/`} class="flex flex-col rounded-xl bg-white ring-1 ring-base-200 px-5 py-4 hover:bg-accent-100 transition-colors">
+          <span class="font-semibold text-accent-700">{t("nav.vcardToExcel")}</span>
+          <span class="text-sm text-base-500 mt-1">VCF → XLSX / CSV</span>
+        </a>
+      </div>
     </div>
 
     {/* Divider */}

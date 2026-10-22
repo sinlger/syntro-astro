@@ -20,9 +20,9 @@ Während dieses Prozesses sind Ihre Kontaktdaten mehreren Netzwerkübertragungen
 
 ## 100 % Offline-Verarbeitung: Lecks an der Wurzel eliminieren
 
-Ein **100 % Offline-VCF-Konverter** (wie etwa Excel2VCF) vermeidet dieses Problem perfekt – alle Dateien werden vollständig auf Ihrem lokalen Gerät (Computer/Mobiltelefon) verarbeitet. **Excel-Dateien werden nicht hochgeladen**, und **Kontaktdaten erreichen niemals die Cloud**, wodurch die Möglichkeit eines Datenlecks an der Quelle eliminiert wird.
+Ein **100 % Offline-VCF-Konverter** (wie etwa [Excel2VCF](/de/CSV-to-vCard/)) vermeidet dieses Problem perfekt – alle Dateien werden vollständig auf Ihrem lokalen Gerät (Computer/Mobiltelefon) verarbeitet. **Excel-Dateien werden nicht hochgeladen**, und **Kontaktdaten erreichen niemals die Cloud**, wodurch die Möglichkeit eines Datenlecks an der Quelle eliminiert wird.
 
-Für Nutzer, die Wert auf Datenschutz legen, ist die „lokale Verarbeitung von Kontaktdaten“ mehr als nur ein Slogan; es ist eine greifbare Sicherheitsgarantie.
+Für Nutzer, die Wert auf Datenschutz legen, ist die „lokale Verarbeitung von Kontaktdaten“ mehr als nur ein Slogan; es ist eine greifbare Sicherheitsgarantie. Ob wirklich keine Daten verloren gehen, prüfen Sie am einfachsten, indem Sie eine Stichprobe in eine [übersichtliche Kontakt-Tabelle](/de/blog/der-vollständige-leitfaden-für-vcf-zu-excelso-organisieren-sie-kontaktdateien-in-einer-übersichtlichen-tabelle/) zurückverwandeln und die Spalten vergleichen.
 
 Am Beispiel des gängigen Bedarfs „Excel zu VCF“ sieht der Prozess mit einem Offline-Tool wie folgt aus:
 1. Öffnen Sie das lokale Tool.
@@ -30,7 +30,7 @@ Am Beispiel des gängigen Bedarfs „Excel zu VCF“ sieht der Prozess mit einem
 3. Schließen Sie die Konvertierung ab.
 4. Exportieren Sie die VCF-Datei.
 
-Während des gesamten Prozesses verlassen keine Daten das Gerät. Selbst wenn die konvertierte VCF-Datei auf ein Telefon importiert werden muss, kann dies über lokale Übertragungsmethoden wie ein Datenkabel oder AirDrop erfolgen, ohne auf einen Netzwerk-Upload angewiesen zu sein. Im Vergleich zur „Upload-Konvertierung-Download“-Kette der Online-Tools liegen die Vorteile der Offline-Verarbeitung in Bezug auf Privatsphäre und Sicherheit klar auf der Hand.
+Während des gesamten Prozesses verlassen keine Daten das Gerät. Selbst wenn die konvertierte VCF-Datei auf ein Telefon importiert werden muss, kann dies über lokale Übertragungsmethoden wie ein Datenkabel oder AirDrop erfolgen, ohne auf einen Netzwerk-Upload angewiesen zu sein. Im Vergleich zur „Upload-Konvertierung-Download“-Kette der Online-Tools liegen die Vorteile der Offline-Verarbeitung in Bezug auf Privatsphäre und Sicherheit klar auf der Hand. Auch der anschließende Import läuft ohne Netzzugriff: Die [Anleitung zum Massenimport von Excel- und CSV-Kontakten](/de/blog/csv-kontakte-sicher-und-effizient-in-ihr-telefon/) zeigt beide Wege für iPhone und Android.
 
 ## Sicherheit und Komfort kombiniert
 

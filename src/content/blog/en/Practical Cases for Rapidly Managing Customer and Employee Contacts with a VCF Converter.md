@@ -16,14 +16,14 @@ However, traditional contact management methods are either tedious and time-cons
 
 After an exhibition, Sales teams often face the headache of organizing massive amounts of client information. Client forms are usually in Excel/CSV format, and manually entering each phone number is not only time-consuming but also risks data entry errors, potentially leading to client loss.
 
-With the help of the **Excel2VCF** converter, this pain point is easily solved. The practical case flow is as follows:
+With the help of the [**Excel2VCF** converter](/en/Excel-to-vCard/), this pain point is easily solved. The practical case flow is as follows:
 
 1.  **Collect and Organize**: Collect the exhibition client information sheets and organize them into a standardized Excel/CSV file (including core fields like name, phone, company, and remarks).
 2.  **Bulk Convert**: Use the offline VCF converter, select the "Excel to VCF" function, upload the client information sheet in bulk, and set the output format to "Merge into a single VCF file."
 3.  **One-Click Import**: After conversion, transfer the VCF file to the phone via AirDrop or a data cable, completing the sales bulk import of client phone numbers with one click.
 4.  **Rapid Follow-up**: Open the phone contacts to call clients directly for follow-up and quickly recall client needs using the notes field.
 
-Furthermore, the operation for **CRM client export** is equally efficient: Export client data from the corporate CRM system (often in CSV format), directly upload it to the VCF converter, convert it to VCF format, and import it to a personal or work phone to achieve rapid synchronization of client information. Compared to the traditional "CRM export - manual cleanup - line-by-line entry" process, using a VCF converter can reduce a 1-2 hour task to under 10 minutes, significantly boosting sales follow-up efficiency.
+Furthermore, the operation for **CRM client export** is equally efficient: Export client data from the corporate CRM system (often in CSV format), directly upload it to the VCF converter, convert it to VCF format, and import it to a personal or work phone to achieve rapid synchronization of client information. Compared to the traditional "CRM export - manual cleanup - line-by-line entry" process, using a VCF converter can reduce a 1-2 hour task to under 10 minutes, significantly boosting sales follow-up efficiency. The phone-side steps are the same as in any batch import, and the [iPhone and Android import walkthrough](/en/blog/how-to-safely-and-efficiently-bulk-import-exce-contacts-to-your-phone/) covers both platforms.
 
 ## HR Scenario: Bulk Distribution of New Employee Contacts
 
@@ -36,7 +36,7 @@ Using a VCF converter to achieve **bulk employee contact distribution**, the pra
 3.  **Precise Distribution**: Send the corresponding departmental VCF file directly to the new employees. New employees only need to click the file to complete the one-click import to their phone contacts, requiring no complex operations.
 4.  **Real-time Updates**: When employee information changes later, simply regenerate and distribute the latest VCF file. Employees re-import it to overwrite old information, achieving real-time contact synchronization.
 
-This solution not only resolves the HR bulk distribution hassle but also ensures the security of employee contact information—choosing an **offline VCF converter** means the employee information Excel file is not uploaded to the cloud, preventing internal corporate information leakage.
+This solution not only resolves the HR bulk distribution hassle but also ensures the security of employee contact information—choosing an **offline VCF converter** means the employee information Excel file is not uploaded to the cloud, preventing internal corporate information leakage. Consistent [VCF field mapping](/en/blog/ensuring-perfect-data-match-from-excel-to-vcard-standard/) is what keeps department, title and extension in the right columns each time those files are regenerated.
 
 ## Summary: Commercial Advantages of VCF Application Scenarios
 

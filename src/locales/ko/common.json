@@ -9,6 +9,7 @@
     "home_title": "Excel/CSV/XLSX를 vCard (VCF)로 일괄 변환 도구 - 100% 로컬 처리",
     "home_description": "수동 입력에 작별을 고하세요! 안전하고 빠르고 정확하게 Excel/CSV 연락처를 VCF 파일로 일괄 변환합니다. 브라우저 내에서 모든 과정이 처리되므로 데이터가 서버로 전송되지 않습니다. iOS 및 Android 지원.",
     "blog_title": "블로그 - Excel/CSV와 vCard (VCF) 변환 가이드 | Excel2VCF",
+    "blog_tools_title": "이 도구로 지금 변환하기",
     "blog_description": "Excel/CSV 연락처와 vCard (VCF) 상호 변환 실무 가이드. 휴대폰 일괄 가져오기, 필드 매핑, 문자 깨짐 해결, 오프라인 개인정보 보호 방법을 다룹니다."
   },
   "uploadDropzone": {

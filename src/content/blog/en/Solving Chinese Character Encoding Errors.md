@@ -18,7 +18,7 @@ Simply put, the encoding format of your original Excel/CSV file does not match t
 1.  Excel/CSV is saved by default with **ANSI encoding** (common in Windows systems), while the VCF file requires **UTF-8 encoding** to display Chinese characters correctly.
 2.  The conversion tool fails to set the correct encoding parameters, leading to loss or corruption of Chinese information during the conversion process.
 
-Additionally, CSV files lacking the **UTF-8 BOM header** (Byte Order Mark) are also prone to garbled code issues after conversion.
+Additionally, CSV files lacking the **UTF-8 BOM header** (Byte Order Mark) are also prone to garbled code issues after conversion, and the same mismatch can silently drop fields—which is why a correct [VCF field mapping](/en/blog/ensuring-perfect-data-match-from-excel-to-vcard-standard/) is worth setting up before you convert.
 
 ## Solution One: Pre-processing Before Conversion (Recommended)
 
@@ -31,7 +31,7 @@ The core is to standardize the Excel/CSV file to **UTF-8 encoding** to prevent g
     If the original file is already in CSV format, open it with **Notepad**, click "File" - "Save As," select "UTF-8" in the "Encoding" dropdown menu, and save it to overwrite the original file. It is recommended to ensure the BOM header is included to prevent some conversion tools from failing to recognize it.
 
 3.  **Using Smart Conversion Tools**:
-    Professional vCard converters (like Excel2VCF) come with encoding detection features, automatically identifying the original file's encoding and matching the optimal conversion encoding. This reduces the probability of garbled code even if you forget to manually set UTF-8.
+    Professional vCard converters (like [Excel2VCF](/en/CSV-to-vCard/)) come with encoding detection features, automatically identifying the original file's encoding and matching the optimal conversion encoding. This reduces the probability of garbled code even if you forget to manually set UTF-8.
 
 ## Solution Two: Repair After Conversion
 
@@ -54,4 +54,4 @@ If the converted VCF file displays normally on the computer but not on the phone
 
 The core solution to the VCF Chinese garbled code issue is **"standardizing to UTF-8 encoding."** Whether it's pre-processing before conversion, setting the tool during conversion, or post-conversion repair, focusing on this core principle will solve the vast majority of problems.
 
-It is advised to make a habit of prioritizing UTF-8 encoding when converting contacts to prevent garbled code from the source. If you encounter complex garbled code scenarios, choosing a professional vCard converter and utilizing its automated encoding detection and repair features can solve the problem more efficiently.
+It is advised to make a habit of prioritizing UTF-8 encoding when converting contacts to prevent garbled code from the source; the remaining steps, from file preparation to the phone, are covered in the [bulk import tutorial for Excel and CSV contacts](/en/blog/how-to-safely-and-efficiently-bulk-import-exce-contacts-to-your-phone/). If you encounter complex garbled code scenarios, choosing a professional vCard converter and utilizing its automated encoding detection and repair features can solve the problem more efficiently.

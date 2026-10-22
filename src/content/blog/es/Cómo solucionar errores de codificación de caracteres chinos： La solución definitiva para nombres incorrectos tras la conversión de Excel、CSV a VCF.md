@@ -18,7 +18,7 @@ En pocas palabras, el formato de codificación de su archivo original Excel/CSV 
 1.  El archivo Excel/CSV se guarda por defecto con **codificación ANSI** (común en Windows), mientras que el archivo VCF requiere **codificación UTF-8** para mostrar los caracteres chinos correctamente.
 2.  La herramienta de conversión no establece los parámetros de codificación correctos, lo que provoca la pérdida o corrupción de la información en chino durante el proceso.
 
-Además, los archivos CSV que carecen del **encabezado UTF-8 BOM** (Byte Order Mark) también son propensos a presentar problemas de visualización tras la conversión.
+Además, los archivos CSV que carecen del **encabezado UTF-8 BOM** (Byte Order Mark) también son propensos a presentar problemas de visualización tras la conversión. Esos caracteres ilegibles suelen ser solo la parte visible: el mismo desajuste puede hacer desaparecer campos, de ahí la utilidad de revisar el [mapeo de campos VCF](/es/blog/deep-dive-en-el-mapeo-de-campos-vcf-asegurando-la-coincidencia-perfecta-de-datos-de-excel-al-estándar-vcard/) antes de convertir.
 
 ## Solución uno: Preprocesamiento antes de la conversión (Recomendado)
 
@@ -31,7 +31,7 @@ La clave es estandarizar el archivo Excel/CSV a **codificación UTF-8** para evi
     Si el archivo ya es CSV, ábralo con el **Bloc de notas**, haga clic en "Archivo" - "Guardar como", seleccione "UTF-8" en el menú desplegable de codificación y guarde para sobrescribir el archivo original. Se recomienda asegurarse de incluir el encabezado BOM.
 
 3.  **Uso de herramientas de conversión inteligentes**:
-    Los convertidores profesionales de vCard (como Excel2VCF) incluyen funciones de detección de codificación que identifican automáticamente el formato original y aplican la codificación óptima.
+    Los convertidores profesionales de vCard (como [Excel2VCF](/es/CSV-to-vCard/)) incluyen funciones de detección de codificación que identifican automáticamente el formato original y aplican la codificación óptima.
 
 ## Solución dos: Reparación después de la conversión
 
@@ -52,6 +52,6 @@ Si el archivo VCF se ve bien en la computadora pero mal en el teléfono, suele s
 
 ## Conclusión
 
-La solución principal para el código chino corrupto en VCF es la **"estandarización a la codificación UTF-8"**. Ya sea mediante el preprocesamiento, la configuración de la herramienta o la reparación posterior, seguir este principio resolverá la gran mayoría de los problemas.
+La solución principal para el código chino corrupto en VCF es la **"estandarización a la codificación UTF-8"**. Ya sea mediante el preprocesamiento, la configuración de la herramienta o la reparación posterior, seguir este principio resolverá la gran mayoría de los problemas. Una vez corregida la codificación, el resto del proceso se describe en el [tutorial de importación masiva de Excel/CSV al teléfono](/es/blog/adiós-a-la-entrada-manual-cómo-importar-contactos-de-excelcsv-a-tu-teléfono-de-forma-segura-y-eficiente/).
 
 ¿Desea que realice alguna otra traducción o ajuste en el formato?

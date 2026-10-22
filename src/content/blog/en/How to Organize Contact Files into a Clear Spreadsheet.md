@@ -20,7 +20,7 @@ VCF (vCard) is a universal contact format, ideal for cross-device synchronizatio
 
 In contrast, the **Excel/CSV spreadsheet format** supports bulk editing, filtering, and sorting. It clearly presents all contact fields—name, phone, email, etc.—making it the optimal choice for contact organization and backup.
 
-Whether you are an individual organizing phone-exported contacts or an enterprise consolidating employee or client data, VCF to Excel is a critical step for improving efficiency.
+Whether you are an individual organizing phone-exported contacts or an enterprise consolidating employee or client data, VCF to Excel is a critical step for improving efficiency—the [sales and HR contact management cases](/en/blog/practical-cases-for-rapidly-managing-customer-and-employee-contacts-with-a-vcf-converter/) show what that looks like in practice.
 
 ## Step-by-Step Guide: Effortlessly Convert VCF to a Spreadsheet
 
@@ -30,7 +30,7 @@ Here are the detailed steps for VCF to Excel conversion, which are simple and qu
     Prepare the VCF files you need to convert. If you have multiple scattered VCF files, consolidate them into one folder beforehand (to facilitate subsequent batch processing).
 
 2.  **Step 2: Upload and Convert**
-    Open a professional vCard converter (such as Excel2VCF) and select the "**VCF to Excel**" function. The tool supports batch uploading multiple VCF files, easily allowing you to batch extract VCF contacts.
+    Open a professional vCard converter (such as [Excel2VCF](/en/vCard-to-Excel/)) and select the "**VCF to Excel**" function. The tool supports batch uploading multiple VCF files, easily allowing you to batch extract VCF contacts.
 
 3.  **Step 3: Set Parameters**
     Set the conversion parameters. You can selectively choose which contact fields to retain (such as name, mobile number, email, address, etc.), filtering out invalid or unnecessary information to make the resulting spreadsheet cleaner.
@@ -48,7 +48,7 @@ Directly editing a VCF file is difficult, but editing is much more efficient aft
 * **Bulk Deduplication**: Use Excel's "Conditional Formatting" to find and delete duplicate contacts, avoiding data redundancy.
 * **Format Standardization**: Unify the presentation format of phone numbers and emails for easier future searching.
 
-The finalized spreadsheet serves as both a clear contact directory and a secure backup file, which can be stored on your computer or an external drive.
+The finalized spreadsheet serves as both a clear contact directory and a secure backup file, which can be stored on your computer or an external drive. When that sheet is later sent back to a phone as VCF, the [Chinese character encoding fixes](/en/blog/solving-chinese-character-encoding-errors/) are worth a look first, since a wrong encoding turns names into garbled text.
 
 ## Batch Extraction and Merging Tips
 

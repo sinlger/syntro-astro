@@ -20,9 +20,9 @@ Durante este proceso, sus datos de contacto se someten a múltiples transmisione
 
 ## Procesamiento 100% offline: Eliminando filtraciones de raíz
 
-Un **convertidor VCF 100% offline** (como Excel2VCF) evita perfectamente este problema: todos los archivos se procesan íntegramente en su dispositivo local (ordenador o teléfono móvil). **Los archivos de Excel no se suben** y **los datos de contacto nunca llegan a la nube**, eliminando la posibilidad de fuga de datos desde el origen.
+Un **convertidor VCF 100% offline** (como [Excel2VCF](/es/CSV-to-vCard/)) evita perfectamente este problema: todos los archivos se procesan íntegramente en su dispositivo local (ordenador o teléfono móvil). **Los archivos de Excel no se suben** y **los datos de contacto nunca llegan a la nube**, eliminando la posibilidad de fuga de datos desde el origen.
 
-Para los usuarios que valoran la privacidad de los datos, el "procesamiento local de los datos de contacto" es más que un simple eslogan; es una garantía de seguridad tangible.
+Para los usuarios que valoran la privacidad de los datos, el "procesamiento local de los datos de contacto" es más que un simple eslogan; es una garantía de seguridad tangible. Para comprobar que no se ha perdido ningún dato, lo más sencillo es reconvertir una muestra a una [hoja de contactos legible](/es/blog/la-guía-completa-de-vcf-a-excelcómo-organizar-archivos-de-contactos-en-una-hoja-de-cálculo-clara/) y comparar las columnas.
 
 Tomando como ejemplo la necesidad común de "Excel a VCF", el proceso con una herramienta offline es:
 1. Abra la herramienta local.
@@ -30,7 +30,7 @@ Tomando como ejemplo la necesidad común de "Excel a VCF", el proceso con una he
 3. Complete la conversión.
 4. Exporte el archivo VCF.
 
-Ningún dato sale del dispositivo durante todo el proceso. Incluso cuando el archivo VCF convertido debe importarse a un teléfono, puede hacerse mediante métodos de transferencia local como un cable de datos o AirDrop, sin depender de la carga en la red. En comparación con la cadena de "subida-conversión-descarga" de la herramienta en línea, las ventajas de privacidad y seguridad del procesamiento offline son claras.
+Ningún dato sale del dispositivo durante todo el proceso. Incluso cuando el archivo VCF convertido debe importarse a un teléfono, puede hacerse mediante métodos de transferencia local como un cable de datos o AirDrop, sin depender de la carga en la red. En comparación con la cadena de "subida-conversión-descarga" de la herramienta en línea, las ventajas de privacidad y seguridad del procesamiento offline son claras. Una vez generado el archivo, la [importación masiva a iPhone y Android](/es/blog/adiós-a-la-entrada-manual-cómo-importar-contactos-de-excelcsv-a-tu-teléfono-de-forma-segura-y-eficiente/) también se hace sin subir nada a la nube.
 
 ## Seguridad y conveniencia combinadas
 

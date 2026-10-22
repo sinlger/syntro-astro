@@ -9,6 +9,7 @@
     "home_title": "Excel/CSV/XLSX 一键转 vCard (VCF) 转换器 - 100%本地批量导入通讯录",
     "home_description": "告别手动输入！安全、快速、精准地将 Excel/CSV 通讯录批量转换成 VCF 名片文件，全程在本地浏览器处理，100% 离线转换 ， 数据永不离开设备，兼容 iOS/Android。",
     "blog_title": "博客 - Excel/CSV 与 vCard (VCF) 转换教程 | Excel2VCF",
+    "blog_tools_title": "用这些工具立即转换",
     "blog_description": "Excel/CSV 通讯录与 vCard (VCF) 互转的实用教程：批量导入手机、字段映射、中文乱码修复与离线隐私保护。"
   },
   "uploadDropzone": {

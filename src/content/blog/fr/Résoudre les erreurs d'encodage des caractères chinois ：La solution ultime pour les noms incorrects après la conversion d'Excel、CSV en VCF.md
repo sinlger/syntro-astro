@@ -18,7 +18,7 @@ En résumé, le format d'encodage de votre fichier Excel/CSV d'origine ne corres
 1.  Le fichier Excel/CSV est enregistré par défaut avec **l'encodage ANSI** (courant sur les systèmes Windows), alors que le fichier VCF nécessite **l'encodage UTF-8** pour afficher correctement les caractères chinois.
 2.  L'outil de conversion ne parvient pas à définir les paramètres d'encodage corrects, ce qui entraîne la perte ou la corruption des informations en chinois pendant le processus de conversion.
 
-De plus, les fichiers CSV dépourvus de l'en-tête **UTF-8 BOM** (Byte Order Mark) sont également susceptibles de présenter des problèmes de codes illisibles après la conversion.
+De plus, les fichiers CSV dépourvus de l'en-tête **UTF-8 BOM** (Byte Order Mark) sont également susceptibles de présenter des problèmes de codes illisibles après la conversion. Ces caractères illisibles ne sont souvent que la partie visible : la même incohérence peut faire disparaître des champs, d'où l'intérêt de vérifier le [mappage des champs VCF](/fr/blog/analyse-approfondie-du-mappage-de-champs-vcf--assurer-une-correspondance-parfaite-des-données-dexcel-au-standard-vcard/) avant de convertir.
 
 ## Solution 1 : Prétraitement avant la conversion (Recommandé)
 
@@ -31,7 +31,7 @@ L'essentiel est de standardiser le fichier Excel/CSV en **encodage UTF-8** pour 
     Si le fichier original est déjà au format CSV, ouvrez-le avec le **Bloc-notes**, cliquez sur « Fichier » - « Enregistrer sous », sélectionnez « UTF-8 » dans le menu déroulant « Encodage », et enregistrez-le pour écraser le fichier original. Il est recommandé de s'assurer que l'en-tête BOM est inclus.
 
 3.  **Utilisation d'outils de conversion intelligents** :
-    Les convertisseurs vCard professionnels (comme Excel2VCF) sont dotés de fonctions de détection d'encodage, identifiant automatiquement l'encodage du fichier d'origine et choisissant l'encodage de conversion optimal.
+    Les convertisseurs vCard professionnels (comme [Excel2VCF](/fr/CSV-to-vCard/)) sont dotés de fonctions de détection d'encodage, identifiant automatiquement l'encodage du fichier d'origine et choisissant l'encodage de conversion optimal.
 
 ## Solution 2 : Réparation après la conversion
 
@@ -52,4 +52,4 @@ Si le fichier VCF converti s'affiche normalement sur l'ordinateur mais pas sur l
 
 ## Conclusion
 
-La solution fondamentale au problème de code chinois illisible dans les VCF est la **« standardisation vers l'encodage UTF-8 »**. Qu'il s'agisse du prétraitement, du paramétrage de l'outil ou de la réparation après la conversion, se concentrer sur ce principe résoudra la grande majorité des problèmes.
+La solution fondamentale au problème de code chinois illisible dans les VCF est la **« standardisation vers l'encodage UTF-8 »**. Qu'il s'agisse du prétraitement, du paramétrage de l'outil ou de la réparation après la conversion, se concentrer sur ce principe résoudra la grande majorité des problèmes. Une fois l'encodage corrigé, la suite du processus est décrite dans le [tutoriel d'importation massive Excel/CSV vers le téléphone](/fr/blog/dites-adieu-à-la-saisie-manuelle--comment-importer-massivement-vos-contacts-excelcsv-sur-votre-téléphone-en-toute-sécurité/).

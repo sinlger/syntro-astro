@@ -1,57 +1,56 @@
 ---
-title: "Résoudre les erreurs d'encodage des caractères chinois : La solution ultime pour les noms incorrects après la conversion d'Excel/CSV en VCF"
-description: "Les noms de vos contacts s'affichent sous forme de code illisible après une conversion Excel/CSV en VCF ? Cet article propose des solutions étape par étape, couvrant la réparation du code illisible CSV vers VCF et les paramètres d'encodage des fichiers VCF, pour résoudre complètement les problèmes d'affichage du chinois."
+title: "Zeichensatz-Fehler beheben: Namen nach Excel/CSV zu VCF"
+description: "Namen nach Excel/CSV zu VCF unlesbar? So beheben Sie Zeichensatz-Fehler und importieren UTF-8 korrekt in iCloud, Google Kontakte und Outlook."
 pubDate: 2025-12-01
-author: "Équipe Excel2VCF"
-tags: ["Code Chinois Illisible", "Réparation VCF", "UTF-8", "Troubleshooting"]
+author: "Excel2VCF Team"
+tags: ["Zeichensatz-Fehler", "UTF-8", "vCard reparieren", "Fehlerbehebung"]
 ---
 
-Les noms de vos contacts se transforment-ils en codes illisibles après une conversion Excel/CSV en VCF ? Les noms chinois s'affichent-ils avec des points d'interrogation ou des symboles étranges lors de l'importation de vCard ? Il s'agit d'un problème fréquent rencontré par de nombreux utilisateurs lors de la conversion de contacts, en particulier avec les noms chinois.
+Ihr Adressbuch zeigt statt „Müller“ plötzlich „MÃ¼ller“, und aus einem chinesischen Namen wird eine Kette aus Fragezeichen und Sonderzeichen? Nach der Umwandlung von Excel/CSV in VCF ist das kein Datenverlust, sondern eine **Fehlinterpretation der Bytes**: Die Zeichen sind noch vorhanden, das empfangende Programm liest sie jedoch im falschen Zeichensatz.
 
-Ce guide de dépannage traitera précisément le problème de **l'erreur d'encodage VCF**, en couvrant l'analyse des causes et les corrections étape par étape, incluant la **réparation du code illisible de CSV vers VCF** et les **paramètres d'encodage des fichiers VCF**, vous aidant ainsi à résoudre définitivement le problème d'affichage incorrect du chinois.
+Dieser Leitfaden zeigt, wie Zeichensatz-Fehler auf dem Weg von der Tabelle zur vCard entstehen, wie Sie die Ursache in wenigen Minuten eingrenzen und wie Sie eine VCF-Datei aufbauen, deren UTF-8-Kodierung auch auf iPhone, Android und in Outlook ankommt.
 
-## Pourquoi le code devient-il illisible ?
+## Warum aus Namen plötzlich Kauderwelsch wird
 
-Tout d'abord, comprenons la raison principale : le code chinois illisible dans un fichier VCF est essentiellement un **« décalage d'encodage »**.
+Eine VCF-Datei ist reiner Text. Jedes Zeichen wird als Bytefolge gespeichert, und erst der **Zeichensatz** legt fest, welche Bytefolge welches Zeichen bedeutet. Wird dieselbe Bytefolge mit einer anderen Kodierung gelesen, entsteht das bekannte Muster aus Sonderzeichen. **Beispiel:** „Müller“ erscheint als „MÃ¼ller“, weil die UTF-8-Bytes fälschlich als Windows-1252 interpretiert wurden. Dasselbe passiert bei chinesischen, japanischen und koreanischen Namen – **als Beispiel** wird der chinesische Name 张伟 dann zu `å¼ ä¼Ÿ`. Die Daten sind also nicht verloren, nur falsch interpretiert.
 
-En résumé, le format d'encodage de votre fichier Excel/CSV d'origine ne correspond pas au format d'encodage du fichier VCF converti, ce qui empêche l'appareil de reconnaître correctement les caractères chinois. Il existe deux scénarios courants :
-1.  Le fichier Excel/CSV est enregistré par défaut avec **l'encodage ANSI** (courant sur les systèmes Windows), alors que le fichier VCF nécessite **l'encodage UTF-8** pour afficher correctement les caractères chinois.
-2.  L'outil de conversion ne parvient pas à définir les paramètres d'encodage corrects, ce qui entraîne la perte ou la corruption des informations en chinois pendant le processus de conversion.
+In der Praxis gibt es dafür drei typische Auslöser:
 
-De plus, les fichiers CSV dépourvus de l'en-tête **UTF-8 BOM** (Byte Order Mark) sont également susceptibles de présenter des problèmes de codes illisibles après la conversion.
+* **Quelldatei nicht in UTF-8:** Speichert Excel die CSV im ANSI-Modus, landen Umlaute und chinesische, japanische oder koreanische Zeichen in der Systemkodepage (Windows-1252, GBK, Shift-JIS). Der Konverter reicht diese Bytes weiter, statt sie umzuwandeln.
+* **Fehlendes BOM:** Ohne Byte Order Mark raten manche Programme den Zeichensatz – und raten falsch.
+* **Empfangsseite ignoriert die Angabe:** Viele Importeure lesen die VCF einfach in der Standardkodepage des Systems, obwohl die Datei korrekt ist.
 
-## Solution 1 : Prétraitement avant la conversion (Recommandé)
+Genau hier entscheidet die **VCF-Version**. In **vCard 2.1** wird der Zeichensatz pro Feld über den Parameter `CHARSET` übergeben (etwa `FN;CHARSET=UTF-8:…`); fehlt er, greifen ältere Programme auf die Systemkodepage zurück. In **vCard 3.0** ist UTF-8 der vorgegebene Zeichensatz, viele Werkzeuge schreiben den Parameter aber weiterhin mit – auch Excel2VCF setzt bei VCF 3.0 `CHARSET=UTF-8` an Textfelder wie Name, Organisation oder Notiz. **vCard 4.0** schreibt UTF-8 verbindlich vor und erlaubt `CHARSET` nicht mehr. Ein falsch gesetzter oder fehlender Parameter kann daher selbst eine sauber gespeicherte Datei beim Import kippen.
 
-L'essentiel est de standardiser le fichier Excel/CSV en **encodage UTF-8** pour éviter le code illisible à la source :
+## Schritt 1: Quelldatei als UTF-8 speichern
 
-1.  **Traitement des fichiers Excel** :
-    Ouvrez la feuille Excel que vous souhaitez convertir, cliquez sur « Fichier » - « Enregistrer sous », sélectionnez le type de fichier « CSV (délimité par des virgules) », puis cliquez sur « Outils » en bas à droite - « Options Web », allez dans l'onglet « Encodage », sélectionnez « UTF-8 » et cliquez sur OK pour enregistrer.
+Die zuverlässigste Reparatur beginnt vor der Konvertierung. Ziel ist eine Tabelle, die nachweislich UTF-8 enthält:
 
-2.  **Traitement des fichiers CSV** :
-    Si le fichier original est déjà au format CSV, ouvrez-le avec le **Bloc-notes**, cliquez sur « Fichier » - « Enregistrer sous », sélectionnez « UTF-8 » dans le menu déroulant « Encodage », et enregistrez-le pour écraser le fichier original. Il est recommandé de s'assurer que l'en-tête BOM est inclus pour éviter que certains outils de conversion ne l'identifient pas.
+1.  **Excel:** „Datei“ → „Speichern unter“ und als Dateityp **„CSV UTF-8 (durch Trennzeichen getrennt)“** wählen. Der Eintrag ohne UTF-8 schreibt in der Systemkodepage – dort entsteht der Großteil der Fehler.
+2.  **Vorhandene CSV:** In einem Editor öffnen, der die Kodierung anzeigt (Notepad unter Windows, TextEdit unter macOS, Visual Studio Code). Beim Speichern **UTF-8** wählen; verlangt der Empfänger ein BOM, wählen Sie die Variante **UTF-8 mit BOM**.
+3.  **Gegenprobe:** Die Datei im Editor prüfen. Stehen Umlaute und asiatische Zeichen dort korrekt, ist die Quelle in Ordnung. Steht schon hier „MÃ¼ller“, hilft keine Einstellung im Konverter – dann muss zuerst die Quelldatei neu gespeichert werden.
 
-3.  **Utilisation d'outils de conversion intelligents** :
-    Les convertisseurs vCard professionnels (comme Excel2VCF) sont dotés de fonctions de détection d'encodage, identifiant automatiquement l'encodage du fichier d'origine et choisissant l'encodage de conversion optimal. Cela réduit la probabilité de codes illisibles même si vous oubliez de régler manuellement l'UTF-8.
+Ein Konverter, der Kodierungen wie UTF-8 oder GBK automatisch erkennt, nimmt Ihnen einen Teil der Arbeit ab, ersetzt die Gegenprobe im Editor aber nicht.
 
-## Solution 2 : Réparation après la conversion
+## Schritt 2: Konverter und VCF-Version richtig einstellen
 
-Si un fichier VCF illisible a déjà été généré, vous pouvez le réparer sans nouvelle conversion en utilisant les méthodes suivantes :
+1.  **UTF-8 als Ausgabe:** Achten Sie darauf, dass der Konverter die VCF in UTF-8 schreibt. Excel2VCF erzeugt standardmäßig eine UTF-8-kodierte VCF im Format 3.0; eine zusätzliche Einstellung ist dafür nicht nötig.
+2.  **Version bewusst wählen:** VCF 3.0 ist für iPhone, Android, Google Kontakte und iCloud der sicherste Kompromiss. Outlook liest 2.1 und 3.0, mit 4.0 kommt es nicht zurecht.
+3.  **Nicht doppelt kodieren:** Öffnen Sie die fertige VCF nicht in einem Editor, der beim Speichern ANSI als Standard setzt. Genau so wird aus einer korrekten Datei eine fehlerhafte.
 
-1.  **Modification de l'encodage via le Bloc-notes** :
-    Ouvrez le fichier VCF illisible avec le Bloc-notes, cliquez sur « Fichier » - « Enregistrer sous », choisissez « UTF-8 » pour l'encodage, enregistrez pour écraser le fichier original, puis réimportez-le sur votre téléphone ou votre logiciel de contacts.
+## Schritt 3: Nach dem Import gegenprüfen
 
-2.  **Conversion secondaire avec un outil** :
-    Ouvrez un convertisseur professionnel, sélectionnez la fonction « VCF vers VCF » (si disponible), téléchargez le fichier VCF illisible et spécifiez manuellement l'encodage de sortie comme « UTF-8 » dans les paramètres de conversion. Cliquez sur convertir et exportez le nouveau fichier VCF.
+Prüfen Sie das Ergebnis dort, wo UTF-8 zuverlässig erkannt wird, und erst danach auf dem Telefon:
 
-## Solution 3 : Les noms chinois ne s'affichent pas après l'importation sur le téléphone
+* **iCloud und Google Kontakte:** Beide Dienste erkennen UTF-8 automatisch. Importieren Sie die VCF zuerst dort und kontrollieren Sie zwei oder drei Namen mit Umlauten und asiatischen Zeichen. Erst wenn das passt, synchronisieren Sie aufs Gerät.
+* **iPhone:** Der Import über iCloud am Computer ist die stabilste Variante; der direkte Import auf dem Gerät scheitert gelegentlich an der Kodierungserkennung.
+* **Android:** Die Datei im Dateimanager antippen, „Öffnen mit“ → „Kontakte“. Fragt das System nach der Kodierung, wählen Sie **UTF-8**.
+* **Outlook:** Der Sonderfall. Ältere Versionen ignorieren den `CHARSET`-Parameter häufig und lesen die Datei in der Windows-Kodepage; VCF 4.0 wird gar nicht unterstützt. Der zuverlässigste Weg ist der Umweg über Google Kontakte oder iCloud. Bleibt es bei Outlook, hilft oft eine Kopie mit BOM – manche Importeure stolpern allerdings über das BOM, weshalb Sie diese Variante nur gezielt testen sollten.
 
-Si le fichier VCF converti s'affiche normalement sur l'ordinateur mais pas sur le téléphone après l'importation, le problème réside souvent dans la reconnaissance de l'encodage par le téléphone :
+Ob die Zeichen wirklich sauber angekommen sind, sehen Sie am schnellsten in einer Tabelle: Der [VCF-zu-Excel-Konverter](/de/vCard-to-Excel/) schreibt die reparierte Datei zurück in Excel/CSV, sodass Sie Namen und Sonderzeichen spaltenweise prüfen können.
 
-* **Utilisateurs d'iPhone** : Il est recommandé d'importer via **iCloud** ou **iTunes** sur un ordinateur pour éviter les erreurs de reconnaissance d'encodage lors d'une importation directe sur le téléphone.
-* **Utilisateurs d'Android** : Trouvez le fichier VCF dans la gestion des fichiers du téléphone, faites un appui long et sélectionnez « Ouvrir avec » - « Contacts ». Lors de l'importation, certains téléphones peuvent demander une « Sélection d'encodage » ; choisissez simplement « UTF-8 ».
+## Fazit
 
-## Conclusion
+Zeichensatz-Fehler in VCF-Dateien sind fast immer eine Frage der Kette: Quelldatei, Konverter und Empfänger müssen dieselbe Kodierung erwarten – **UTF-8 von Anfang bis Ende**. Wer die CSV bereits als UTF-8 speichert, beim Konvertieren die passende VCF-Version wählt und das Ergebnis zunächst in iCloud oder Google Kontakte prüft, umgeht den Zeichensalat zuverlässig.
 
-La solution fondamentale au problème de code chinois illisible dans les VCF est la **« standardisation vers l'encodage UTF-8 »**. Qu'il s'agisse du prétraitement avant la conversion, du paramétrage de l'outil pendant la conversion ou de la réparation après la conversion, se concentrer sur ce principe de base résoudra la grande majorité des problèmes.
-
-Il est conseillé de prendre l'habitude de privilégier l'encodage UTF-8 lors de la conversion de contacts pour éviter les codes illisibles dès le départ. Si vous rencontrez des scénarios de codes illisibles complexes, choisir un convertisseur vCard professionnel et utiliser ses fonctions automatisées de détection et de réparation d'encodage peut résoudre le problème plus efficacement.
+Bleibt ein Name trotzdem falsch, lohnt der Blick in die Datei selbst: Steht in der VCF schon Kauderwelsch, ist die Konvertierung schiefgelaufen; steht dort der richtige Name und nur das Adressbuch zeigt Unsinn, liegt es am Importeur. Wer die Kontakte anschließend aufs Telefon bringen will, findet die passenden Schritte in unserer Anleitung zum [sicheren Import von Excel- und CSV-Kontakten ins Telefon](/de/blog/csv-kontakte-sicher-und-effizient-in-ihr-telefon/).
