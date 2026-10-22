@@ -5,6 +5,9 @@ const blogCollection = defineCollection({
     title: z.string(),
     description: z.string(),
     pubDate: z.date(),
+    // Optional explicit topic id used to group language versions of the same
+    // article for hreflang clusters. Falls back to pubDate when omitted.
+    topic: z.string().optional(),
     author: z.string().default('Admin'),
     image: z.object({
       url: z.string(),

@@ -2,6 +2,7 @@
 title: "VCF in Excel öffnen: 3 Wege, die funktionieren"
 description: "VCF-Dateien zeigen sich in Excel als eine Spalte voller Text. Drei Wege zur echten Tabelle – inklusive lokaler Umwandlung ohne Upload."
 pubDate: 2026-10-22
+topic: "open-vcf-in-excel"
 author: "Excel2VCF Team"
 tags: ["VCF", "Excel", "Anleitung", "Import"]
 ---

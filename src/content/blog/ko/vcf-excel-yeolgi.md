@@ -2,6 +2,7 @@
 title: "VCF 파일을 Excel에서 열기: 3가지 방법"
 description: "VCF는 Excel에서 바로 열리지 않습니다. 깨진 한 열로 보이는 이유와 표로 변환해 여는 방법, 주소록에 가져오는 방법을 정리했습니다."
 pubDate: 2026-10-22
+topic: "open-vcf-in-excel"
 author: "Excel2VCF 팀"
 tags: ["VCF", "Excel", "연락처 변환", "튜토리얼"]
 ---

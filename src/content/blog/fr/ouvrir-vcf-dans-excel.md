@@ -2,6 +2,7 @@
 title: "Ouvrir un fichier VCF dans Excel : 3 méthodes"
 description: "Un VCF ouvert dans Excel n'affiche qu'une colonne de texte. Trois méthodes pour obtenir un vrai tableau, dont une conversion locale, sans envoi."
 pubDate: 2026-10-22
+topic: "open-vcf-in-excel"
 author: "Équipe Excel2VCF"
 tags: ["VCF", "Excel", "Tutoriel", "Import"]
 ---

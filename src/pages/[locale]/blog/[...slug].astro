@@ -10,13 +10,15 @@ export async function getStaticPaths() {
   const siteUrl = "https://excel2vcf.com";
   const localeOrder = ["zh", "en", "ja", "ko", "fr", "de", "es"];
 
-  // Translations of the same topic share the exact same pubDate (6 topics x
-  // 7 languages). Grouping by date lets every language version emit the full
-  // hreflang cluster, so Google treats them as one multilingual page instead
-  // of seven near-duplicate documents competing with each other.
+  // Translations of the same article share either an explicit `topic` id or
+  // the exact same pubDate. Grouping this way lets every language version emit
+  // the full hreflang cluster, so Google treats them as one multilingual page
+  // instead of seven near-duplicate documents competing with each other.
+  const clusterKey = (p) =>
+    p.data.topic ?? p.data.pubDate.toISOString().slice(0, 10);
   const clusters = new Map();
   for (const post of posts) {
-    const key = post.data.pubDate.toISOString().slice(0, 10);
+    const key = clusterKey(post);
     if (!clusters.has(key)) clusters.set(key, []);
     clusters.get(key).push(post);
   }
@@ -24,7 +26,7 @@ export async function getStaticPaths() {
   return posts.map((post) => {
     const [locale, ...slugParts] = post.slug.split('/');
     const slug = slugParts.join('/');
-    const cluster = clusters.get(post.data.pubDate.toISOString().slice(0, 10)) ?? [post];
+    const cluster = clusters.get(clusterKey(post)) ?? [post];
 
     const hreflangs = cluster
       .map((p) => {

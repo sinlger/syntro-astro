@@ -2,6 +2,7 @@
 title: "VCF文件怎么用Excel打开？3种可行方法"
 description: "VCF 是通讯录文本格式，Excel 无法直接打开，双击只会得到一列乱码。本文讲清原因，并给出转成 XLSX/CSV、导入通讯录、用文本编辑器查看三种办法。"
 pubDate: 2026-10-22
+topic: "open-vcf-in-excel"
 author: "Excel2VCF 团队"
 tags: ["VCF转Excel", "打开VCF", "通讯录转换", "教程"]
 ---

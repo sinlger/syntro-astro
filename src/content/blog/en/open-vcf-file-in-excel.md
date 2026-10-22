@@ -2,6 +2,7 @@
 title: "Open a VCF File in Excel: 3 Working Methods"
 description: "Double-clicking a VCF gives you one unreadable column in Excel. Three ways to see your contacts as a table, including a local VCF-to-Excel conversion."
 pubDate: 2026-10-22
+topic: "open-vcf-in-excel"
 author: "Excel2VCF Team"
 tags: ["VCF", "Excel", "Tutorial", "Import"]
 ---

@@ -2,6 +2,7 @@
 title: "Abrir un archivo VCF en Excel: 3 métodos que funcionan"
 description: "Excel no puede abrir un VCF: verás una sola columna de texto. Te explicamos cómo convertir el archivo a XLSX o CSV y revisar tus contactos en una tabla."
 pubDate: 2026-10-22
+topic: "open-vcf-in-excel"
 author: "Equipo Excel2VCF"
 tags: ["VCF a Excel", "Abrir VCF", "Conversión de contactos", "Tutorial"]
 ---

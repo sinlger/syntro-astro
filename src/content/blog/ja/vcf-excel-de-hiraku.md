@@ -2,6 +2,7 @@
 title: "VCFをExcelで開く方法：3つの手順と注意点"
 description: "VCFはExcelで直接開けません。1列の文字列になる理由と、表に変換して開く手順、Outlook・iCloud・Googleを使う方法を順番に解説します。"
 pubDate: 2026-10-22
+topic: "open-vcf-in-excel"
 author: "Excel2VCF チーム"
 tags: ["VCF", "Excel", "連絡先変換", "チュートリアル"]
 ---
