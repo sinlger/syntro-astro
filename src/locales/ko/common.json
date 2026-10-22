@@ -8,8 +8,8 @@
   "page": {
     "home_title": "Excel/CSV/XLSX를 vCard (VCF)로 일괄 변환 도구 - 100% 로컬 처리",
     "home_description": "수동 입력에 작별을 고하세요! 안전하고 빠르고 정확하게 Excel/CSV 연락처를 VCF 파일로 일괄 변환합니다. 브라우저 내에서 모든 과정이 처리되므로 데이터가 서버로 전송되지 않습니다. iOS 및 Android 지원.",
-    "blog_title": "블로그",
-    "blog_description": "Excel2VCF 팀의 최신 업데이트 및 게시글."
+    "blog_title": "블로그 - Excel/CSV와 vCard (VCF) 변환 가이드 | Excel2VCF",
+    "blog_description": "Excel/CSV 연락처와 vCard (VCF) 상호 변환 실무 가이드. 휴대폰 일괄 가져오기, 필드 매핑, 문자 깨짐 해결, 오프라인 개인정보 보호 방법을 다룹니다."
   },
   "uploadDropzone": {
     "drag": "파일을 드래그 앤 드롭하거나 클릭하여 선택하세요",
@@ -473,7 +473,7 @@
         "description": "사이트 콘텐츠, 상표, 디자인의 무단 전재 및 복제를 제한합니다."
       },
       "title": "저작권 선언",
-      "contentHtml": "<h3 class=\"text-xl font-semibold\">1. 저작권의 귀속</h3><p>웹사이트 <strong>excel2vcf.com</strong> 및 모든 콘텐츠, 기능(정보, 소프트웨어, 텍스트, 표시, 이미지, 비디오, 오디오 및 디자인, 선택, 배치 포함)은 [회사명/개인명]에 귀속되며 저작권법, 상표법 및 기타 지식재산권법에 의해 보호를 받습니다.</p><h3 class=\"text-xl font-semibold mt-6\">2. 이용 허락 범위</h3><p>서면 허가 없이 본 사이트의 어떠한 자료도 복제, 배포, 수정, 이차적 저작물 작성, 공개 전시, 재출판, 다운로드, 저장, 전송할 수 없습니다. 단, 다음의 경우는 제외됩니다:</p><ul class=\"list-disc ml-6 space-y-1\"><li>열람 목적으로 컴퓨터가 일시적으로 자료의 사본을 메모리에 저장하는 경우.</li><li>개인적, 비상업적 이용을 목적으로 합리적인 범위 내에서 페이지를 인쇄하거나 다운로드하는 경우.</li></ul><h3 class=\"text-xl font-semibold mt-6\">3. 상표</h3><p>「VCF2XLS」 명칭, 로고 및 관련 모든 명칭, 로고, 제품·서비스명, 디자인 마크는 [회사명/개인명]의 상표 또는 등록상표입니다. 사전 서면 허가 없이 이를 사용할 수 없습니다.</p><p class=\"mt-8 font-bold text-sm\">© 2024 excel2vcf.com All Rights Reserved.</p>"
+      "contentHtml": "<h3 class=\"text-xl font-semibold\">1. 저작권의 귀속</h3><p>웹사이트 <strong>excel2vcf.com</strong> 및 모든 콘텐츠, 기능(정보, 소프트웨어, 텍스트, 표시, 이미지, 비디오, 오디오 및 디자인, 선택, 배치 포함)은 Excel2VCF에 귀속되며 저작권법, 상표법 및 기타 지식재산권법에 의해 보호를 받습니다.</p><h3 class=\"text-xl font-semibold mt-6\">2. 이용 허락 범위</h3><p>서면 허가 없이 본 사이트의 어떠한 자료도 복제, 배포, 수정, 이차적 저작물 작성, 공개 전시, 재출판, 다운로드, 저장, 전송할 수 없습니다. 단, 다음의 경우는 제외됩니다:</p><ul class=\"list-disc ml-6 space-y-1\"><li>열람 목적으로 컴퓨터가 일시적으로 자료의 사본을 메모리에 저장하는 경우.</li><li>개인적, 비상업적 이용을 목적으로 합리적인 범위 내에서 페이지를 인쇄하거나 다운로드하는 경우.</li></ul><h3 class=\"text-xl font-semibold mt-6\">3. 상표</h3><p>「Excel2VCF」 명칭, 로고 및 관련 모든 명칭, 로고, 제품·서비스명, 디자인 마크는 Excel2VCF의 상표 또는 등록상표입니다. 사전 서면 허가 없이 이를 사용할 수 없습니다.</p><p class=\"mt-8 font-bold text-sm\">© 2026 excel2vcf.com All Rights Reserved.</p>"
     },
     "privacy": {
       "seo": {
@@ -481,7 +481,7 @@
         "description": "데이터가 모두 로컬에서 처리되며 서버로 전송되지 않음을 명시합니다."
       },
       "title": "개인정보 처리방침",
-      "contentHtml": "<p class=\"p-3 bg-red-50 border border-red-200 rounded-lg text-base\"><strong><span class=\"highlight\">VCF2XLS의 약속: 모든 파일 변환 처리는 사용자의 브라우저 내(로컬)에서 이루어집니다.</span></strong> <strong><span class=\"highlight\">사용자의 파일이나 포함된 연락처 정보는 VCF2XLS나 제3자의 서버로 업로드, 저장, 전송되지 않습니다.</span></strong> 브라우저를 닫거나 페이지를 벗어나면 메모리 상의 데이터는 즉시 삭제됩니다.</p><h3 class=\"text-xl font-semibold mt-6\">1. 수집하는 정보의 종류</h3><p>본 서비스는 완전히 로컬에서 동작하므로 업로드된 파일의 내용을 수집하지 않습니다.</p><ul class=\"list-disc ml-6 space-y-1\"><li><strong>비개인 정보:</strong> 사이트 성능 최적화를 위해 제3자 분석 서비스(Google Analytics 등)를 사용하여 방문 시간, 기기 종류, 브라우저 버전, 열람 페이지 등의 익명 정보를 수집할 수 있습니다.</li><li><strong>문의 정보:</strong> 고객 지원 메일 등으로 직접 연락 주신 경우에 한해 답변 목적으로 성함이나 이메일 주소를 보유합니다.</li></ul><h3 class=\"text-xl font-semibold mt-6\">2. 정보 이용 목적</h3><p>수집한 비개인 정보는 다음 목적으로만 사용됩니다:</p><ul class=\"list-disc ml-6 space-y-1\"><li>VCF2XLS 사이트의 기능·성능 유지 및 개선.</li><li>사용자 니즈 파악을 위한 트렌드 분석.</li><li>고객 지원 요청 응대.</li></ul><h3 class=\"text-xl font-semibold mt-6\">3. 제3자 링크</h3><p>본 사이트에는 제3자 사이트로의 링크가 포함될 수 있습니다. 해당 외부 사이트의 프라이버시 관행에 대해 당사는 책임을 지지 않습니다.</p>"
+      "contentHtml": "<p class=\"p-3 bg-red-50 border border-red-200 rounded-lg text-base\"><strong><span class=\"highlight\">Excel2VCF의 약속: 모든 파일 변환 처리는 사용자의 브라우저 내(로컬)에서 이루어집니다.</span></strong> <strong><span class=\"highlight\">사용자의 파일이나 포함된 연락처 정보는 Excel2VCF나 제3자의 서버로 업로드, 저장, 전송되지 않습니다.</span></strong> 브라우저를 닫거나 페이지를 벗어나면 메모리 상의 데이터는 즉시 삭제됩니다.</p><h3 class=\"text-xl font-semibold mt-6\">1. 수집하는 정보의 종류</h3><p>본 서비스는 완전히 로컬에서 동작하므로 업로드된 파일의 내용을 수집하지 않습니다.</p><ul class=\"list-disc ml-6 space-y-1\"><li><strong>비개인 정보:</strong> 사이트 성능 최적화를 위해 제3자 분석 서비스(Google Analytics 등)를 사용하여 방문 시간, 기기 종류, 브라우저 버전, 열람 페이지 등의 익명 정보를 수집할 수 있습니다.</li><li><strong>문의 정보:</strong> 고객 지원 메일 등으로 직접 연락 주신 경우에 한해 답변 목적으로 성함이나 이메일 주소를 보유합니다.</li></ul><h3 class=\"text-xl font-semibold mt-6\">2. 정보 이용 목적</h3><p>수집한 비개인 정보는 다음 목적으로만 사용됩니다:</p><ul class=\"list-disc ml-6 space-y-1\"><li>Excel2VCF 사이트의 기능·성능 유지 및 개선.</li><li>사용자 니즈 파악을 위한 트렌드 분석.</li><li>고객 지원 요청 응대.</li></ul><h3 class=\"text-xl font-semibold mt-6\">3. 제3자 링크</h3><p>본 사이트에는 제3자 사이트로의 링크가 포함될 수 있습니다. 해당 외부 사이트의 프라이버시 관행에 대해 당사는 책임을 지지 않습니다.</p>"
     },
     "terms": {
       "seo": {
@@ -489,13 +489,13 @@
         "description": "서비스 이용 시의 권리·의무 및 면책 사항을 정의합니다."
       },
       "title": "이용약관",
-      "contentHtml": "<h3 class=\"text-xl font-semibold\">1. 서비스 동의 및 이용</h3><p>VCF2XLS를 이용함으로써 본 약관에 동의한 것으로 간주됩니다. 본 서비스는 vCard와 Excel/CSV 파일 간의 안전한 로컬 변환 제공을 목적으로 합니다.</p><h3 class=\"text-xl font-semibold mt-6\">2. 사용자의 책임</h3><ul class=\"list-disc ml-6 space-y-1\"><li><strong>데이터의 적법성:</strong> 사용자는 변환에 사용하는 파일 및 데이터를 사용할 적절한 권한이 있음을 보증해야 합니다. 불법적인 데이터 처리에 본 서비스를 이용할 수 없습니다.</li><li><strong>리스크 부담:</strong> 변환 정밀도 향상에 힘쓰고 있으나 형식 차이가 발생할 수 있습니다. 가져오기 전 데이터를 검증할 책임은 사용자에게 있습니다.</li></ul><h3 class=\"text-xl font-semibold mt-6\">3. 면책 사항</h3><p>본 서비스는 '있는 그대로' 제공됩니다. VCF2XLS는 서비스 중단, 오류 또는 완벽한 정확성을 보장하지 않습니다. 본 서비스 이용으로 발생한 직접적, 간접적 손해(데이터 손실 등 포함)에 대해 일체의 책임을 지지 않습니다.</p><h3 class=\"text-xl font-semibold mt-6\">4. 지식재산권</h3><p>본 사이트, 소스 코드, 디자인, 로고 및 모든 콘텐츠는 VCF2XLS에 귀속되며 법으로 보호받습니다.</p>"
+      "contentHtml": "<h3 class=\"text-xl font-semibold\">1. 서비스 동의 및 이용</h3><p>Excel2VCF를 이용함으로써 본 약관에 동의한 것으로 간주됩니다. 본 서비스는 vCard와 Excel/CSV 파일 간의 안전한 로컬 변환 제공을 목적으로 합니다.</p><h3 class=\"text-xl font-semibold mt-6\">2. 사용자의 책임</h3><ul class=\"list-disc ml-6 space-y-1\"><li><strong>데이터의 적법성:</strong> 사용자는 변환에 사용하는 파일 및 데이터를 사용할 적절한 권한이 있음을 보증해야 합니다. 불법적인 데이터 처리에 본 서비스를 이용할 수 없습니다.</li><li><strong>리스크 부담:</strong> 변환 정밀도 향상에 힘쓰고 있으나 형식 차이가 발생할 수 있습니다. 가져오기 전 데이터를 검증할 책임은 사용자에게 있습니다.</li></ul><h3 class=\"text-xl font-semibold mt-6\">3. 면책 사항</h3><p>본 서비스는 '있는 그대로' 제공됩니다. Excel2VCF는 서비스 중단, 오류 또는 완벽한 정확성을 보장하지 않습니다. 본 서비스 이용으로 발생한 직접적, 간접적 손해(데이터 손실 등 포함)에 대해 일체의 책임을 지지 않습니다.</p><h3 class=\"text-xl font-semibold mt-6\">4. 지식재산권</h3><p>본 사이트, 소스 코드, 디자인, 로고 및 모든 콘텐츠는 Excel2VCF에 귀속되며 법으로 보호받습니다.</p>"
     }
   },
   "info": {
     "support": {
       "title": "문의하기",
-      "intro": "VCF2XLS 이용 중 기술적인 문제나 버그, 개선 제안 등이 있으시면 언제든 연락해 주세요. 신속하게 대응하겠습니다.",
+      "intro": "Excel2VCF 이용 중 기술적인 문제나 버그, 개선 제안 등이 있으시면 언제든 연락해 주세요. 신속하게 대응하겠습니다.",
       "techTitle": "기술 지원",
       "techEmail": "support@excel2vcf.com",
       "techNote": "버그 제보, 변환 실패 등에 대해.",
@@ -513,7 +513,7 @@
       "title": "자주 묻는 질문 (FAQ)",
       "subtitle": "데이터 보안 및 호환성 관련 궁금증을 빠르게 해결하세요.",
       "q1": "VCF나 Excel 파일이 서버에 업로드되나요?",
-      "a1": "<strong>절대로 그렇지 않습니다.</strong> VCF2XLS의 최대 특징은 <span class=\"text-accent-700 font-bold\">모든 처리가 사용자의 기기 내에서 이루어진다는 점</span>입니다. 데이터가 밖으로 나가지 않으므로 최고 수준의 프라이버시가 보장됩니다.",
+      "a1": "<strong>절대로 그렇지 않습니다.</strong> Excel2VCF의 최대 특징은 <span class=\"text-accent-700 font-bold\">모든 처리가 사용자의 기기 내에서 이루어진다는 점</span>입니다. 데이터가 밖으로 나가지 않으므로 최고 수준의 프라이버시가 보장됩니다.",
       "q2": "스마트폰으로 가져오면 한국어가 깨져서 보입니다. 어떻게 해야 하나요?",
       "a2": "글자 깨짐은 주로 <span class=\"font-bold\">Excel/CSV to VCF</span> 과정에서 발생합니다. 원본 CSV가 <strong>UTF-8 인코딩</strong>으로 저장되어 있는지 확인하세요. 본 도구는 UTF-8로 VCF를 출력합니다. 해결되지 않으면 Excel에서 CSV를 다시 열어 '다른 이름으로 저장' 시 UTF-8 형식을 선택하여 다시 시도해 보세요.",
       "q3": "VCF to Excel 변환 시 메모나 여러 개의 전화번호가 사라졌습니다.",
@@ -523,7 +523,7 @@
     },
     "changelog": {
       "title": "업데이트 내역",
-      "intro": "VCF2XLS는 변환 정밀도 향상과 사용자 경험 개선을 위해 지속적으로 노력하고 있습니다.",
+      "intro": "Excel2VCF는 변환 정밀도 향상과 사용자 경험 개선을 위해 지속적으로 노력하고 있습니다.",
       "tags": {
         "major": "메이저 업데이트",
         "opt": "최적화 및 개선",
@@ -546,7 +546,7 @@
       },
       "v1_1": {
         "title": "V1.1.0 - CSV 글자 깨짐 수정 및 호환성 강화",
-        "date": "2025년 10月 28일",
+        "date": "2025년 10월 28일",
         "p1": "<span class=\"font-bold text-accent-700\">최적화:</span> VCF 출력 시 UTF-8 인코딩을 강제하여 한국어 글자 깨짐 문제를 해결.",
         "p2": "<span class=\"font-bold text-accent-700\">버그 수정:</span> 특정 Excel 형식(.xls)에서 헤더가 올바르게 인식되지 않던 문제 수정."
       },

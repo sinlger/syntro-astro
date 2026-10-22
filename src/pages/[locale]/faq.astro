@@ -3,33 +3,24 @@ export const prerender = true;
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import JsonLd from "../../components/seo/JsonLd.astro";
 import { initI18n } from "../../i18n.js";
-// --- 【核心修正】: 添加 getStaticPaths 函数 ---
-export function getStaticPaths() {
-  // 1. 定义我们支持的所有语言代码
-   const locales = ["zh", "en", "ja", "ko", "fr", "de", "es"];
 
-  // 2. 为每个语言代码创建一个路径对象
-  // Astro 将使用这里的 params.locale 值来渲染页面
+export function getStaticPaths() {
+  const locales = ["zh", "en", "ja", "ko", "fr", "de", "es"];
   return locales.map((locale) => {
     return {
       params: {
-        locale: locale, // 将 locale 赋值给动态参数 [locale]
+        locale: locale,
       },
-      // 可以在这里传递额外的 props，例如翻译实例
-      // props: { /* ... */ }
     };
   });
 }
-// ----------------------------------------------------
 
-// 3. 从路由参数中获取语言代码 (现在它不会是 undefined 了)
 const locale = Astro.params.locale;
 const effectiveLocale = locale;
 
-// 4. 初始化 i18next 实例
 const i18nInstance = initI18n(effectiveLocale);
 const t = i18nInstance.t.bind(i18nInstance);
-const htmlLang = locale === "zh" ? "zh-Hans" :locale;
+const htmlLang = locale === "zh" ? "zh-Hans" : locale;
 const pageTitle = t("info.faqPage.title");
 const pageDescription = t("info.faqPage.subtitle");
 const canonicalPath = "/faq";
@@ -40,8 +31,8 @@ const schema = {
   "@graph": [
     {
       "@type": "WebPage",
-      "@id": `${siteUrl}/${locale}${canonicalPath}`,
-      "url": `${siteUrl}/${locale}${canonicalPath}`,
+      "@id": `${siteUrl}/${locale}${canonicalPath}/`,
+      "url": `${siteUrl}/${locale}${canonicalPath}/`,
       "name": pageTitle,
       "description": pageDescription,
       "inLanguage": locale
@@ -85,9 +76,11 @@ const schema = {
     }
   ]
 };
----
 
-<JsonLd schema={schema} />
+// Native <details> accordion: answers stay in the server-rendered HTML (crawlable)
+// and no longer depend on Alpine.js or its x-collapse plugin.
+const faqNumbers = [1, 2, 3, 4];
+---
 
 <BaseLayout
   htmlLang={htmlLang}
@@ -97,165 +90,41 @@ const schema = {
   pageDescription={pageDescription}
   canonicalPath={canonicalPath}
 >
-  <section>
-    <div class="px-8 pt-20 mx-auto md:px-12 lg:px-24 max-w-7xl">
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-12">
-        <div class="text-center lg:text-left">
-          <p
-            class="text-xl leading-tight tracking-tight sm:text-2xl md:text-3xl capitalize lg:text-4xl font-medium text-base-900 lg:text-balance"
-          >
-            {t("info.faqPage.title")}
-          </p>
-          <p class="text-base leading-normal mt-4 text-base-500 font-medium">
-            {t("info.faqPage.subtitle")}
-          </p>
-        </div>
-        <div
-          x-data="{
-  activeAccordion: '',
-  setActiveAccordion(id) {
-  this.activeAccordion = (this.activeAccordion == id) ? '' : id
-  }
-  }"
-          class="relative w-full mx-auto font-normal lg:col-span-2"
+  <JsonLd schema={schema} />
+  <section class="px-6 md:px-12 lg:px-24 pt-16 md:pt-20 pb-20 max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-12">
+      <div class="text-center lg:text-left">
+        <h1
+          class="text-2xl leading-tight tracking-tight sm:text-3xl md:text-4xl font-medium text-base-900 lg:text-balance"
         >
-          <div
-            x-data="{ id: $id('accordion') }"
-            :class="{ 'text-black': activeAccordion==id, 'text-base-600 hover:text-accent-500': activeAccordion!=id }"
-            class="cursor-pointer group text-black"
-          >
-            <button
-              @click="setActiveAccordion(id)"
-              class="flex items-center justify-between w-full p-4 pb-1 text-left font-medium select-none"
+          {pageTitle}
+        </h1>
+        <p class="text-base leading-normal mt-4 text-base-500 font-medium">
+          {pageDescription}
+        </p>
+      </div>
+      <div class="relative w-full mx-auto font-normal lg:col-span-2 divide-y divide-base-200">
+        {faqNumbers.map((n, index) => (
+          <details class="group py-1" open={index === 0}>
+            <summary
+              class="flex items-center justify-between w-full gap-4 p-4 cursor-pointer list-none font-medium text-base-900 hover:text-accent-600 transition-colors"
             >
-              <span>{t("info.faqPage.q1")}</span>
+              <span>{t(`info.faqPage.q${n}`)}</span>
               <svg
-                class="size-5 duration-300 ease-out text-accent-500 -rotate-[45deg]"
-                :class="{ '-rotate-[45deg]': activeAccordion==id }"
+                class="size-5 shrink-0 duration-300 ease-out text-accent-500 transition-transform group-open:rotate-180"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
                 stroke="currentColor"
+                aria-hidden="true"
               >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12 6v12m6-6H6"
-                >
-                </path>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
               </svg>
-            </button>
-            <div x-show="activeAccordion==id" x-collapse="">
-              <div class="p-4 pt-2 text-zinc-500" set:html={t("info.faqPage.a1")}></div>
-            </div>
-          </div>
-          <div
-            x-data="{ id: $id('accordion') }"
-            :class="{ 'text-black': activeAccordion==id, 'text-base-600 hover:text-accent-500': activeAccordion!=id }"
-            class="cursor-pointer group text-base-600 hover:text-accent-500"
-          >
-            <button
-              @click="setActiveAccordion(id)"
-              class="flex items-center justify-between w-full p-4 pb-1 text-left font-medium select-none"
-            >
-              <span>{t("info.faqPage.q2")}</span>
-              <svg
-                class="w-5 h-5 duration-300 ease-out text-accent-500"
-                :class="{ '-rotate-[45deg]': activeAccordion==id }"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12 6v12m6-6H6"
-                >
-                </path>
-              </svg>
-            </button>
-            <div
-              x-show="activeAccordion==id"
-              x-collapse=""
-              style="display: none;"
-            >
-              <div class="p-4 pt-2 text-zinc-500" set:html={t("info.faqPage.a2")}></div>
-            </div>
-          </div>
-          <div
-            x-data="{ id: $id('accordion') }"
-            :class="{ 'text-black': activeAccordion==id, 'text-base-600 hover:text-accent-500': activeAccordion!=id }"
-            class="cursor-pointer group text-base-600 hover:text-accent-500"
-          >
-            <button
-              @click="setActiveAccordion(id)"
-              class="flex items-center justify-between w-full p-4 pb-1 text-left font-medium select-none"
-            >
-              <span>{t("info.faqPage.q3")}</span>
-              <svg
-                class="w-5 h-5 duration-300 ease-out text-accent-500"
-                :class="{ '-rotate-[45deg]': activeAccordion==id }"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12 6v12m6-6H6"
-                >
-                </path>
-              </svg>
-            </button>
-            <div
-              x-show="activeAccordion==id"
-              x-collapse=""
-              style="display: none;"
-            >
-              <div class="p-4 pt-2 text-zinc-500" set:html={t("info.faqPage.a3")}></div>
-            </div>
-          </div>
-          <div
-            x-data="{ id: $id('accordion') }"
-            :class="{ 'text-black': activeAccordion==id, 'text-base-600 hover:text-accent-500': activeAccordion!=id }"
-            class="cursor-pointer group text-base-600 hover:text-accent-500"
-          >
-            <button
-              @click="setActiveAccordion(id)"
-              class="flex items-center justify-between w-full p-4 pb-1 text-left font-medium select-none"
-            >
-              <span>{t("info.faqPage.q4")}</span>
-              <svg
-                class="w-5 h-5 duration-300 ease-out text-accent-500"
-                :class="{ '-rotate-[45deg]': activeAccordion==id }"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12 6v12m6-6H6"
-                >
-                </path>
-              </svg>
-            </button>
-            <div
-              x-show="activeAccordion==id"
-              x-collapse=""
-              style="display: none;"
-            >
-              <div class="p-4 pt-2 text-zinc-500" set:html={t("info.faqPage.a4")}></div>
-            </div>
-          </div>
-        </div>
+            </summary>
+            <div class="px-4 pt-1 pb-4 text-base-600" set:html={t(`info.faqPage.a${n}`)}></div>
+          </details>
+        ))}
       </div>
     </div>
   </section>

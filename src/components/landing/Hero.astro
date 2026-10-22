@@ -1,6 +1,6 @@
 ---
 // 1. 导入正确的模块和函数
-const { t } = Astro.props;
+const { t, locale = "zh" } = Astro.props;
 ---
 <div class="w-full">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
@@ -13,7 +13,7 @@ const { t } = Astro.props;
                 {t("hero.description")}
             </p>
             <div class="mt-10 max-w-md mx-auto sm:flex sm:justify-center md:mt-12">
-                <a href="CSV-to-vCard" class="w-full inline-flex items-center justify-center px-8 py-3 text-base font-bold rounded-full text-base-50 bg-accent-600 hover:bg-accent-700 md:py-4 md:text-lg md:px-10 transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent-700/40">
+                <a href={`/${locale}/CSV-to-vCard/`} class="w-full inline-flex items-center justify-center px-8 py-3 text-base font-bold rounded-full text-base-50 bg-accent-600 hover:bg-accent-700 md:py-4 md:text-lg md:px-10 transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent-700/40">
                     {t("hero.cta")}
                 </a>
             </div>

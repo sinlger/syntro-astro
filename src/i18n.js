@@ -33,14 +33,17 @@ export function initI18n(locale) {
   const i18n = i18next.createInstance();
   i18n.init({
     lng: finalLocale,
-    fallbackLng: 'zh',
+    // SEO/UX: fall back to English instead of Chinese so partial translations
+    // never leak CJK text onto fr/de/es pages.
+    fallbackLng: 'en',
     ns: [NS],
     defaultNS: NS,
     resources: {
       // 只加载当前语言和回退语言（为了效率，虽然这里资源对象已经包含了所有）
       // 其实 i18next 会自动处理，这里传入完整 resources 也是可以的
       // 或者为了节省内存，只传入需要的
-      [finalLocale]: resources[finalLocale] || resources['zh'],
+      [finalLocale]: resources[finalLocale] || resources['en'],
+      en: resources['en'],
       zh: resources['zh']
     },
     // 确保实例在服务器端是独立的

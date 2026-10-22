@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import * as VCF from 'vcf'
-import i18next from 'i18next'
+import { createI18nClient } from './i18nClient'
 import { useTranslation, I18nextProvider } from 'react-i18next'
 import Modal from './Modal'
 
@@ -83,25 +83,9 @@ function normalizePhone(p: string) {
   return p.replace(/\s+/g, '')
 }
 
-// I18n setup
-const i18nClient = i18next.createInstance();
-const setupI18n = (initialLocale: string, translations: any) => {
-  const resources = translations
-    ? { [initialLocale]: { common: translations } }
-    : { [initialLocale]: { common: {} } }
-  if (!i18nClient.isInitialized) {
-    i18nClient.init({
-      lng: initialLocale,
-      resources,
-      fallbackLng: 'zh',
-      ns: ['common'],
-      defaultNS: 'common',
-      interpolation: { escapeValue: false },
-    })
-  } else if (i18nClient.language !== initialLocale) {
-    i18nClient.changeLanguage(initialLocale)
-  }
-}
+// I18n setup: registers the bundle for the current locale on every call (SSR
+// renders several locales with the same module instance).
+const { i18nClient, setupI18n } = createI18nClient()
 
 // --- Component ---
 function VCardPreviewContent() {

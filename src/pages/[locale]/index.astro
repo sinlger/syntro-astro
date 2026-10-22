@@ -65,11 +65,6 @@ const schema = {
         "@type": "Offer",
         "price": "0",
         "priceCurrency": "USD"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "ratingCount": "246"
       }
     }
   ]
@@ -101,9 +96,9 @@ if (Array.isArray(faqItems)) {
   canonicalPath={canonicalPath}
 >
   <JsonLd schema={schema} />
-  <Hero t={t}/>
+  <Hero t={t} locale={locale}/>
   <SupportedFormats t={t}/>
-  <UploadDropzone t={t}/>
+  <UploadDropzone t={t} locale={locale}/>
   <HowItWorks t={t}/>
   <WhoUse t={t}/>
   <FAQ t={t}/>

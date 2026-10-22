@@ -1,6 +1,6 @@
 ---
 // 1. 导入正确的模块和函数
-const { t } = Astro.props;
+const { t, locale = "zh" } = Astro.props;
 ---
 <section class="py-12">
   <div class="px-8 mx-auto md:px-12 lg:px-24 max-w-5xl">
@@ -17,7 +17,7 @@ const { t } = Astro.props;
           <div class="text-base font-medium text-base-900">{t('uploadDropzone.drag')}</div>
           <div class="text-xs text-base-500">{t('uploadDropzone.support')}</div>
           <div class="pt-2">
-            <a id="upload-trigger" href="#" class="inline-flex items-center justify-center transition-all duration-200 focus:ring-2 focus:outline-none text-base-50 bg-accent-600 hover:bg-accent-700 transition duration-300 transform hover:scale-105 focus:ring-base-700/30 h-9 px-4 text-sm font-medium rounded-md">{t('uploadDropzone.button')}</a>
+            <a id="upload-trigger" href={`/${locale}/CSV-to-vCard/`} class="inline-flex items-center justify-center transition-all duration-200 focus:ring-2 focus:outline-none text-base-50 bg-accent-600 hover:bg-accent-700 transition duration-300 transform hover:scale-105 focus:ring-base-700/30 h-9 px-4 text-sm font-medium rounded-md">{t('uploadDropzone.button')}</a>
           </div>
         </div>
       </div>

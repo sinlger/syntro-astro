@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import * as VCF from 'vcf'
 import * as XLSX from 'xlsx'
 import { useVCardTypes } from './vCard'
-import i18next from 'i18next'
+import { createI18nClient } from './i18nClient'
 import { I18nextProvider, useTranslation } from 'react-i18next'
 
 // --- Icons (Replicating Lucide icons with SVG) ---
@@ -55,25 +55,9 @@ const IconArrowRightLeft = ({ className }: { className?: string }) => (
 // --- Types & Helpers ---
 type Row = Record<string, string>
 
-// I18n setup
-const i18nClient = i18next.createInstance();
-const setupI18n = (initialLocale: string, translations: any) => {
-  const resources = translations
-    ? { [initialLocale]: { common: translations } }
-    : { [initialLocale]: { common: {} } }
-  if (!i18nClient.isInitialized) {
-    i18nClient.init({
-      lng: initialLocale,
-      resources,
-      fallbackLng: 'zh',
-      ns: ['common'],
-      defaultNS: 'common',
-      interpolation: { escapeValue: false },
-    })
-  } else if (i18nClient.language !== initialLocale) {
-    i18nClient.changeLanguage(initialLocale)
-  }
-}
+// I18n setup: registers the bundle for the current locale on every call (SSR
+// renders several locales with the same module instance).
+const { i18nClient, setupI18n } = createI18nClient()
 
 function toArray<T>(p: T | T[] | null | undefined): T[] {
   if (!p) return []
@@ -92,7 +76,7 @@ function parseVcf(text: string): any[] {
   return []
 }
 
-function zhTypeLabel(t: any, getTypeLabel: (k: string, cat?: any) => string): string {
+function typeLabels(t: any, getTypeLabel: (k: string, cat?: any) => string): string {
   if (!t) return ''
   const arr = Array.isArray(t) ? t : [t]
   const mapped = arr.map((x) => getTypeLabel(x === 'pref' ? 'PREF' : x))
@@ -107,13 +91,13 @@ function cardToRow(card: any, getTypeLabel: (k: string, cat?: any) => string): R
     if (Array.isArray(p.type)) types.push(...p.type)
     else if (p.type) types.push(p.type)
     if (p.pref) types.push('pref')
-    const tLabel = zhTypeLabel(types, getTypeLabel)
+    const tLabel = typeLabels(types, getTypeLabel)
     return `${v}${tLabel ? ` (${tLabel})` : ''}`
   }).join(' | ')
 
   const emails = toArray(card.get('email')).map((p: any) => {
     const v = valOf(p).replace(/^mailto:/, '')
-    const tLabel = zhTypeLabel(p.type, getTypeLabel)
+    const tLabel = typeLabels(p.type, getTypeLabel)
     return `${v}${tLabel ? ` (${tLabel})` : ''}`
   }).join(' | ')
 
@@ -125,7 +109,7 @@ function cardToRow(card: any, getTypeLabel: (k: string, cat?: any) => string): R
     const region = parts[4] || ''
     const postal = parts[5] || ''
     const country = parts[6] || ''
-    const tLabel = zhTypeLabel(p.type, getTypeLabel)
+    const tLabel = typeLabels(p.type, getTypeLabel)
     const payload = [street, city, region, postal, country].filter(Boolean).join(' ')
     return `${payload}${tLabel ? ` (${tLabel})` : ''}`
   }).join(' | ')

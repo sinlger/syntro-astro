@@ -1,0 +1,169 @@
+---
+export const prerender = true;
+import "../styles/global.css";
+
+// Self-contained 404 page: no BaseLayout, no i18n helpers, no client-side JS.
+// Astro serves src/pages/404.astro with a real 404 status code.
+const popularTools = [
+  {
+    href: "/en/Excel-to-vCard/",
+    title: "Excel / CSV to vCard",
+    description: "Turn a spreadsheet of contacts into .vcf files, right in your browser.",
+  },
+  {
+    href: "/en/CSV-to-vCard/",
+    title: "CSV to vCard",
+    description: "Convert exported CSV contact lists into importable vCard files.",
+  },
+  {
+    href: "/en/vCard-to-Excel/",
+    title: "vCard to Excel",
+    description: "Read a .vcf file and export every contact into a clean spreadsheet.",
+  },
+  {
+    href: "/en/vcard-preview/",
+    title: "vCard Preview",
+    description: "Inspect the contents of a vCard file before you import it anywhere.",
+  },
+];
+
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>404 – Page Not Found | Excel2VCF</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta
+      name="description"
+      content="The page you are looking for does not exist. Browse Excel2VCF's free, browser-based Excel, CSV and vCard converters."
+    />
+    <meta name="theme-color" content="#d97706" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+  </head>
+
+  <body class="min-h-screen overflow-x-hidden bg-base-25 text-base-900 antialiased">
+    <div class="mx-auto flex min-h-screen w-full max-w-4xl flex-col px-6 py-12 sm:px-8 sm:py-16">
+      <!-- Brand -->
+      <header class="shrink-0">
+        <a
+          href="/en/"
+          class="inline-flex items-center gap-2 text-lg font-bold tracking-tight text-base-900 transition-colors hover:text-accent-700"
+        >
+          <span
+            class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-accent-600 text-sm font-black text-white"
+            aria-hidden="true">E2V</span
+          >
+          <span>Excel2VCF</span>
+        </a>
+      </header>
+
+      <!-- Main message -->
+      <main class="flex flex-1 flex-col justify-center py-12 sm:py-16">
+        <p class="text-6xl font-black leading-none tracking-tight text-accent-600 sm:text-7xl md:text-8xl">
+          404
+        </p>
+
+        <h1 class="mt-6 text-3xl font-bold tracking-tight text-base-900 sm:text-4xl">
+          This page doesn't exist
+        </h1>
+
+        <p class="mt-4 max-w-2xl text-base leading-relaxed text-base-500 sm:text-lg">
+          The link you followed may be broken or outdated, or the address may have been typed
+          incorrectly. Every tool on Excel2VCF runs entirely in your browser &mdash; your files are
+          never uploaded to a server, so nothing you convert ever leaves your device.
+        </p>
+
+        <!-- Popular tools -->
+        <section class="mt-12" aria-labelledby="popular-tools-heading">
+          <h2
+            id="popular-tools-heading"
+            class="text-sm font-semibold uppercase tracking-wider text-base-500"
+          >
+            Popular tools
+          </h2>
+
+          <ul class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {
+              popularTools.map((tool) => (
+                <li>
+                  <a
+                    href={tool.href}
+                    class="group flex h-full flex-col rounded-2xl bg-white p-5 ring-1 ring-base-200 transition duration-150 hover:bg-accent-50 hover:ring-accent-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-600"
+                  >
+                    <span class="flex items-center gap-2 font-semibold text-accent-700">
+                      {tool.title}
+                      <svg
+                        class="h-4 w-4 shrink-0 transition-transform duration-150 group-hover:translate-x-0.5"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M4 10h11" />
+                        <path d="M10.5 5.5 15 10l-4.5 4.5" />
+                      </svg>
+                    </span>
+                    <span class="mt-2 text-sm leading-relaxed text-base-500">
+                      {tool.description}
+                    </span>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+
+        <!-- Language selector -->
+        <section class="mt-12" aria-labelledby="languages-heading">
+          <h2
+            id="languages-heading"
+            class="text-sm font-semibold uppercase tracking-wider text-base-500"
+          >
+            Choose your language
+          </h2>
+
+          <ul class="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+            <li>
+              <a href="/zh/" hreflang="zh" lang="zh" class="inline-block rounded-lg px-1 py-0.5 text-base-700 underline decoration-base-300 decoration-1 underline-offset-4 transition-colors hover:text-accent-700 hover:decoration-accent-600">中文</a>
+            </li>
+            <li>
+              <a href="/en/" hreflang="en" lang="en" class="inline-block rounded-lg px-1 py-0.5 text-base-700 underline decoration-base-300 decoration-1 underline-offset-4 transition-colors hover:text-accent-700 hover:decoration-accent-600">English</a>
+            </li>
+            <li>
+              <a href="/ja/" hreflang="ja" lang="ja" class="inline-block rounded-lg px-1 py-0.5 text-base-700 underline decoration-base-300 decoration-1 underline-offset-4 transition-colors hover:text-accent-700 hover:decoration-accent-600">日本語</a>
+            </li>
+            <li>
+              <a href="/ko/" hreflang="ko" lang="ko" class="inline-block rounded-lg px-1 py-0.5 text-base-700 underline decoration-base-300 decoration-1 underline-offset-4 transition-colors hover:text-accent-700 hover:decoration-accent-600">한국어</a>
+            </li>
+            <li>
+              <a href="/fr/" hreflang="fr" lang="fr" class="inline-block rounded-lg px-1 py-0.5 text-base-700 underline decoration-base-300 decoration-1 underline-offset-4 transition-colors hover:text-accent-700 hover:decoration-accent-600">Français</a>
+            </li>
+            <li>
+              <a href="/de/" hreflang="de" lang="de" class="inline-block rounded-lg px-1 py-0.5 text-base-700 underline decoration-base-300 decoration-1 underline-offset-4 transition-colors hover:text-accent-700 hover:decoration-accent-600">Deutsch</a>
+            </li>
+            <li>
+              <a href="/es/" hreflang="es" lang="es" class="inline-block rounded-lg px-1 py-0.5 text-base-700 underline decoration-base-300 decoration-1 underline-offset-4 transition-colors hover:text-accent-700 hover:decoration-accent-600">Español</a>
+            </li>
+          </ul>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer
+        class="mt-12 flex shrink-0 flex-col gap-3 border-t border-base-200 pt-6 text-sm text-base-500 sm:flex-row sm:items-center sm:justify-between"
+      >
+        <p>&copy; 2026 Excel2VCF</p>
+        <nav class="flex flex-wrap items-center gap-x-5 gap-y-2" aria-label="Footer">
+          <a href="/en/faq/" class="transition-colors hover:text-accent-700">FAQ</a>
+          <a href="/en/blog/" class="transition-colors hover:text-accent-700">Blog</a>
+        </nav>
+      </footer>
+    </div>
+  </body>
+</html>

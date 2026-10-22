@@ -4,7 +4,7 @@ import * as VCF from 'vcf'
 import Modal from './Modal'
 import FieldMapping, { type FieldMappingHandle } from './FieldMapping'
 import { FN, TEL, useVCardFields } from './vCard'
-import i18next from 'i18next'
+import { createI18nClient } from './i18nClient'
 import { I18nextProvider, useTranslation } from 'react-i18next'
 const VCardCtor: any = (VCF as any).default || (VCF as any).vCard || (VCF as any)
 
@@ -12,22 +12,9 @@ function normalizePhone(p: string) {
   return p.replace(/\s+/g, '')
 }
 
-const i18nClient = i18next.createInstance()
-const setupI18n = (initialLocale: string, translations: any) => {
-  const resources = translations ? { [initialLocale]: { common: translations } } : { [initialLocale]: { common: {} } }
-  if (!i18nClient.isInitialized) {
-    i18nClient.init({
-      lng: initialLocale,
-      resources,
-      fallbackLng: 'zh',
-      ns: ['common'],
-      defaultNS: 'common',
-      interpolation: { escapeValue: false },
-    })
-  } else if (i18nClient.language !== initialLocale) {
-    i18nClient.changeLanguage(initialLocale)
-  }
-}
+// I18n setup: registers the bundle for the current locale on every call (SSR
+// renders several locales with the same module instance).
+const { i18nClient, setupI18n } = createI18nClient()
 
 export default function CsvToVCardUpload({ accept = '.csv,.xlsx,.xls', locale = 'zh', translations }: { accept?: string, locale?: string, translations?: any }) {
   setupI18n(locale, translations)
@@ -35,7 +22,12 @@ export default function CsvToVCardUpload({ accept = '.csv,.xlsx,.xls', locale = 
   const fieldMappingRef = useRef<FieldMappingHandle>(null)
   const [open, setOpen] = useState(false)
   const [version, setVersion] = useState<'3.0' | '4.0'>('3.0')
-  const [columns, setColumns] = useState<string[]>(() => ['姓名', '电话号码', '公司', '备注'])
+  const [columns, setColumns] = useState<string[]>(() => [
+    i18nClient.t('vcard.field.FN.label', { defaultValue: 'Name' }),
+    i18nClient.t('vcard.field.TEL.label', { defaultValue: 'Phone' }),
+    i18nClient.t('vcard.field.ORG.label', { defaultValue: 'Company' }),
+    i18nClient.t('vcard.field.NOTE.label', { defaultValue: 'Notes' }),
+  ])
   const [sampleRows, setSampleRows] = useState<Record<string, any>[]>([])
   const [rows, setRows] = useState<Record<string, any>[]>([])
   const [notice, setNotice] = useState<{ type: 'success' | 'error', text: string } | null>(null)
@@ -131,7 +123,7 @@ export default function CsvToVCardUpload({ accept = '.csv,.xlsx,.xls', locale = 
         const lines: string[] = []
         lines.push('BEGIN:VCARD')
         lines.push(`VERSION:${version}`)
-        lines.push('PRODID:-//Excel2VCF//CSV-to-vCard//ZH')
+        lines.push(`PRODID:-//Excel2VCF//CSV-to-vCard//${(locale || 'en').toUpperCase()}`)
         const hasNInFields = Array.isArray(fields) && fields.some((f) => f.fieldKey === 'N')
         const makeStructuredName = (s: string) => {
           const n = s.trim()

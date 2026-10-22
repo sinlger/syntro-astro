@@ -1,4 +1,3 @@
-import i18next from 'i18next'
 import { useTranslation } from 'react-i18next'
 
 export type VCardField = {
@@ -112,6 +111,10 @@ export const VCardTypeAdr = {
 }
 
 // --- TYPE 中文标签映射 ---
+//
+// These maps only point at i18n keys. Labels must always be resolved through
+// the active i18n instance; when a key is missing we fall back to the raw
+// vCard code (e.g. `CELL`, `WORK`) and NEVER to Chinese text.
 
 export const VCardTypeTelKeys: Record<string, string> = {
   HOME: 'vcard.type.HOME',
@@ -186,36 +189,99 @@ export const FIELDS_V4: VCardField[] = FIELDS.filter((f) => f.v4)
 export const FIELD_KEYS_V3: string[] = FIELDS_V3.map((f) => f.key)
 export const FIELD_KEYS_V4: string[] = FIELDS_V4.map((f) => f.key)
 
+// --- i18n label resolution (no Chinese hard-coded fallbacks) ---
+
+export type VCardTypeCategory = 'tel' | 'email' | 'adr' | 'common'
+
+type I18nLike = {
+  language?: string
+  resolvedLanguage?: string
+  getResource?: (lng: string, ns: string, key: string) => any
+}
+
+/**
+ * Look the label up in the bundle of the language that is currently active.
+ * Deliberately does not use `t(key)` fallbacks: if the current locale has no
+ * translation we want the raw vCard code, never another language's text (in
+ * particular never Chinese on a non-Chinese page).
+ */
+function activeLanguage(i18n: I18nLike | undefined): string {
+  return i18n?.resolvedLanguage || i18n?.language || ''
+}
+
+function resourceLabel(i18n: I18nLike | undefined, key: string): string {
+  const lng = activeLanguage(i18n)
+  if (!i18n || !lng || typeof i18n.getResource !== 'function' || !key) return ''
+  try {
+    const value = i18n.getResource(lng, 'common', key)
+    return typeof value === 'string' ? value : ''
+  } catch {
+    return ''
+  }
+}
+
+export function resolveTypeKey(type: string, category: VCardTypeCategory = 'common'): string {
+  if (!type) return ''
+  let key = ''
+  if (category === 'tel') key = VCardTypeTelKeys[type]
+  else if (category === 'email') key = VCardTypeEmailKeys[type]
+  else if (category === 'adr') key = VCardTypeAdrKeys[type]
+  else key = VCardTypeCommonKeys[type]
+
+  if (!key) {
+    key =
+      VCardTypeTelKeys[type] ||
+      VCardTypeEmailKeys[type] ||
+      VCardTypeAdrKeys[type] ||
+      VCardTypeCommonKeys[type] ||
+      ''
+  }
+  return key
+}
+
+/**
+ * Translate a vCard TYPE code for the given i18n instance. Falls back to the
+ * original code (e.g. `CELL`) when there is no translation for the active
+ * language.
+ */
+export function getTypeLabel(
+  i18n: I18nLike | undefined,
+  type: string,
+  category: VCardTypeCategory = 'common',
+): string {
+  if (!type) return ''
+  const key = resolveTypeKey(type, category)
+  if (!key) return type
+  return resourceLabel(i18n, key) || type
+}
+
+/** Field label from `vcard.field.<KEY>.label`, falling back to the field key. */
+export function getFieldLabel(i18n: I18nLike | undefined, field: VCardField): string {
+  return resourceLabel(i18n, field.labelKey) || field.key
+}
+
+/** Field description from `vcard.field.<KEY>.desc`, falling back to the field key. */
+export function getFieldDesc(i18n: I18nLike | undefined, field: VCardField): string {
+  return resourceLabel(i18n, field.descKey) || field.key
+}
+
 // --- Hooks ---
 
 export const useVCardFields = (version: '3.0' | '4.0' = '3.0') => {
-    const { t } = useTranslation('common');
+    const { i18n } = useTranslation('common');
     const fields = version === '4.0' ? FIELDS_V4 : FIELDS_V3;
-    
+
     return fields.map(f => ({
         ...f,
-        label: t(f.labelKey),
-        desc: t(f.descKey)
+        label: getFieldLabel(i18n, f),
+        desc: getFieldDesc(i18n, f)
     }));
 }
 
 export const useVCardTypes = () => {
-    const { t } = useTranslation('common');
-    
+    const { i18n } = useTranslation('common');
+
     return {
-        getTypeLabel: (type: string, category: 'tel' | 'email' | 'adr' | 'common' = 'common') => {
-             let key = '';
-             if (category === 'tel') key = VCardTypeTelKeys[type];
-             else if (category === 'email') key = VCardTypeEmailKeys[type];
-             else if (category === 'adr') key = VCardTypeAdrKeys[type];
-             else if (category === 'common') key = VCardTypeCommonKeys[type];
-             
-             // Fallback to trying all if specific category not matched or generic
-             if (!key) {
-                 key = VCardTypeTelKeys[type] || VCardTypeEmailKeys[type] || VCardTypeAdrKeys[type] || VCardTypeCommonKeys[type];
-             }
-             
-             return key ? t(key) : type;
-        }
+        getTypeLabel: (type: string, category: VCardTypeCategory = 'common') => getTypeLabel(i18n, type, category)
     }
 }

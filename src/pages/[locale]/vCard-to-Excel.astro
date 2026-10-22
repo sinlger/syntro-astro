@@ -47,8 +47,8 @@ const schema = {
   "@graph": [
     {
       "@type": "WebPage",
-      "@id": `${siteUrl}/${locale}${canonicalPath}`,
-      "url": `${siteUrl}/${locale}${canonicalPath}`,
+      "@id": `${siteUrl}/${locale}${canonicalPath}/`,
+      "url": `${siteUrl}/${locale}${canonicalPath}/`,
       "name": pageTitle,
       "description": pageDescription,
       "inLanguage": locale
@@ -62,11 +62,6 @@ const schema = {
         "@type": "Offer",
         "price": "0",
         "priceCurrency": "USD"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "ratingCount": "156"
       }
     }
   ]
@@ -109,13 +104,11 @@ if (Array.isArray(faqItems)) {
       </div>
 
       <VCardToCsv accept=".vcf,text/vcard" client:load locale={locale} translations={translationsBundle} />
-      <!-- 1. 核心特点区域 - 强调双向功能 -->
-      <section class="space-y-6 mt-12">
+            <section class="space-y-6 mt-12">
         <h2 class="text-3xl font-bold text-gray-800 mb-6">{t('pages.vcardExcel.featuresTitle')}</h2>
 
         <div class="grid md:grid-cols-2 gap-6">
-          <!-- 特点 1: 完全本地转换 (安全性) -->
-          <div
+                    <div
             class="p-6 text-accent-600 rounded-xl ring-1 ring-base-200 transition-shadow hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),_0_4px_6px_-2px_rgba(0,0,0,0.05)]"
           >
             <div class="flex items-start space-x-4">
@@ -136,8 +129,7 @@ if (Array.isArray(faqItems)) {
               </div>
             </div>
           </div>
-          <!-- 特点 2: VCF 复杂结构解析 (VCF 转 Excel 特点) -->
-          <div
+                    <div
             class="p-6 text-accent-600 rounded-xl ring-1 ring-base-200 transition-shadow hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),_0_4px_6px_-2px_rgba(0,0,0,0.05)]"
           >
             <div class="flex items-start space-x-4">
@@ -162,8 +154,7 @@ if (Array.isArray(faqItems)) {
             </div>
           </div>
 
-          <!-- 特点 3: 双向全格式兼容 (格式支持) -->
-          <div
+                    <div
             class="p-6 text-accent-600 rounded-xl ring-1 ring-base-200 transition-shadow hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),_0_4px_6px_-2px_rgba(0,0,0,0.05)]"
           >
             <div class="flex items-start space-x-4">
@@ -188,8 +179,7 @@ if (Array.isArray(faqItems)) {
             </div>
           </div>
 
-          <!-- 特点 4: 极速批量处理 (效率) -->
-          <div
+                    <div
             class="p-6 text-accent-600 rounded-xl ring-1 ring-base-200 transition-shadow hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),_0_4px_6px_-2px_rgba(0,0,0,0.05)]"
           >
             <div class="flex items-start space-x-4">
@@ -214,18 +204,15 @@ if (Array.isArray(faqItems)) {
           </div>
         </div>
       </section>
-      <!-- 2. 使用方法区域 - 步骤指南 (区分两个方向) -->
-      <section class="space-y-8 pt-6">
+            <section class="space-y-8 pt-6">
         <h2 class="text-3xl font-bold text-gray-800 mb-6">{t('pages.vcardExcel.howTitle')}</h2>
 
-        <!-- VCF 转 Excel/CSV 流程 (新功能) -->
-        <div class="p-6 rounded-xl shadow-lg ring-1 ring-base-200 step-container">
+                <div class="p-6 rounded-xl shadow-lg ring-1 ring-base-200 step-container">
           <h3 class="text-2xl font-bold mb-4">{t('pages.vcardExcel.howBlock.title')}</h3>
           <p class="text-gray-700 mb-4">{t('pages.vcardExcel.howBlock.desc')}</p>
 
           <div class="grid md:grid-cols-3 gap-4 divide-x divide-gray-300">
-            <!-- 步骤 1: 选择格式 -->
-            <div class="flex flex-col items-center justify-center p-2">
+                        <div class="flex flex-col items-center justify-center p-2">
               <div
                 class="bg-accent-700 text-white mb-3 w-10 h-10 rounded-full flex items-center justify-center font-bold"
               >
@@ -235,8 +222,7 @@ if (Array.isArray(faqItems)) {
               <p class="text-gray-600 text-sm mt-1 text-center" set:html={t('pages.vcardExcel.howBlock.steps.0.desc')}></p>
             </div>
 
-            <!-- 步骤 2: 上传文件 -->
-            <div class="flex flex-col items-center justify-center p-2">
+                        <div class="flex flex-col items-center justify-center p-2">
               <div
                 class="bg-accent-700 text-white mb-3 w-10 h-10 rounded-full flex items-center justify-center font-bold"
               >
@@ -246,8 +232,7 @@ if (Array.isArray(faqItems)) {
               <p class="text-gray-600 text-sm mt-1 text-center">{t('pages.vcardExcel.howBlock.steps.1.desc')}</p>
             </div>
 
-            <!-- 步骤 3: 立即下载 -->
-            <div class="flex flex-col items-center justify-center p-2">
+                        <div class="flex flex-col items-center justify-center p-2">
               <div
                 class="bg-accent-700 text-white mb-3 w-10 h-10 rounded-full flex items-center justify-center font-bold"
               >
@@ -260,16 +245,14 @@ if (Array.isArray(faqItems)) {
         </div>
       </section>
 
-      <!-- 3. SEO 增强：常见问题 (FAQ) 区域 - 重新生成并扩展 Excel/VCF 转换内容 -->
-      <section class="space-y-6 pt-6">
+            <section class="space-y-6 pt-6">
         <h2 class="text-3xl font-bold text-gray-800 mb-6">{t('pages.vcardExcel.faqTitle')}</h2>
 
         <!-- FAQ Container -->
         <div
           class="p-6 rounded-xl shadow-lg border border-gray-200 divide-y divide-gray-100"
         >
-          <!-- FAQ 1: VCF 是什么？ (关键词: CSV 转 VCard (VCF), 批量导入通讯录) -->
-          <details class="py-3 group">
+                    <details class="py-3 group">
             <summary
               class="flex justify-between items-center cursor-pointer list-none font-semibold text-gray-800 hover:text-blue-600 transition"
             >
@@ -290,8 +273,7 @@ if (Array.isArray(faqItems)) {
             <p class="text-gray-600 text-sm mt-2 ml-4" set:html={t('pages.vcardExcel.faq.0.a')}></p>
           </details>
 
-          <!-- FAQ 2: Excel 多列数据映射 (关键词: Excel 转 VCF 多字段, 家庭电话, 手机号码) -->
-          <details class="py-3 group">
+                    <details class="py-3 group">
             <summary
               class="flex justify-between items-center cursor-pointer list-none font-semibold text-gray-800 hover:text-blue-600 transition"
             >
@@ -312,8 +294,7 @@ if (Array.isArray(faqItems)) {
             <p class="text-gray-600 text-sm mt-2 ml-4" set:html={t('pages.vcardExcel.faq.1.a')}></p>
           </details>
 
-          <!-- FAQ 3: VCF 转 Excel 的用途 (关键词: VCF 批量转 Excel, 通讯录备份, 数据编辑) -->
-          <details class="py-3 group">
+                    <details class="py-3 group">
             <summary
               class="flex justify-between items-center cursor-pointer list-none font-semibold text-gray-800 hover:text-blue-600 transition"
             >
@@ -334,8 +315,7 @@ if (Array.isArray(faqItems)) {
             <p class="text-gray-600 text-sm mt-2 ml-4" set:html={t('pages.vcardExcel.faq.2.a')}></p>
           </details>
 
-          <!-- FAQ 4: VCF 转 Excel 字段完整性 (关键词: VCF 字段丢失, 备注信息, 完整转换) -->
-          <details class="py-3 group">
+                    <details class="py-3 group">
             <summary
               class="flex justify-between items-center cursor-pointer list-none font-semibold text-gray-800 hover:text-blue-600 transition"
             >
@@ -356,8 +336,7 @@ if (Array.isArray(faqItems)) {
             <p class="text-gray-600 text-sm mt-2 ml-4" set:html={t('pages.vcardExcel.faq.3.a')}></p>
           </details>
 
-          <!-- FAQ 5: VCF 文件限制 (关键词: 多个 VCF 合并, VCF 导入 Excel) -->
-          <details class="py-3 group">
+                    <details class="py-3 group">
             <summary
               class="flex justify-between items-center cursor-pointer list-none font-semibold text-gray-800 hover:text-blue-600 transition"
             >
@@ -378,8 +357,7 @@ if (Array.isArray(faqItems)) {
             <p class="text-gray-600 text-sm mt-2 ml-4" set:html={t('pages.vcardExcel.faq.4.a')}></p>
           </details>
 
-          <!-- FAQ 6: 字符编码 (关键词: Excel 转 VCF 中文乱码, 特殊字符) -->
-          <details class="py-3 group">
+                    <details class="py-3 group">
             <summary
               class="flex justify-between items-center cursor-pointer list-none font-semibold text-gray-800 hover:text-blue-600 transition"
             >
@@ -400,8 +378,7 @@ if (Array.isArray(faqItems)) {
             <p class="text-gray-600 text-sm mt-2 ml-4" set:html={t('pages.vcardExcel.faq.5.a')}></p>
           </details>
 
-          <!-- FAQ 7: 版本支持 (关键词: XLSX/XLS 兼容性) -->
-          <details class="py-3 group">
+                    <details class="py-3 group">
             <summary
               class="flex justify-between items-center cursor-pointer list-none font-semibold text-gray-800 hover:text-blue-600 transition"
             >
@@ -422,8 +399,7 @@ if (Array.isArray(faqItems)) {
             <p class="text-gray-600 text-sm mt-2 ml-4" set:html={t('pages.vcardExcel.faq.6.a')}></p>
           </details>
 
-          <!-- FAQ 8: 数据安全 (关键词: 本地转换, 数据安全, VCF 隐私) -->
-          <details class="py-3 group">
+                    <details class="py-3 group">
             <summary
               class="flex justify-between items-center cursor-pointer list-none font-semibold text-gray-800 hover:text-blue-600 transition"
             >

@@ -106,7 +106,7 @@ const FieldMapping = forwardRef<FieldMappingHandle, Props>(({ version, columns, 
       .map(([col, sel]) => ({ col, field: supportedFields.find((f) => f.key === sel) }))
       .filter((e) => !!e.field) as Array<{ col: string; field: typeof supportedFields[number] }>
 
-    const head = mapped.map(({ col, field }) => ({ key: `${field.key}:${col}`, label: `${field.label}（${field.key}）` }))
+    const head = mapped.map(({ col, field }) => ({ key: `${field.key}:${col}`, label: `${field.label} (${field.key})` }))
 
     const rows = (sampleRows || []).map((r) => {
       const obj: Record<string, any> = {}
@@ -151,7 +151,7 @@ const FieldMapping = forwardRef<FieldMappingHandle, Props>(({ version, columns, 
                     >
                       <option value="">{t('pages.csv.mapping.ignoreColumn')}</option>
                       {supportedFields.map((f) => (
-                        <option key={f.key} value={f.key}>{f.label}（{f.key}）</option>
+                        <option key={f.key} value={f.key}>{f.label} ({f.key})</option>
                       ))}
                     </select>
                     {(selectionByColumn[col] === TEL.key || selectionByColumn[col] === EMAIL.key || selectionByColumn[col] === ADR.key) && (

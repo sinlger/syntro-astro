@@ -6,10 +6,10 @@
     "badge": "Conversion 100% hors ligne · Vos données ne quittent jamais votre appareil"
   },
   "page": {
-    "home_title": "Convertisseur Excel/CSV/XLSX vers vCard (VCF) - Traitement local sécurisé",
+    "home_title": "Convertisseur Excel/CSV vers vCard (VCF) et VCF vers Excel",
     "home_description": "Fini la saisie manuelle ! Convertissez vos répertoires Excel/CSV en fichiers VCF en masse. Tout est traité localement dans votre navigateur, garantissant que vos données ne sont jamais envoyées vers un serveur. Compatible iOS/Android.",
-    "blog_title": "Blog",
-    "blog_description": "Dernières mises à jour et articles de l'équipe Excel2VCF."
+    "blog_title": "Blog - Guides Excel/CSV vers vCard (VCF) | Excel2VCF",
+    "blog_description": "Guides pratiques pour convertir vos contacts Excel/CSV en vCard (VCF) : import groupé, mappage des champs, encodages et confidentialité hors ligne."
   },
   "uploadDropzone": {
     "drag": "Glissez-déposez un fichier ou cliquez pour sélectionner",
@@ -207,6 +207,14 @@
         {
           "q": "Mes données sont-elles en sécurité ?",
           "a": "Oui, car nous utilisons une technologie de <strong>conversion locale</strong>. Rien n'est téléchargé sur un serveur tiers, ce qui élimine tout risque de fuite."
+        },
+        {
+          "q": "Au-delà du CSV, l'outil sait-il convertir des fichiers Excel (XLSX) au format VCF ?",
+          "a": "Oui, notre outil prend non seulement en charge la conversion standard **CSV vers VCF**, mais il est également entièrement compatible avec les fichiers Excel (y compris `.xlsx` et l'ancien format `.xls`). La logique de conversion identifie automatiquement les données de la feuille de calcul et vous guide dans le mappage des champs pour réaliser une **importation massive Excel vers VCF**."
+        },
+        {
+          "q": "Quelle est la différence entre VCF 4.0 et 3.0, et laquelle choisir ?",
+          "a": "VCF 4.0 est la norme vCard la plus récente : elle prend en charge davantage de champs et des structures de données complexes (plusieurs comptes sociaux, photos haute résolution). VCF 3.0 est une norme plus ancienne, mais plus largement compatible. En cas de doute, nous vous conseillons de choisir par défaut **VCF 4.0** pour de meilleurs résultats ; si l'importation échoue, essayez la version 3.0."
         }
       ],
       "ui": {
@@ -292,6 +300,18 @@
         {
           "q": "Y a-t-il des problèmes avec les accents français ?",
           "a": "Non, notre outil gère parfaitement les caractères spéciaux (é, à, ç, etc.) grâce à l'encodage UTF-8."
+        },
+        {
+          "q": "Mes données de contact sont-elles sécurisées lorsque je convertis un fichier Excel ?",
+          "a": "Absolument. Qu'il s'agisse d'une conversion **Excel vers VCF** ou CSV, nous utilisons une technologie de **traitement entièrement local**. Votre fichier Excel d'origine et toutes vos données de contact ne quittent jamais votre navigateur et **ne seront jamais envoyées sur nos serveurs**. Votre vie privée bénéficie ainsi du plus haut niveau de sécurité."
+        },
+        {
+          "q": "Les caractères accentués ou spéciaux de mon tableur Excel risquent-ils d'apparaître illisibles après la conversion ?",
+          "a": "Non. Lors du traitement **Excel vers VCF**, notre outil gère automatiquement l'encodage UTF-8 afin que les caractères accentués, les alphabets non latins et les symboles spéciaux soient correctement identifiés et écrits dans le fichier VCF. Le fichier VCF généré utilise l'encodage UTF-8 standard, le format recommandé pour tous les téléphones et applications courants, ce qui évite efficacement le problème fréquent des **caractères illisibles**."
+        },
+        {
+          "q": "Mon fichier Excel est une ancienne version (XLS) : peut-il tout de même être converti ?",
+          "a": "Cet outil offre une compatibilité étendue. Il prend en charge non seulement la conversion **XLSX vers VCF**, mais aussi les anciens fichiers Excel (`.xls`). Quelle que soit votre version d'Excel, assurez-vous simplement que vos données de contact se trouvent sur la première feuille de calcul pour mener à bien la conversion **Excel vers vCard**."
         }
       ],
       "ui": {
@@ -318,6 +338,10 @@
         {
           "title": "Export Flexible",
           "desc": "Choisissez entre Excel (.xlsx) ou CSV selon vos besoins."
+        },
+        {
+          "title": "Traitement massif ultra-rapide",
+          "desc": "Grâce à la puissance de calcul de votre navigateur, la génération comme l'analyse de fichiers VCF volumineux ne prend que quelques secondes."
         }
       ],
       "howTitle": "Procédure",
@@ -348,16 +372,33 @@
         "downloadButton": "Télécharger",
         "securityTitle": "Sécurité : ",
         "securityDesc": "Aucune donnée ne quitte votre navigateur.",
+        "features": {
+          "multiFormat": {
+            "title": "Prise en charge multi-formats",
+            "desc": "Prend parfaitement en charge les versions vCard 2.1, 3.0 et 4.0, et reste compatible avec iOS, Android, Outlook et d'autres sources."
+          },
+          "smartParse": {
+            "title": "Analyse intelligente",
+            "desc": "Fusionne automatiquement plusieurs numéros de téléphone et e-mails, puis extrait intelligemment les informations d'adresse et d'étiquette vers les colonnes correspondantes."
+          }
+        },
         "success": {
           "title": "Conversion réussie !",
           "desc": "Le fichier ({{format}}) est prêt. Le téléchargement devrait démarrer automatiquement.",
           "downloadAgain": "Retélécharger",
           "convertAnother": "Convertir un autre fichier"
         },
+        "export": {
+          "title": "Prêt à exporter",
+          "desc": "{{count}} contacts analysés<br/>Vérifiez les données, puis cliquez ci-dessous pour exporter.",
+          "cancel": "Annuler et recharger"
+        },
         "preview": {
           "configTitle": "Configuration des colonnes",
           "tableTitle": "Aperçu (50 premiers contacts)",
           "totalCount": "Total : {{count}} contacts",
+          "noData": "Aucune donnée",
+          "parseError": "Échec de l'analyse, veuillez vérifier le format du fichier",
           "columns": {
             "FN": "Nom complet",
             "TELs": "Téléphones",
@@ -368,10 +409,83 @@
             "NOTE": "Note",
             "LABELs": "Étiquettes",
             "N_Last": "Nom",
-            "N_First": "Prénom"
+            "N_First": "Prénom",
+            "ADR_Street": "Rue",
+            "ADR_City": "Ville",
+            "ADR_Region": "Région/État",
+            "ADR_Postal": "Code postal",
+            "ADR_Country": "Pays"
           }
         }
-      }
+      },
+      "faqTitle": "Questions fréquentes (FAQ)",
+      "faq": [
+        {
+          "q": "Qu'est-ce qu'un fichier VCF/vCard et quel est son lien avec les contacts ?",
+          "a": "Le VCF (Virtual Contact File), couramment appelé vCard, est un format standard pour stocker des informations de contact. C'est le format le plus répandu pour **importer massivement des contacts** sur un téléphone mobile (iOS/Android) ou dans un client de messagerie. Notre outil assure une conversion efficace **CSV/Excel vers vCard (VCF)**."
+        },
+        {
+          "q": "Mon fichier Excel contient plusieurs colonnes comme « Mobile » ou « Téléphone fixe ». Comment les mapper séparément vers le VCF ?",
+          "a": "Lors du processus **Excel vers VCF**, notre interface de mappage des champs vous permet d'affecter chaque colonne Excel à une propriété vCard distincte (par exemple `TEL;TYPE=CELL` pour le mobile, `TEL;TYPE=HOME` pour le fixe, `EMAIL` pour l'e-mail, etc.). Il suffit de sélectionner l'étiquette vCard correspondante pour chaque colonne à l'**étape 2 (mappage des champs)** afin d'obtenir une importation fine et précise."
+        },
+        {
+          "q": "Quels sont les principaux usages de la conversion d'un fichier VCF vers Excel ou CSV ?",
+          "a": "Convertir **massivement des VCF vers Excel** ou CSV répond à trois besoins principaux :<ul class=\"list-disc ml-6 mt-2 space-y-1\"><li>**Édition et nettoyage par lots :** Excel offre de puissantes fonctions de tri, de filtrage et de recherche, qui facilitent la correction uniforme des formats et le nettoyage des données sur des milliers de contacts.</li><li>**Sauvegarde universelle :** exporter les données de contact vers Excel ou CSV permet un archivage et une sauvegarde à long terme dans un format universel.</li><li>**Préparation à l'importation système :** de nombreux outils métier ou CRM n'acceptent que l'importation de fichiers CSV ou Excel ; cette fonction vous permet de préparer facilement la source de données.</li></ul>"
+        },
+        {
+          "q": "Toutes mes informations de contact (notes, adresses…) sont-elles conservées lors de la conversion VCF vers Excel ?",
+          "a": "Oui. Lors d'une conversion **VCF vers Excel**, notre analyseur extrait l'ensemble des champs pris en charge par la norme vCard : nom, téléphone, e-mail, entreprise, poste, adresse et même les **notes du contact**. Ces données apparaissent dans Excel/CSV sous forme de colonnes distinctes, ce qui garantit une **conversion complète** sans perte d'information essentielle."
+        },
+        {
+          "q": "Puis-je importer plusieurs fichiers VCF, ou un seul fichier VCF contenant plusieurs contacts ?",
+          "a": "Aucun problème. Notre outil accepte l'importation d'un seul fichier VCF contenant plusieurs contacts, ou la sélection simultanée de plusieurs fichiers `.vcf` distincts. Il identifie et analyse automatiquement tous les contacts, puis les **fusionne** dans une même feuille Excel ou CSV pour faciliter l'organisation de vos **importations VCF vers Excel**."
+        },
+        {
+          "q": "Comment l'encodage des caractères spéciaux est-il géré lors d'une conversion Excel/VCF ?",
+          "a": "Qu'il s'agisse d'une conversion **Excel vers VCF** ou **VCF vers Excel**, nous utilisons l'encodage UTF-8 standard tout au long du processus. Les caractères accentués, les alphabets non latins et les symboles spéciaux sont ainsi écrits avec précision dans le fichier VCF ou exportés vers Excel/CSV, ce qui élimine définitivement les problèmes courants de **caractères illisibles**."
+        },
+        {
+          "q": "Quelles versions de fichiers Excel et VCF cet outil prend-il en charge ?",
+          "a": "Cet outil offre une compatibilité de fichiers étendue :<ul class=\"list-disc ml-6 mt-2 space-y-1\"><li>**Excel/CSV :** lecture des fichiers `.xlsx`, `.xls` et `.csv`. L'export est disponible au format CSV ou Excel.</li><li>**VCF :** compatibilité totale avec les formats standards VCF 3.0 et VCF 4.0. Une compatibilité maximale est garantie à l'import comme à l'export.</li></ul>"
+        },
+        {
+          "q": "La conversion inverse à partir de fichiers VCF est-elle sûre ?",
+          "a": "Rassurez-vous : que ce soit pour la conversion **Excel vers VCF** ou la conversion inverse **VCF vers Excel**, nous utilisons toujours une technologie de **traitement entièrement local**. Votre fichier VCF et vos données de contact ne sont jamais envoyés vers un serveur ; tous les calculs sont effectués dans votre navigateur, pour une sécurité maximale de votre vie privée."
+        }
+      ]
+    }
+  },
+  "vcardPreview": {
+    "title": "Aperçu et modification de vCard",
+    "description": "Prévisualisez, modifiez et exportez vos contacts vCard en ligne.",
+    "upload": {
+      "title": "Importer un fichier vCard",
+      "desc": "Glissez-déposez ou cliquez pour importer un fichier .vcf",
+      "btn": "Sélectionner un fichier"
+    },
+    "stats": {
+      "total": "Total des contacts",
+      "version": "Version vCard"
+    },
+    "actions": {
+      "clear": "Effacer",
+      "export": "Exporter la vCard"
+    },
+    "table": {
+      "name": "Nom",
+      "phone": "Téléphone",
+      "email": "E-mail",
+      "actions": "Actions"
+    },
+    "modal": {
+      "title": "Modifier le contact",
+      "cancel": "Annuler",
+      "save": "Enregistrer",
+      "add": "Ajouter"
+    },
+    "error": {
+      "parse": "Échec de l'analyse du fichier vCard",
+      "export": "Échec de l'export du fichier vCard"
     }
   },
   "legal": {
@@ -379,20 +493,34 @@
       "lastUpdated": "Dernière mise à jour : 9 décembre 2025"
     },
     "cookie": {
-      "seo": { "title": "Politique de Cookies" },
+      "seo": {
+        "title": "Politique de Cookies",
+        "description": "Explique les types et finalités des cookies utilisés sur ce site ainsi que les choix des utilisateurs."
+      },
       "title": "Politique de Cookies",
       "contentHtml": "<p>Nous utilisons des cookies pour améliorer votre expérience. Les cookies essentiels permettent le bon fonctionnement du site, tandis que les cookies d'analyse nous aident à comprendre l'utilisation de nos outils de conversion locale.</p>"
     },
     "copyright": {
+      "seo": {
+        "title": "Droits d'auteur",
+        "description": "Protection du contenu, des marques et du design du site contre toute reproduction non autorisée."
+      },
       "title": "Droits d'auteur",
-      "contentHtml": "<p>© 2024 excel2vcf.com. Tous droits réservés. Toute reproduction non autorisée est interdite.</p>"
+      "contentHtml": "<p>© 2026 excel2vcf.com. Tous droits réservés. Toute reproduction non autorisée est interdite.</p>"
     },
     "privacy": {
-      "seo": { "title": "Politique de Confidentialité" },
+      "seo": {
+        "title": "Politique de Confidentialité",
+        "description": "Déclaration claire indiquant que les données sont traitées entièrement dans le navigateur local et ne sont envoyées sur aucun serveur."
+      },
       "title": "Politique de Confidentialité",
-      "contentHtml": "<p><strong>Engagement VCF2XLS :</strong> Toutes les conversions sont effectuées <strong>localement</strong> dans votre navigateur. Vos données ne sont jamais envoyées sur nos serveurs.</p>"
+      "contentHtml": "<p><strong>Engagement Excel2VCF :</strong> Toutes les conversions sont effectuées <strong>localement</strong> dans votre navigateur. Vos données ne sont jamais envoyées sur nos serveurs.</p>"
     },
     "terms": {
+      "seo": {
+        "title": "Conditions d'utilisation",
+        "description": "Définit les droits et obligations des utilisateurs ainsi que les clauses de non-responsabilité liées à l'utilisation de ce service."
+      },
       "title": "Conditions d'utilisation",
       "contentHtml": "<p>En utilisant ce service, vous acceptez que la conversion soit fournie 'en l'état'. Nous ne sommes pas responsables des éventuelles pertes de données lors de l'importation dans des systèmes tiers.</p>"
     }
@@ -403,8 +531,10 @@
       "intro": "Une question ou un bug ? Notre équipe est à votre écoute.",
       "techTitle": "Support technique",
       "techEmail": "support@excel2vcf.com",
+      "techNote": "Pour signaler un bug, une conversion échouée ou tout autre problème technique.",
       "bizTitle": "Partenariats",
       "bizEmail": "hello@excel2vcf.com",
+      "bizNote": "Pour les suggestions de fonctionnalités, les demandes de partenariat et les sujets non urgents.",
       "formTitle": "Formulaire de contact",
       "formName": "Votre nom",
       "formEmail": "Votre e-mail",
@@ -417,6 +547,10 @@
       "subtitle": "Tout savoir sur la conversion Excel/VCF.",
       "q1": "Mes fichiers sont-ils téléchargés ?",
       "a1": "<strong>Non.</strong> Tout le processus se passe dans votre RAM locale via JavaScript.",
+      "q2": "Que faire si les contacts importés affichent des caractères illisibles ?",
+      "a2": "Les caractères illisibles apparaissent généralement lors du processus <span class=\"font-bold\">Excel/CSV vers VCF</span>. Vérifiez que votre fichier CSV d'origine est bien enregistré en **encodage UTF-8**. Notre outil génère par défaut des fichiers VCF en UTF-8, la méthode standard pour résoudre ce type de problème. Si le souci persiste, rouvrez le CSV dans Excel, enregistrez-le en UTF-8, puis importez-le à nouveau.",
+      "q3": "Après une conversion VCF vers Excel, certains champs comme « Notes » ou « Téléphones multiples » manquent ?",
+      "a3": "L'analyseur de notre outil est conçu pour identifier et extraire tous les champs standard et non standard du VCF.<ul class=\"list-disc ml-6 mt-2 space-y-1\"><li>Pour les **champs identiques multiples** (par exemple deux numéros de mobile), nous les fusionnons dans la même cellule ou créons des colonnes distinctes dans Excel (par exemple « Téléphone 1 », « Téléphone 2 »).</li><li>Si votre VCF contient des données non standard, envoyez-nous le fichier pour analyse et nous mettrons à jour la logique d'analyse pour prendre en charge ce champ dès que possible.</li></ul>",
       "q4": "Y a-t-il une limite de taille ?",
       "a4": "Non, mais pour plus de 50 000 contacts, la puissance de votre ordinateur peut influencer la vitesse."
     },
@@ -429,11 +563,31 @@
         "fix": "Correctif",
         "feature": "Nouveauté"
       },
+      "v2_1": {
+        "title": "V2.1.0 - Amélioration du schéma SEO",
+        "date": "6 janvier 2026",
+        "p1": "<span class=\"font-bold text-accent-700\">Nouveauté :</span> Ajout d'une prise en charge complète du schéma SEO (JSON-LD) pour toutes les pages d'outils (CSV/Excel/vCard) et les sections FAQ, afin d'améliorer la visibilité dans les moteurs de recherche.",
+        "p2": "<span class=\"font-bold text-accent-700\">Optimisation :</span> Mise en place des types de données structurées SoftwareApplication et FAQPage pour prendre en charge les résultats enrichis."
+      },
       "v2": {
         "title": "V2.0.0 - Moteur bidirectionnel",
         "date": "9 décembre 2025",
         "p1": "Ajout de la conversion <strong>VCF vers Excel/CSV</strong>.",
-        "p2": "Support complet de vCard 4.0."
+        "p2": "Support complet de vCard 4.0.",
+        "p3": "<span class=\"font-bold text-accent-700\">Optimisation :</span> Interface de mappage des champs optimisée pour le processus Excel → VCF, avec la prise en charge de davantage d'étiquettes personnalisées.",
+        "p4": "<span class=\"font-bold text-accent-700\">Optimisation :</span> Gain de performance : la vitesse de traitement local des fichiers volumineux (plus de 10 000 contacts) augmente de 30 %."
+      },
+      "v1_1": {
+        "title": "V1.1.0 - Correction des données CSV illisibles et compatibilité renforcée",
+        "date": "28 octobre 2025",
+        "p1": "<span class=\"font-bold text-accent-700\">Optimisation :</span> L'export des fichiers VCF impose désormais l'encodage UTF-8, ce qui résout définitivement les problèmes de caractères illisibles.",
+        "p2": "<span class=\"font-bold text-accent-700\">Correctif :</span> Correction d'un problème où les en-têtes de colonnes n'étaient pas reconnus correctement lors de l'importation de certaines versions d'Excel (XLS)."
+      },
+      "v1_0": {
+        "title": "V1.0.0 - Version initiale",
+        "date": "15 septembre 2025",
+        "p1": "<span class=\"font-bold text-accent-700\">Nouveauté :</span> Mise en place de la conversion de base **Excel/CSV → VCF**.",
+        "p2": "<span class=\"font-bold text-accent-700\">Nouveauté :</span> Traitement local mis en place pour garantir la sécurité des données."
       }
     }
   },
@@ -443,6 +597,9 @@
       "support": "Aide",
       "legal": "Légal"
     },
+    "links": {
+      "partners": "Partenaires"
+    },
     "intro": "Excel2VCF est un outil gratuit et sécurisé pour convertir vos contacts. Tout est traité localement pour protéger votre vie privée.",
     "companyName": "Excel2VCF"
   },
@@ -451,38 +608,5 @@
       "closeAria": "Fermer la fenêtre",
       "closeLabel": "Fermer"
     }
-  },
-  "vcardPreview": {
-      "title": "vCard Preview & Edit",
-      "description": "Preview, edit, and export your vCard contacts online.",
-      "upload": {
-        "title": "Upload vCard File",
-        "desc": "Drag and drop or click to upload .vcf file",
-        "btn": "Select File"
-      },
-      "stats": {
-        "total": "Total Contacts",
-        "version": "vCard Version"
-      },
-      "actions": {
-        "clear": "Clear",
-        "export": "Export vCard"
-      },
-      "table": {
-        "name": "Name",
-        "phone": "Phone",
-        "email": "Email",
-        "actions": "Actions"
-      },
-      "modal": {
-        "title": "Edit Contact",
-        "cancel": "Cancel",
-        "save": "Save",
-        "add": "Add"
-      },
-      "error": {
-        "parse": "Failed to parse vCard file",
-        "export": "Failed to export vCard file"
-      }
-    }
+  }
 }
