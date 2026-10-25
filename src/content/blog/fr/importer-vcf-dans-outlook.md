@@ -47,7 +47,9 @@ Un détail : les en-têtes portent les noms vCard, pas les libellés d'Outlook. 
 
 ## Importer dans Outlook pour Mac
 
-Outlook pour Mac garde un importateur vCard direct : *Fichier → Importer → Contacts à partir d'un fichier vCard*, puis la `.vcf`. Les versions Mac gèrent mieux les fichiers multi-fiches que l'assistant Windows, mais un gros export prend du temps. Si l'import bloque, le CSV du convertisseur s'importe dans le client web.
+La version actuelle d'Outlook pour Mac (Microsoft 365 / 2024) traite les VCF fiche par fiche : un double-clic sur un `.vcf` l'ouvre dans Contacts. Si le fichier contient plusieurs fiches, la fenêtre d'import n'en affiche qu'une, mais Outlook enregistre chaque fiche séparément : les contacts arrivent bien. En revanche, il n'existe **pas** d'import en masse d'un dossier de fichiers `.vcf`, et cette version n'importe pas non plus de CSV — Microsoft le précise explicitement. Les anciennes versions (Outlook 2016/2019 pour Mac) proposent encore *Fichier → Importer → Contacts à partir d'un fichier vCard*, un chemin plus ancien.
+
+Comme la prise en charge Mac est limitée dans les deux sens, la voie pratique pour une longue liste reste la même que sous Windows : convertir le VCF en CSV avec le convertisseur de ce site, puis importer ce CSV dans le client web (Personnes → Gérer les contacts → Importer des contacts), qui fait partie du même compte Microsoft 365.
 
 ## Problèmes fréquents
 

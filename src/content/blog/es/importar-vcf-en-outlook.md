@@ -27,7 +27,7 @@ El VCF (vCard) es un formato de intercambio, no de trabajo, y Outlook lo acepta 
 
 Aquí está el detalle que arruina la tarde: **en muchas versiones del importador clásico, un `.vcf` con varios contactos solo aporta el primero**. El comportamiento cambia según la compilación —unas leen todas las tarjetas, otras solo la primera— y la documentación oficial no aclara el VCF multicontacto.
 
-Si aun así quieres ir por aquí, abre el `.vcf` con el Bloc de notas y separa los bloques entre `BEGIN:VCARD` y `END:VCARD` en archivos individuales. Cuando la tabla esté limpia y quieras volver a tener un solo VCF con todos, el proceso de [unir varios archivos VCF](/es/blog/unir-archivos-vcf/) es ese.
+Si aun así quieres ir por aquí, abre el `.vcf` con el Bloc de notas y separa los bloques entre `BEGIN:VCARD` y `END:VCARD` en archivos individuales. Cuando la tabla esté limpia y quieras volver a tener un solo VCF con todos, el proceso de [unir varios archivos VCF](/es/blog/unir-archivos-vcf/) es el mismo.
 
 ## Nuevo Outlook y Outlook en la web: usa CSV
 

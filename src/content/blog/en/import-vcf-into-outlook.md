@@ -47,9 +47,9 @@ One detail: the exported headers are vCard field names, not Outlook labels. That
 
 ## Import on Outlook for Mac
 
-Outlook for Mac kept a direct vCard importer, and the route is shorter: *File → Import → Contacts from a vCard file*, then point it at the `.vcf`; duplicate handling is offered in the same dialog. Mac builds usually cope with multi-card files better than the Windows classic wizard, though very large exports still take time — a file that yields one contact on a PC may arrive complete on a Mac.
+The current Microsoft 365 / 2024 Outlook for Mac handles VCF one card at a time: double-click a `.vcf` and it opens in Contacts. When the file holds several cards, the import window shows only the first one, but Outlook saves each card separately, so the contacts do arrive. What it does **not** do is bulk-import a folder of `.vcf` files, and this version does not import CSV either — Microsoft's documentation states that limitation explicitly. Older Outlook 2016/2019 for Mac builds still expose *File → Import → Contacts from a vCard file*, which is a different, older import path.
 
-If the import stalls or the file is enormous, the CSV route still works: the file from the converter imports into the web client, which shows the same contact list for a Microsoft 365 account.
+Because Mac support is limited in both directions, the practical route for a large list is the same as on Windows: convert the VCF to CSV with the converter on this site, then import that CSV into the web client (People → Manage contacts → Import contacts), which belongs to the same Microsoft 365 account.
 
 ## Common problems
 
